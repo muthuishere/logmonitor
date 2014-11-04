@@ -1,0 +1,20 @@
+<logconfig>
+<servers>
+	<server>
+	host
+	username
+	password
+	</server>
+</servers>
+<logs>
+	<log>
+	<name></name>
+	<file></file>
+	<serverlist>
+		<name></name>
+		<name></name>
+		
+	</serverlist>
+	</log>
+</logs>
+</logconfig>

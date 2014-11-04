@@ -1,0 +1,52 @@
+
+hosts
+
+files
+[name:
+ file: ]
+
+select box
+
+	select multiple hosts
+	
+on start monitor
+			
+			send session id 
+			
+			in thread
+
+			connect to server
+		
+			execute tail -f 
+			get log
+				display back to singleton response
+				send to sessionid -response
+				
+				
+				
+		
+			
+		On receive sessionid , ip , response
+		hashmap[sessionid] +=	ip + response
+			
+			
+			
+		
+		
+		
+on get output / with sessionid
+
+
+			get with hashmap sessionid
+			if(not found)
+				return FINAL
+			else	
+				clear output				
+				send response
+			
+on stop output
+
+			call the manager to stop threads 
+			
+			
+			

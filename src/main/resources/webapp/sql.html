@@ -1,0 +1,81 @@
+      <div class="top_slogan">
+	Execute	
+  </div>
+       <div id ="overlay" class="main_content"  style="">
+	   <form id="frmuser">
+	    <div id="errdiv" class="alert-box error" ></div>
+	    <span id="resultcontainer"/>
+	   <table cellpadding="10" cellspacing="10" border="0">
+	   <tr>
+	   <td>User </td>
+	   <td colspan="3"><Textarea name="sql" id="sql" rows="80" cols="25"></Textarea> </td>
+	   </tr>	
+		  
+	      <tr>
+	   <td>DB </td>
+	   <td colspan="3">
+	   <select id="db" name="db">
+	
+	   <option value="FETCHER">Timesheets</option>
+	   <option value="USER">User</option>
+	   
+	   </select>
+	   </td>
+	   </tr>	   
+	   
+	   <tr>
+	   
+	  <td colspan="4" style="text-align:right"><input id="executeSql" type="submit" value="Submit" style="width:120px"> </td>
+	   </tr>
+	   </table>
+	 
+	     </form>
+	  </div>
+	  <div style="height:300px" >
+	  
+	
+	  
+	  </div>
+	
+	
+        <script>
+  $(function() {
+    
+	  $('#errdiv').hide();
+	$( "input#executeSql" )
+      .button()
+      .click(function( event ) {
+    	  
+    	  $('#errdiv').hide();
+    	
+		var formdata=$("form#frmuser").serializeArray()
+		
+		$('#frmuser')[0].reset();
+		$.post( "/services/executesql", formdata)
+		  .done(function( data ) {
+		    
+			
+			//parse xml
+			  $xml = $( data )
+			  $status = $xml.find( "status" )
+			  
+			  
+			  
+			  if( $status.attr("error") =="true"){
+				  
+				  showerror("resultcontainer",$status.attr("description"))
+				  
+			  } else{
+				  
+				  showsuccess("resultcontainer",$status.attr("description"))
+				  
+			  }
+		  });
+		
+		
+        event.preventDefault();
+      });
+	  
+	
+  });
+  </script>

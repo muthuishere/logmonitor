@@ -1,0 +1,181 @@
+<div>
+	   <form id="frmprojecthoursreport">
+	   <table cellpadding="10" cellspacing="10" border="0">
+	   
+	   
+						<tr>
+							<td>Projects
+							<input type="hidden" name="projects" id="curprojects" value=""/></td>
+							<td id="selectprojectplaceholder">
+							&nbsp;
+							
+							
+							</td>
+						</tr>
+	
+	 
+	   <tr>
+	    <tr id="dtcustomrow">		   
+	   <td>From </td>
+	   <td ><input name="fromdate" id="fromdate" > </td>
+	   <td>To </td>
+	   <td ><input name="todate" id="todate" > </td>
+	   </tr>
+	   <tr>
+	  <td colspan="4" style="text-align:right"><input type="button" id="search" value="Search" style="width:120px"> </td>
+	   </tr>
+	   </table>
+	   </form>
+	  </div>
+	   <div  >
+	  
+			<span id="resultcontainer"/>
+	  
+	  </div>
+	  
+ <script>
+
+		  
+  $(function() {
+	  
+	 
+	  showProjectMenu("selectprojectplaceholder")
+	  
+	    $( "#fromdate" ).datepicker({
+	
+	dateFormat: 'yy-mm-dd'
+	}	
+	);
+  
+    $( "#todate" ).datepicker({
+	
+	dateFormat: 'yy-mm-dd'
+	}	
+	);
+
+    
+    $("#fromdate[value='']").datepicker("setDate", "-90d"); 
+
+	  
+	$( "input#search" )
+      .button()
+      .click(function( event ) {
+    	  
+    	  
+    	  if($("select#lstprojects").multipleSelect('getSelects').length >0){
+				
+				$("#curprojects").val($("select#lstprojects").multipleSelect('getSelects').join(","))	
+			}
+			
+    	  
+    	  var formdata=$("form#frmprojecthoursreport").serializeArray()
+  		
+  		//$('#frmprojecthoursreport')[0].reset();
+    	  $("#resultcontainer").html("<img src='images/loadingajax.gif'/>")
+  		$.post( "/services/reports/projecthoursreport", formdata)
+  		  .done(function( data ) {
+  		    
+  			
+  			//parse xml
+  			  $xml = $( data )
+  			  $status = $xml.find( "status" )
+  			  
+  			  
+  			  
+  			  if( $status.attr("error") =="true"){
+  				  
+  				  showerror("resultcontainer",$status.attr("description"))
+  				  
+  			  } else{
+  				  
+  				  var tbl=""
+  					  
+  					
+  						var csvtblname="tblprojecthourreports"
+  		  					 tbl=tbl + ' <table  border="0" cellspacing="0" width="100%">'
+  		  					 tbl=tbl + "      <tr>" 
+  		 					 tbl=tbl + "        <th align='right'><span><a href='#' onclick=\"downloadcsv('" +csvtblname  +"');return false;\" ><img border='0' src='images/excel.png' title='Download as excel'></a></span></th>" 
+  		 					 tbl=tbl + "      </tr>" 
+  		  					 tbl=tbl + " </table>"
+ 					
+  		  					
+  					 tbl=tbl + ' <table id="tblprojecthourreports" class="display" cellspacing="0" width="100%">' 
+  					 tbl=tbl + "    <thead>" 
+  					 tbl=tbl + "      <tr>"
+  					tbl=tbl + "        <th><span>Project</span></th>" 
+  					tbl=tbl + "        <th><span>User</span></th>"
+  					tbl=tbl + "        <th><span>Total Hours</span></th>" 
+  					  
+  					
+  					 
+  					 tbl=tbl + "      </tr>" 
+  					 tbl=tbl + "    </thead>" 
+  					 tbl=tbl + "    <tbody>" 
+  				
+  					var dataCount=0
+  					 
+  				 $xml.find('project').each(function(index){
+  					dataCount++
+  		            var project = $(this).find('name').text();
+  					var username = $(this).find('user').text();
+  		          
+  		        var totalhrs = $(this).find('total').text();  		      
+  		    
+  		    
+  		     	 tbl=tbl + "      <tr>" 
+  		     	
+  		     	tbl=tbl + "        <td class='lalign'>"+project+"</td>"
+					 tbl=tbl + "        <td class='lalign'>"+username+"</td>" 
+					 				
+					 tbl=tbl + "        <td class='calign'>"+totalhrs+"</td>" 
+					
+					 tbl=tbl + "      </tr>" 
+					 
+  		        });
+  				
+  					 tbl=tbl + "	      </tbody>" 
+  					 tbl=tbl + "  </table>"
+  					 
+  					 if( dataCount >0){
+  					 	$("#resultcontainer").html(tbl)
+  					 	preparecsv("tblprojecthourreports")
+  					  if( dataCount >10){
+  						  
+  						  
+  						$.extend( $.fn.dataTable.defaults, {
+  						    "searching": true,
+  						    "ordering": true,
+  						  "paging":   true,  				        
+	  				        "info":     true
+  						} );
+  						$('#tblprojecthourreports').dataTable();
+  					  }
+  	  					  
+  					  else{
+  						  
+  						$.extend( $.fn.dataTable.defaults, {
+  						    "searching": false,
+  						    "ordering": false,
+	  						"paging":   false,  				        
+	  				        "info":     false
+  						} );
+  						
+  						
+  						$('#tblprojecthourreports').dataTable();
+  					  }	
+  					 }
+  					 else
+  						 showerror("resultcontainer","No Data Available to show")
+  					
+  						 
+  						// $('#example').dataTable();
+  				  
+  			  }
+  		  });
+    	  
+        event.preventDefault();
+      });
+	  
+
+  });
+  </script>

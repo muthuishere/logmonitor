@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>K Logger </title>
+<link rel="stylesheet" type="text/css" media="all" href="css/style.css" />
+ <link href="css/jquery-ui.min.css" rel="stylesheet"/>
+  <link href="css/jquery-ui.structure.min.css" rel="stylesheet"/>
+  <link href="css/jquery-ui.theme.min.css" rel="stylesheet"/>
+
+      <link href="css/jquery.dataTables.css" rel="stylesheet"/>
+    <link href="css/icons.css" rel="stylesheet"/>
+    <link href="css/multiple-select.css" rel="stylesheet"/>
+    
+
+
+</head>
+
+
+<body>
+	<div id="header-wrap">
+		<header class="group">
+			<h2><a href="index.html" title="burstudio">Kal <strong><span class="green">Log</span></strong></a></h2>
+			
+			<nav class="group">
+				<ul>
+					<li class="home"><a href="#" ">Monitor</a></li>
+					
+				</ul>
+			</nav>
+		</header>
+	</div><!-- end header wrap -->
+	
+	
+<div id="container">
+	
+		
+	
+		<div id="service">
+			My content here
+			&nbsp;
+		
+		</div><!-- end service-->
+		
+		
+	</div> <!--! end container -->
+	
+
+	<div id="client-wrap" class="group">
+		<div id="client">
+			&nbsp;
+				Designed & Developed by <a href="#" class="green">Kaliappan</a></p>
+		</div><!-- end client -->
+	</div><!-- end client-wrap -->
+	
+	
+	
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+  <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+
+      <script type="text/javascript" src="js/jquery.multiple.select.js"></script>
+
+
+     <script>
+
+
+  $(function() {
+  
+	//showpage('reports');
+  
+	  $.get( "/services/getappConfig/rand?inte="+Math.random(), function( data ) {
+		  
+		  $xml = $( data )
+		  $status = $xml.find( "status" )
+		  
+		  
+		  
+		  if( $status.attr("admin") =="true"){
+			  
+			  showadmin()
+			  
+		  } else{
+			  
+			  showuser()
+			  
+		  }
+		  
+		  $("#teams").val($status.attr("teams"))
+		});
+	  
+	
+  });	
+  
+  
+  
+</script>
+
+
+<form id="frmcsv" name="frmcsv" action="/services/downloadexcel" method="POST" target="_blank">
+
+<input type="hidden" name="repname" id="repname"/>
+<input type="hidden" name="csv" id="csv"/>
+</form>	
+</body>
+</html>

@@ -1,0 +1,4 @@
+gradle initProject -PinitPlugins=groovy,java
+gradle eclipse
+gradle uberjar
+java -jar otlfetcher.jar "C:\\muthu\\gitworkspace\\otlfetcher\\otlfetcher.conf"

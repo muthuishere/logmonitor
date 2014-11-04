@@ -1,0 +1,91 @@
+      <div class="top_slogan">
+	Add/Update User details here
+  </div>
+       <div id ="overlay" class="main_content"  style="">
+	   <form id="frmuser">
+
+	    <span id="resultcontainer"/>
+	   <table cellpadding="10" cellspacing="10" border="0">
+	   <tr>
+	   <td>User </td>
+	   <td colspan="3"><input name="user" id="user" size="80" placeholder="user@corpuk.net"> </td>
+	   </tr>
+		<tr>
+	   <td>Password </td>
+	   <td colspan="3"><input name="pwd" id="pwd" type="password" size="80">
+
+	   </td>
+	   </tr>
+	   <tr>
+	   <td>Confirm Password </td>
+	   <td colspan="3"><input name="conpwd" id="conpwd" type="password" size="80"> </td>
+	   </tr>
+	      <tr>
+	   <td>Team </td>
+	   <td colspan="3">
+	  <span id="teamcontainer"/>
+	   </td>
+	   </tr>
+
+	   <tr>
+
+	  <td colspan="4" style="text-align:right"><input id="updateuser" type="submit" value="Submit" style="width:120px"> </td>
+	   </tr>
+	   </table>
+	   <div id="errdiv" class="alert-box error" ></div>
+	     </form>
+	  </div>
+	  <div style="height:300px" >
+
+
+
+	  </div>
+
+
+        <script>
+  $(function() {
+
+	  generateTeamMenu("teamcontainer","team","Select")
+	  $('#errdiv').hide();
+	$( "input#updateuser" )
+      .button()
+      .click(function( event ) {
+
+    	  $('#errdiv').hide();
+    	  if( $("#conpwd").val() != $("#pwd").val()){
+    		  $('#errdiv').show();
+    		  $('#errdiv').html("<span>error: </span> Both Passwords should be same")
+    		  return
+
+    	  }
+		var formdata=$("form#frmuser").serializeArray()
+
+		$('#frmuser')[0].reset();
+		$.post( "/services/updateuser", formdata)
+		  .done(function( data ) {
+
+
+			//parse xml
+			  $xml = $( data )
+			  $status = $xml.find( "status" )
+
+
+
+			  if( $status.attr("error") =="true"){
+
+				  showerror("resultcontainer",$status.attr("description"))
+
+			  } else{
+
+				  showsuccess("resultcontainer",$status.attr("description"))
+
+			  }
+		  });
+
+
+        event.preventDefault();
+      });
+
+
+  });
+  </script>

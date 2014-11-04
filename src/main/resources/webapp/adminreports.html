@@ -1,0 +1,60 @@
+ <div style="padding-top:10px">
+	<span class="top_custom_slogan"> Custom Reports</span>
+	<div style="float:right">
+	 <select id="reporttype" name="reporttype" style="width:350px">
+	   <option value="">Select</option>
+	   <option value="employeeprojectreport">Employee -&gt; Project Report</option>
+	      <option value="projectemployeereport">Project -&gt; Employee Report</option>
+	      <option value="projecthoursreport">Project -&gt; Hours Report</option>
+	      
+	   </select>
+	   </div>
+  </div>	
+ <div style="clear:both">&nbsp;</div>
+   
+
+   
+          
+   
+      <div id ="overlay" class="main_content"  style="">
+	   &nbsp;
+	  </div>
+	   <div  >
+	  
+			<span id="adminreportcontainer"/>
+	  
+	  	
+	  </div>
+	  
+ <script>
+
+
+		  
+  $(function() {
+	  
+	  $( "#reporttype" ).selectmenu({
+	      change: function( event, data ) {
+	    	  
+	    	  if(data.item.value == ""){
+	    		  $("#adminreportcontainer").html("")
+	    		  
+	    	  }	    		 
+	    	  else{
+	    		  
+	    		  
+	    		  $( "#adminreportcontainer" ).load( data.item.value+".html?session_id="+Math.random() );
+	    		  
+	    		  
+	    		
+	    	  }	
+	        
+	      }
+	     });
+	    
+
+ 
+
+
+
+  });
+  </script>
