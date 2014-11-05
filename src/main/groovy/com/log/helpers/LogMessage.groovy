@@ -1,6 +1,6 @@
 package com.log.helpers
 
-public  class Log {
+public  class LogMessage {
 
 	static def info(def obj){
 		

@@ -7,7 +7,7 @@ import java.util.concurrent.LinkedBlockingQueue
 
 import com.log.exceptions.ServiceException
 
-import com.log.helpers.Log
+import com.log.helpers.LogMessage
 
 
 import java.util.concurrent.TimeUnit
@@ -30,11 +30,11 @@ class LogPoller {
 		try{
 		if( null == dbreport_response ||  null == dbreport_response?.timeEntries ||  dbreport_response?.timeEntries?.size() ==0){
 			
-			Log.error("Error getting response for " +dbreport_response?.userInfo?.user)
+			LogMessage.error("Error getting response for " +dbreport_response?.userInfo?.user)
 			
 			if(dbreport_response?.error.contains("INVALID CREDENTIALS")){
 				
-				Log.error("Error Invalid credentials disabling " +dbreport_response?.userInfo?.user)
+				LogMessage.error("Error Invalid credentials disabling " +dbreport_response?.userInfo?.user)
 				
 				datamanager.disableUser(dbreport_response?.userInfo?.user)
 				
