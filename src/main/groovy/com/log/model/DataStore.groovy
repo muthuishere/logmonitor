@@ -35,46 +35,19 @@ class DataStore {
 	def servers=[:]
 
 
+
 	void close(){
 		fetcherDB.close();
 	}
 
-	void init(def userfileName,def fetchfileName){
+	void init(def fetchfileName){
 
 		Class.forName("org.sqlite.JDBC")
 
 		fetcherDB = Sql.newInstance("jdbc:sqlite:"+fetchfileName, "org.sqlite.JDBC")
 
-		//create table if not exists TableName (col1 typ1, ..., colN typN)
-		/*
-		 def host
-		 def port
-		 def user
-		 def password
-		 def proxyhost
-		 def proxyport
-		 def proxyuser
-		 def proxypwd
-		 def name
-		 def group=""
-		 */
-
-
-
-		fetcherDB.execute("create table if not exists server (name string,group,string,host string, port integer,user string,password string,proxyhost string, proxyport integer,proxyuser string,proxypwd string)")
-
-		/*
-		 * 
-		 * 	def name
-		 def filename
-		 def host
-		 * 
-		 */
+		fetcherDB.execute("create table if not exists server (name string,group string,host string, port integer,user string,password string,proxyhost string, proxyport integer,proxyuser string,proxypwd string)")
 		fetcherDB.execute("create table if not exists log (name string, filename string,host string)")
-
-
-
-
 		updateServerCache();
 
 	}
@@ -93,20 +66,6 @@ class DataStore {
 	void updateServerCache(){
 
 		def tmpservers=[:]
-
-		/*
-		 * 
-		 * def host
-		 def port
-		 def user
-		 def password
-		 def proxyhost
-		 def proxyport
-		 def proxyuser
-		 def proxypwd
-		 def name
-		 def group=""
-		 */
 
 		fetcherDB.rows("select * from server " ).each{
 
@@ -167,21 +126,12 @@ class DataStore {
 
 	public boolean deleteServer(String host){
 
-
-
-		if(null == host)
-
+	if(null == host)
 			return false
-
-
 
 		LogMessage.error("Deleting  ${host} overWriting ");
 		def query="delete from server  where host=:host"
 		fetcherDB.executeUpdate(query, ["host":host]);
-
-
-
-
 		return true
 	}
 
@@ -222,36 +172,47 @@ class DataStore {
 		return servers.getAt(user)?.group;
 	}
 
-	/* public def getProjectEmployeeReport(String projectcode,Date from,Date to){
-	 //def timeEntries=new HashMap<String,ProjectEmployeeReport>()
-	 ArrayList<ProjectEmployeeReport> lstProjectEmployeeReport=new ArrayList<ProjectEmployeeReport>()
-	 String cond=" where 1=1 "
-	 if(null != projectcode)
-	 cond=cond + " AND projectcode like '${projectcode}' "
-	 if(null != from )
-	 cond=cond + " AND entryDate >= "+ from.getTime()
-	 if(null != to)
-	 cond=cond + " AND entryDate <= "+ to.getTime()
-	 String reportqry="Select user,projectcode,entryDate,hours,projecttask,tasktype from timeentry ${cond}   "
-	 String totalqry="Select user,projectcode,total(hours) from timeentry ${cond}  group by user,projectcode "
-	 fetcherDB.rows(reportqry).each{
-	 def usergroup=getUserTeam(it.user)
-	 lstProjectEmployeeReport.add( new ProjectEmployeeReport(
-	 user: it.user,
-	 projectcode:it.projectcode,
-	 entryDate: new Date(it.entryDate),
-	 hours: it.hours,
-	 projecttask:it.projecttask,
-	 tasktype:it.tasktype,
-	 group:usergroup,
-	 projectInfo:projects.getAt(it.projectcode)
-	 ))
-	 }
-	 return lstProjectEmployeeReport
-	 }
-	 */
 
 
+	public ArrayList<Log> getLogEntries(String host){
+		
+		def query="where 1=1"
+			if(null != host)
+			query
+		
+				ArrayList<Server> userEntries=new ArrayList<Server>()
+		
+		
+				fetcherDB.rows("select * from server order by group " ).each{
+		
+					boolean canadd=true
+		
+					if(null != group &&  group.equals(it?.group) == false){
+		
+						canadd=false
+					}
+					if(canadd){
+						userEntries.add(
+								new Server(
+								host: it.host,
+								port: it.port,
+								user: it.user,
+								password: it.password,
+								proxyhost: it.proxyhost,
+								proxyport: it.proxyport,
+								proxyuser: it.proxyuser,
+								proxypwd: it.proxypwd,
+								name: it.name,
+								group: it.group
+		
+								)
+								);
+					}
+				}
+		
+				return userEntries
+			}
+		
 	void insertServer(Server serverInfo){
 
 
@@ -302,16 +263,26 @@ class DataStore {
 
 	}
 	
-	
-	void insertLog(LogMessage serverInfo){
+	public boolean deleteLog(Log logObject){
+		
+			if(null == logObject)
+				return false
+		
+			LogMessage.error("Key Already exists ${logObject.host} overWriting ");
+			def query="delete from log where host='" + logObject.host + "' and name='" + logObject.name + "'"
+			fetcherDB.executeUpdate(query, []);
+			return true
+		}
+		
+	void insertLog(Log logObject){
 
 
 
 		boolean exists =false
 
+	//	name string, filename string,host string
 
-
-		def query="select host from server  where host='" + serverInfo.host + "'"
+		def query="select host from log  where host='" + logObject.host + "'  and name='" + logObject.name + "'"
 
 		exists=(fetcherDB.rows(query).size()>0)
 
@@ -320,34 +291,27 @@ class DataStore {
 
 		if( exists){
 
-			LogMessage.error("Key Already exists ${serverInfo.host} overWriting ");
-			query="delete from server  where host='${serverInfo.host}'"
+			LogMessage.error("Key Already exists ${logObject.host} overWriting ");
+			query="delete from log where host='" + logObject.host + "' and name='" + logObject.name + "'"
 			fetcherDB.executeUpdate(query, []);
 
 
 
 		}
 
-		DataSet curServer = fetcherDB.dataSet("server")
+		DataSet logDataset = fetcherDB.dataSet("log")
 		//user string, projectcode string,projecttask string,tasktype string,hours integer,details string,key string
 
 
 
-		curServer.add(
-				host: serverInfo.host,
-				port: serverInfo.port,
-				user: serverInfo.user,
-				password: serverInfo.password,
-				proxyhost: serverInfo.proxyhost,
-				proxyport: serverInfo.proxyport,
-				proxyuser: serverInfo.proxyuser,
-				proxypwd: serverInfo.proxypwd,
-				name: serverInfo.name,
-				group: serverInfo.group
+		logDataset.add(
+				host: logObject.host,
+				name: logObject.name,
+				filename: logObject.filename
 
 				)
 
-		updateServerCache();
+		
 
 
 

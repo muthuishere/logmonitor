@@ -1,6 +1,7 @@
 package com.log.controller
 
 
+import com.log.model.DataStore
 import java.text.SimpleDateFormat
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,12 +10,13 @@ import javax.servlet.http.HttpServletRequest
 
 class Responder {
 
-	def dataManager=null
+	def dataStore=null
 
 	public Responder(){
 	
 	
-
+		dataStore=new DataStore();
+		dataStore.init(Configurator.globalconfig.dbfile)
 		
 	}
 	/**
@@ -33,7 +35,8 @@ class Responder {
 	
 	
 	
-	public String getAllProjects(){
+	
+	public String getservers(){
 
 		StringBuffer response= new StringBuffer()
 
@@ -43,31 +46,28 @@ class Responder {
 		boolean valid=false
 
 		try{
-			def userTimeSummaries=dataManager.getAllProjects();
+			def servers=dataStore.servers
 			// Add information as xml
 
 		//	ArrayList 
-			userTimeSummaries.each{val->
+			servers.each{val->
 
 				
-					response.append("<project>")
+					response.append("<server>")
 					valid=true
-					response.append("\n<code>${val.projectcode}</code>")
-
-
-
-
-
-					response.append("\n</project>")
+					response.append("\n<name>${val.name}</name>")
+					response.append("\n<host>${val.host}</host>")
+					response.append("\n<user>${val.user}</user>")
+					response.append("\n</server>")
 			
 
 			}
 			if(!valid){
 
-				throw new Exception("No Vaid Projects identified")
+				throw new Exception("No Vaid Servers identified")
 			}
 
-			response.append("<status code='0' error='false' description='Successfully retrieved detail  information'/>")
+			response.append("<status code='0' error='false' description='Successfully retrieved server  information'/>")
 		}catch(Exception e){
 
 			response= new StringBuffer()
@@ -96,7 +96,7 @@ class Responder {
 		boolean valid=false
 
 		try{
-			def userTimeSummaries=dataManager.getAllUserStatus( )
+			def userTimeSummaries=dataStore.getAllUserStatus( )
 			// Add information as xml
 
 
@@ -149,7 +149,7 @@ class Responder {
 		boolean valid=false
 
 		try{
-			def userTimeSummaries=dataManager.getAllUserStatus( )
+			def userTimeSummaries=dataStore.getAllUserStatus( )
 			// Add information as xml
 
 			println(userTimeSummaries.dump())
@@ -221,7 +221,7 @@ class Responder {
 
 
 		try{
-			def userTimeSummaries=dataManager.getAllUserStatus( )
+			def userTimeSummaries=dataStore.getAllUserStatus( )
 			// Add information as xml
 
 
@@ -325,7 +325,7 @@ class Responder {
 				users.push(params.user)
 			else if(null != params.team && params.team != "") {
 
-				ArrayList userlist=dataManager.getUserEntries(params.team)
+				ArrayList userlist=dataStore.getUserEntries(params.team)
 				userlist.each{curuserInfo->
 
 					users.push(curuserInfo.user);
@@ -339,7 +339,7 @@ class Responder {
 
 			users.each{curuser->
 				println("Fetching for $curuser for $from to $to")
-				def res=dataManager.getTimesheetEntries( curuser, from,to)
+				def res=dataStore.getTimesheetEntries( curuser, from,to)
 				if(null != res)
 					timesheetdetails.addAll(res)
 			}
@@ -409,7 +409,7 @@ class Responder {
 
 		response.append("<reply>")
 		try{
-			def result=	dataManager.executeSQL(params.db,params.sql)
+			def result=	dataStore.executeSQL(params.db,params.sql)
 			if(result)
 				response.append("<status code='0' error='false' description='Executed Successfully'/>")
 			else
@@ -463,7 +463,7 @@ class Responder {
 				}
 				else if(null != params.team && params.team != "") {
 
-					ArrayList curuserlist=dataManager.getUserEntries(params.team)
+					ArrayList curuserlist=dataStore.getUserEntries(params.team)
 					int i=0;
 					curuserlist.each{curuserInfo->
 						if(i != 0)
@@ -595,7 +595,7 @@ class Responder {
 			users.each{curuser->
 				println("Fetching generateEmployeeProjectReport  for $curuser for $from to $to")
 				//ArrayList getTimesheetEntries
-				def res=dataManager.getTimesheetEntries( curuser, from,to)
+				def res=dataStore.getTimesheetEntries( curuser, from,to)
 				if(null != res)
 					hashmaplist.add(res)
 			}
@@ -744,7 +744,7 @@ class Responder {
 			projects.each{curuser->
 				println("Fetching generateProjectHoursReport  for $curuser for $from to $to")
 
-				def res=dataManager.getProjectHoursReport( curuser, from,to)
+				def res=dataStore.getProjectHoursReport( curuser, from,to)
 				if(null != res)
 					hashmaplist.add(res)
 			}
@@ -851,7 +851,7 @@ class Responder {
 			projects.each{curuser->
 				println("Fetching generateProjectEmployeeReport  for $curuser for $from to $to")
 
-				def res=dataManager.getProjectEmployeeReport( curuser, from,to)
+				def res=dataStore.getProjectEmployeeReport( curuser, from,to)
 				if(null != res)
 					hashmaplist.add(res)
 			}
@@ -975,7 +975,7 @@ class Responder {
 				users.push(params.user)
 			else if(null != params.team && params.team != "") {
 
-				ArrayList userlist=dataManager.getUserEntries(params.team)
+				ArrayList userlist=dataStore.getUserEntries(params.team)
 				userlist.each{curuserInfo->
 
 					users.push(curuserInfo.user);
@@ -990,7 +990,7 @@ class Responder {
 			users.each{curuser->
 				println("Fetching summary for $curuser for $from to $to")
 
-				def res=dataManager.getTimesheetEntriesSummary( curuser, from,to)
+				def res=dataStore.getTimesheetEntriesSummary( curuser, from,to)
 				if(null != res)
 					hashmaplist.add(res)
 			}
@@ -1188,7 +1188,7 @@ class Responder {
 		}else{
 
 			try{
-				if(dataManager.deleteUser(params.user.toString()))
+				if(dataStore.deleteUser(params.user.toString()))
 					response.append("<status code='0' error='false' description='Successfully updated user information'/>")
 				else
 					response.append("<status code='0' error='true' description='Invalid Username ,Could not delete'/>")

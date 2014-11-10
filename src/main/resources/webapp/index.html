@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<title>K Logger </title>
+<title>Log Monitor</title>
 <link rel="stylesheet" type="text/css" media="all" href="css/style.css" />
  <link href="css/jquery-ui.min.css" rel="stylesheet"/>
   <link href="css/jquery-ui.structure.min.css" rel="stylesheet"/>
@@ -21,12 +21,17 @@
 <body>
 	<div id="header-wrap">
 		<header class="group">
-			<h2><a href="index.html" title="burstudio">Kal <strong><span class="green">Log</span></strong></a></h2>
+			<h3><a href="index.html" title="burstudio">Log <strong><span class="green">Monitor</span></strong></a></h3>
 			
 			<nav class="group">
 				<ul>
-					<li class="home"><a href="#" ">Monitor</a></li>
+					<li class="home"><a href="#" >Monitor</a></li>					
+					<li  id="monitor" class="current"><a href="#" onclick="showpage('monitor');return false" >Start Monitor</a></li>
+					<li id="servers" ><a href="#" onclick="showpage('servers');return false">Servers</a></li>
+					<li id="logfiles" ><a href="#" onclick="showpage('logfiles');return false">Log Files</a></li>
 					
+				 
+              
 				</ul>
 			</nav>
 		</header>
@@ -38,8 +43,15 @@
 		
 	
 		<div id="service">
-			My content here
+		
+		<div id="site_content">
+
+		
+		My content here
 			&nbsp;
+		
+		</div>
+			
 		
 		</div><!-- end service-->
 		
@@ -50,7 +62,7 @@
 	<div id="client-wrap" class="group">
 		<div id="client">
 			&nbsp;
-				Designed & Developed by <a href="#" class="green">Kaliappan</a></p>
+				<p><strong>Designed & Developed by <a href="#" class="green">Kaliappan</a> <span class="green">(Resolve)</span></strong></p>
 		</div><!-- end client -->
 	</div><!-- end client-wrap -->
 	
@@ -69,8 +81,9 @@
 
   $(function() {
   
-	//showpage('reports');
+	showpage('monitor');
   
+  /*
 	  $.get( "/services/getappConfig/rand?inte="+Math.random(), function( data ) {
 		  
 		  $xml = $( data )
@@ -91,7 +104,7 @@
 		  $("#teams").val($status.attr("teams"))
 		});
 	  
-	
+	*/
   });	
   
   

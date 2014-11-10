@@ -56,6 +56,13 @@ switch ( actionname ) {
 		result = responder.logpoll(request)
 		
 		break;
+		
+		case "getservers":
+			result = responder.getservers(request)
+		
+			break;
+		
+		
 		case "getsysteminfo":
 		result = responder.getsysteminfo(request)
 		

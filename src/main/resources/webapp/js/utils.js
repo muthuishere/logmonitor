@@ -6,27 +6,55 @@ function updateConfig(callback){
 	
 	
 }
-function generateTeamMenu(divID,name,defaulttxt){
+function generateServerMenu(divID,name,defaulttxt){
 	
+	/*
+	 * <reply status="">	  
+		<server>
+			<name>
+			<host>
+			<user>
+		</server>
+		</reply>
 	
-	if($("#teams").val() ==""){
-		
-		setTimeout(function(){generateTeamMenu(divID,name,defaulttxt)}, 1000);
-		return 
-	}
+	*/
+	$.get( "/services/getservers/rand?inte="+Math.random(), function( data ) {
+		  
+		  $xml = $( data )
+		  $status = $xml.find( "status" )
+		  
+		  
+		  
+	  $status = $xml.find( "status" )
+		  
+		  
+		  
+		  if( $status.attr("error") =="true"){
+			  
+			 // showerror("resultcontainer",$status.attr("description"))
+			  
+		  } else{
+	  
+	  	var resp='  <select id="'+name+'" name="'+name+'">'
+		resp = resp + '<option value="">'+defaulttxt+'</option>'
+			  
+		   $xml.find('server').each(function(index){
+		   
+		    var servername = $(this).find('name').text();
+				var host = $(this).find('host').text();
+			var user = $(this).find('user').text();
+			
+		   	resp = resp + '<option value="'+ user +'@' +host+'">'+servername+'</option>'
+			
+		   }
+		   resp = resp + '</select>'
+$("#"+divID).html(resp);
+$( "#"+name ).selectmenu()
+
+		});
 	
-	var teamArray=$("#teams").val().split(",")
+
 	
-	var resp='  <select id="'+name+'" name="'+name+'">'
-	   resp = resp + '<option value="">'+defaulttxt+'</option>'
-	for(i=0;i<teamArray.length;i++){
-		
-		resp = resp + '<option value="'+teamArray[i]+'">'+teamArray[i]+'</option>'
-		
-	}
-	resp = resp + '</select>'
-	$("#"+divID).html(resp);
-	 $( "#"+name ).selectmenu()
 }
 function preparecsv(tblid){
 	
@@ -316,9 +344,10 @@ function showpage(pageName){
 	*/
 	$( "#site_content" ).load( pageName+".html?session_id="+Math.random() );
 	
-	$( "div.menu ul li" ).removeClass("selected")
+	$( "div#header-wrap ul li" ).removeClass("current")
 	
-	$( "div.menu ul li#" +pageName  ).addClass("selected")
+	$( "div#header-wrap ul li#" +pageName  ).addClass("current")
+	
 	
 	
 	

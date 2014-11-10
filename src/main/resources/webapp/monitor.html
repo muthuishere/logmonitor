@@ -1,0 +1,240 @@
+ <div class="top_slogan">
+	Start Monitoring Active logs here
+  </div>	
+ 
+   
+
+   
+          
+   
+      <div id ="overlay" class="main_content"  style="">
+	   
+	   <form id="frmreports">
+	   <table cellpadding="10" cellspacing="10" border="0">
+	   
+	      <tr>
+	   <td>Server </td>
+	   <td colspan="3">
+	   
+	   
+	   <span id="servercontainer" />
+	   
+	
+	   </td>
+	   </tr>	   
+	  
+	   <tr>		   
+	   <td>Log File </td>
+	   <td >
+	   <select style="width:230px" id="logfiles">
+	   	<option value="curweek">3DS Adapter</option>
+	   	<option value="curmonth">HSS/HLR Adapter</option>
+	   	<option value="custom">Custom</option>
+	   </select>
+	    </td>
+	   </tr>
+	   <tr id="dtcustomrow">		   
+	   <td>Custom File </td>
+	   <td ><input name="customlogfile" id="customlogfile" > 
+	   
+	   <input name="activelogfile" id="activelogfile" type="hidden" > </td>
+	  
+	   </tr>
+	   <tr>
+	   
+	  <td colspan="4" style="text-align:right"><input type="button" id="start" value="Start Monitoring" style="width:220px"> </td>
+	   </tr>
+	   </table>
+	   </form>
+	  </div>
+	   <div  >
+	  
+			<span id="resultcontainer"/>
+	  
+	  </div>
+	  
+ <script>
+
+
+function setcustom(flgshow){
+	 
+	 if(flgshow == true){
+		 $('#dtcustomrow').show();
+		 
+	 }else{
+		 
+		 $('#dtcustomrow').hide();
+	 }
+}
+
+function showsummarypage(){
+	
+	$("#resultdetailcontainer").hide()
+	$("#resultcontainer").show()
+}
+
+		  
+function callbackserverdata(){
+	
+	
+}		  
+  $(function() {
+	  
+	 
+	  setcustom(false)
+	  
+	  
+	    
+	   generateServerMenu("servercontainer","server","All")
+	    
+	 
+	    $( "#logfiles" ).selectmenu({
+	      change: function( event, data ) {
+	    	  
+	    	  if(data.item.value == "custom"){
+	    		  $( "#activelogfile" ).val("")
+	    		
+	    		  setcustom(true)
+	    	  }else{
+	    		  
+	    		  $( "#activelogfile" ).val( data.item.value)
+	    		 setcustom(false)
+	    	  }
+	        
+	      }
+	     });
+	    
+
+  
+
+
+
+	  
+	$( "input#start" )
+      .button()
+      .click(function( event ) {
+    	  showsummarypage()
+    	  var formdata=$("form#frmreports").serializeArray()
+  		
+  		//$('#frmreports')[0].reset();
+    	  $("#resultcontainer").html("<img src='images/loadingajax.gif'/>")
+  		$.post( "/services/fetchreportsummary", formdata)
+  		  .done(function( data ) {
+  		    
+  			
+  			//parse xml
+  			  $xml = $( data )
+  			  $status = $xml.find( "status" )
+  			  
+  			  
+  			  
+  			  if( $status.attr("error") =="true"){
+  				  
+  				  showerror("resultcontainer",$status.attr("description"))
+  				  
+  			  } else{
+  				  
+  				  var tbl=""
+  					  
+  					
+  						var csvtblname="tblreports"
+  		  					 tbl=tbl + ' <table  border="0" cellspacing="0" width="100%">'
+  		  					 tbl=tbl + "      <tr>" 
+  		 					 tbl=tbl + "        <th align='right'><span><a href='#' onclick=\"downloadcsv('" +csvtblname  +"');return false;\" ><img border='0' src='images/excel.png' title='Download as excel'></a></span></th>" 
+  		 					 tbl=tbl + "      </tr>" 
+  		  					 tbl=tbl + " </table>"
+ 					
+  		  					
+  					 tbl=tbl + ' <table id="tblreports" class="display" cellspacing="0" width="100%">' 
+  					 tbl=tbl + "    <thead>" 
+  					 tbl=tbl + "      <tr>"
+  					tbl=tbl + "        <th><span>Filled All</span></th>" 
+  					 tbl=tbl + "        <th><span>User</span></th>" 
+  					 tbl=tbl + "        <th><span>WorkDays</span></th>" 
+  					 tbl=tbl + "        <th><span>Leaves</span></th>" 
+  					 tbl=tbl + "        <th ><span>Last updated</span></th>" 
+  					 tbl=tbl + "        <th><span>Credential Status</span></th>" 
+  					 tbl=tbl + "      </tr>" 
+  					 tbl=tbl + "    </thead>" 
+  					 tbl=tbl + "    <tbody>" 
+  				
+  					var dataCount=0
+  					 
+  				 $xml.find('user').each(function(index){
+  					dataCount++
+  		            var username = $(this).find('name').text();
+  		          var workdays = $(this).find('workdays').text();
+  		        var leavedays = $(this).find('leavedays').text();
+  		      var lastupdated = $(this).find('lastupdated').text();
+  		    var userlocked = $(this).find('userlocked').text();
+  		    var defaulter=$(this).find('defaulter').text();
+  		           
+  		    var privacyImg="<img src='images/valid.png' alt='valid'>"
+  		            if(undefined == userlocked ||  userlocked == "true")
+  		            	privacyImg="<img src='images/invalid.png' alt='invalid' >"    	
+  		       
+	  		
+  		            		var defaulterImg="<img src='images/nodefaulter.png' alt='Filled All'>"
+  		    		            if(undefined == defaulter ||  defaulter == "true")
+  		    		            	defaulterImg="<img src='images/defaulter.png' alt='Defaulter' >"    	
+  		    		    
+  		    		            	
+  		            		
+  		     	 tbl=tbl + "      <tr>" 
+  		     	tbl=tbl + "        <td class='calign'>"+defaulterImg+"</td>"
+					 tbl=tbl + "        <td class='lalign'><a href='#' onclick='showdetailreport(\"" +username  +"\")';return false;' >"+username+"</a></td>" 
+					 tbl=tbl + "        <td class='calign'>"+workdays+"</td>" 
+					 tbl=tbl + "        <td class='calign'>"+leavedays+"</td>" 
+					 tbl=tbl + "        <td class='calign'>"+lastupdated+"</td>"
+					 
+					 tbl=tbl + "        <td class='calign'>"+privacyImg+"</td>" 
+					 tbl=tbl + "      </tr>" 
+					 
+  		        });
+  				
+  					 tbl=tbl + "	      </tbody>" 
+  					 tbl=tbl + "  </table>"
+  					 
+  					 if( dataCount >0){
+  					 	$("#resultcontainer").html(tbl)
+  					 	preparecsv("tblreports")
+  					  if( dataCount >10){
+  						  
+  						  
+  						$.extend( $.fn.dataTable.defaults, {
+  						    "searching": true,
+  						    "ordering": true,
+  						  "paging":   true,  				        
+	  				        "info":     true
+  						} );
+  						$('#tblreports').dataTable();
+  					  }
+  	  					  
+  					  else{
+  						  
+  						$.extend( $.fn.dataTable.defaults, {
+  						    "searching": false,
+  						    "ordering": false,
+	  						"paging":   false,  				        
+	  				        "info":     false
+  						} );
+  						
+  						
+  						$('#tblreports').dataTable();
+  					  }	
+  					 }
+  					 else
+  						 showerror("resultcontainer","No Data Available to show")
+  					
+  						 
+  						// $('#example').dataTable();
+  				  
+  			  }
+  		  });
+    	  
+        event.preventDefault();
+      });
+	  
+
+  });
+  </script>
