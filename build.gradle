@@ -2,7 +2,7 @@ apply plugin: 'eclipse'
 apply plugin: 'groovy'
  
 apply plugin:'application'
-mainClassName = "com.otl.reports.application.OTLReportApplication"
+mainClassName = "com.log.application.LogMain"
  def enc = 'UTF-8'
 [ compileGroovy,  compileTestGroovy].each{ it.options.encoding = enc }
 [compileGroovy, compileTestGroovy].each{ it.groovyOptions.encoding = enc }

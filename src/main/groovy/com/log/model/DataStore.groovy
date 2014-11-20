@@ -44,10 +44,11 @@ class DataStore {
 
 		Class.forName("org.sqlite.JDBC")
 
+		println(fetchfileName)
 		fetcherDB = Sql.newInstance("jdbc:sqlite:"+fetchfileName, "org.sqlite.JDBC")
-
-		fetcherDB.execute("create table if not exists server (name string,group string,host string, port integer,user string,password string,proxyhost string, proxyport integer,proxyuser string,proxypwd string)")
 		fetcherDB.execute("create table if not exists log (name string, filename string,host string)")
+		fetcherDB.execute("create table if not exists server (name string,servergroup string,host string, port integer,user string,password string,proxyhost string, proxyport integer,proxyuser string,proxypwd string)")
+	
 		updateServerCache();
 
 	}
@@ -79,7 +80,7 @@ class DataStore {
 					proxyuser: it.proxyuser,
 					proxypwd: it.proxypwd,
 					name: it.name,
-					group: it.group
+					group: it.servergroup
 
 					));
 		}
@@ -98,7 +99,7 @@ class DataStore {
 
 			boolean canadd=true
 
-			if(null != group &&  group.equals(it?.group) == false){
+			if(null != group &&  group.equals(it?.servergroup) == false){
 
 				canadd=false
 			}
@@ -114,7 +115,7 @@ class DataStore {
 						proxyuser: it.proxyuser,
 						proxypwd: it.proxypwd,
 						name: it.name,
-						group: it.group
+						group: it.servergroup
 
 						)
 						);
@@ -169,7 +170,7 @@ class DataStore {
 
 	def getServerGroup(def user){
 
-		return servers.getAt(user)?.group;
+		return servers.getAt(user)?.servergroup;
 	}
 
 
@@ -187,7 +188,7 @@ class DataStore {
 		
 					boolean canadd=true
 		
-					if(null != group &&  group.equals(it?.group) == false){
+					if(null != group &&  group.equals(it?.servergroup) == false){
 		
 						canadd=false
 					}
@@ -203,7 +204,7 @@ class DataStore {
 								proxyuser: it.proxyuser,
 								proxypwd: it.proxypwd,
 								name: it.name,
-								group: it.group
+								group: it.servergroup
 		
 								)
 								);
@@ -253,7 +254,7 @@ class DataStore {
 				proxyuser: serverInfo.proxyuser,
 				proxypwd: serverInfo.proxypwd,
 				name: serverInfo.name,
-				group: serverInfo.group
+				group: serverInfo.servergroup
 
 				)
 

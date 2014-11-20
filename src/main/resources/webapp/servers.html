@@ -1,5 +1,5 @@
         <div class="top_slogan">
-	User Entries	
+	Servers
   </div>
        <div id ="overlay" class="main_content"  style="">
 	   
@@ -15,26 +15,26 @@
 	  </div>
 
 
-<form id="frmuser">
-	<input type="hidden" id="user" name="user"/>
+<form id="frmserver">
+	<input type="hidden" id="server" name="server"/>
 </form>
 	  </div>
  <script>
  
 
- function deleteuser(curuser){
+ function deleteserver(curserver){
 
   	$("#resultstatuscontainer").show()
   	  $("#resultstatuscontainer").html("<img src='images/loadingajax.gif'/>")
   	  
   	  
-  	      $("input#user").val(curuser)
- var formdata=$("form#frmuser").serializeArray()
+  	      $("input#server").val(curserver)
+ var formdata=$("form#frmserver").serializeArray()
  		
- 		$('#frmuser')[0].reset();
+ 		$('#frmserver')[0].reset();
   	
   		
-  	$.post( "/services/deleteuser", formdata)
+  	$.post( "/services/deleteserver", formdata)
  	 	  .done(function( data ) {
  	 	    
  	 		
@@ -50,14 +50,14 @@
  	 			  
  	 		  } else{
  	 			 showsuccess("resultstatuscontainer",$status.attr("description"))
- 	 			showuserreport();
+ 	 			showserverreport();
  	 		  
  	 		  }
  		
  	});
  }
  
- function showuserreport( ){
+ function showserverreport( ){
  	
  	$("#resultdetailcontainer").show()
  	  $("#resultdetailcontainer").html("<img src='images/loadingajax.gif'/>")
@@ -67,7 +67,7 @@
  	 
  		
  		
- 	$.post( "/services/getallusers", formdata)
+ 	$.post( "/services/getservers", formdata)
  	  .done(function( data ) {
  	    
  		
@@ -86,21 +86,25 @@
  			  var tbl=""
  				
  					
- 					var csvtblname="tblusers"
+ 					var csvtblname="tblservers"
 	  					 tbl=tbl + ' <div style="float:left">  <table  border="0" cellspacing="0" style="width:600px">'
 	  					 tbl=tbl + "      <tr>" 
+	  					 tbl=tbl + "        <th class='calign'> <a href='#' onclick=\"addserver();return false;\" ><img border='0' src='images/add.png' title='Add'></a></td>"
 	 					 tbl=tbl + "        <th align='right'><span><a href='#' onclick=\"downloadcsv('" +csvtblname  +"');return false;\" ><img border='0' src='images/excel.png' title='Download as excel'></a></span></th>" 
 	 					 tbl=tbl + "      </tr>" 
 	  					 tbl=tbl + " </table>"
  					
 
- 				 tbl=tbl + '<table id="tblusers" style="width:600px" class="display" cellspacing="0" >' 
+ 				 tbl=tbl + '<table id="tblservers" style="width:600px" class="display" cellspacing="0" >' 
  				 tbl=tbl + "    <thead>" 
  				 tbl=tbl + "      <tr>" 
  				 tbl=tbl + "        <th><span>S.No</span></th>"
- 				 tbl=tbl + "        <th><span>User</span></th>"
- 				tbl=tbl + "        <th><span>Team</span></th>" 
- 				 tbl=tbl + "        <th><span>Credential Status</span></th>"
+ 				tbl=tbl + "        <th><span>Group</span></th>" 				
+ 				 tbl=tbl + "        <th><span>Server</span></th>"
+ 				tbl=tbl + "        <th><span>Tunnel</span></th>" 
+ 				 tbl=tbl + "        <th><span> Status</span></th>"
+ 				tbl=tbl + "        <th><span> Edit</span></th>"
+ 				tbl=tbl + "        <th><span> Duplicate</span></th>"
  				 tbl=tbl + "        <th><span>Remove</span></th>" 
 
  				 tbl=tbl + "      </tr>" 
@@ -111,16 +115,19 @@
 				
 				
  				 
- 			 $xml.find('entry').each(function(index){
+ 			 $xml.find('server').each(function(index){
  				dataCount++
- 	            var userName = $(this).find('name').text();
- 				var team = $(this).find('team').text();
+ 	            var user = $(this).find('user').text();
+ 				var group = $(this).find('group').text();
+ 				var host =  $(this).find('host').text();
+ 				var tunnel = $(this).find('tunnel').text();
+ 				
  	      
  				
- 				 var userlocked = $(this).find('userLocked').text();
+ 				 var serverlocked = $(this).find('serverLocked').text();
 		           
  	  		    var privacyImg="<img src='images/valid.png' alt='valid' >"
- 	  		            if(undefined == userlocked ||  userlocked == "true")
+ 	  		            if(undefined == serverlocked ||  serverlocked == "true")
  	  		            	privacyImg="<img src='images/invalid.png' alt='invalid'>"   
  	  		            	
  	  		            		
@@ -129,10 +136,13 @@
  				  
  	     	 tbl=tbl + "      <tr>" 
  				 tbl=tbl + "        <td class='calign'>"+dataCount+"</td>" 
- 				 tbl=tbl + "        <td class='lalign'>"+userName+"</td>"
- 				tbl=tbl + "        <td class='lalign'>"+team+"</td>" 
+ 				 tbl=tbl + "        <td class='lalign'>"+group+"</td>"
+ 				tbl=tbl + "        <td class='lalign'>"+ user + "@"+ host+"</td>"
+ 				tbl=tbl + "        <td class='lalign'>"+tunnel+"</td>" 
  				 tbl=tbl + "        <td class='calign'>"+privacyImg+"</td>"
- 				 tbl=tbl + "        <td class='calign'> <a href='#' onclick=\"deleteuser('" +userName  +"');return false;\" ><img border='0' src='images/delete.png' title='Delete'></a></td>"
+ 				 tbl=tbl + "        <td class='calign'> <a href='#' onclick=\"editserver('" +user  +"','" +serverName  +"','" +group  +"');return false;\" ><img border='0' src='images/edit.png' title='Edit'></a></td>"
+ 				 tbl=tbl + "        <td class='calign'> <a href='#' onclick=\"duplicateserver('" +user  +"','" +serverName  +"','" +group  +"');return false;\" ><img border='0' src='images/duplicate.png' title='Duplicate'></a></td>"
+ 				 tbl=tbl + "        <td class='calign'> <a href='#' onclick=\"deleteserver('" +user  +"','" +serverName  +"','" +group  +"');return false;\" ><img border='0' src='images/delete.png' title='Delete'></a></td>"
  				
  				 tbl=tbl + "      </tr>" 
  				 
@@ -143,7 +153,7 @@
  				 
  				 if( dataCount >0){
  				 	$("#resultdetailcontainer").html(tbl)
- 				 	preparecsv("tblusers")
+ 				 	preparecsv("tblservers")
  				 	
  				  if( dataCount >10){
  					  
@@ -154,7 +164,7 @@
  					  "paging":   true,  				        
  				        "info":     true
  					} );
- 					$('#tblusers').dataTable();
+ 					$('#tblservers').dataTable();
  				  }
    					  
  				  else{
@@ -167,11 +177,11 @@
  					} );
  					
  					
- 					$('#tblusers').dataTable();
+ 					$('#tblservers').dataTable();
  				  }	
  				 }
- 				 else
- 					 showerror("resultdetailcontainer","No Users Available to show")
+ 				// else
+ 					// showerror("resultdetailcontainer","No Users Available to show")
  				
  					
  					// $('#example').dataTable();
@@ -184,7 +194,7 @@
  }
   $(function() {
  
-	  showuserreport()
+	  showserverreport()
 
   });
   </script>

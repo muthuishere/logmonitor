@@ -50,14 +50,19 @@ class Responder {
 			// Add information as xml
 
 		//	ArrayList 
-			servers.each{val->
+			servers.each{key,val->
 
+
+				
 				
 					response.append("<server>")
 					valid=true
 					response.append("\n<name>${val.name}</name>")
 					response.append("\n<host>${val.host}</host>")
 					response.append("\n<user>${val.user}</user>")
+					response.append("\n<group>${val.servergroup}</group>")
+					response.append("\n<tunnel>${val.proxyhost}</tunnel>")
+					
 					response.append("\n</server>")
 			
 
