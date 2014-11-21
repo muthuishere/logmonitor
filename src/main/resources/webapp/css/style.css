@@ -334,14 +334,24 @@ a.prev:hover{
 /* END SLIDES*/
 
 /* SERVICE */
-#service{
-	margin: 40px auto;
-	height: 253px;
+#site_content{
+	background-color:#F7F7F7;
+	margin-top: 3px;	
 	padding-top: 30px;
-	background: url(../images/service-bg.jpg) no-repeat;
+	height:100%;
+	/*background: url(../images/service-bg.jpg) repeat-y; */  
 }
 
+div.main_content{
+	padding-left: 30px;
+	
+}
 
+#servicefooter{
+	height: 53px;
+	padding-top: 30px;
+	background: url(../images/service-bg-footer.jpg) no-repeat;
+}
 #web{
 	float: left;
 	width: 450px;
@@ -839,6 +849,6 @@ footer{
 	}
 }
 
-.top_slogan{ text-align:left;font-family: Helvetica, Arial, Sans-serif; color:#CCCCCC; font-size:30px; padding:50px 50px; font-style:italic; line-height:40px;}
+.top_slogan{ text-align:left;font-family: Helvetica, Arial, Sans-serif; color:#CCCCCC; font-size:30px; padding:10px 10px; font-style:italic; line-height:40px;}
 
 

@@ -36,7 +36,7 @@ class Responder {
 	
 	
 	
-	public String getservers(){
+	public String getservers(HttpServletRequest request){
 
 		StringBuffer response= new StringBuffer()
 

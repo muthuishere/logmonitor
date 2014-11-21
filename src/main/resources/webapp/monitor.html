@@ -7,17 +7,17 @@
    
           
    
-      <div id ="overlay" class="main_content"  style="">
+      <div class="main_content"  style="">
 	   
 	   <form id="frmreports">
-	   <table cellpadding="10" cellspacing="10" border="0">
+	   <table border="0" style="width:800px;padding:10px;border-collapse: separate; border-spacing: 10px;">
 	   
 	      <tr>
 	   <td>Server </td>
-	   <td colspan="3">
+	   <td >
 	   
-	   
-	   <span id="servercontainer" />
+	  
+	   <div id="servercontainerlst" />
 	   
 	
 	   </td>
@@ -26,7 +26,7 @@
 	   <tr>		   
 	   <td>Log File </td>
 	   <td >
-	   <select style="width:230px" id="logfiles">
+	   <select style="width:230px" id="logfilesmenu">
 	   	<option value="curweek">3DS Adapter</option>
 	   	<option value="curmonth">HSS/HLR Adapter</option>
 	   	<option value="custom">Custom</option>
@@ -41,8 +41,8 @@
 	  
 	   </tr>
 	   <tr>
-	   
-	  <td colspan="4" style="text-align:right"><input type="button" id="start" value="Start Monitoring" style="width:220px"> </td>
+	   <td>&nbsp;</td>
+	  <td  ><input type="button" id="start" value="Start Monitoring" > </td>
 	   </tr>
 	   </table>
 	   </form>
@@ -85,10 +85,10 @@ function onC(){
 	  
 	  
 	    
-	   generateServerMenu("servercontainer","server","All")
+	   generateServerMenu("servercontainerlst","server","All")
 	    
 	 
-	    $( "#logfiles" ).selectmenu({
+	    $( "#logfilesmenu" ).selectmenu({
 	      change: function( event, data ) {
 	    	  
 	    	  if(data.item.value == "custom"){

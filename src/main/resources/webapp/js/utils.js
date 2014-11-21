@@ -18,6 +18,7 @@ function generateServerMenu(divID,name,defaulttxt){
 		</reply>
 	
 	*/
+	
 	$.get( "/services/getservers/rand?inte="+Math.random(), function( data ) {
 		  
 		  $xml = $( data )
@@ -28,7 +29,7 @@ function generateServerMenu(divID,name,defaulttxt){
 	  $status = $xml.find( "status" )
 		  
 		  
-		  
+		
 		  if( $status.attr("error") =="true"){
 			  
 			 // showerror("resultcontainer",$status.attr("description"))
@@ -46,12 +47,19 @@ function generateServerMenu(divID,name,defaulttxt){
 			
 		   	resp = resp + '<option value="'+ user +'@' +host+'">'+servername+'</option>'
 			
-		   }
+		   });
+		   
 		   resp = resp + '</select>'
-$("#"+divID).html(resp);
-$( "#"+name ).selectmenu()
-
+		   
+		   console.log(divID)
+		   	$("#"+divID).html(resp);
+		   	$( "#"+name ).selectmenu()
+		  }
+		  
+		   	
 		});
+	  	
+	
 	
 
 	

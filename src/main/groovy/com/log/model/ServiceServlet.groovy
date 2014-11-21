@@ -47,38 +47,39 @@ String reportname=""
 def result = ""
 
 	
-
+println("Action : $actionname")
 switch ( actionname ) {
 	
 		
-		
-		case "logpoll":
-		result = responder.logpoll(request)
-		
-		break;
-		
-		case "getservers":
-			result = responder.getservers(request)
-		
-			break;
-		
-		
-		case "getsysteminfo":
-		result = responder.getsysteminfo(request)
-		
-		break;
-		
-		
-		
-		case "addsysteminfo":
-		result = responder.addsysteminfo(request)
-		
-		break;
-		
-		case "startmonitor":
-		result = responder.startmonitor(request)
-		
-		break;
+	case "getservers":
+	result = responder.getservers(request)
+
+	break;
+//
+//		
+//		case "logpoll":
+//		result = responder.logpoll(request)
+//		
+//		break;
+//		
+//	
+//		
+//		case "getsysteminfo":
+//		result = responder.getsysteminfo(request)
+//		
+//		break;
+//		
+//		
+//		
+//		case "addsysteminfo":
+//		result = responder.addsysteminfo(request)
+//		
+//		break;
+//		
+//		case "startmonitor":
+//		result = responder.startmonitor(request)
+//		
+//		break;
 		
 		case "downloadexcel":
 		response.setHeader("Content-Disposition",

@@ -4,7 +4,18 @@
        <div id ="overlay" class="main_content"  style="">
 	   
 	     <div  >
-	  
+	  					 <div style="float:left">  <table  border="0" cellspacing="0" style="width:600px">
+	  					      <tr>
+	  					        <th class='calign'> 
+	  					        <input type="button" id="btnadd" value="Add"/>
+	  					        
+	  					        
+	  					        </td>
+	  					
+	 					        <th align='right'><span id="downloadcontainer" style="display:none"><a href='#' onclick="downloadcsv('tblservers');return false;" ><img border='0' src='images/excel.png' title='Download as excel'></a></span></th>
+	 					      </tr>
+	  					 </table>
+ 					
 			<div id="resultdetailcontainer"/>
 			
 			<div style="clear:both"></div>
@@ -20,7 +31,16 @@
 </form>
 	  </div>
  <script>
+ $( "#btnadd" ).button({ icons: { primary: "ui-icon-gear", secondary: "ui-icon-triangle-1-s" } });
+
+ //ui-icon-plusthick
  
+ $( "#btnadd" ).click(function( event ) {
+	 console.log("TODO show add dialog")
+	 //addserver();
+ })
+
+
 
  function deleteserver(curserver){
 
@@ -87,12 +107,15 @@
  				
  					
  					var csvtblname="tblservers"
-	  					 tbl=tbl + ' <div style="float:left">  <table  border="0" cellspacing="0" style="width:600px">'
-	  					 tbl=tbl + "      <tr>" 
-	  					 tbl=tbl + "        <th class='calign'> <a href='#' onclick=\"addserver();return false;\" ><img border='0' src='images/add.png' title='Add'></a></td>"
-	 					 tbl=tbl + "        <th align='right'><span><a href='#' onclick=\"downloadcsv('" +csvtblname  +"');return false;\" ><img border='0' src='images/excel.png' title='Download as excel'></a></span></th>" 
-	 					 tbl=tbl + "      </tr>" 
-	  					 tbl=tbl + " </table>"
+ 					
+ 					
+// 	  					 tbl=tbl + ' <div style="float:left">  <table  border="0" cellspacing="0" style="width:600px">'
+// 	  					 tbl=tbl + "      <tr>" 
+// 	  					 tbl=tbl + "        <th class='calign'> <a href='#' onclick=\"addserver();return false;\" ><img border='0' src='images/add.png' title='Add'></a></td>"
+	  					 
+// 	 					 tbl=tbl + "        <th align='right'><span><a href='#' onclick=\"downloadcsv('" +csvtblname  +"');return false;\" ><img border='0' src='images/excel.png' title='Download as excel'></a></span></th>" 
+// 	 					 tbl=tbl + "      </tr>" 
+// 	  					 tbl=tbl + " </table>"
  					
 
  				 tbl=tbl + '<table id="tblservers" style="width:600px" class="display" cellspacing="0" >' 
@@ -153,6 +176,7 @@
  				 
  				 if( dataCount >0){
  				 	$("#resultdetailcontainer").html(tbl)
+ 				 	$("#downloadcontainer").css("display","")
  				 	preparecsv("tblservers")
  				 	
  				  if( dataCount >10){
