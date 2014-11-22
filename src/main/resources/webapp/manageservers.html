@@ -1,0 +1,257 @@
+<div>
+<form name="frmaddserver" id="frmaddserver" action="#" >
+<div id="tabs" style="background:none">
+  <ul>
+    <li><a href="#tabs-1">Server Details</a></li>
+    <li><a href="#tabs-2">Proxy Details</a></li>
+    
+  
+  </ul>
+  <input type="hidden" id="operation" name="operation" value=""/>
+  <div id="tabs-1"  style="background-color:#F7F7F7">
+    <h2>Server</h2>
+    
+      <table border="0" style="width:100%;padding:10px;border-collapse: separate; border-spacing: 10px;">
+	   
+	      <tr>
+	   <td>
+	   
+	   <div title="host">Host</div>
+	  <input type="text" name="host" id="host" value="10.21.15.74" class="text ui-widget-content ui-corner-all"> 
+	    </td>
+	   <td >
+	  <div title="port">Port</div>
+      <input type="text" name="port" id="port" value="24" class="text ui-widget-content ui-corner-all">
+       
+	   </td>
+	   </tr>
+	   
+	       <tr>
+	   <td>
+	   
+       <div title="user">User</div>
+      <input type="text" name="user" id="user" value="resolve" class="text ui-widget-content ui-corner-all">
+	   </td>
+	   
+	    <td>
+	       <div title="password">Password</div>
+      <input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
+     
+	   </td>
+	  
+	   </tr>
+	     <tr>
+	   <td>
+	   
+       <div title="Group">Environment</div>
+      
+        <select name="servergroup" id="servergroup" style="width:200px" >
+	   	<option value="DEV-INT">DEV-INT</option>
+	   	<option value="SIT">SIT</option>
+	   	<option value="BRT">BRT</option>
+	   	<option value="STAGING">STAGING</option>
+	   	<option value="LIVE">LIVE</option>
+	   </select>
+	   
+	   </td>
+	   
+	    <td>
+	       <div title="team">Team</div>
+
+        <select name="team" id="team" style="width:200px" >
+	   	<option value="RESOLVE">RESOLVE</option>
+	   	<option value="Provisioning">Provisioning</option>
+	   	<option value="Service Checker">Service Checker</option>	   	
+	   </select>
+	   </td>
+	  
+	   </tr>
+	   
+	 
+	    
+	    
+	   </table>
+   
+    
+    
+  </div>
+  <div id="tabs-2" style="background-color:#F7F7F7">
+    <h2>Proxy</h2>
+    
+
+						
+       <table border="0" style="width:100%;padding:10px;border-collapse: separate; border-spacing: 10px;">
+	   
+	      <tr>
+	   <td>
+	      <div title="host">Host</div>
+      <input type="text" name="proxyhost" id="proxyhost" value="10.21.15.74" class="text ui-widget-content ui-corner-all">
+	    </td>
+	     
+	    <td>
+	     <div title="port">Port</div>
+      <input type="text" name="proxyport" id="proxyport" value="8080" class="text ui-widget-content ui-corner-all">
+      </td>
+      <tr><td>
+      
+	      <div title="user">User</div>
+      <input type="text" name="proxyuser" id="proxyuser" value="resolve" class="text ui-widget-content ui-corner-all"> 
+	     </td>
+	   
+	    <td>
+	     
+      <div title="password">Password</div>
+      <input type="password" name="proxypwd" id="proxypwd" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
+	    
+	     </td>
+	      </tr>
+	      
+	   
+	  </table>
+	  
+    
+  </div>
+
+</div>
+</form>
+
+  <div id="serverresultstatuscontainer"/>
+  
+    <table border="0" style="width:95%;padding:10px;border-collapse: separate; border-spacing: 10px;">
+	   
+	    <tr>
+	    <td class="lalign">
+	     <button type="button" class="btnbackserverlist">Back</button>
+	   </td>
+	   <td class="ralign">
+	     <button type="button" class="btnsubmitserver">Save</button>
+	   </td>
+	   </tr>
+	   </table>
+ </div>
+ 
+  <script>
+  
+  
+  function onupdate(){
+	  
+		$("#serverresultstatuscontainer").show()
+	  	  $("#serverresultstatuscontainer").html("<img src='images/loadingajax.gif'/>")
+	  	  
+	  	  
+ var formdata=$("form#frmaddserver").serializeArray()
+ 		
+ 		$('#frmserver')[0].reset();
+  	
+  		
+  	$.post( "/services/manageserver", formdata)
+ 	 	  .done(function( data ) {
+ 	 	    
+ 	 		
+ 	 		//parse xml
+ 	 		  $xml = $( data )
+ 	 		  $status = $xml.find( "status" )
+ 	 		  
+ 	 		  
+ 	 		  
+ 	 		  if( $status.attr("error") =="true"){
+ 	 			  
+ 	 			  showerror("serverresultstatuscontainer",$status.attr("description"))
+ 	 			  
+ 	 		  } else{
+ 	 			 showsuccess("serverresultstatuscontainer",$status.attr("description"))
+ 	 		//	showserverreport();
+ 	 		  
+ 	 		  }
+ 		
+ 	});
+  	
+  	
+	  
+  }
+  function onAddServer(){
+	  
+	  console.log("Adding server")
+	  
+	  onupdate();
+  }
+  $(function() {
+	  
+	  $("form#frmaddserver input").val("")
+	  
+	  
+// 	  $( "#frmaddserver" ).submit(function( event ) {
+// //  alert( "Handler for .submit() called." );
+//   event.preventDefault();
+// });
+	  
+	  
+	   
+	       $( "#servergroup" ).selectmenu({
+ change: function( event, data ) {
+	  
+	  if(data.item.value == "custom"){
+		
+	  }
+   
+ }
+});
+
+
+    $( "#team" ).selectmenu({
+ change: function( event, data ) {
+	  
+	  if(data.item.value == "custom"){
+		
+	  }
+   
+ }
+});
+    
+
+    $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+    $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+    
+    $( ".btnsubmitserver" ).button( {
+        icons: {
+          primary: "ui-icon-disk"
+        }
+      });
+    
+    //$( "#btnadd" ).button({ icons: { primary: "ui-icon-gear", secondary: "ui-icon-triangle-1-s" } });
+
+    //ui-icon-plusthick
+    
+    $( ".btnsubmitserver" ).click(function( event ) {
+    	onAddServer();
+   	 
+   	 //addserver();
+    })
+    
+    
+     $( ".btnbackserverlist" ).button( {
+        icons: {
+          primary: "ui-icon-arrowthick-1-w"
+        }
+      });
+    
+    //$( "#btnadd" ).button({ icons: { primary: "ui-icon-gear", secondary: "ui-icon-triangle-1-s" } });
+
+    //ui-icon-plusthick
+    
+    $( ".btnbackserverlist" ).click(function( event ) {
+    	 
+    	  showAddServercontainer(false)
+    	  showserverreport()
+   	 //addserver();
+    })
+    
+    
+    
+    
+    
+  });
+  </script>
+
+  
+	

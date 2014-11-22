@@ -13,7 +13,14 @@
     <link href="css/icons.css" rel="stylesheet"/>
     <link href="css/multiple-select.css" rel="stylesheet"/>
     
-
+<style>
+  .ui-tabs-vertical { width: 60em; }
+  .ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
+  .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+  .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+  .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
+  .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 45em;}
+</style>
 
 </head>
 
@@ -21,7 +28,9 @@
 <body>
 	<div id="header-wrap">
 		<header class="group">
-			<h3><a href="index.html" title="burstudio">Log <strong><span class="green">Monitor</span></strong></a></h3>
+		
+		
+			<h3><a href="index.html" title="burstudio"><span style="color:#7B7575">Log</span> <strong><span class="green">Monitor</span></strong></a></h3>
 			
 			<nav class="group">
 				<ul>

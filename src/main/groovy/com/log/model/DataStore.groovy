@@ -46,8 +46,8 @@ class DataStore {
 
 		println(fetchfileName)
 		fetcherDB = Sql.newInstance("jdbc:sqlite:"+fetchfileName, "org.sqlite.JDBC")
-		fetcherDB.execute("create table if not exists log (name string, filename string,host string)")
-		fetcherDB.execute("create table if not exists server (name string,servergroup string,host string, port integer,user string,password string,proxyhost string, proxyport integer,proxyuser string,proxypwd string)")
+		fetcherDB.execute("create table if not exists log (name string, filename string,host string,team string)")
+		fetcherDB.execute("create table if not exists server (name string,servergroup string,team string,host string, port integer,user string,password string,proxyhost string, proxyport integer,proxyuser string,proxypwd string)")
 	
 		updateServerCache();
 
@@ -80,7 +80,8 @@ class DataStore {
 					proxyuser: it.proxyuser,
 					proxypwd: it.proxypwd,
 					name: it.name,
-					group: it.servergroup
+					servergroup: it.servergroup,
+					team:it.team
 
 					));
 		}
@@ -95,7 +96,7 @@ class DataStore {
 		ArrayList<Server> userEntries=new ArrayList<Server>()
 
 
-		fetcherDB.rows("select * from server order by group " ).each{
+		fetcherDB.rows("select * from server order by servergroup " ).each{
 
 			boolean canadd=true
 
@@ -115,7 +116,8 @@ class DataStore {
 						proxyuser: it.proxyuser,
 						proxypwd: it.proxypwd,
 						name: it.name,
-						group: it.servergroup
+						servergroup: it.servergroup,
+						team:it.team
 
 						)
 						);
@@ -125,14 +127,14 @@ class DataStore {
 		return userEntries
 	}
 
-	public boolean deleteServer(String host){
+	public boolean deleteServer(String host,String user){
 
-	if(null == host)
+	if(null == host || null ==user)
 			return false
 
-		LogMessage.error("Deleting  ${host} overWriting ");
-		def query="delete from server  where host=:host"
-		fetcherDB.executeUpdate(query, ["host":host]);
+		LogMessage.error("Deleting ${user}@${host} overWriting ");
+		def query="delete from server  where host=:host and user=:user"
+		fetcherDB.executeUpdate(query, ["host":host,"user":user]);
 		return true
 	}
 
@@ -178,13 +180,13 @@ class DataStore {
 	public ArrayList<Log> getLogEntries(String host){
 		
 		def query="where 1=1"
-			if(null != host)
-			query
+			//if(null != host)
+			
 		
 				ArrayList<Server> userEntries=new ArrayList<Server>()
 		
 		
-				fetcherDB.rows("select * from server order by group " ).each{
+				fetcherDB.rows("select * from server order by servergroup " ).each{
 		
 					boolean canadd=true
 		
@@ -204,7 +206,8 @@ class DataStore {
 								proxyuser: it.proxyuser,
 								proxypwd: it.proxypwd,
 								name: it.name,
-								group: it.servergroup
+								servergroup: it.servergroup,
+								team:it.team
 		
 								)
 								);
@@ -214,7 +217,7 @@ class DataStore {
 				return userEntries
 			}
 		
-	void insertServer(Server serverInfo){
+	void insertServer(Server serverInfo,boolean overwrite){
 
 
 
@@ -222,16 +225,19 @@ class DataStore {
 
 
 
-		def query="select host from server  where host='" + serverInfo.host + "'"
+		def query="select host from server  where host='" + serverInfo.host + "' and user='" + serverInfo.user + "'"
 
 		exists=(fetcherDB.rows(query).size()>0)
 
 		// boolean exists = fetcherDB.execute("select user from server  where user='${server.user}'", null);
 
 
+		if(!overwrite && exists )
+			throw new ServiceException("Server already exists with same name ${serverInfo.user}@${serverInfo.host}")
+		
 		if( exists){
 
-			LogMessage.error("Key Already exists ${serverInfo.host} overWriting ");
+			LogMessage.info("Key Already exists ${serverInfo.host} overWriting ");
 			query="delete from server  where host='${serverInfo.host}'"
 			fetcherDB.executeUpdate(query, []);
 
@@ -254,7 +260,8 @@ class DataStore {
 				proxyuser: serverInfo.proxyuser,
 				proxypwd: serverInfo.proxypwd,
 				name: serverInfo.name,
-				group: serverInfo.servergroup
+				group: serverInfo.servergroup,
+				team: serverInfo.team,
 
 				)
 

@@ -1,7 +1,9 @@
 package com.log.controller
 
 
+import com.log.beans.Server
 import com.log.model.DataStore
+
 import java.text.SimpleDateFormat
 import java.util.ArrayList;
 import java.util.Date;
@@ -45,6 +47,7 @@ class Responder {
 
 		boolean valid=false
 
+		int count=0;
 		try{
 			def servers=dataStore.servers
 			// Add information as xml
@@ -56,7 +59,7 @@ class Responder {
 				
 				
 					response.append("<server>")
-					valid=true
+					//valid=true
 					response.append("\n<name>${val.name}</name>")
 					response.append("\n<host>${val.host}</host>")
 					response.append("\n<user>${val.user}</user>")
@@ -66,20 +69,18 @@ class Responder {
 					response.append("\n</server>")
 			
 
+					count++
 			}
-			if(!valid){
+			
 
-				throw new Exception("No Vaid Servers identified")
-			}
-
-			response.append("<status code='0' error='false' description='Successfully retrieved server  information'/>")
+			response.append("<status code='0'  records='$count' error='false' description='Successfully retrieved server  information'/>")
 		}catch(Exception e){
 
 			response= new StringBuffer()
 
 			response.append("<reply>")
 
-			response.append("<status code='1' error='true' description='${xml_string(e.getMessage())}'/>")
+			response.append("<status code='1' records='$count' error='true' description='${xml_string(e.getMessage())}'/>")
 		}
 
 
@@ -1174,6 +1175,62 @@ class Responder {
 
 	}
 
+	public String updateserver(HttpServletRequest request){
+		
+				String team=(null ==request.getParameter("team") )?"":request.getParameter("team");
+		
+				def params=[
+					"user":request.getParameter("user"),
+					"pwd":request.getParameter("pwd"),
+					"team":team,
+				]
+				String ip=getIP(request)
+				StringBuffer response= new StringBuffer()
+		
+				response.append("<reply>")
+		
+				if(null == params.user || null == params.pwd ){
+		
+					response.append("<status code='1' error='true' description='Invalid user inputs'/>")
+		
+				}else{
+		
+					try{
+						
+						
+						
+						
+						dataStore.insertServer(new Server(
+		
+								host: params.host,
+								port:params.port,
+								user: params.user,
+								password: params.password,
+								proxyhost: params.proxyhost,
+								proxyport: params.proxyport,
+								proxyuser: params.proxyuser,
+								proxypwd: params.proxypwd,
+								name: params.user +"@" + params.host,
+								servergroup: params.servergroup,
+								team: params.team
+								))
+		
+						response.append("<status code='0' error='false' description='Successfully updated server information'/>")
+					}catch(Exception e){
+						response= new StringBuffer()
+		
+						response.append("<reply>")
+		
+		
+						response.append("<status code='1' error='true' description='${xml_string(e.getMessage())}'/>")
+					}
+		
+				}
+				response.append("</reply>")
+		
+				return response;
+			}
+		
 
 	public String deleteuser(HttpServletRequest request){
 

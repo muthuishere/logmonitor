@@ -55,6 +55,15 @@ switch ( actionname ) {
 	result = responder.getservers(request)
 
 	break;
+	
+	
+	
+	case "updateserver":
+	result = responder.updateserver(request)
+
+	break;
+	
+	
 //
 //		
 //		case "logpoll":

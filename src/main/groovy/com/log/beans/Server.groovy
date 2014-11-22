@@ -14,7 +14,8 @@ class Server {
 	def proxyuser
 	def proxypwd
 	def name
-	def group=""
+	def servergroup=""
+	def team=""
 	
 	@Override
 	public boolean equals(Object o) {
@@ -24,6 +25,7 @@ class Server {
 		Server server = (Server) o;
 
 		if (host != null ? !host.equals(server.host) : server.host != null) return false;
+		if (user != null ? !user.equals(server.user) : server.user != null) return false;
 		
 
 		return true;

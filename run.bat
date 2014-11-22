@@ -1,3 +1,3 @@
 
-gradle build run -PappArgs="['C:\\muthu\\logging\\logmonitor\\logmonitor.conf']" 
+gradle build run -PappArgs="['./logmonitor.conf']" 
 pause
