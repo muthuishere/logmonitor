@@ -47,8 +47,9 @@
 	 
 	 $("#manageservercontainer").html("<img src='images/loadingajax.gif'/>")
 	  $( "#manageservercontainer" ).load( "manageservers.html", function() {
-	  		
+		  $("form#frmaddserver input").val("")
 	  		$("#operation").val("ADD")
+	  		
 	});
 	  
  }

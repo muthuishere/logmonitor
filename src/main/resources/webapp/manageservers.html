@@ -1,5 +1,6 @@
 <div>
 <form name="frmaddserver" id="frmaddserver" action="#" >
+
 <div id="tabs" style="background:none">
   <ul>
     <li><a href="#tabs-1">Server Details</a></li>
@@ -117,8 +118,15 @@
 
   <div id="serverresultstatuscontainer"/>
   
+  
+  
     <table border="0" style="width:95%;padding:10px;border-collapse: separate; border-spacing: 10px;">
 	   
+	    <tr>
+	    <td class="ralign" colspan="2">
+			<p class="validateTips">All form fields are required.</p>    
+	    </td>
+	    </tr>
 	    <tr>
 	    <td class="lalign">
 	     <button type="button" class="btnbackserverlist">Back</button>
@@ -135,6 +143,10 @@
   
   function onupdate(){
 	  
+	  if(!validateform()){
+		  
+		  return
+	  }
 		$("#serverresultstatuscontainer").show()
 	  	  $("#serverresultstatuscontainer").html("<img src='images/loadingajax.gif'/>")
 	  	  
@@ -144,7 +156,7 @@
  		$('#frmserver')[0].reset();
   	
   		
-  	$.post( "/services/manageserver", formdata)
+  	$.post( "/services/updateserver", formdata)
  	 	  .done(function( data ) {
  	 	    
  	 		
@@ -169,6 +181,81 @@
   	
 	  
   }
+  
+  function updateTips( t ) {
+	  var tips = $( ".validateTips" );
+	  
+      tips
+        .text( t )
+        .addClass( "ui-state-highlight" );
+      setTimeout(function() {
+        tips.removeClass( "ui-state-highlight", 1500 );
+      }, 500 );
+    }
+ 
+    function checkLength( o, n, min, max ) {
+      if ( o.val().length > max || o.val().length < min ) {
+        o.addClass( "ui-state-error" );
+        updateTips( "Length of " + n + " must be between " +
+          min + " and " + max + "." );
+        return false;
+      } else {
+        return true;
+      }
+    }
+    
+    function checkMinLength( o, n, min ) {
+        if ( o.val().length < min ) {
+          o.addClass( "ui-state-error" );
+          updateTips( "Length of " + n + " must be atleast " +
+            min + " characters." );
+          return false;
+        } else {
+          return true;
+        }
+      }
+ 
+    function checkRegexp( o, regexp, n ) {
+      if ( !( regexp.test( o.val() ) ) ) {
+        o.addClass( "ui-state-error" );
+        updateTips( n );
+        return false;
+      } else {
+        return true;
+      }
+    }
+    
+  function validateform(){
+	  
+	 
+		
+	  valid = valid && checkMinLength( $("#user"), "user", 3 );
+  valid = valid && checkMinLength( $("#password"), "password", 3 );
+  valid = valid && checkMinLength( $("#host"), "host", 7 );
+  		valid = valid && checkRegexp( $("#port"), /^([0-9])+$/i, "Port should contain only numeric values." );
+  
+  		if(!valid){
+  			
+  			$( "#tabs" ).tabs( "option", "active", 1 );
+  		}
+  		if($("#proxyhost").val().length >1){
+  			
+  			
+  		  valid = valid && checkMinLength( $("#proxyuser"), "proxyuser", 3 );
+  		  valid = valid && checkMinLength( $("#proxypwd"), "proxy Password", 3 );
+  		  valid = valid && checkMinLength( $("#proxyhost"), "proxy host", 7 );
+  		  		valid = valid && checkRegexp( $("#proxyport"), /^([0-9])+$/i, "Port should contain only numeric values." );
+  		
+  		  	if(!valid){
+  	  			
+  		  	$( "#tabs" ).tabs( "option", "active", 2 );	
+  	  		}
+  		}
+  
+      return valid;
+      
+      
+  }
   function onAddServer(){
 	  
 	  console.log("Adding server")
@@ -177,7 +264,7 @@
   }
   $(function() {
 	  
-	  $("form#frmaddserver input").val("")
+	 
 	  
 	  
 // 	  $( "#frmaddserver" ).submit(function( event ) {

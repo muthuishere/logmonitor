@@ -1177,18 +1177,30 @@ class Responder {
 
 	public String updateserver(HttpServletRequest request){
 		
-				String team=(null ==request.getParameter("team") )?"":request.getParameter("team");
 		
 				def params=[
 					"user":request.getParameter("user"),
-					"pwd":request.getParameter("pwd"),
-					"team":team,
+					"password":request.getParameter("password"),
+					"host":request.getParameter("host"),
+					"port":request.getParameter("port"),
+					"proxyhost":request.getParameter("proxyhost"),
+					"proxyport":request.getParameter("proxyport"),
+					"proxyuser":request.getParameter("proxyuser"),
+					"proxypwd":request.getParameter("proxypwd"),
+					"servergroup":request.getParameter("servergroup"),
+					"team":request.getParameter("team"),
+					"operation":request.getParameter("operation"),
+					
 				]
 				String ip=getIP(request)
 				StringBuffer response= new StringBuffer()
 		
 				response.append("<reply>")
 		
+				def overwrite=false
+				if(params.operation == "UPDATE")
+					overwrite=true
+				
 				if(null == params.user || null == params.pwd ){
 		
 					response.append("<status code='1' error='true' description='Invalid user inputs'/>")
@@ -1213,7 +1225,7 @@ class Responder {
 								name: params.user +"@" + params.host,
 								servergroup: params.servergroup,
 								team: params.team
-								))
+								),overwrite)
 		
 						response.append("<status code='0' error='false' description='Successfully updated server information'/>")
 					}catch(Exception e){
