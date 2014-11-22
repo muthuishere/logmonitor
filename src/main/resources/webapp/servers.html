@@ -1,0 +1,268 @@
+        <div class="top_slogan">
+	Servers
+  </div>
+       <div id ="serverlist" class="main_content"  style="">
+	   
+	  
+	  					  <table  border="0" cellspacing="0" style="width:600px">
+	  					      <tr>
+	  					        <th class='lalign'> 
+	  					       
+	  					        
+	  					        <button id="btnadd">Add New Server</button>
+	  					        
+	  					        </td>
+	  					
+	 					        <th align='right'><span id="downloadcontainer" style="display:none"><a href='#' onclick="downloadcsv('tblservers');return false;" ><img border='0' src='images/excel.png' title='Download as excel'></a></span></th>
+	 					      </tr>
+	  					 </table>
+ 					
+			<div id="resultdetailcontainer"/>
+			
+			<div style="clear:both"></div>
+			<br/>
+	  <div id="resultstatuscontainer"/>
+	  <div style="clear:both"></div>
+	  
+	
+
+<form id="frmserver">
+	<input type="hidden" id="server" name="server"/>
+</form>
+	  </div>
+	  
+	  
+	
+
+	  <div id ="manageservercontainer" class="main_content"  style="">
+	  
+	  		//Add server container here
+	  </div>
+ <script>
+ 
+ 
+ function showadd(){
+	 
+	 showAddServercontainer(true);
+	 
+	 $("#manageservercontainer").html("<img src='images/loadingajax.gif'/>")
+	  $( "#manageservercontainer" ).load( "manageservers.html", function() {
+	  		
+	  		$("#operation").val("ADD")
+	});
+	  
+ }
+ function showAddServercontainer(canshow){
+	 
+	 if(canshow){
+		 
+		 $("#serverlist").hide()
+		 $("#manageservercontainer").show()
+	 }else{
+		 
+		 $("#serverlist").show()
+		 $("#manageservercontainer").hide()
+		 
+	 }
+	 
+ }
+ $( "#btnadd" ).button( {
+     icons: {
+       primary: "ui-icon-plusthick"
+     }
+   });
+ 
+ //$( "#btnadd" ).button({ icons: { primary: "ui-icon-gear", secondary: "ui-icon-triangle-1-s" } });
+
+ //ui-icon-plusthick
+ 
+ $( "#btnadd" ).click(function( event ) {
+	 showadd();
+	 
+	 //addserver();
+ })
+
+
+
+ function deleteserver(curserver){
+
+  	$("#resultstatuscontainer").show()
+  	  $("#resultstatuscontainer").html("<img src='images/loadingajax.gif'/>")
+  	  
+  	  
+  	      $("input#server").val(curserver)
+ var formdata=$("form#frmserver").serializeArray()
+ 		
+ 		$('#frmserver')[0].reset();
+  	
+  		
+  	$.post( "/services/deleteserver", formdata)
+ 	 	  .done(function( data ) {
+ 	 	    
+ 	 		
+ 	 		//parse xml
+ 	 		  $xml = $( data )
+ 	 		  $status = $xml.find( "status" )
+ 	 		  
+ 	 		  
+ 	 		  
+ 	 		  if( $status.attr("error") =="true"){
+ 	 			  
+ 	 			  showerror("resultstatuscontainer",$status.attr("description"))
+ 	 			  
+ 	 		  } else{
+ 	 			 showsuccess("resultstatuscontainer",$status.attr("description"))
+ 	 			showserverreport();
+ 	 		  
+ 	 		  }
+ 		
+ 	});
+ }
+ 
+ function showserverreport( ){
+ 	
+ 	$("#resultdetailcontainer").show()
+ 	  $("#resultdetailcontainer").html("<img src='images/loadingajax.gif'/>")
+ 	  
+ 	  
+ 	      var formdata=null
+ 	 
+ 		
+ 		
+ 	$.post( "/services/getservers", formdata)
+ 	  .done(function( data ) {
+ 	    
+ 		
+ 		//parse xml
+ 		  $xml = $( data )
+ 		  $status = $xml.find( "status" )
+ 		  
+ 		  
+ 		  
+ 		  if( $status.attr("error") =="true"){
+ 			  
+ 			  showerror("resultdetailcontainer",$status.attr("description"))
+ 			  
+ 		  } else{
+ 			  
+ 			 $("#resultdetailcontainer").html("&nbsp;")
+ 			  var tbl=""
+ 				
+ 					
+ 					var csvtblname="tblservers"
+ 					
+ 					
+// 	  					 tbl=tbl + ' <div style="float:left">  <table  border="0" cellspacing="0" style="width:600px">'
+// 	  					 tbl=tbl + "      <tr>" 
+// 	  					 tbl=tbl + "        <th class='calign'> <a href='#' onclick=\"addserver();return false;\" ><img border='0' src='images/add.png' title='Add'></a></td>"
+	  					 
+// 	 					 tbl=tbl + "        <th align='right'><span><a href='#' onclick=\"downloadcsv('" +csvtblname  +"');return false;\" ><img border='0' src='images/excel.png' title='Download as excel'></a></span></th>" 
+// 	 					 tbl=tbl + "      </tr>" 
+// 	  					 tbl=tbl + " </table>"
+ 					
+
+ 				 tbl=tbl + '<table id="tblservers" style="width:600px" class="display" cellspacing="0" >' 
+ 				 tbl=tbl + "    <thead>" 
+ 				 tbl=tbl + "      <tr>" 
+ 				 tbl=tbl + "        <th><span>S.No</span></th>"
+ 				tbl=tbl + "        <th><span>Group</span></th>" 				
+ 				 tbl=tbl + "        <th><span>Server</span></th>"
+ 				tbl=tbl + "        <th><span>Tunnel</span></th>" 
+ 				 tbl=tbl + "        <th><span> Status</span></th>"
+ 				tbl=tbl + "        <th><span> Edit</span></th>"
+ 				tbl=tbl + "        <th><span> Duplicate</span></th>"
+ 				 tbl=tbl + "        <th><span>Remove</span></th>" 
+
+ 				 tbl=tbl + "      </tr>" 
+ 				 tbl=tbl + "    </thead>" 
+ 				 tbl=tbl + "    <tbody>" 
+ 			
+ 				var dataCount=0
+				
+				
+ 				 
+ 			 $xml.find('server').each(function(index){
+ 				dataCount++
+ 	            var user = $(this).find('user').text();
+ 				var group = $(this).find('group').text();
+ 				var host =  $(this).find('host').text();
+ 				var tunnel = $(this).find('tunnel').text();
+ 				
+ 	      
+ 				
+ 				 var serverlocked = $(this).find('serverLocked').text();
+		           
+ 	  		    var privacyImg="<img src='images/valid.png' alt='valid' >"
+ 	  		            if(undefined == serverlocked ||  serverlocked == "true")
+ 	  		            	privacyImg="<img src='images/invalid.png' alt='invalid'>"   
+ 	  		            	
+ 	  		            		
+ 	      	
+ 	       
+ 				  
+ 	     	 tbl=tbl + "      <tr>" 
+ 				 tbl=tbl + "        <td class='calign'>"+dataCount+"</td>" 
+ 				 tbl=tbl + "        <td class='lalign'>"+group+"</td>"
+ 				tbl=tbl + "        <td class='lalign'>"+ user + "@"+ host+"</td>"
+ 				tbl=tbl + "        <td class='lalign'>"+tunnel+"</td>" 
+ 				 tbl=tbl + "        <td class='calign'>"+privacyImg+"</td>"
+ 				 tbl=tbl + "        <td class='calign'> <a href='#' onclick=\"editserver('" +user  +"','" +serverName  +"','" +group  +"');return false;\" ><img border='0' src='images/edit.png' title='Edit'></a></td>"
+ 				 tbl=tbl + "        <td class='calign'> <a href='#' onclick=\"duplicateserver('" +user  +"','" +serverName  +"','" +group  +"');return false;\" ><img border='0' src='images/duplicate.png' title='Duplicate'></a></td>"
+ 				 tbl=tbl + "        <td class='calign'> <a href='#' onclick=\"deleteserver('" +user  +"','" +serverName  +"','" +group  +"');return false;\" ><img border='0' src='images/delete.png' title='Delete'></a></td>"
+ 				
+ 				 tbl=tbl + "      </tr>" 
+ 				 
+ 	        });
+ 			
+ 				 tbl=tbl + "	      </tbody>" 
+ 				 tbl=tbl + "  </table></div>"
+ 				 
+ 				 if( dataCount >0){
+ 				 	$("#resultdetailcontainer").html(tbl)
+ 				 	$("#downloadcontainer").css("display","")
+ 				 	preparecsv("tblservers")
+ 				 	
+ 				  if( dataCount >10){
+ 					  
+ 					  
+ 					$.extend( $.fn.dataTable.defaults, {
+ 					    "searching": true,
+ 					    "ordering": true,
+ 					  "paging":   true,  				        
+ 				        "info":     true
+ 					} );
+ 					$('#tblservers').dataTable();
+ 				  }
+   					  
+ 				  else{
+ 					  
+ 					$.extend( $.fn.dataTable.defaults, {
+ 					    "searching": false,
+ 					    "ordering": false,
+ 						"paging":   false,  				        
+ 				        "info":     false
+ 					} );
+ 					
+ 					
+ 					$('#tblservers').dataTable();
+ 				  }	
+ 				 }
+ 				// else
+ 					// showerror("resultdetailcontainer","No Users Available to show")
+ 				
+ 					
+ 					// $('#example').dataTable();
+ 			  
+ 		  }
+ 	  });
+ 	  
+ 	
+ 	
+ }
+  $(function() {
+ 
+	  showAddServercontainer(false)
+	  showserverreport()
+
+  });
+  </script>
