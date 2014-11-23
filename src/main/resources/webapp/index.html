@@ -84,6 +84,7 @@
   <script type="text/javascript" src="js/jquery-ui.min.js"></script>
 
       <script type="text/javascript" src="js/jquery.multiple.select.js"></script>
+      <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 
 
      <script>
@@ -94,13 +95,35 @@
 	showpage('servers');
   
  
+	 $.get( "/services/getappConfig/rand?inte="+Math.random(), function( data ) {
+		  
+		  $xml = $( data )
+		  $status = $xml.find( "status" )
+		  
+		  
+		  
+// 		  if( $status.attr("admin") =="true"){
+			  
+// 			  showadmin()
+			  
+// 		  } else{
+			  
+// 			  showuser()
+			  
+// 		  }
+		  
+		  $("#teams").val($status.attr("teams"))
+		   $("#environments").val($status.attr("environments"))
+		});
+	 
   });	
   
   
   
 </script>
 
-
+<input type="hidden" name="environments" id="environments"/>
+<input type="hidden" name="teams" id="teams"/>
 <form id="frmcsv" name="frmcsv" action="/services/downloadexcel" method="POST" target="_blank">
 
 <input type="hidden" name="repname" id="repname"/>

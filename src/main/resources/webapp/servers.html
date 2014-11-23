@@ -4,7 +4,7 @@
        <div id ="serverlist" class="main_content"  style="">
 	   
 	  
-	  					  <table  border="0" cellspacing="0" style="width:600px">
+	  					  <table  border="0" cellspacing="0" style="width:100%;padding:20px">
 	  					      <tr>
 	  					        <th class='lalign'> 
 	  					       
@@ -40,6 +40,104 @@
 	  </div>
  <script>
  
+ function onhandleserverdelete(evt){
+	 
+	 
+	 console.log(evt)
+ }
+ 
+function onhandleserverduplicate(evt){
+	 
+	 
+	 console.log(evt)
+ }
+ 
+ function initmanageservers(){
+	 
+ generateCsvMenu("team",$("#teams").val())
+	 
+	 generateCsvMenu("servergroup",$("#environments").val())
+	 
+	 	   
+	       $( "#servergroup" ).selectmenu({
+//  change: function( event, data ) {
+// 	 // if(data.item.value == "custom"){
+// 		 }
+		});
+
+
+    $( "#team" ).selectmenu({
+// change: function( event, data ) {
+
+ });
+    
+	 
+ }
+function onhandleserveredit(evt){
+	 
+
+	 var curdata=decodeURI($(evt.target).parent().attr("data-server"));
+	
+	 
+ showAddServercontainer(true);
+	 
+	 $("#manageservercontainer").html("<img src='images/loadingajax.gif'/>")
+	  $( "#manageservercontainer" ).load( "manageservers.html", function() {
+		  
+		  initmanageservers()
+		  //console.log(curdata)
+		  $("#operation").val("UPDATE")
+		  $("form#frmaddserver input").val("")
+		  
+		  $xml = $(curdata)
+ 				 $xml.each(function(index){
+ 					 //Parse here
+ 					 
+ 					var host =  $(this).find('host').text();
+ 	 				var port =  $(this).find('port').text();
+ 	 				var user =  $(this).find('user').text();
+ 	 				var password =  $(this).find('password').text();
+ 	 				var proxyhost =  $(this).find('proxyhost').text();
+ 	 				var proxyport =  $(this).find('proxyport').text();
+ 	 				var proxyuser =  $(this).find('proxyuser').text();
+ 	 				var proxypwd =  $(this).find('proxypwd').text();
+ 	 				
+ 	 				var group = $(this).find('group').text();
+ 	 				
+ 	 				var team = $(this).find('team').text();
+ 	 				
+ 	 				console.log($(this))
+ 	 				$("#user").val(user)
+ 	 				$("#password").val(password)
+ 	 				$("#host").val(host)
+ 	 				$("#port").val(port)
+ 	 				$("#proxyuser").val(proxyuser)
+ 	 				$("#proxypwd").val(proxypwd)
+ 	 				$("#proxyhost").val(proxyhost)
+ 	 				$("#proxyport").val(proxyport)
+ 	 				
+ 	 				//$("#proxyport").val()
+ 	 				//$("#servergroup").selectmenu("value", group);
+ 	 				//$("#team").selectmenu("value", team);
+ 	 				
+ 	 				$("#servergroup").val(group).trigger("change");
+ 	 				
+ 	 				$("#team").val(team).trigger("change");
+ 	 				
+ 	 				
+ 				 })
+ 				 
+ 				 
+	  		
+	  		
+	});
+	 
+}
+
+	
+	
+	
+	
  
  function showadd(){
 	 
@@ -48,6 +146,7 @@
 	 $("#manageservercontainer").html("<img src='images/loadingajax.gif'/>")
 	  $( "#manageservercontainer" ).load( "manageservers.html", function() {
 		  $("form#frmaddserver input").val("")
+		  initmanageservers()
 	  		$("#operation").val("ADD")
 	  		
 	});
@@ -129,10 +228,11 @@
  	      var formdata=null
  	 
  		
- 		
+ 	     serverxml=""
  	$.post( "/services/getservers", formdata)
  	  .done(function( data ) {
  	    
+ 		 serverxml=""
  		
  		//parse xml
  		  $xml = $( data )
@@ -162,16 +262,20 @@
 // 	  					 tbl=tbl + " </table>"
  					
 
- 				 tbl=tbl + '<table id="tblservers" style="width:600px" class="display" cellspacing="0" >' 
+ 				 tbl=tbl + '<table id="tblservers" style="width:100%" class="display" cellspacing="0" >' 
  				 tbl=tbl + "    <thead>" 
  				 tbl=tbl + "      <tr>" 
  				 tbl=tbl + "        <th><span>S.No</span></th>"
- 				tbl=tbl + "        <th><span>Group</span></th>" 				
- 				 tbl=tbl + "        <th><span>Server</span></th>"
- 				tbl=tbl + "        <th><span>Tunnel</span></th>" 
- 				 tbl=tbl + "        <th><span> Status</span></th>"
- 				tbl=tbl + "        <th><span> Edit</span></th>"
- 				tbl=tbl + "        <th><span> Duplicate</span></th>"
+ 							
+ 				 tbl=tbl + "        <th><span>Name</span></th>"
+ 				 
+ 				tbl=tbl + "        <th><span>Group</span></th>"
+ 				tbl=tbl + "        <th><span>Team</span></th>"
+ 				
+ 				tbl=tbl + "        <th><span>Proxy</span></th>"
+ 				 tbl=tbl + "        <th><span>Status</span></th>"
+ 				tbl=tbl + "        <th><span>Edit</span></th>"
+ 				tbl=tbl + "        <th><span>Duplicate</span></th>"
  				 tbl=tbl + "        <th><span>Remove</span></th>" 
 
  				 tbl=tbl + "      </tr>" 
@@ -180,36 +284,66 @@
  			
  				var dataCount=0
 				
-				
+ 				
  				 
  			 $xml.find('server').each(function(index){
  				dataCount++
- 	            var user = $(this).find('user').text();
- 				var group = $(this).find('group').text();
+ 				
+ 				 var curdata=encodeURI($(this)[0].outerHTML);
+ 				console.log(curdata)
+ 				
+ 	            var name = $(this).find('name').text();
+ 				
  				var host =  $(this).find('host').text();
- 				var tunnel = $(this).find('tunnel').text();
+ 				var port =  $(this).find('port').text();
+ 				var user =  $(this).find('user').text();
+ 				var password =  $(this).find('password').text();
+ 				var proxyhost =  $(this).find('proxyhost').text();
+ 				var proxyport =  $(this).find('proxyport').text();
+ 				var proxyuser =  $(this).find('proxyuser').text();
+ 				var proxypwd =  $(this).find('proxypwd').text();
+ 				
+ 				var group = $(this).find('group').text();
+ 				
+ 				var team = $(this).find('team').text();
  				
  	      
  				
- 				 var serverlocked = $(this).find('serverLocked').text();
+ 				 var serverlocked = $(this).find('locked').text();
 		           
- 	  		    var privacyImg="<img src='images/valid.png' alt='valid' >"
- 	  		            if(undefined == serverlocked ||  serverlocked == "true")
- 	  		            	privacyImg="<img src='images/invalid.png' alt='invalid'>"   
+ 				 var serverstatusicon='<span class="ui-icon ui-icon-unlocked" style="margin-left:28px;width:14px"></span>'
+ 	  		  //  var btntype="btnunlocked"
+ 	  		            if(undefined == serverlocked ||  serverlocked != "0")
+ 	  		            	serverstatusicon='<span class="ui-icon ui-icon-locked" style="margin-left:28px;width:14px"></span>'
+ 	  		            	//btntype="btnlocked"
+ 	  		            	//serverstatusicon=""
  	  		            	
- 	  		            		
+ 	  		            	var tunnel="&nbsp;"
+ 	  		         
+ 	  		            	if(proxyhost != "")
+ 	  		            		tunnel=proxyuser + "@"+ proxyhost
+ 	  	
  	      	
- 	       
- 				  
+ 	      	
+			 	
+ 				    
+ 				    
  	     	 tbl=tbl + "      <tr>" 
  				 tbl=tbl + "        <td class='calign'>"+dataCount+"</td>" 
- 				 tbl=tbl + "        <td class='lalign'>"+group+"</td>"
- 				tbl=tbl + "        <td class='lalign'>"+ user + "@"+ host+"</td>"
+ 				 
+ 				tbl=tbl + "        <td class='lalign'>"+ name+"</td>"
+ 				tbl=tbl + "        <td class='lalign'>"+group+"</td>"
+ 				tbl=tbl + "        <td class='lalign'>"+team+"</td>"
+ 				
  				tbl=tbl + "        <td class='lalign'>"+tunnel+"</td>" 
- 				 tbl=tbl + "        <td class='calign'>"+privacyImg+"</td>"
- 				 tbl=tbl + "        <td class='calign'> <a href='#' onclick=\"editserver('" +user  +"','" +serverName  +"','" +group  +"');return false;\" ><img border='0' src='images/edit.png' title='Edit'></a></td>"
- 				 tbl=tbl + "        <td class='calign'> <a href='#' onclick=\"duplicateserver('" +user  +"','" +serverName  +"','" +group  +"');return false;\" ><img border='0' src='images/duplicate.png' title='Duplicate'></a></td>"
- 				 tbl=tbl + "        <td class='calign'> <a href='#' onclick=\"deleteserver('" +user  +"','" +serverName  +"','" +group  +"');return false;\" ><img border='0' src='images/delete.png' title='Delete'></a></td>"
+ 				 tbl=tbl + "        <td class='calign'>"+serverstatusicon+"</td>"
+ 				 tbl=tbl + "        <td class='calign'> <button type='button' class='btnedit' data-server='"+curdata +"' >&nbsp;</button></td>"
+ 				tbl=tbl + "        <td class='calign'> <button type='button' class='btnduplicate' data-server='"+curdata +"' >&nbsp;</button></td>"
+ 				tbl=tbl + "        <td class='calign'> <button type='button' class='btndelete' data-server='"+curdata +"' >&nbsp;</button></td>"
+ 				
+ 				    
+ 				// tbl=tbl + "        <td class='calign'> <a href='#' onclick=\"duplicateserver('" +curdata  +"');return false;\" ><img border='0' src='images/duplicate.png' title='Duplicate'></a></td>"
+ 				 //tbl=tbl + "        <td class='calign'> <a href='#' onclick=\"deleteserver('" +curdata  +"');return false;\" ><img border='0' src='images/delete.png' title='Delete'></a></td>"
  				
  				 tbl=tbl + "      </tr>" 
  				 
@@ -219,8 +353,68 @@
  				 tbl=tbl + "  </table></div>"
  				 
  				 if( dataCount >0){
+ 					 
  				 	$("#resultdetailcontainer").html(tbl)
  				 	$("#downloadcontainer").css("display","")
+ 				 	
+ 				 	//Set button properties and attach event handlers
+ 				 	
+ 				 	
+//  				 	    $( "button.btnlocked" ).button({
+// 			      icons: {
+// 			        primary: "ui-icon-locked"
+// 			      },
+// 			      text: false
+// 			    })
+			    
+			      $( "button.btnunlocked" ).button({
+ 				      icons: {
+ 				        primary: "ui-icon-unlocked"
+ 				      },
+ 				      text: false
+ 				    })
+ 				    
+ 				    
+ 				 	
+ 				$( "button.btnedit" ).button({
+ 				      icons: {
+ 				        primary: "ui-icon-pencil"
+ 				      },
+ 				      text: false
+ 				    })
+ 				    
+ 				    $( "button.btnduplicate" ).button({
+ 				      icons: {
+ 				        primary: "ui-icon-newwin"
+ 				      },
+ 				      text: false
+ 				    })
+ 				    
+ 				    $( "button.btndelete" ).button({
+ 				      icons: {
+ 				        primary: "ui-icon-close"
+ 				      },
+ 				      text: false
+ 				    })
+ 				    
+ 				    
+ 				       $("button.btnedit").click(function(evt) {
+					    	
+ 				    	   onhandleserveredit(evt)
+					    });
+ 				 	
+ 				 	 $("button.btnduplicate").click(function(evt) {
+					    	
+				    	   onhandleserverduplicate(evt)
+					    });
+				 	
+ 				 	 $("button.btndelete").click(function(evt) {
+					    	
+				    	   onhandleserverdelete(evt)
+					    });
+				 	
+ 				 	 
+ 				 	
  				 	preparecsv("tblservers")
  				 	
  				  if( dataCount >10){

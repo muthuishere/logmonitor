@@ -47,11 +47,8 @@
        <div title="Group">Environment</div>
       
         <select name="servergroup" id="servergroup" style="width:200px" >
-	   	<option value="DEV-INT">DEV-INT</option>
-	   	<option value="SIT">SIT</option>
-	   	<option value="BRT">BRT</option>
-	   	<option value="STAGING">STAGING</option>
-	   	<option value="LIVE">LIVE</option>
+	  
+	   	<option value="AR">AR</option>
 	   </select>
 	   
 	   </td>
@@ -68,7 +65,7 @@
 	  
 	   </tr>
 	   
-	 
+
 	    
 	    
 	   </table>
@@ -124,7 +121,7 @@
 	   
 	    <tr>
 	    <td class="ralign" colspan="2">
-			<p class="validateTips">All form fields are required.</p>    
+			<p class="validateTips">&nbsp;</p>    
 	    </td>
 	    </tr>
 	    <tr>
@@ -153,7 +150,7 @@
 	  	  
  var formdata=$("form#frmaddserver").serializeArray()
  		
- 		$('#frmserver')[0].reset();
+ 	//	$('#frmserver')[0].reset();
   	
   		
   	$.post( "/services/updateserver", formdata)
@@ -225,10 +222,11 @@
       }
     }
     
+  
   function validateform(){
 	  
 	 
-		
+		var valid=true;
 	  valid = valid && checkMinLength( $("#user"), "user", 3 );
   valid = valid && checkMinLength( $("#password"), "password", 3 );
   valid = valid && checkMinLength( $("#host"), "host", 7 );
@@ -236,7 +234,7 @@
   
   		if(!valid){
   			
-  			$( "#tabs" ).tabs( "option", "active", 1 );
+  			$( "#tabs" ).tabs( "option", "active", 0 );
   		}
   		if($("#proxyhost").val().length >1){
   			
@@ -248,7 +246,7 @@
   		
   		  	if(!valid){
   	  			
-  		  	$( "#tabs" ).tabs( "option", "active", 2 );	
+  		  	$( "#tabs" ).tabs( "option", "active", 1 );	
   	  		}
   		}
   
@@ -256,12 +254,7 @@
       
       
   }
-  function onAddServer(){
-	  
-	  console.log("Adding server")
-	  
-	  onupdate();
-  }
+ 
   $(function() {
 	  
 	 
@@ -272,30 +265,23 @@
 //   event.preventDefault();
 // });
 	  
+	  	
 	  
-	   
-	       $( "#servergroup" ).selectmenu({
- change: function( event, data ) {
-	  
-	  if(data.item.value == "custom"){
-		
-	  }
-   
- }
-});
 
-
-    $( "#team" ).selectmenu({
- change: function( event, data ) {
-	  
-	  if(data.item.value == "custom"){
-		
-	  }
-   
- }
-});
+//});
     
 
+    
+    $("form#frmaddserver input").change(function() {
+    	$(this).removeClass("ui-state-error")
+    	$( ".validateTips" ).text("")
+    });
+    
+    $("form#frmaddserver input").click(function() {
+    	$(this).removeClass("ui-state-error")
+    	$( ".validateTips" ).text("")
+    });
+    
     $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
     $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
     
@@ -310,9 +296,9 @@
     //ui-icon-plusthick
     
     $( ".btnsubmitserver" ).click(function( event ) {
-    	onAddServer();
+    	 onupdate();
    	 
-   	 //addserver();
+   	
     })
     
     

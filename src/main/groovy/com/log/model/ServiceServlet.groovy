@@ -63,6 +63,11 @@ switch ( actionname ) {
 
 	break;
 	
+	case "getappConfig":
+	result = responder.getappConfig(request)
+
+		break;
+		
 	
 //
 //		

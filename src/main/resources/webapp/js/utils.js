@@ -6,6 +6,28 @@ function updateConfig(callback){
 	
 	
 }
+
+function generateCsvMenu(lstboxID,csvval){
+	
+	
+	
+	$('#' +lstboxID).empty()
+    	
+	var teamArray=csvval.split(",")
+	
+	var resp=''
+	 
+	for(i=0;i<teamArray.length;i++){
+		
+		resp = resp + '<option value="'+teamArray[i]+'">'+teamArray[i]+'</option>'
+		
+	}
+	
+	$('#' +lstboxID).append(resp);
+	
+}
+
+
 function generateServerMenu(divID,name,defaulttxt){
 	
 	/*
@@ -89,7 +111,7 @@ for(var i=0;i<$rows.length;i++){
                     }
                     var txt = ($($cells[y]).text()).toString().trim();
 					if(txt =="")
-						console.log($($cells[y]).html())
+					//	console.log($($cells[y]).html())
                    // if(txt.indexOf(',')>=0 || txt.indexOf('\"')>=0 || txt.indexOf('\n')>=0){
                         txt = "\"" + txt.replace(/\"/g, "\"\"") + "\"";
                    // }

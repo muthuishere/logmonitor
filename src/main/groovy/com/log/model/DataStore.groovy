@@ -47,7 +47,7 @@ class DataStore {
 		println(fetchfileName)
 		fetcherDB = Sql.newInstance("jdbc:sqlite:"+fetchfileName, "org.sqlite.JDBC")
 		fetcherDB.execute("create table if not exists log (name string, filename string,host string,team string)")
-		fetcherDB.execute("create table if not exists server (name string,servergroup string,team string,host string, port integer,user string,password string,proxyhost string, proxyport integer,proxyuser string,proxypwd string)")
+		fetcherDB.execute("create table if not exists server (name string,servergroup string,team string,host string, port integer,user string,password string,proxyhost string, proxyport integer,proxyuser string,proxypwd string,locked string)")
 	
 		updateServerCache();
 
@@ -74,14 +74,15 @@ class DataStore {
 					host: it.host,
 					port: it.port,
 					user: it.user,
-					password: it.password,
+					password:  AppCrypt.decrypt(it.password),
 					proxyhost: it.proxyhost,
 					proxyport: it.proxyport,
 					proxyuser: it.proxyuser,
-					proxypwd: it.proxypwd,
+					proxypwd:  AppCrypt.decrypt(it.proxypwd),
 					name: it.name,
 					servergroup: it.servergroup,
-					team:it.team
+					team:it.team,
+					locked:it.locked
 
 					));
 		}
@@ -110,14 +111,15 @@ class DataStore {
 						host: it.host,
 						port: it.port,
 						user: it.user,
-						password: it.password,
+						password: AppCrypt.decrypt(it.password),
 						proxyhost: it.proxyhost,
 						proxyport: it.proxyport,
 						proxyuser: it.proxyuser,
-						proxypwd: it.proxypwd,
+						proxypwd:  AppCrypt.decrypt(it.proxypwd),
 						name: it.name,
 						servergroup: it.servergroup,
-						team:it.team
+						team:it.team,
+					locked:it.locked
 
 						)
 						);
@@ -200,14 +202,15 @@ class DataStore {
 								host: it.host,
 								port: it.port,
 								user: it.user,
-								password: it.password,
+								password: AppCrypt.decrypt(it.password),
 								proxyhost: it.proxyhost,
 								proxyport: it.proxyport,
 								proxyuser: it.proxyuser,
-								proxypwd: it.proxypwd,
+								proxypwd: AppCrypt.decrypt(it.proxypwd),
 								name: it.name,
 								servergroup: it.servergroup,
-								team:it.team
+								team:it.team,
+					locked:it.locked
 		
 								)
 								);
@@ -254,14 +257,15 @@ class DataStore {
 				host: serverInfo.host,
 				port: serverInfo.port,
 				user: serverInfo.user,
-				password: serverInfo.password,
+				password:  AppCrypt.encrypt(serverInfo.password),
 				proxyhost: serverInfo.proxyhost,
 				proxyport: serverInfo.proxyport,
 				proxyuser: serverInfo.proxyuser,
-				proxypwd: serverInfo.proxypwd,
+				proxypwd: AppCrypt.encrypt(serverInfo.proxypwd),
 				name: serverInfo.name,
-				group: serverInfo.servergroup,
-				team: serverInfo.team,
+				servergroup: serverInfo.servergroup,
+				team: serverInfo.team,				
+				locked:false
 
 				)
 

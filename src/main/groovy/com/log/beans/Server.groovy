@@ -16,6 +16,7 @@ class Server {
 	def name
 	def servergroup=""
 	def team=""
+	def locked=false
 	
 	@Override
 	public boolean equals(Object o) {

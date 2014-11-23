@@ -57,14 +57,25 @@ class Responder {
 
 
 				
+				def formattedpwd=Configurator.globalconfig.transmitpasswords?val.password:""
+				def formattedproxypwd=Configurator.globalconfig.transmitpasswords?val.proxypwd:""
 				
 					response.append("<server>")
 					//valid=true
 					response.append("\n<name>${val.name}</name>")
 					response.append("\n<host>${val.host}</host>")
+					response.append("\n<port>${val.port}</port>")
+					response.append("\n<user>${val.user}</user>")
+					response.append("\n<password>${formattedpwd}</password>")
+					response.append("\n<proxyhost>${val.proxyhost}</proxyhost>")
+					response.append("\n<proxyport>${val.proxyport}</proxyport>")
+					response.append("\n<proxyuser>${val.proxyuser}</proxyuser>")
+					response.append("\n<proxypwd>${formattedproxypwd}</proxypwd>")
+					
 					response.append("\n<user>${val.user}</user>")
 					response.append("\n<group>${val.servergroup}</group>")
-					response.append("\n<tunnel>${val.proxyhost}</tunnel>")
+					response.append("\n<team>${val.team}</team>")
+					response.append("\n<locked>${val.locked}</locked>")
 					
 					response.append("\n</server>")
 			
@@ -1112,6 +1123,28 @@ class Responder {
 		return admins
 
 	}
+	
+	
+	public String getEnvironments(){
+		String environments=""
+		int i=0
+		for(def bfr:Configurator.globalconfig.environments){
+
+
+
+			if(i > 0)
+				environments=environments +","
+
+
+
+			environments=environments +"$bfr"
+
+			i++
+		}
+		return environments
+
+	}
+	
 	def getIP(HttpServletRequest request){
 
 		if(request.getRemoteAddr()){
@@ -1134,11 +1167,12 @@ class Responder {
 		
 				response.append("<reply>")
 				def teams=getTeams();
+				def envs=getEnvironments();
 				
-				if( getAdmins().contains(ip))
-					response.append("<status code='0' admin='true' description='Admin User' teams='$teams' />")
-				else
-					response.append("<status code='0' admin='false' description='Regular User' teams='$teams' />")
+			//	if( getAdmins().contains(ip))
+				//	response.append("<status code='0' admin='true' description='Admin User' teams='$teams' />")
+				//else
+					response.append("<status code='0' description='Regular User'  environments='$envs'  teams='$teams' />")
 		
 				response.append("</reply>")
 		
@@ -1201,7 +1235,7 @@ class Responder {
 				if(params.operation == "UPDATE")
 					overwrite=true
 				
-				if(null == params.user || null == params.pwd ){
+				if(null == params.user || null == params.host  || null == params.password){
 		
 					response.append("<status code='1' error='true' description='Invalid user inputs'/>")
 		

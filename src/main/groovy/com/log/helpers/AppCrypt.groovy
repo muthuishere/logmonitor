@@ -10,7 +10,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class AppCrypt {
 
-	static final String seed="GODBLESSINDIA21111981"
+	static final String seed="VELAYILLAPATTATHAARI21111981"
 	public static String encrypt( String cleartext) throws Exception {
 		byte[] rawKey = getRawKey(seed.getBytes());
 		byte[] result = encrypt(rawKey, cleartext.getBytes());
@@ -76,7 +76,7 @@ public static String toHex(byte[] buf) {
 		return result.toString();
 }
  final static String HEX = "0123456789ABCDEF";
-//final static String HEX = "GODBLESSINDIA21111981";
+//final static String HEX = "VELAYILLAPATTATHAARI21111981";
 private static void appendHex(StringBuffer sb, byte b) {
 		sb.append(HEX.charAt((b>>4)&0x0f)).append(HEX.charAt(b&0x0f));
 }
