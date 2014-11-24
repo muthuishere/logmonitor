@@ -36,7 +36,7 @@
 	   
 	    <td>
 	       <div title="password">Password</div>
-      <input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
+      <input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all">
      
 	   </td>
 	  
@@ -138,6 +138,92 @@
   <script>
   
   
+  function initmanageservers(){
+		 
+	  generateCsvMenu("team",$("#teams").val())
+	 	 
+	 	 generateCsvMenu("servergroup",$("#environments").val())
+	 	 
+	 	 	   
+	 	       $( "#servergroup" ).selectmenu({
+	 //  change: function( event, data ) {
+//	  	 // if(data.item.value == "custom"){
+//	  		 }
+	 		});
+
+
+	     $( "#team" ).selectmenu({
+	 // change: function( event, data ) {
+
+	  });
+	     
+	 	 
+	  }
+	     
+	     
+	 function setmanageserverdata(curdata,dataoperation){
+		 
+
+		  $("form#frmaddserver input").val("")
+		  
+		  
+		  $xml = $(curdata)
+		 // console.log($xml)
+				 $xml.each(function(index){
+					 //Parse here
+					 
+					var host =  $(this).find('host').text();
+	 				var port =  $(this).find('port').text();
+	 				var user =  $(this).find('user').text();
+	 				var password =  $(this).find('password').text();
+	 				var proxyhost =  $(this).find('proxyhost').text();
+	 				var proxyport =  $(this).find('proxyport').text();
+	 				var proxyuser =  $(this).find('proxyuser').text();
+	 				var proxypwd =  $(this).find('proxypwd').text();
+	 				
+	 				var group = $(this).find('group').text();
+	 				
+	 				var team = $(this).find('team').text();
+	 				
+	 				//console.log($(this))
+	 				$("#user").val(user)
+	 				$("#password").val(password)
+	 				$("#host").val(host)
+	 				$("#port").val(port)
+	 				$("#proxyuser").val(proxyuser)
+	 				$("#proxypwd").val(proxypwd)
+	 				$("#proxyhost").val(proxyhost)
+	 				$("#proxyport").val(proxyport)
+	 				
+	 				//$("#proxyport").val()
+	 				//$("#servergroup").selectmenu("value", group);
+	 				//$("#team").selectmenu("value", team);
+	 				
+	 				
+	 			//	$("#servergroup").val(group).trigger("change");
+	 				
+	 				$( "#servergroup" )
+	 				 	.val(group)
+	 				 	.selectmenu("refresh")
+	 				 	.trigger("change")
+	 				 	
+	 				 	
+	 				//$("#team").val(team).trigger("change");
+	 				
+	 				 $( "#team" )
+	 				 	.val(team)
+	 				 	.selectmenu("refresh")
+	 				 	.trigger("change")
+	 				
+	 				
+				 })
+				 
+				$("#operation").val(dataoperation)
+	  		
+				
+		 
+	 }    
+	 
   function onupdate(){
 	  
 	  if(!validateform()){
@@ -314,7 +400,7 @@
     
     $( ".btnbackserverlist" ).click(function( event ) {
     	 
-    	  showAddServercontainer(false)
+    	  showmanageservercontainer(false)
     	  showserverreport()
    	 //addserver();
     })

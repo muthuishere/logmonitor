@@ -38,154 +38,55 @@
 	  
 	  		//Add server container here
 	  </div>
+	  
+	<form name="deleteserver" id="deleteserver">
+  <input type="hidden" name="host" id="host"  />
+  <input type="hidden" name="user" id="user"  />
+  <input type="hidden" name="servergroup" id="servergroup"  />
+  <input type="hidden" name="team" id="team"  />
+  </form>
+  
  <script>
  
- function onhandleserverdelete(evt){
-	 
-	 
-	 console.log(evt)
- }
- 
-function onhandleserverduplicate(evt){
-	 
-	 
-	 console.log(evt)
- }
- 
- function initmanageservers(){
-	 
- generateCsvMenu("team",$("#teams").val())
-	 
-	 generateCsvMenu("servergroup",$("#environments").val())
-	 
-	 	   
-	       $( "#servergroup" ).selectmenu({
-//  change: function( event, data ) {
-// 	 // if(data.item.value == "custom"){
-// 		 }
-		});
-
-
-    $( "#team" ).selectmenu({
-// change: function( event, data ) {
-
- });
-    
-	 
- }
-function onhandleserveredit(evt){
+ function onhandleserverdelete(curdata){
 	 
 
-	 var curdata=decodeURI($(evt.target).parent().attr("data-server"));
-	
-	 
- showAddServercontainer(true);
-	 
-	 $("#manageservercontainer").html("<img src='images/loadingajax.gif'/>")
-	  $( "#manageservercontainer" ).load( "manageservers.html", function() {
-		  
-		  initmanageservers()
-		  //console.log(curdata)
-		  $("#operation").val("UPDATE")
-		  $("form#frmaddserver input").val("")
-		  
-		  $xml = $(curdata)
- 				 $xml.each(function(index){
- 					 //Parse here
- 					 
- 					var host =  $(this).find('host').text();
- 	 				var port =  $(this).find('port').text();
- 	 				var user =  $(this).find('user').text();
- 	 				var password =  $(this).find('password').text();
- 	 				var proxyhost =  $(this).find('proxyhost').text();
- 	 				var proxyport =  $(this).find('proxyport').text();
- 	 				var proxyuser =  $(this).find('proxyuser').text();
- 	 				var proxypwd =  $(this).find('proxypwd').text();
- 	 				
- 	 				var group = $(this).find('group').text();
- 	 				
- 	 				var team = $(this).find('team').text();
- 	 				
- 	 				console.log($(this))
- 	 				$("#user").val(user)
- 	 				$("#password").val(password)
- 	 				$("#host").val(host)
- 	 				$("#port").val(port)
- 	 				$("#proxyuser").val(proxyuser)
- 	 				$("#proxypwd").val(proxypwd)
- 	 				$("#proxyhost").val(proxyhost)
- 	 				$("#proxyport").val(proxyport)
- 	 				
- 	 				//$("#proxyport").val()
- 	 				//$("#servergroup").selectmenu("value", group);
- 	 				//$("#team").selectmenu("value", team);
- 	 				
- 	 				$("#servergroup").val(group).trigger("change");
- 	 				
- 	 				$("#team").val(team).trigger("change");
- 	 				
- 	 				
- 				 })
- 				 
- 				 
-	  		
-	  		
-	});
-	 
-}
-
-	
-	
-	
-	
- 
- function showadd(){
-	 
-	 showAddServercontainer(true);
-	 
-	 $("#manageservercontainer").html("<img src='images/loadingajax.gif'/>")
-	  $( "#manageservercontainer" ).load( "manageservers.html", function() {
-		  $("form#frmaddserver input").val("")
-		  initmanageservers()
-	  		$("#operation").val("ADD")
-	  		
-	});
+	  $("form#deleteserver input").val("")
 	  
- }
- function showAddServercontainer(canshow){
+	  
+	  $xml = $(curdata)
+	 // console.log($xml)
+			 $xml.each(function(index){
+				 //Parse here
+				 
+				var host =  $(this).find('host').text();
+ 				var port =  $(this).find('port').text();
+ 				var user =  $(this).find('user').text();
+ 				var password =  $(this).find('password').text();
+ 				var proxyhost =  $(this).find('proxyhost').text();
+ 				var proxyport =  $(this).find('proxyport').text();
+ 				var proxyuser =  $(this).find('proxyuser').text();
+ 				var proxypwd =  $(this).find('proxypwd').text();
+ 				
+ 				var group = $(this).find('group').text();
+ 				
+ 				var team = $(this).find('team').text();
+ 				
+ 				//console.log($(this))
+ 				$("#user").val(user)
+ 				
+ 				$("#host").val(host)
+ 				
+ 				
+ 				$( "#servergroup" ).val(group)
+ 				 $( "#team" ).val(team)
+
+ 				
+ 				
+			 })
+			 
+			 
 	 
-	 if(canshow){
-		 
-		 $("#serverlist").hide()
-		 $("#manageservercontainer").show()
-	 }else{
-		 
-		 $("#serverlist").show()
-		 $("#manageservercontainer").hide()
-		 
-	 }
-	 
- }
- $( "#btnadd" ).button( {
-     icons: {
-       primary: "ui-icon-plusthick"
-     }
-   });
- 
- //$( "#btnadd" ).button({ icons: { primary: "ui-icon-gear", secondary: "ui-icon-triangle-1-s" } });
-
- //ui-icon-plusthick
- 
- $( "#btnadd" ).click(function( event ) {
-	 showadd();
-	 
-	 //addserver();
- })
-
-
-
- function deleteserver(curserver){
-
   	$("#resultstatuscontainer").show()
   	  $("#resultstatuscontainer").html("<img src='images/loadingajax.gif'/>")
   	  
@@ -217,7 +118,69 @@ function onhandleserveredit(evt){
  	 		  }
  		
  	});
+  	
  }
+ 
+
+
+	
+	
+	
+function showmanageserverpage(curdata,operation){
+	
+	
+	 //var curdata=decodeURI($(evt.target).parent().attr("data-server"));
+		
+	 
+	 showmanageservercontainer(true);
+		 
+		 $("#manageservercontainer").html("<img src='images/loadingajax.gif'/>")
+		  $( "#manageservercontainer" ).load( "manageservers.html", function() {
+			  
+			  initmanageservers()
+			  //console.log(curdata)
+			 setmanageserverdata(curdata,operation)
+		  		
+		});
+		 
+		 
+}	
+ 
+ 
+ function showmanageservercontainer(canshow){
+	 
+	 if(canshow){
+		 
+		 $("#serverlist").hide()
+		 $("#manageservercontainer").show()
+	 }else{
+		 
+		 $("#serverlist").show()
+		 $("#manageservercontainer").hide()
+		 $("#manageservercontainer").html("")
+		 
+	 }
+	 
+ }
+ $( "#btnadd" ).button( {
+     icons: {
+       primary: "ui-icon-plusthick"
+     }
+   });
+ 
+ //$( "#btnadd" ).button({ icons: { primary: "ui-icon-gear", secondary: "ui-icon-triangle-1-s" } });
+
+ //ui-icon-plusthick
+ 
+ $( "#btnadd" ).click(function( event ) {
+	 
+	 
+	 showmanageserverpage("","ADD")
+ })
+
+
+
+
  
  function showserverreport( ){
  	
@@ -400,17 +363,19 @@ function onhandleserveredit(evt){
  				    
  				       $("button.btnedit").click(function(evt) {
 					    	
- 				    	   onhandleserveredit(evt)
+ 				    	  showmanageserverpage(decodeURI($(evt.target).parent().attr("data-server")),"UPDATE")
+ 				    	   
 					    });
  				 	
  				 	 $("button.btnduplicate").click(function(evt) {
 					    	
-				    	   onhandleserverduplicate(evt)
+ 				 			showmanageserverpage(decodeURI($(evt.target).parent().attr("data-server")),"ADD")
+				    	   
 					    });
 				 	
  				 	 $("button.btndelete").click(function(evt) {
 					    	
-				    	   onhandleserverdelete(evt)
+				    	   onhandleserverdelete(decodeURI($(evt.target).parent().attr("data-server")))
 					    });
 				 	
  				 	 
@@ -456,7 +421,7 @@ function onhandleserveredit(evt){
  }
   $(function() {
  
-	  showAddServercontainer(false)
+	  showmanageservercontainer(false)
 	  showserverreport()
 
   });
