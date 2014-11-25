@@ -120,12 +120,15 @@ class DataStore {
 	public ArrayList<Server> getServerEntries(String host,String team){
 
 
+		String query=" where 1=1"
+		
+		query += (host?" and host"
 		ArrayList<Server> userEntries=new ArrayList<Server>()
 
 
 		fetcherDB.rows("select * from server order by servergroup " ).each{
 
-			boolean canadd=true
+			
 
 			
 				userEntries.add(
