@@ -13,123 +13,143 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 class ServiceServlet extends HttpServlet {
- 
-    private static final long serialVersionUID = 1L;
- 
+
+	private static final long serialVersionUID = 1L;
+
 	Responder responder=null
-	
-   public ServiceServlet(){
-	    responder=new Responder()
-		
-	   }
+
+	public ServiceServlet(){
+		responder=new Responder()
+	}
 	protected void doGet(HttpServletRequest request,
-		HttpServletResponse response)
-throws ServletException, IOException
-{
-// Set response content type
-response.setContentType("text/xml");
+			HttpServletResponse response)
+	throws ServletException, IOException {
+		// Set response content type
+		response.setContentType("text/xml");
 
-String path=request.getPathInfo()
-String[] servicedata=path.split("/")
+		String path=request.getPathInfo()
+		String[] servicedata=path.split("/")
 
-//println servicedata.length
+		//println servicedata.length
 
-for ( e in servicedata ) {
-	println e
-}
-
-
-String actionname=servicedata.getAt(1)
-
-String reportname=""
+		for ( e in servicedata ) {
+			println e
+		}
 
 
-def result = ""
+		String actionname=servicedata.getAt(1)
 
-	
-println("Action : $actionname")
-switch ( actionname ) {
-	
-		
-	case "getservers":
-	result = responder.getservers(request)
+		String reportname=""
 
-	break;
-	
-	
-	
-	case "updateserver":
-	result = responder.updateserver(request)
 
-	break;
-	
-	case "getappConfig":
-	result = responder.getappConfig(request)
+		def result = ""
 
-		break;
-		
-	
-//
-//		
-//		case "logpoll":
-//		result = responder.logpoll(request)
-//		
-//		break;
-//		
-//	
-//		
-//		case "getsysteminfo":
-//		result = responder.getsysteminfo(request)
-//		
-//		break;
-//		
-//		
-//		
-//		case "addsysteminfo":
-//		result = responder.addsysteminfo(request)
-//		
-//		break;
-//		
-//		case "startmonitor":
-//		result = responder.startmonitor(request)
-//		
-//		break;
-		
-		case "downloadexcel":
-		response.setHeader("Content-Disposition",
-			"attachment; filename="+request.getParameter("repname")+".csv");
-		
-		result = request.getParameter("csv")
-		
-		break;		
-		
-		
-		
 
-	default:
-		result = "<reply><status code='1' error='true' description='Invalid Service specified'/></reply>"
-}
+		println("Action : $actionname")
+		switch ( actionname ) {
+
+
+			case "getservers":
+				result = responder.getservers(request)
+
+				break;
 
 
 
-if(result.equals("")){
-	result = "<reply><status code='1' error='true' description='Authentication Overruled'/></reply>"
-	
-}
-// Actual logic goes here.
-PrintWriter out = response.getWriter();
-out.println(result);
-}
+			case "updateserver":
+				result = responder.updateserver(request)
+
+				break;
+
+
+			case "getappConfig":
+				result = responder.getappConfig(request)
+
+				break;
+
+			case "deleteserver":
+				result = responder.deleteserver(request)
+
+				break;
+			
+			case "getfiles":
+				result = responder.getlogfiles(request)
+
+				break;
 
 
 
-    /***************************************************
-     * URL: /jsonservlet
-     * doPost(): receives JSON data, parse it, map it and send back as JSON
-     ****************************************************/
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException{
- 
-       doGet( request, response);
-    }
+			case "updatefile":
+				result = responder.updatelogfile(request)
+
+				break;
+				
+			case "deletelogfile":
+				result = responder.deletelogfile(request)
+
+				break;
+
+			//
+			//
+			//		case "logpoll":
+			//		result = responder.logpoll(request)
+			//
+			//		break;
+			//
+			//
+			//
+			//		case "getsysteminfo":
+			//		result = responder.getsysteminfo(request)
+			//
+			//		break;
+			//
+			//
+			//
+			//		case "addsysteminfo":
+			//		result = responder.addsysteminfo(request)
+			//
+			//		break;
+			//
+			//		case "startmonitor":
+			//		result = responder.startmonitor(request)
+			//
+			//		break;
+
+			case "downloadexcel":
+				response.setHeader("Content-Disposition",
+				"attachment; filename="+request.getParameter("repname")+".csv");
+
+				result = request.getParameter("csv")
+
+				break;
+
+
+
+
+			default:
+				result = "<reply><status code='1' error='true' description='Invalid Service specified'/></reply>"
+		}
+
+
+
+		if(result.equals("")){
+			result = "<reply><status code='1' error='true' description='Authentication Overruled'/></reply>"
+
+		}
+		// Actual logic goes here.
+		PrintWriter out = response.getWriter();
+		out.println(result);
+	}
+
+
+
+	/***************************************************
+	 * URL: /jsonservlet
+	 * doPost(): receives JSON data, parse it, map it and send back as JSON
+	 ****************************************************/
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	throws ServletException, IOException{
+
+		doGet( request, response);
+	}
 }

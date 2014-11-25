@@ -1,10 +1,22 @@
-        <div class="top_slogan">
-	User Entries	
+          <div class="top_slogan">
+	Files
   </div>
-       <div id ="overlay" class="main_content"  style="">
+       <div id ="filelist" class="main_content"  style="">
 	   
-	     <div  >
 	  
+	  					  <table  border="0" cellspacing="0" style="width:100%;padding:20px">
+	  					      <tr>
+	  					        <th class='lalign'> 
+	  					       
+	  					        
+	  					        <button id="btnadd">Add New File</button>
+	  					        
+	  					        </td>
+	  					
+	 					        <th align='right'><span id="downloadcontainer" style="display:none"><a href='#' onclick="downloadcsv('tblfiles');return false;" ><img border='0' src='images/excel.png' title='Download as excel'></a></span></th>
+	 					      </tr>
+	  					 </table>
+ 					
 			<div id="resultdetailcontainer"/>
 			
 			<div style="clear:both"></div>
@@ -12,29 +24,80 @@
 	  <div id="resultstatuscontainer"/>
 	  <div style="clear:both"></div>
 	  
-	  </div>
+	
 
-
-<form id="frmuser">
-	<input type="hidden" id="user" name="user"/>
+<form id="frmfile">
+	<input type="hidden" id="file" name="file"/>
 </form>
 	  </div>
+	  
+	  
+	
+
+	  <div id ="managefilecontainer" class="main_content"  style="">
+	  
+	  		//Add file container here
+	  </div>
+	  
+	<form name="deletefile" id="deletefile">
+  <input type="hidden" name="host" id="host"  />
+  <input type="hidden" name="user" id="user"  />
+  <input type="hidden" name="filegroup" id="filegroup"  />
+  <input type="hidden" name="team" id="team"  />
+  </form>
+  
  <script>
  
+ function onhandlefiledelete(curdata){
+	 
 
- function deleteuser(curuser){
+	  $("form#deletefile input").val("")
+	  
+	  
+	  $xml = $(curdata)
+	 // console.log($xml)
+			 $xml.each(function(index){
+				 //Parse here
+				 
+				var host =  $(this).find('host').text();
+ 				var port =  $(this).find('port').text();
+ 				var user =  $(this).find('user').text();
+ 				var password =  $(this).find('password').text();
+ 				var proxyhost =  $(this).find('proxyhost').text();
+ 				var proxyport =  $(this).find('proxyport').text();
+ 				var proxyuser =  $(this).find('proxyuser').text();
+ 				var proxypwd =  $(this).find('proxypwd').text();
+ 				
+ 				var group = $(this).find('group').text();
+ 				
+ 				var team = $(this).find('team').text();
+ 				
+ 				//console.log($(this))
+ 				$("#user").val(user)
+ 				
+ 				$("#host").val(host)
+ 				
+ 				
+ 				$( "#filegroup" ).val(group)
+ 				 $( "#team" ).val(team)
 
+ 				
+ 				
+			 })
+			 
+			 
+	 
   	$("#resultstatuscontainer").show()
   	  $("#resultstatuscontainer").html("<img src='images/loadingajax.gif'/>")
   	  
   	  
-  	      $("input#user").val(curuser)
- var formdata=$("form#frmuser").serializeArray()
+  	    
+ var formdata=$("form#deletefile").serializeArray()
  		
- 		$('#frmuser')[0].reset();
+ 	
   	
   		
-  	$.post( "/services/deleteuser", formdata)
+  	$.post( "/services/deletefile", formdata)
  	 	  .done(function( data ) {
  	 	    
  	 		
@@ -50,14 +113,76 @@
  	 			  
  	 		  } else{
  	 			 showsuccess("resultstatuscontainer",$status.attr("description"))
- 	 			showuserreport();
+ 	 			showfilereport();
  	 		  
  	 		  }
  		
  	});
+  	
  }
  
- function showuserreport( ){
+
+
+	
+	
+	
+function showmanagefilepage(curdata,operation){
+	
+	
+	 //var curdata=decodeURI($(evt.target).parent().attr("data-file"));
+		
+	 
+	 showmanagefilecontainer(true);
+		 
+		 $("#managefilecontainer").html("<img src='images/loadingajax.gif'/>")
+		  $( "#managefilecontainer" ).load( "managefiles.html", function() {
+			  
+			  initmanagefiles()
+			  //console.log(curdata)
+			 setmanagefiledata(curdata,operation)
+		  		
+		});
+		 
+		 
+}	
+ 
+ 
+ function showmanagefilecontainer(canshow){
+	 
+	 if(canshow){
+		 
+		 $("#filelist").hide()
+		 $("#managefilecontainer").show()
+	 }else{
+		 
+		 $("#filelist").show()
+		 $("#managefilecontainer").hide()
+		 $("#managefilecontainer").html("")
+		 
+	 }
+	 
+ }
+ $( "#btnadd" ).button( {
+     icons: {
+       primary: "ui-icon-plusthick"
+     }
+   });
+ 
+ //$( "#btnadd" ).button({ icons: { primary: "ui-icon-gear", secondary: "ui-icon-triangle-1-s" } });
+
+ //ui-icon-plusthick
+ 
+ $( "#btnadd" ).click(function( event ) {
+	 
+	 
+	 showmanagefilepage("","ADD")
+ })
+
+
+
+
+ 
+ function showfilereport( ){
  	
  	$("#resultdetailcontainer").show()
  	  $("#resultdetailcontainer").html("<img src='images/loadingajax.gif'/>")
@@ -66,10 +191,11 @@
  	      var formdata=null
  	 
  		
- 		
- 	$.post( "/services/getallusers", formdata)
+ 	     filexml=""
+ 	$.post( "/services/getfiles", formdata)
  	  .done(function( data ) {
  	    
+ 		 filexml=""
  		
  		//parse xml
  		  $xml = $( data )
@@ -83,24 +209,35 @@
  			  
  		  } else{
  			  
+ 			 $("#resultdetailcontainer").html("&nbsp;")
  			  var tbl=""
  				
  					
- 					var csvtblname="tblusers"
-	  					 tbl=tbl + ' <div style="float:left">  <table  border="0" cellspacing="0" style="width:600px">'
-	  					 tbl=tbl + "      <tr>" 
-	 					 tbl=tbl + "        <th align='right'><span><a href='#' onclick=\"downloadcsv('" +csvtblname  +"');return false;\" ><img border='0' src='images/excel.png' title='Download as excel'></a></span></th>" 
-	 					 tbl=tbl + "      </tr>" 
-	  					 tbl=tbl + " </table>"
+ 					var csvtblname="tblfiles"
+ 					
+ 					
+// 	  					 tbl=tbl + ' <div style="float:left">  <table  border="0" cellspacing="0" style="width:600px">'
+// 	  					 tbl=tbl + "      <tr>" 
+// 	  					 tbl=tbl + "        <th class='calign'> <a href='#' onclick=\"addfile();return false;\" ><img border='0' src='images/add.png' title='Add'></a></td>"
+	  					 
+// 	 					 tbl=tbl + "        <th align='right'><span><a href='#' onclick=\"downloadcsv('" +csvtblname  +"');return false;\" ><img border='0' src='images/excel.png' title='Download as excel'></a></span></th>" 
+// 	 					 tbl=tbl + "      </tr>" 
+// 	  					 tbl=tbl + " </table>"
  					
 
- 				 tbl=tbl + '<table id="tblusers" style="width:600px" class="display" cellspacing="0" >' 
+ 				 tbl=tbl + '<table id="tblfiles" style="width:100%" class="display" cellspacing="0" >' 
  				 tbl=tbl + "    <thead>" 
  				 tbl=tbl + "      <tr>" 
  				 tbl=tbl + "        <th><span>S.No</span></th>"
- 				 tbl=tbl + "        <th><span>User</span></th>"
+ 							
+ 				 tbl=tbl + "        <th><span>Name</span></th>"
+ 				tbl=tbl + "        <th><span>Path</span></th>" 	
+ 				tbl=tbl + "        <th><span>Servers</span></th>"
  				tbl=tbl + "        <th><span>Team</span></th>" 
- 				 tbl=tbl + "        <th><span>Credential Status</span></th>"
+ 				
+ 				 tbl=tbl + "        <th><span>Status</span></th>"
+ 				tbl=tbl + "        <th><span>Edit</span></th>"
+ 				tbl=tbl + "        <th><span>Duplicate</span></th>"
  				 tbl=tbl + "        <th><span>Remove</span></th>" 
 
  				 tbl=tbl + "      </tr>" 
@@ -109,30 +246,37 @@
  			
  				var dataCount=0
 				
-				
- 				 
- 			 $xml.find('entry').each(function(index){
- 				dataCount++
- 	            var userName = $(this).find('name').text();
- 				var team = $(this).find('team').text();
- 	      
  				
- 				 var userlocked = $(this).find('userLocked').text();
-		           
- 	  		    var privacyImg="<img src='images/valid.png' alt='valid' >"
- 	  		            if(undefined == userlocked ||  userlocked == "true")
- 	  		            	privacyImg="<img src='images/invalid.png' alt='invalid'>"   
- 	  		            	
- 	  		            		
- 	      	
- 	       
- 				  
+ 				 
+ 			 $xml.find('file').each(function(index){
+ 				dataCount++
+ 				
+ 				 var curdata=encodeURI($(this)[0].outerHTML);
+ 				console.log(curdata)
+ 				
+ 	            var name = $(this).find('name').text();
+ 				
+ 				var host =  $(this).find('path').text();
+ 				var servers =  $(this).find('servers').text();	
+ 				var team = $(this).find('team').text();
+ 				
+ 				    
+ 				    
  	     	 tbl=tbl + "      <tr>" 
  				 tbl=tbl + "        <td class='calign'>"+dataCount+"</td>" 
- 				 tbl=tbl + "        <td class='lalign'>"+userName+"</td>"
- 				tbl=tbl + "        <td class='lalign'>"+team+"</td>" 
- 				 tbl=tbl + "        <td class='calign'>"+privacyImg+"</td>"
- 				 tbl=tbl + "        <td class='calign'> <a href='#' onclick=\"deleteuser('" +userName  +"');return false;\" ><img border='0' src='images/delete.png' title='Delete'></a></td>"
+ 				 
+ 				tbl=tbl + "        <td class='lalign'>"+ name+"</td>"
+ 				tbl=tbl + "        <td class='lalign'>"+path+"</td>"
+ 				tbl=tbl + "        <td class='lalign'>"+servers+"</td>"
+ 				tbl=tbl + "        <td class='lalign'>"+team+"</td>"
+ 				
+ 				 tbl=tbl + "        <td class='calign'> <button type='button' class='btnedit' data-file='"+curdata +"' >&nbsp;</button></td>"
+ 				tbl=tbl + "        <td class='calign'> <button type='button' class='btnduplicate' data-file='"+curdata +"' >&nbsp;</button></td>"
+ 				tbl=tbl + "        <td class='calign'> <button type='button' class='btndelete' data-file='"+curdata +"' >&nbsp;</button></td>"
+ 				
+ 				    
+ 				// tbl=tbl + "        <td class='calign'> <a href='#' onclick=\"duplicatefile('" +curdata  +"');return false;\" ><img border='0' src='images/duplicate.png' title='Duplicate'></a></td>"
+ 				 //tbl=tbl + "        <td class='calign'> <a href='#' onclick=\"deletefile('" +curdata  +"');return false;\" ><img border='0' src='images/delete.png' title='Delete'></a></td>"
  				
  				 tbl=tbl + "      </tr>" 
  				 
@@ -142,8 +286,56 @@
  				 tbl=tbl + "  </table></div>"
  				 
  				 if( dataCount >0){
+ 					 
  				 	$("#resultdetailcontainer").html(tbl)
- 				 	preparecsv("tblusers")
+ 				 	$("#downloadcontainer").css("display","")
+ 				 	
+ 				 
+			    
+ 				    
+ 				 	
+ 				$( "button.btnedit" ).button({
+ 				      icons: {
+ 				        primary: "ui-icon-pencil"
+ 				      },
+ 				      text: false
+ 				    })
+ 				    
+ 				    $( "button.btnduplicate" ).button({
+ 				      icons: {
+ 				        primary: "ui-icon-newwin"
+ 				      },
+ 				      text: false
+ 				    })
+ 				    
+ 				    $( "button.btndelete" ).button({
+ 				      icons: {
+ 				        primary: "ui-icon-close"
+ 				      },
+ 				      text: false
+ 				    })
+ 				    
+ 				    
+ 				       $("button.btnedit").click(function(evt) {
+					    	
+ 				    	  showmanagefilepage(decodeURI($(evt.target).parent().attr("data-file")),"UPDATE")
+ 				    	   
+					    });
+ 				 	
+ 				 	 $("button.btnduplicate").click(function(evt) {
+					    	
+ 				 			showmanagefilepage(decodeURI($(evt.target).parent().attr("data-file")),"ADD")
+				    	   
+					    });
+				 	
+ 				 	 $("button.btndelete").click(function(evt) {
+					    	
+				    	   onhandlefiledelete(decodeURI($(evt.target).parent().attr("data-file")))
+					    });
+				 	
+ 				 	 
+ 				 	
+ 				 	preparecsv("tblfiles")
  				 	
  				  if( dataCount >10){
  					  
@@ -154,7 +346,7 @@
  					  "paging":   true,  				        
  				        "info":     true
  					} );
- 					$('#tblusers').dataTable();
+ 					$('#tblfiles').dataTable();
  				  }
    					  
  				  else{
@@ -167,11 +359,11 @@
  					} );
  					
  					
- 					$('#tblusers').dataTable();
+ 					$('#tblfiles').dataTable();
  				  }	
  				 }
- 				 else
- 					 showerror("resultdetailcontainer","No Users Available to show")
+ 				// else
+ 					// showerror("resultdetailcontainer","No Users Available to show")
  				
  					
  					// $('#example').dataTable();
@@ -184,7 +376,8 @@
  }
   $(function() {
  
-	  showuserreport()
+	  showmanagefilecontainer(false)
+	  showfilereport()
 
   });
   </script>

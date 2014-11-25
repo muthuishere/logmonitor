@@ -1,16 +1,16 @@
 <div>
-	<form name="frmaddserver" id="frmaddserver" action="#">
+	<form name="frmaddfile" id="frmaddfile" action="#">
 
 		<div id="tabs" style="background: none">
 			<ul>
-				<li><a href="#tabs-1">Server Details</a></li>
+				<li><a href="#tabs-1">File Details</a></li>
 				<li><a href="#tabs-2">Proxy Details</a></li>
 
 
 			</ul>
 			<input type="hidden" id="operation" name="operation" value="" />
 			<div id="tabs-1" style="background-color: #F7F7F7">
-				<h2>Server</h2>
+				<h2>File</h2>
 
 				<table border="0"
 					style="width: 100%; padding: 10px; border-collapse: separate; border-spacing: 10px;">
@@ -48,8 +48,8 @@
 					<tr>
 						<td>
 
-							<div title="Group">Environment</div> <select name="servergroup"
-							id="servergroup" style="width: 200px">
+							<div title="Group">Environment</div> <select name="filegroup"
+							id="filegroup" style="width: 200px">
 
 								<option value="AR">AR</option>
 						</select>
@@ -121,7 +121,7 @@
 		</div>
 	</form>
 
-	<div id="serverresultstatuscontainer" />
+	<div id="fileresultstatuscontainer" />
 
 
 
@@ -135,10 +135,10 @@
 		</tr>
 		<tr>
 			<td class="lalign">
-				<button type="button" class="btnbackserverlist">Back</button>
+				<button type="button" class="btnbackfilelist">Back</button>
 			</td>
 			<td class="ralign">
-				<button type="button" class="btnsubmitserver">Save</button>
+				<button type="button" class="btnsubmitfile">Save</button>
 			</td>
 		</tr>
 	</table>
@@ -147,14 +147,14 @@
 <script>
   
   
-  function initmanageservers(){
+  function initmanagefiles(){
 		 
 	  generateCsvMenu("team",$("#teams").val())
 	 	 
-	 	 generateCsvMenu("servergroup",$("#environments").val())
+	 	 generateCsvMenu("filegroup",$("#environments").val())
 	 	 
 	 	 	   
-	 	       $( "#servergroup" ).selectmenu({
+	 	       $( "#filegroup" ).selectmenu({
 	 //  change: function( event, data ) {
 //	  	 // if(data.item.value == "custom"){
 //	  		 }
@@ -170,10 +170,10 @@
 	  }
 	     
 	     
-	 function setmanageserverdata(curdata,dataoperation){
+	 function setmanagefiledata(curdata,dataoperation){
 		 
 
-		  $("form#frmaddserver input").val("")
+		  $("form#frmaddfile input").val("")
 		  
 		  
 		  $xml = $(curdata)
@@ -205,13 +205,13 @@
 	 				$("#proxyport").val(proxyport)
 	 				
 	 				//$("#proxyport").val()
-	 				//$("#servergroup").selectmenu("value", group);
+	 				//$("#filegroup").selectmenu("value", group);
 	 				//$("#team").selectmenu("value", team);
 	 				
 	 				
-	 			//	$("#servergroup").val(group).trigger("change");
+	 			//	$("#filegroup").val(group).trigger("change");
 	 				
-	 				$( "#servergroup" )
+	 				$( "#filegroup" )
 	 				 	.val(group)
 	 				 	.selectmenu("refresh")
 	 				 	.trigger("change")
@@ -239,16 +239,16 @@
 		  
 		  return
 	  }
-		$("#serverresultstatuscontainer").show()
-	  	  $("#serverresultstatuscontainer").html("<img src='images/loadingajax.gif'/>")
+		$("#fileresultstatuscontainer").show()
+	  	  $("#fileresultstatuscontainer").html("<img src='images/loadingajax.gif'/>")
 	  	  
 	  	  
- var formdata=$("form#frmaddserver").serializeArray()
+ var formdata=$("form#frmaddfile").serializeArray()
  		
- 	//	$('#frmserver')[0].reset();
- $("form#frmaddserver input").attr("disabled",true)
+ 	//	$('#frmfile')[0].reset();
+ $("form#frmaddfile input").attr("disabled",true)
   		
-  	$.post( "/services/updateserver", formdata)
+  	$.post( "/services/updatefile", formdata)
  	 	  .done(function( data ) {
  	 	    
  	 		
@@ -256,16 +256,16 @@
  	 		  $xml = $( data )
  	 		  $status = $xml.find( "status" )
  	 		  
- 	 		  $("form#frmaddserver input").removeAttr("disabled")
+ 	 		  $("form#frmaddfile input").removeAttr("disabled")
  	 		  
  	 		  if( $status.attr("error") =="true"){
  	 			
- 	 			  showerror("serverresultstatuscontainer",$status.attr("description"))
+ 	 			  showerror("fileresultstatuscontainer",$status.attr("description"))
  	 			  
  	 		  } else{
- 	 			$("form#frmaddserver input").val("")
+ 	 			$("form#frmaddfile input").val("")
  	 		  
- 	 			 showsuccess("serverresultstatuscontainer",$status.attr("description"))
+ 	 			 showsuccess("fileresultstatuscontainer",$status.attr("description"))
  	 		  }
  	 		  
  	 		 
@@ -358,12 +358,12 @@
 
 
     
-    $("form#frmaddserver input").change(function() {
+    $("form#frmaddfile input").change(function() {
     	$(this).removeClass("ui-state-error")
     	$( ".validateTips" ).text("")
     });
     
-    $("form#frmaddserver input").click(function() {
+    $("form#frmaddfile input").click(function() {
     	$(this).removeClass("ui-state-error")
     	$( ".validateTips" ).text("")
     });
@@ -371,7 +371,7 @@
     $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
     $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
     
-    $( ".btnsubmitserver" ).button( {
+    $( ".btnsubmitfile" ).button( {
         icons: {
           primary: "ui-icon-disk"
         }
@@ -381,14 +381,14 @@
 
     //ui-icon-plusthick
     
-    $( ".btnsubmitserver" ).click(function( event ) {
+    $( ".btnsubmitfile" ).click(function( event ) {
     	 onupdate();
    	 
    	
     })
     
     
-     $( ".btnbackserverlist" ).button( {
+     $( ".btnbackfilelist" ).button( {
         icons: {
           primary: "ui-icon-arrowthick-1-w"
         }
@@ -398,11 +398,11 @@
 
     //ui-icon-plusthick
     
-    $( ".btnbackserverlist" ).click(function( event ) {
+    $( ".btnbackfilelist" ).click(function( event ) {
     	 
-    	  showmanageservercontainer(false)
-    	  showserverreport()
-   	 //addserver();
+    	  showmanagefilecontainer(false)
+    	  showfilereport()
+   	 //addfile();
     })
     
     

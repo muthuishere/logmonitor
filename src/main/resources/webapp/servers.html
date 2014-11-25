@@ -91,10 +91,10 @@
   	  $("#resultstatuscontainer").html("<img src='images/loadingajax.gif'/>")
   	  
   	  
-  	      $("input#server").val(curserver)
- var formdata=$("form#frmserver").serializeArray()
+  	    
+ var formdata=$("form#deleteserver").serializeArray()
  		
- 		$('#frmserver')[0].reset();
+ 	
   	
   		
   	$.post( "/services/deleteserver", formdata)

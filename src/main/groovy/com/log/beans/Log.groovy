@@ -8,7 +8,8 @@ class Log {
 	def name
 	def filename
 	def host
-	
+	def team
+	def servers
 	
 	@Override
 	public boolean equals(Object o) {
@@ -20,6 +21,8 @@ class Log {
 		if (filename != null ? !filename.equals(logObject.filename) : logObject.filename != null) return false;
 		
 		if (host != null ? !host.equals(logObject.host) : logObject.host != null) return false;
+		if (team != null ? !team.equals(logObject.team) : logObject.team != null) return false;
+		
 		
 		return true;
 	}
