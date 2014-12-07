@@ -1,0 +1,1033 @@
+[Sun Oct 19 13:55:34.244725 2014] [mpm_winnt:notice] [pid 4184:tid 380] AH00455: Apache/2.4.9 (Win32) PHP/5.5.12 configured -- resuming normal operations
+[Sun Oct 19 13:55:34.260325 2014] [mpm_winnt:notice] [pid 4184:tid 380] AH00456: Apache Lounge VC11 Server built: Mar 16 2014 12:13:13
+[Sun Oct 19 13:55:34.260325 2014] [core:notice] [pid 4184:tid 380] AH00094: Command line: 'c:\\muthu\\wamp\\bin\\apache\\apache2.4.9\\bin\\httpd.exe -d C:/muthu/wamp/bin/apache/apache2.4.9'
+[Sun Oct 19 13:55:34.585133 2014] [mpm_winnt:notice] [pid 4184:tid 380] AH00418: Parent: Created child process 3880
+[Sun Oct 19 13:55:38.891400 2014] [mpm_winnt:notice] [pid 3880:tid 296] AH00354: Child: Starting 64 worker threads.
+[Sun Oct 19 13:55:41.627492 2014] [mpm_winnt:notice] [pid 4184:tid 380] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Sun Oct 19 13:55:43.637313 2014] [mpm_winnt:notice] [pid 3880:tid 296] AH00364: Child: All worker threads have exited.
+[Sun Oct 19 13:55:43.777713 2014] [mpm_winnt:notice] [pid 4184:tid 380] AH00430: Parent: Child process 3880 exited successfully.
+[Sun Oct 19 13:55:44.477529 2014] [mpm_winnt:notice] [pid 5416:tid 380] AH00455: Apache/2.4.9 (Win32) PHP/5.5.12 configured -- resuming normal operations
+[Sun Oct 19 13:55:44.477529 2014] [mpm_winnt:notice] [pid 5416:tid 380] AH00456: Apache Lounge VC11 Server built: Mar 16 2014 12:13:13
+[Sun Oct 19 13:55:44.477529 2014] [core:notice] [pid 5416:tid 380] AH00094: Command line: 'c:\\muthu\\wamp\\bin\\apache\\apache2.4.9\\bin\\httpd.exe -d C:/muthu/wamp/bin/apache/apache2.4.9'
+[Sun Oct 19 13:55:44.477529 2014] [mpm_winnt:notice] [pid 5416:tid 380] AH00418: Parent: Created child process 5216
+[Sun Oct 19 13:55:44.914942 2014] [mpm_winnt:notice] [pid 5216:tid 296] AH00354: Child: Starting 64 worker threads.
+[Mon Oct 20 00:24:31.501012 2014] [mpm_winnt:notice] [pid 5416:tid 380] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Mon Oct 20 00:24:40.486628 2014] [mpm_winnt:notice] [pid 5216:tid 296] AH00364: Child: All worker threads have exited.
+[Mon Oct 20 00:25:00.953864 2014] [mpm_winnt:notice] [pid 5416:tid 380] AH00430: Parent: Child process 5216 exited successfully.
+[Sat Oct 25 17:47:35.364589 2014] [mpm_winnt:notice] [pid 5016:tid 380] AH00455: Apache/2.4.9 (Win32) PHP/5.5.12 configured -- resuming normal operations
+[Sat Oct 25 17:47:35.395789 2014] [mpm_winnt:notice] [pid 5016:tid 380] AH00456: Apache Lounge VC11 Server built: Mar 16 2014 12:13:13
+[Sat Oct 25 17:47:35.395789 2014] [core:notice] [pid 5016:tid 380] AH00094: Command line: 'c:\\muthu\\wamp\\bin\\apache\\apache2.4.9\\bin\\httpd.exe -d C:/muthu/wamp/bin/apache/apache2.4.9'
+[Sat Oct 25 17:47:35.426989 2014] [mpm_winnt:notice] [pid 5016:tid 380] AH00418: Parent: Created child process 3176
+[Sat Oct 25 17:47:37.236592 2014] [mpm_winnt:notice] [pid 3176:tid 296] AH00354: Child: Starting 64 worker threads.
+[Sat Oct 25 17:50:50.733712 2014] [core:alert] [pid 3176:tid 792] [client 127.0.0.1:55181] C:/muthu/wamp/www/slim/.htaccess: Invalid command 'RewriteEngine', perhaps misspelled or defined by a module not included in the server configuration
+[Sat Oct 25 17:51:52.796441 2014] [mpm_winnt:notice] [pid 5016:tid 380] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Sat Oct 25 17:51:54.824444 2014] [mpm_winnt:notice] [pid 3176:tid 296] AH00364: Child: All worker threads have exited.
+[Sat Oct 25 17:51:54.871244 2014] [mpm_winnt:notice] [pid 5016:tid 380] AH00430: Parent: Child process 3176 exited successfully.
+[Sat Oct 25 17:51:57.445249 2014] [mpm_winnt:notice] [pid 4676:tid 384] AH00455: Apache/2.4.9 (Win32) PHP/5.5.12 configured -- resuming normal operations
+[Sat Oct 25 17:51:57.445249 2014] [mpm_winnt:notice] [pid 4676:tid 384] AH00456: Apache Lounge VC11 Server built: Mar 16 2014 12:13:13
+[Sat Oct 25 17:51:57.445249 2014] [core:notice] [pid 4676:tid 384] AH00094: Command line: 'c:\\muthu\\wamp\\bin\\apache\\apache2.4.9\\bin\\httpd.exe -d C:/muthu/wamp/bin/apache/apache2.4.9'
+[Sat Oct 25 17:51:57.445249 2014] [mpm_winnt:notice] [pid 4676:tid 384] AH00418: Parent: Created child process 5992
+[Sat Oct 25 17:51:58.116050 2014] [mpm_winnt:notice] [pid 5992:tid 300] AH00354: Child: Starting 64 worker threads.
+[Sat Oct 25 21:01:36.787002 2014] [mpm_winnt:notice] [pid 4676:tid 384] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Sat Oct 25 21:01:42.109611 2014] [mpm_winnt:notice] [pid 5992:tid 300] AH00364: Child: All worker threads have exited.
+[Sat Oct 25 21:01:57.256639 2014] [mpm_winnt:notice] [pid 4676:tid 384] AH00430: Parent: Child process 5992 exited successfully.
+[Sat Oct 25 22:23:39.565577 2014] [mpm_winnt:notice] [pid 3300:tid 384] AH00455: Apache/2.4.9 (Win32) PHP/5.5.12 configured -- resuming normal operations
+[Sat Oct 25 22:23:39.565577 2014] [mpm_winnt:notice] [pid 3300:tid 384] AH00456: Apache Lounge VC11 Server built: Mar 16 2014 12:13:13
+[Sat Oct 25 22:23:39.566577 2014] [core:notice] [pid 3300:tid 384] AH00094: Command line: 'c:\\muthu\\wamp\\bin\\apache\\apache2.4.9\\bin\\httpd.exe -d C:/muthu/wamp/bin/apache/apache2.4.9'
+[Sat Oct 25 22:23:39.567577 2014] [mpm_winnt:notice] [pid 3300:tid 384] AH00418: Parent: Created child process 5884
+[Sat Oct 25 22:23:40.971993 2014] [mpm_winnt:notice] [pid 5884:tid 300] AH00354: Child: Starting 64 worker threads.
+exception 'ErrorException' with message 'mysqli::mysqli(): ' in C:\muthu\wamp\www\slim\include\DbConnect.php:22
+Stack trace:
+#0 [internal function]: Slim\Slim::handleErrors(2, 'mysqli::mysqli(...', 'C:\\muthu\\wamp\\w...', 22, Array)
+#1 C:\muthu\wamp\www\slim\include\DbConnect.php(22): mysqli->mysqli('localhost', 'ticketdiary', 'Superstar1@', 'ticketdiary')
+#2 C:\muthu\wamp\www\slim\include\DbHandler.php(16): DbConnect->connect()
+#3 C:\muthu\wamp\www\slim\index.php(129): DbHandler->__construct()
+#4 [internal function]: {closure}('ACND')
+#5 C:\muthu\wamp\www\slim\Slim\Route.php(462): call_user_func_array(Object(Closure), Array)
+#6 C:\muthu\wamp\www\slim\Slim\Slim.php(1326): Slim\Route->dispatch()
+#7 C:\muthu\wamp\www\slim\Slim\Middleware\Flash.php(85): Slim\Slim->call()
+#8 C:\muthu\wamp\www\slim\Slim\Middleware\MethodOverride.php(92): Slim\Middleware\Flash->call()
+#9 C:\muthu\wamp\www\slim\Slim\Middleware\PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#10 C:\muthu\wamp\www\slim\Slim\Slim.php(1271): Slim\Middleware\PrettyExceptions->call()
+#11 C:\muthu\wamp\www\slim\index.php(322): Slim\Slim->run()
+#12 {main}
+exception 'ErrorException' with message 'Undefined variable: db' in C:\muthu\wamp\www\slim\include\PdoHandler.php:35
+Stack trace:
+#0 C:\muthu\wamp\www\slim\include\PdoHandler.php(35): Slim\Slim::handleErrors(8, 'Undefined varia...', 'C:\\muthu\\wamp\\w...', 35, Array)
+#1 C:\muthu\wamp\www\slim\index.php(132): PdoHandler->getStation('ACND')
+#2 [internal function]: {closure}('ACND')
+#3 C:\muthu\wamp\www\slim\Slim\Route.php(462): call_user_func_array(Object(Closure), Array)
+#4 C:\muthu\wamp\www\slim\Slim\Slim.php(1326): Slim\Route->dispatch()
+#5 C:\muthu\wamp\www\slim\Slim\Middleware\Flash.php(85): Slim\Slim->call()
+#6 C:\muthu\wamp\www\slim\Slim\Middleware\MethodOverride.php(92): Slim\Middleware\Flash->call()
+#7 C:\muthu\wamp\www\slim\Slim\Middleware\PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#8 C:\muthu\wamp\www\slim\Slim\Slim.php(1271): Slim\Middleware\PrettyExceptions->call()
+#9 C:\muthu\wamp\www\slim\index.php(322): Slim\Slim->run()
+#10 {main}
+exception 'ErrorException' with message 'Undefined index: code' in C:\muthu\wamp\www\slim\index.php:137
+Stack trace:
+#0 C:\muthu\wamp\www\slim\index.php(137): Slim\Slim::handleErrors(8, 'Undefined index...', 'C:\\muthu\\wamp\\w...', 137, Array)
+#1 [internal function]: {closure}('ACND')
+#2 C:\muthu\wamp\www\slim\Slim\Route.php(462): call_user_func_array(Object(Closure), Array)
+#3 C:\muthu\wamp\www\slim\Slim\Slim.php(1326): Slim\Route->dispatch()
+#4 C:\muthu\wamp\www\slim\Slim\Middleware\Flash.php(85): Slim\Slim->call()
+#5 C:\muthu\wamp\www\slim\Slim\Middleware\MethodOverride.php(92): Slim\Middleware\Flash->call()
+#6 C:\muthu\wamp\www\slim\Slim\Middleware\PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#7 C:\muthu\wamp\www\slim\Slim\Slim.php(1271): Slim\Middleware\PrettyExceptions->call()
+#8 C:\muthu\wamp\www\slim\index.php(322): Slim\Slim->run()
+#9 {main}
+exception 'ErrorException' with message 'Undefined index: code' in C:\muthu\wamp\www\slim\index.php:137
+Stack trace:
+#0 C:\muthu\wamp\www\slim\index.php(137): Slim\Slim::handleErrors(8, 'Undefined index...', 'C:\\muthu\\wamp\\w...', 137, Array)
+#1 [internal function]: {closure}('ACND')
+#2 C:\muthu\wamp\www\slim\Slim\Route.php(462): call_user_func_array(Object(Closure), Array)
+#3 C:\muthu\wamp\www\slim\Slim\Slim.php(1326): Slim\Route->dispatch()
+#4 C:\muthu\wamp\www\slim\Slim\Middleware\Flash.php(85): Slim\Slim->call()
+#5 C:\muthu\wamp\www\slim\Slim\Middleware\MethodOverride.php(92): Slim\Middleware\Flash->call()
+#6 C:\muthu\wamp\www\slim\Slim\Middleware\PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#7 C:\muthu\wamp\www\slim\Slim\Slim.php(1271): Slim\Middleware\PrettyExceptions->call()
+#8 C:\muthu\wamp\www\slim\index.php(322): Slim\Slim->run()
+#9 {main}
+[Sun Oct 26 01:22:12.609145 2014] [mpm_winnt:notice] [pid 3300:tid 384] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Sun Oct 26 01:22:22.061606 2014] [mpm_winnt:notice] [pid 5884:tid 300] AH00364: Child: All worker threads have exited.
+[Sun Oct 26 01:22:43.729418 2014] [mpm_winnt:notice] [pid 3300:tid 384] AH00431: Parent: Forcing termination of child process 5884
+[Sun Oct 26 19:06:24.735445 2014] [mpm_winnt:notice] [pid 4872:tid 384] AH00455: Apache/2.4.9 (Win32) PHP/5.5.12 configured -- resuming normal operations
+[Sun Oct 26 19:06:24.766645 2014] [mpm_winnt:notice] [pid 4872:tid 384] AH00456: Apache Lounge VC11 Server built: Mar 16 2014 12:13:13
+[Sun Oct 26 19:06:24.766645 2014] [core:notice] [pid 4872:tid 384] AH00094: Command line: 'c:\\muthu\\wamp\\bin\\apache\\apache2.4.9\\bin\\httpd.exe -d C:/muthu/wamp/bin/apache/apache2.4.9'
+[Sun Oct 26 19:06:24.766645 2014] [mpm_winnt:notice] [pid 4872:tid 384] AH00418: Parent: Created child process 5908
+[Sun Oct 26 19:06:26.560648 2014] [mpm_winnt:notice] [pid 5908:tid 300] AH00354: Child: Starting 64 worker threads.
+exception 'ErrorException' with message 'Use of undefined constant args - assumed 'args'' in C:\muthu\wamp\www\services\index.php:194
+Stack trace:
+#0 C:\muthu\wamp\www\services\index.php(194): Slim\Slim::handleErrors(8, 'Use of undefine...', 'C:\\muthu\\wamp\\w...', 194, Array)
+#1 [internal function]: {closure}('hello.py')
+#2 C:\muthu\wamp\www\services\Slim\Route.php(462): call_user_func_array(Object(Closure), Array)
+#3 C:\muthu\wamp\www\services\Slim\Slim.php(1326): Slim\Route->dispatch()
+#4 C:\muthu\wamp\www\services\Slim\Middleware\Flash.php(85): Slim\Slim->call()
+#5 C:\muthu\wamp\www\services\Slim\Middleware\MethodOverride.php(92): Slim\Middleware\Flash->call()
+#6 C:\muthu\wamp\www\services\Slim\Middleware\PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#7 C:\muthu\wamp\www\services\Slim\Slim.php(1271): Slim\Middleware\PrettyExceptions->call()
+#8 C:\muthu\wamp\www\services\index.php(402): Slim\Slim->run()
+#9 {main}
+exception 'ErrorException' with message 'Use of undefined constant response - assumed 'response'' in C:\muthu\wamp\www\services\include\PythonHandler.php:43
+Stack trace:
+#0 C:\muthu\wamp\www\services\include\PythonHandler.php(43): Slim\Slim::handleErrors(8, 'Use of undefine...', 'C:\\muthu\\wamp\\w...', 43, Array)
+#1 C:\muthu\wamp\www\services\index.php(197): PythonHandler->execute('hello.py', NULL)
+#2 [internal function]: {closure}('hello.py')
+#3 C:\muthu\wamp\www\services\Slim\Route.php(462): call_user_func_array(Object(Closure), Array)
+#4 C:\muthu\wamp\www\services\Slim\Slim.php(1326): Slim\Route->dispatch()
+#5 C:\muthu\wamp\www\services\Slim\Middleware\Flash.php(85): Slim\Slim->call()
+#6 C:\muthu\wamp\www\services\Slim\Middleware\MethodOverride.php(92): Slim\Middleware\Flash->call()
+#7 C:\muthu\wamp\www\services\Slim\Middleware\PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#8 C:\muthu\wamp\www\services\Slim\Slim.php(1271): Slim\Middleware\PrettyExceptions->call()
+#9 C:\muthu\wamp\www\services\index.php(402): Slim\Slim->run()
+#10 {main}
+exception 'ErrorException' with message 'trim() expects parameter 1 to be string, array given' in C:\muthu\wamp\www\services\index.php:68
+Stack trace:
+#0 [internal function]: Slim\Slim::handleErrors(2, 'trim() expects ...', 'C:\\muthu\\wamp\\w...', 68, Array)
+#1 C:\muthu\wamp\www\services\index.php(68): trim(Array)
+#2 C:\muthu\wamp\www\services\index.php(125): array2xml(Array)
+#3 C:\muthu\wamp\www\services\index.php(101): echoXML(200, Array)
+#4 C:\muthu\wamp\www\services\index.php(200): echoRestResponse(200, Array)
+#5 [internal function]: {closure}('hello.py')
+#6 C:\muthu\wamp\www\services\Slim\Route.php(462): call_user_func_array(Object(Closure), Array)
+#7 C:\muthu\wamp\www\services\Slim\Slim.php(1326): Slim\Route->dispatch()
+#8 C:\muthu\wamp\www\services\Slim\Middleware\Flash.php(85): Slim\Slim->call()
+#9 C:\muthu\wamp\www\services\Slim\Middleware\MethodOverride.php(92): Slim\Middleware\Flash->call()
+#10 C:\muthu\wamp\www\services\Slim\Middleware\PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#11 C:\muthu\wamp\www\services\Slim\Slim.php(1271): Slim\Middleware\PrettyExceptions->call()
+#12 C:\muthu\wamp\www\services\index.php(402): Slim\Slim->run()
+#13 {main}
+exception 'ErrorException' with message 'trim() expects parameter 1 to be string, array given' in C:\muthu\wamp\www\services\index.php:68
+Stack trace:
+#0 [internal function]: Slim\Slim::handleErrors(2, 'trim() expects ...', 'C:\\muthu\\wamp\\w...', 68, Array)
+#1 C:\muthu\wamp\www\services\index.php(68): trim(Array)
+#2 C:\muthu\wamp\www\services\index.php(125): array2xml(Array)
+#3 C:\muthu\wamp\www\services\index.php(101): echoXML(200, Array)
+#4 C:\muthu\wamp\www\services\index.php(200): echoRestResponse(200, Array)
+#5 [internal function]: {closure}('hello.py')
+#6 C:\muthu\wamp\www\services\Slim\Route.php(462): call_user_func_array(Object(Closure), Array)
+#7 C:\muthu\wamp\www\services\Slim\Slim.php(1326): Slim\Route->dispatch()
+#8 C:\muthu\wamp\www\services\Slim\Middleware\Flash.php(85): Slim\Slim->call()
+#9 C:\muthu\wamp\www\services\Slim\Middleware\MethodOverride.php(92): Slim\Middleware\Flash->call()
+#10 C:\muthu\wamp\www\services\Slim\Middleware\PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#11 C:\muthu\wamp\www\services\Slim\Slim.php(1271): Slim\Middleware\PrettyExceptions->call()
+#12 C:\muthu\wamp\www\services\index.php(402): Slim\Slim->run()
+#13 {main}
+exception 'ErrorException' with message 'trim() expects parameter 1 to be string, array given' in C:\muthu\wamp\www\services\index.php:68
+Stack trace:
+#0 [internal function]: Slim\Slim::handleErrors(2, 'trim() expects ...', 'C:\\muthu\\wamp\\w...', 68, Array)
+#1 C:\muthu\wamp\www\services\index.php(68): trim(Array)
+#2 C:\muthu\wamp\www\services\index.php(125): array2xml(Array)
+#3 C:\muthu\wamp\www\services\index.php(101): echoXML(200, Array)
+#4 C:\muthu\wamp\www\services\index.php(200): echoRestResponse(200, Array)
+#5 [internal function]: {closure}('hello.py')
+#6 C:\muthu\wamp\www\services\Slim\Route.php(462): call_user_func_array(Object(Closure), Array)
+#7 C:\muthu\wamp\www\services\Slim\Slim.php(1326): Slim\Route->dispatch()
+#8 C:\muthu\wamp\www\services\Slim\Middleware\Flash.php(85): Slim\Slim->call()
+#9 C:\muthu\wamp\www\services\Slim\Middleware\MethodOverride.php(92): Slim\Middleware\Flash->call()
+#10 C:\muthu\wamp\www\services\Slim\Middleware\PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#11 C:\muthu\wamp\www\services\Slim\Slim.php(1271): Slim\Middleware\PrettyExceptions->call()
+#12 C:\muthu\wamp\www\services\index.php(402): Slim\Slim->run()
+#13 {main}
+exception 'ErrorException' with message 'Array to string conversion' in C:\muthu\wamp\www\services\include\PythonHandler.php:42
+Stack trace:
+#0 C:\muthu\wamp\www\services\include\PythonHandler.php(42): Slim\Slim::handleErrors(8, 'Array to string...', 'C:\\muthu\\wamp\\w...', 42, Array)
+#1 C:\muthu\wamp\www\services\index.php(197): PythonHandler->execute('hello.py', NULL)
+#2 [internal function]: {closure}('hello.py')
+#3 C:\muthu\wamp\www\services\Slim\Route.php(462): call_user_func_array(Object(Closure), Array)
+#4 C:\muthu\wamp\www\services\Slim\Slim.php(1326): Slim\Route->dispatch()
+#5 C:\muthu\wamp\www\services\Slim\Middleware\Flash.php(85): Slim\Slim->call()
+#6 C:\muthu\wamp\www\services\Slim\Middleware\MethodOverride.php(92): Slim\Middleware\Flash->call()
+#7 C:\muthu\wamp\www\services\Slim\Middleware\PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#8 C:\muthu\wamp\www\services\Slim\Slim.php(1271): Slim\Middleware\PrettyExceptions->call()
+#9 C:\muthu\wamp\www\services\index.php(402): Slim\Slim->run()
+#10 {main}
+exception 'ErrorException' with message 'Array to string conversion' in C:\muthu\wamp\www\services\include\PythonHandler.php:42
+Stack trace:
+#0 C:\muthu\wamp\www\services\include\PythonHandler.php(42): Slim\Slim::handleErrors(8, 'Array to string...', 'C:\\muthu\\wamp\\w...', 42, Array)
+#1 C:\muthu\wamp\www\services\index.php(197): PythonHandler->execute('hello.py', NULL)
+#2 [internal function]: {closure}('hello.py')
+#3 C:\muthu\wamp\www\services\Slim\Route.php(462): call_user_func_array(Object(Closure), Array)
+#4 C:\muthu\wamp\www\services\Slim\Slim.php(1326): Slim\Route->dispatch()
+#5 C:\muthu\wamp\www\services\Slim\Middleware\Flash.php(85): Slim\Slim->call()
+#6 C:\muthu\wamp\www\services\Slim\Middleware\MethodOverride.php(92): Slim\Middleware\Flash->call()
+#7 C:\muthu\wamp\www\services\Slim\Middleware\PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#8 C:\muthu\wamp\www\services\Slim\Slim.php(1271): Slim\Middleware\PrettyExceptions->call()
+#9 C:\muthu\wamp\www\services\index.php(402): Slim\Slim->run()
+#10 {main}
+exception 'ErrorException' with message 'Array to string conversion' in C:\muthu\wamp\www\services\include\PythonHandler.php:42
+Stack trace:
+#0 C:\muthu\wamp\www\services\include\PythonHandler.php(42): Slim\Slim::handleErrors(8, 'Array to string...', 'C:\\muthu\\wamp\\w...', 42, Array)
+#1 C:\muthu\wamp\www\services\index.php(197): PythonHandler->execute('hello.py', NULL)
+#2 [internal function]: {closure}('hello.py')
+#3 C:\muthu\wamp\www\services\Slim\Route.php(462): call_user_func_array(Object(Closure), Array)
+#4 C:\muthu\wamp\www\services\Slim\Slim.php(1326): Slim\Route->dispatch()
+#5 C:\muthu\wamp\www\services\Slim\Middleware\Flash.php(85): Slim\Slim->call()
+#6 C:\muthu\wamp\www\services\Slim\Middleware\MethodOverride.php(92): Slim\Middleware\Flash->call()
+#7 C:\muthu\wamp\www\services\Slim\Middleware\PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#8 C:\muthu\wamp\www\services\Slim\Slim.php(1271): Slim\Middleware\PrettyExceptions->call()
+#9 C:\muthu\wamp\www\services\index.php(402): Slim\Slim->run()
+#10 {main}
+exception 'curlwrapperException' with message 'Cookie file "cookie50.184.186.164.txt" is not writable or does'n exists!' in C:\muthu\wamp\www\services\include\class.curlwrapper.php:486
+Stack trace:
+#0 C:\muthu\wamp\www\services\include\CurlHandler.php(50): curlwrapper->setCookieFile('cookie50.184.18...')
+#1 C:\muthu\wamp\www\services\index.php(219): CurlHandler->getPnrStatus('32736273627')
+#2 [internal function]: {closure}('32736273627')
+#3 C:\muthu\wamp\www\services\Slim\Route.php(462): call_user_func_array(Object(Closure), Array)
+#4 C:\muthu\wamp\www\services\Slim\Slim.php(1326): Slim\Route->dispatch()
+#5 C:\muthu\wamp\www\services\Slim\Middleware\Flash.php(85): Slim\Slim->call()
+#6 C:\muthu\wamp\www\services\Slim\Middleware\MethodOverride.php(92): Slim\Middleware\Flash->call()
+#7 C:\muthu\wamp\www\services\Slim\Middleware\PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#8 C:\muthu\wamp\www\services\Slim\Slim.php(1271): Slim\Middleware\PrettyExceptions->call()
+#9 C:\muthu\wamp\www\services\index.php(421): Slim\Slim->run()
+#10 {main}
+exception 'curlwrapperCurlException' with message 'Recv failure: Connection was reset' in C:\muthu\wamp\www\services\include\class.curlwrapper.php:434
+Stack trace:
+#0 C:\muthu\wamp\www\services\include\class.curlwrapper.php(319): curlwrapper->request('http://www.indi...', 'POST', Array)
+#1 C:\muthu\wamp\www\services\include\CurlHandler.php(68): curlwrapper->post('http://www.indi...', Array)
+#2 C:\muthu\wamp\www\services\index.php(219): CurlHandler->getPnrStatus('32736273627')
+#3 [internal function]: {closure}('32736273627')
+#4 C:\muthu\wamp\www\services\Slim\Route.php(462): call_user_func_array(Object(Closure), Array)
+#5 C:\muthu\wamp\www\services\Slim\Slim.php(1326): Slim\Route->dispatch()
+#6 C:\muthu\wamp\www\services\Slim\Middleware\Flash.php(85): Slim\Slim->call()
+#7 C:\muthu\wamp\www\services\Slim\Middleware\MethodOverride.php(92): Slim\Middleware\Flash->call()
+#8 C:\muthu\wamp\www\services\Slim\Middleware\PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#9 C:\muthu\wamp\www\services\Slim\Slim.php(1271): Slim\Middleware\PrettyExceptions->call()
+#10 C:\muthu\wamp\www\services\index.php(421): Slim\Slim->run()
+#11 {main}
+exception 'curlwrapperCurlException' with message 'Recv failure: Connection was reset' in C:\muthu\wamp\www\services\include\class.curlwrapper.php:434
+Stack trace:
+#0 C:\muthu\wamp\www\services\include\class.curlwrapper.php(319): curlwrapper->request('http://www.indi...', 'POST', Array)
+#1 C:\muthu\wamp\www\services\include\CurlHandler.php(68): curlwrapper->post('http://www.indi...', Array)
+#2 C:\muthu\wamp\www\services\index.php(219): CurlHandler->getPnrStatus('32736273627')
+#3 [internal function]: {closure}('32736273627')
+#4 C:\muthu\wamp\www\services\Slim\Route.php(462): call_user_func_array(Object(Closure), Array)
+#5 C:\muthu\wamp\www\services\Slim\Slim.php(1326): Slim\Route->dispatch()
+#6 C:\muthu\wamp\www\services\Slim\Middleware\Flash.php(85): Slim\Slim->call()
+#7 C:\muthu\wamp\www\services\Slim\Middleware\MethodOverride.php(92): Slim\Middleware\Flash->call()
+#8 C:\muthu\wamp\www\services\Slim\Middleware\PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#9 C:\muthu\wamp\www\services\Slim\Slim.php(1271): Slim\Middleware\PrettyExceptions->call()
+#10 C:\muthu\wamp\www\services\index.php(421): Slim\Slim->run()
+#11 {main}
+exception 'curlwrapperCurlException' with message 'Recv failure: Connection was reset' in C:\muthu\wamp\www\services\include\class.curlwrapper.php:434
+Stack trace:
+#0 C:\muthu\wamp\www\services\include\class.curlwrapper.php(319): curlwrapper->request('http://www.indi...', 'POST', Array)
+#1 C:\muthu\wamp\www\services\include\CurlHandler.php(68): curlwrapper->post('http://www.indi...', Array)
+#2 C:\muthu\wamp\www\services\index.php(219): CurlHandler->getPnrStatus('32736273627')
+#3 [internal function]: {closure}('32736273627')
+#4 C:\muthu\wamp\www\services\Slim\Route.php(462): call_user_func_array(Object(Closure), Array)
+#5 C:\muthu\wamp\www\services\Slim\Slim.php(1326): Slim\Route->dispatch()
+#6 C:\muthu\wamp\www\services\Slim\Middleware\Flash.php(85): Slim\Slim->call()
+#7 C:\muthu\wamp\www\services\Slim\Middleware\MethodOverride.php(92): Slim\Middleware\Flash->call()
+#8 C:\muthu\wamp\www\services\Slim\Middleware\PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#9 C:\muthu\wamp\www\services\Slim\Slim.php(1271): Slim\Middleware\PrettyExceptions->call()
+#10 C:\muthu\wamp\www\services\index.php(421): Slim\Slim->run()
+#11 {main}
+exception 'curlwrapperCurlException' with message 'Recv failure: Connection was reset' in C:\muthu\wamp\www\services\include\class.curlwrapper.php:434
+Stack trace:
+#0 C:\muthu\wamp\www\services\include\class.curlwrapper.php(319): curlwrapper->request('http://www.indi...', 'POST', Array)
+#1 C:\muthu\wamp\www\services\include\CurlHandler.php(68): curlwrapper->post('http://www.indi...', Array)
+#2 C:\muthu\wamp\www\services\index.php(219): CurlHandler->getPnrStatus('32736273627')
+#3 [internal function]: {closure}('32736273627')
+#4 C:\muthu\wamp\www\services\Slim\Route.php(462): call_user_func_array(Object(Closure), Array)
+#5 C:\muthu\wamp\www\services\Slim\Slim.php(1326): Slim\Route->dispatch()
+#6 C:\muthu\wamp\www\services\Slim\Middleware\Flash.php(85): Slim\Slim->call()
+#7 C:\muthu\wamp\www\services\Slim\Middleware\MethodOverride.php(92): Slim\Middleware\Flash->call()
+#8 C:\muthu\wamp\www\services\Slim\Middleware\PrettyExceptions.php(67): Slim\Middleware\MethodOverride->call()
+#9 C:\muthu\wamp\www\services\Slim\Slim.php(1271): Slim\Middleware\PrettyExceptions->call()
+#10 C:\muthu\wamp\www\services\index.php(421): Slim\Slim->run()
+#11 {main}
+[Sun Oct 26 22:17:18.741031 2014] [mpm_winnt:notice] [pid 4872:tid 384] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Sun Oct 26 22:17:29.052649 2014] [mpm_winnt:notice] [pid 5908:tid 300] AH00364: Child: All worker threads have exited.
+[Sun Oct 26 22:17:45.994279 2014] [mpm_winnt:notice] [pid 4872:tid 384] AH00430: Parent: Child process 5908 exited successfully.
+[Sun Nov 30 21:49:40.206848 2014] [mpm_winnt:notice] [pid 2072:tid 384] AH00455: Apache/2.4.9 (Win32) PHP/5.5.12 configured -- resuming normal operations
+[Sun Nov 30 21:49:40.222849 2014] [mpm_winnt:notice] [pid 2072:tid 384] AH00456: Apache Lounge VC11 Server built: Mar 16 2014 12:13:13
+[Sun Nov 30 21:49:40.222849 2014] [core:notice] [pid 2072:tid 384] AH00094: Command line: 'c:\\muthu\\wamp\\bin\\apache\\apache2.4.9\\bin\\httpd.exe -d C:/muthu/wamp/bin/apache/apache2.4.9'
+[Sun Nov 30 21:49:40.223849 2014] [mpm_winnt:notice] [pid 2072:tid 384] AH00418: Parent: Created child process 6012
+[Sun Nov 30 21:49:41.181904 2014] [mpm_winnt:notice] [pid 6012:tid 300] AH00354: Child: Starting 64 worker threads.
+[Sun Nov 30 21:52:14.995679 2014] [mpm_winnt:notice] [pid 2072:tid 384] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Sun Nov 30 21:52:17.010483 2014] [mpm_winnt:notice] [pid 6012:tid 300] AH00364: Child: All worker threads have exited.
+[Sun Nov 30 21:52:17.116489 2014] [mpm_winnt:notice] [pid 2072:tid 384] AH00430: Parent: Child process 6012 exited successfully.
+[Sun Nov 30 21:52:20.023517 2014] [mpm_winnt:notice] [pid 5384:tid 384] AH00455: Apache/2.4.9 (Win32) PHP/5.5.12 configured -- resuming normal operations
+[Sun Nov 30 21:52:20.023517 2014] [mpm_winnt:notice] [pid 5384:tid 384] AH00456: Apache Lounge VC11 Server built: Mar 16 2014 12:13:13
+[Sun Nov 30 21:52:20.023517 2014] [core:notice] [pid 5384:tid 384] AH00094: Command line: 'c:\\muthu\\wamp\\bin\\apache\\apache2.4.9\\bin\\httpd.exe -d C:/muthu/wamp/bin/apache/apache2.4.9'
+[Sun Nov 30 21:52:20.023517 2014] [mpm_winnt:notice] [pid 5384:tid 384] AH00418: Parent: Created child process 1784
+[Sun Nov 30 21:52:20.585118 2014] [mpm_winnt:notice] [pid 1784:tid 300] AH00354: Child: Starting 64 worker threads.
+[Sun Nov 30 21:53:14.446644 2014] [mpm_winnt:notice] [pid 5384:tid 384] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Sun Nov 30 21:53:16.464453 2014] [mpm_winnt:notice] [pid 1784:tid 300] AH00364: Child: All worker threads have exited.
+[Sun Nov 30 21:53:16.495653 2014] [mpm_winnt:notice] [pid 5384:tid 384] AH00430: Parent: Child process 1784 exited successfully.
+[Sun Nov 30 21:53:20.886511 2014] [mpm_winnt:notice] [pid 384:tid 384] AH00455: Apache/2.4.9 (Win32) PHP/5.5.12 configured -- resuming normal operations
+[Sun Nov 30 21:53:20.887511 2014] [mpm_winnt:notice] [pid 384:tid 384] AH00456: Apache Lounge VC11 Server built: Mar 16 2014 12:13:13
+[Sun Nov 30 21:53:20.887511 2014] [core:notice] [pid 384:tid 384] AH00094: Command line: 'c:\\muthu\\wamp\\bin\\apache\\apache2.4.9\\bin\\httpd.exe -d C:/muthu/wamp/bin/apache/apache2.4.9'
+[Sun Nov 30 21:53:20.888511 2014] [mpm_winnt:notice] [pid 384:tid 384] AH00418: Parent: Created child process 4924
+[Sun Nov 30 21:53:21.399321 2014] [mpm_winnt:notice] [pid 4924:tid 300] AH00354: Child: Starting 64 worker threads.
+[Sun Nov 30 21:55:40.960022 2014] [mpm_winnt:notice] [pid 384:tid 384] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Sun Nov 30 21:55:42.968860 2014] [mpm_winnt:notice] [pid 4924:tid 300] AH00364: Child: All worker threads have exited.
+[Sun Nov 30 21:55:42.984460 2014] [mpm_winnt:notice] [pid 384:tid 384] AH00430: Parent: Child process 4924 exited successfully.
+[Mon Dec 01 11:50:47.318031 2014] [mpm_winnt:notice] [pid 5204:tid 384] AH00455: Apache/2.4.9 (Win32) PHP/5.5.12 configured -- resuming normal operations
+[Mon Dec 01 11:50:47.348031 2014] [mpm_winnt:notice] [pid 5204:tid 384] AH00456: Apache Lounge VC11 Server built: Mar 16 2014 12:13:13
+[Mon Dec 01 11:50:47.348031 2014] [core:notice] [pid 5204:tid 384] AH00094: Command line: 'c:\\muthu\\wamp\\bin\\apache\\apache2.4.9\\bin\\httpd.exe -d C:/muthu/wamp/bin/apache/apache2.4.9'
+[Mon Dec 01 11:50:47.358031 2014] [mpm_winnt:notice] [pid 5204:tid 384] AH00418: Parent: Created child process 3880
+[Mon Dec 01 11:50:48.008032 2014] [mpm_winnt:notice] [pid 3880:tid 300] AH00354: Child: Starting 64 worker threads.
+[Mon Dec 01 19:17:48.879994 2014] [mpm_winnt:notice] [pid 5204:tid 384] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Mon Dec 01 19:17:56.149606 2014] [mpm_winnt:notice] [pid 3880:tid 300] AH00364: Child: All worker threads have exited.
+[Mon Dec 01 19:18:14.354838 2014] [mpm_winnt:notice] [pid 5204:tid 384] AH00430: Parent: Child process 3880 exited successfully.
+
+
+127.0.0.1 - - [19/Oct/2014:13:56:24 +0530] "GET / HTTP/1.1" 200 4868
+127.0.0.1 - - [19/Oct/2014:13:56:26 +0530] "GET /index.php?img=gifLogo HTTP/1.1" 200 4549
+127.0.0.1 - - [19/Oct/2014:13:56:26 +0530] "GET /index.php?img=pngPlugin HTTP/1.1" 200 548
+127.0.0.1 - - [19/Oct/2014:13:56:26 +0530] "GET /index.php?img=pngWrench HTTP/1.1" 200 741
+127.0.0.1 - - [19/Oct/2014:13:56:26 +0530] "GET /index.php?img=pngFolderGo HTTP/1.1" 200 694
+127.0.0.1 - - [19/Oct/2014:13:56:27 +0530] "GET /index.php?img=favicon HTTP/1.1" 200 1429
+127.0.0.1 - - [19/Oct/2014:13:56:32 +0530] "GET /phpmyadmin/ HTTP/1.1" 200 47578
+127.0.0.1 - - [19/Oct/2014:13:56:38 +0530] "GET /phpmyadmin/themes/pmahomme/jquery/jquery-ui-1.9.2.custom.css HTTP/1.1" 200 32278
+127.0.0.1 - - [19/Oct/2014:13:56:38 +0530] "GET /phpmyadmin/themes/pmahomme/img/logo_left.png HTTP/1.1" 200 2327
+127.0.0.1 - - [19/Oct/2014:13:56:39 +0530] "GET /phpmyadmin/themes/dot.gif HTTP/1.1" 200 43
+127.0.0.1 - - [19/Oct/2014:13:56:39 +0530] "GET /phpmyadmin/themes/pmahomme/img/ajax_clock_small.gif HTTP/1.1" 200 1810
+127.0.0.1 - - [19/Oct/2014:13:56:38 +0530] "GET /phpmyadmin/phpmyadmin.css.php?server=1&lang=en&collation_connection=utf8mb4_general_ci&token=b55a620c025389b2538e806c86bb6c86&nocache=5625243797ltr HTTP/1.1" 200 93053
+127.0.0.1 - - [19/Oct/2014:13:56:38 +0530] "GET /phpmyadmin/js/messages.php?lang=en&db=&collation_connection=utf8mb4_general_ci&token=b55a620c025389b2538e806c86bb6c86 HTTP/1.1" 200 17755
+127.0.0.1 - - [19/Oct/2014:13:56:38 +0530] "GET /phpmyadmin/js/get_image.js.php?theme=pmahomme HTTP/1.1" 200 6388
+127.0.0.1 - - [19/Oct/2014:13:56:38 +0530] "GET /phpmyadmin/js/get_scripts.js.php?lang=en&collation_connection=utf8mb4_general_ci&token=b55a620c025389b2538e806c86bb6c86&scripts[]=jquery/jquery-1.8.3.min.js&scripts[]=ajax.js&scripts[]=keyhandler.js&scripts[]=jquery/jquery-ui-1.9.2.custom.min.js&scripts[]=jquery/jquery.sprintf.js&scripts[]=jquery/jquery.cookie.js&scripts[]=jquery/jquery.mousewheel.js&scripts[]=jquery/jquery.event.drag-2.2.js&scripts[]=jquery/jquery-ui-timepicker-addon.js&scripts[]=jquery/jquery.ba-hashchange-1.3.js&scripts[]=jquery/jquery.debounce-1.0.5.js&scripts[]=jquery/jquery.menuResizer-1.0.js&scripts[]=cross_framing_protection.js&scripts[]=rte.js&scripts[]=tracekit/tracekit.js&scripts[]=error_report.js&scripts[]=doclinks.js&scripts[]=functions.js&scripts[]=navigation.js&scripts[]=indexes.js&scripts[]=common.js&scripts[]=codemirror/lib/codemirror.js&scripts[]=codemirror/mode/sql/sql.js&scripts[]=codemirror/addon/runmode/runmode.js HTTP/1.1" 200 1039434
+127.0.0.1 - - [19/Oct/2014:13:56:43 +0530] "GET /phpmyadmin/themes/pmahomme/img/left_nav_bg.png HTTP/1.1" 200 297
+127.0.0.1 - - [19/Oct/2014:13:56:43 +0530] "GET /phpmyadmin/themes/pmahomme/img/sprites.png HTTP/1.1" 200 41626
+127.0.0.1 - - [19/Oct/2014:13:56:44 +0530] "GET /phpmyadmin/favicon.ico HTTP/1.1" 200 18902
+127.0.0.1 - - [19/Oct/2014:13:56:43 +0530] "GET /phpmyadmin/version_check.php?&_nocache=1413707203879228646 HTTP/1.1" 200 40
+127.0.0.1 - - [25/Oct/2014:17:50:46 +0530] "GET / HTTP/1.1" 200 4858
+127.0.0.1 - - [25/Oct/2014:17:50:46 +0530] "GET /index.php?img=gifLogo HTTP/1.1" 200 4549
+127.0.0.1 - - [25/Oct/2014:17:50:46 +0530] "GET /index.php?img=pngPlugin HTTP/1.1" 200 548
+127.0.0.1 - - [25/Oct/2014:17:50:46 +0530] "GET /index.php?img=pngFolderGo HTTP/1.1" 200 694
+127.0.0.1 - - [25/Oct/2014:17:50:46 +0530] "GET /index.php?img=pngWrench HTTP/1.1" 200 741
+127.0.0.1 - - [25/Oct/2014:17:50:46 +0530] "GET /index.php?img=pngFolder HTTP/1.1" 200 850
+127.0.0.1 - - [25/Oct/2014:17:50:50 +0530] "GET /slim/ HTTP/1.1" 500 616
+127.0.0.1 - - [25/Oct/2014:17:50:50 +0530] "GET /favicon.ico HTTP/1.1" 200 202575
+127.0.0.1 - - [25/Oct/2014:17:52:06 +0530] "GET /slim/ HTTP/1.1" 404 519
+127.0.0.1 - - [25/Oct/2014:17:52:20 +0530] "GET /slim/ HTTP/1.1" 200 6887
+127.0.0.1 - - [25/Oct/2014:22:23:46 +0530] "GET / HTTP/1.1" 200 4858
+127.0.0.1 - - [25/Oct/2014:22:23:47 +0530] "GET /index.php?img=gifLogo HTTP/1.1" 200 4549
+127.0.0.1 - - [25/Oct/2014:22:23:47 +0530] "GET /index.php?img=pngPlugin HTTP/1.1" 200 548
+127.0.0.1 - - [25/Oct/2014:22:23:47 +0530] "GET /index.php?img=pngWrench HTTP/1.1" 200 741
+127.0.0.1 - - [25/Oct/2014:22:23:47 +0530] "GET /index.php?img=pngFolder HTTP/1.1" 200 850
+127.0.0.1 - - [25/Oct/2014:22:23:47 +0530] "GET /index.php?img=pngFolderGo HTTP/1.1" 200 694
+127.0.0.1 - - [25/Oct/2014:22:23:52 +0530] "GET /phpmyadmin/ HTTP/1.1" 200 45348
+127.0.0.1 - - [25/Oct/2014:22:24:00 +0530] "GET /phpmyadmin/themes/pmahomme/jquery/jquery-ui-1.9.2.custom.css HTTP/1.1" 200 32278
+127.0.0.1 - - [25/Oct/2014:22:24:00 +0530] "GET /phpmyadmin/themes/pmahomme/img/logo_left.png HTTP/1.1" 200 2327
+127.0.0.1 - - [25/Oct/2014:22:24:00 +0530] "GET /phpmyadmin/themes/dot.gif HTTP/1.1" 200 43
+127.0.0.1 - - [25/Oct/2014:22:24:00 +0530] "GET /phpmyadmin/themes/pmahomme/img/ajax_clock_small.gif HTTP/1.1" 200 1810
+127.0.0.1 - - [25/Oct/2014:22:24:00 +0530] "GET /phpmyadmin/phpmyadmin.css.php?server=1&token=a7a27271a8f287c52b1e5271ac626e90&nocache=5625792639ltr HTTP/1.1" 200 93053
+127.0.0.1 - - [25/Oct/2014:22:24:00 +0530] "GET /phpmyadmin/js/get_image.js.php?theme=pmahomme HTTP/1.1" 200 6388
+127.0.0.1 - - [25/Oct/2014:22:24:00 +0530] "GET /phpmyadmin/js/messages.php?lang=en&db=&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 17755
+127.0.0.1 - - [25/Oct/2014:22:24:00 +0530] "GET /phpmyadmin/js/get_scripts.js.php?token=a7a27271a8f287c52b1e5271ac626e90&scripts[]=jquery/jquery-1.8.3.min.js&scripts[]=ajax.js&scripts[]=keyhandler.js&scripts[]=jquery/jquery-ui-1.9.2.custom.min.js&scripts[]=jquery/jquery.sprintf.js&scripts[]=jquery/jquery.cookie.js&scripts[]=jquery/jquery.mousewheel.js&scripts[]=jquery/jquery.event.drag-2.2.js&scripts[]=jquery/jquery-ui-timepicker-addon.js&scripts[]=jquery/jquery.ba-hashchange-1.3.js&scripts[]=jquery/jquery.debounce-1.0.5.js&scripts[]=jquery/jquery.menuResizer-1.0.js&scripts[]=cross_framing_protection.js&scripts[]=rte.js&scripts[]=tracekit/tracekit.js&scripts[]=error_report.js&scripts[]=doclinks.js&scripts[]=functions.js&scripts[]=navigation.js&scripts[]=indexes.js&scripts[]=common.js&scripts[]=codemirror/lib/codemirror.js&scripts[]=codemirror/mode/sql/sql.js&scripts[]=codemirror/addon/runmode/runmode.js HTTP/1.1" 200 1039434
+127.0.0.1 - - [25/Oct/2014:22:24:04 +0530] "GET /phpmyadmin/themes/pmahomme/img/left_nav_bg.png HTTP/1.1" 200 297
+127.0.0.1 - - [25/Oct/2014:22:24:04 +0530] "GET /phpmyadmin/themes/pmahomme/img/sprites.png HTTP/1.1" 200 41626
+127.0.0.1 - - [25/Oct/2014:22:24:04 +0530] "GET /phpmyadmin/version_check.php?&_nocache=1414256044680980451 HTTP/1.1" 200 42
+127.0.0.1 - - [25/Oct/2014:22:24:13 +0530] "GET /phpmyadmin/server_databases.php?server=1&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df&_nocache=1414256053596580657 HTTP/1.1" 200 36409
+127.0.0.1 - - [25/Oct/2014:22:24:14 +0530] "GET /phpmyadmin/themes/pmahomme/img/arrow_ltr.png HTTP/1.1" 200 139
+127.0.0.1 - - [25/Oct/2014:22:24:14 +0530] "GET /phpmyadmin/js/get_scripts.js.php?scripts[]=server_databases.js&token=a7a27271a8f287c52b1e5271ac626e90&call_done=1 HTTP/1.1" 200 4719
+127.0.0.1 - - [25/Oct/2014:22:24:23 +0530] "POST /phpmyadmin/db_create.php HTTP/1.1" 200 2112
+127.0.0.1 - - [25/Oct/2014:22:24:23 +0530] "POST /phpmyadmin/navigation.php?ajax_request=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 4045
+127.0.0.1 - - [25/Oct/2014:22:24:25 +0530] "GET /phpmyadmin/db_structure.php?db=ticketdiary&token=a7a27271a8f287c52b1e5271ac626e90&db=ticketdiary&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df-0bd70bad&_nocache=1414256065434403158 HTTP/1.1" 200 5706
+127.0.0.1 - - [25/Oct/2014:22:24:25 +0530] "GET /phpmyadmin/js/get_scripts.js.php?scripts[]=db_structure.js&scripts[]=tbl_change.js&token=a7a27271a8f287c52b1e5271ac626e90&call_done=1 HTTP/1.1" 200 36139
+127.0.0.1 - - [25/Oct/2014:22:24:26 +0530] "GET /phpmyadmin/navigation.php?ajax_request=1&token=a7a27271a8f287c52b1e5271ac626e90&aPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&vPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&pos=0&pos2_name=&pos2_value=&searchClause=&searchClause2=&_nocache=1414256066034897527 HTTP/1.1" 200 97
+127.0.0.1 - - [25/Oct/2014:22:24:37 +0530] "POST /phpmyadmin/tbl_create.php HTTP/1.1" 200 167629
+127.0.0.1 - - [25/Oct/2014:22:24:38 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:24:38 +0530] "GET /phpmyadmin/navigation.php?ajax_request=1&token=a7a27271a8f287c52b1e5271ac626e90&aPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&vPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&pos=0&pos2_name=&pos2_value=&searchClause=&searchClause2=&_nocache=1414256078378873176 HTTP/1.1" 200 97
+127.0.0.1 - - [25/Oct/2014:22:26:37 +0530] "POST /phpmyadmin/tbl_create.php HTTP/1.1" 200 176
+127.0.0.1 - - [25/Oct/2014:22:26:37 +0530] "GET /phpmyadmin/db_structure.php?token=a7a27271a8f287c52b1e5271ac626e90&server=1&db=ticketdiary&table=stations&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df-0bd70bad-8437221c-ed0b0809&_nocache=1414256197857883876 HTTP/1.1" 200 9647
+127.0.0.1 - - [25/Oct/2014:22:26:37 +0530] "POST /phpmyadmin/navigation.php?ajax_request=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 4045
+127.0.0.1 - - [25/Oct/2014:22:26:38 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:26:38 +0530] "GET /phpmyadmin/navigation.php?ajax_request=1&token=a7a27271a8f287c52b1e5271ac626e90&aPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&vPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&pos=0&pos2_name=&pos2_value=&searchClause=&searchClause2=&_nocache=1414256198104892305 HTTP/1.1" 200 1424
+127.0.0.1 - - [25/Oct/2014:22:26:38 +0530] "GET /phpmyadmin/navigation.php?ajax_request=1&token=a7a27271a8f287c52b1e5271ac626e90&aPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&vPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&pos=0&pos2_name=&pos2_value=&searchClause=&searchClause2=&_nocache=1414256198160167862 HTTP/1.1" 200 1424
+127.0.0.1 - - [25/Oct/2014:22:26:40 +0530] "GET /phpmyadmin/sql.php?server=1&db=ticketdiary&table=stations&pos=0&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df-0bd70bad-8437221c-ed0b0809&_nocache=1414256200405590004 HTTP/1.1" 200 9529
+127.0.0.1 - - [25/Oct/2014:22:26:40 +0530] "GET /phpmyadmin/js/get_scripts.js.php?scripts[]=gis_data_editor.js&token=a7a27271a8f287c52b1e5271ac626e90&call_done=1 HTTP/1.1" 200 14220
+127.0.0.1 - - [25/Oct/2014:22:26:40 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:27:41 +0530] "GET /phpmyadmin/tbl_structure.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df-0bd70bad-8437221c-ed0b0809-ee7c0c78&_nocache=1414256261415639683 HTTP/1.1" 200 33939
+127.0.0.1 - - [25/Oct/2014:22:27:41 +0530] "GET /phpmyadmin/js/get_scripts.js.php?scripts[]=tbl_structure.js&token=a7a27271a8f287c52b1e5271ac626e90&call_done=1 HTTP/1.1" 200 21559
+127.0.0.1 - - [25/Oct/2014:22:27:42 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:27:50 +0530] "POST /phpmyadmin/tbl_addfield.php HTTP/1.1" 200 70683
+127.0.0.1 - - [25/Oct/2014:22:27:51 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:28:34 +0530] "POST /phpmyadmin/tbl_addfield.php HTTP/1.1" 200 1708
+127.0.0.1 - - [25/Oct/2014:22:28:34 +0530] "POST /phpmyadmin/ HTTP/1.1" 200 156
+127.0.0.1 - - [25/Oct/2014:22:28:34 +0530] "POST /phpmyadmin/navigation.php?ajax_request=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 5499
+127.0.0.1 - - [25/Oct/2014:22:28:36 +0530] "GET /phpmyadmin/sql.php?server=1&db=ticketdiary&table=stations&pos=0&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df-0bd70bad-8437221c-ed0b0809-ee7c0c78-bebc318a&_nocache=1414256316965340453 HTTP/1.1" 200 6073
+127.0.0.1 - - [25/Oct/2014:22:28:37 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:28:39 +0530] "GET /phpmyadmin/tbl_structure.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df-0bd70bad-8437221c-ed0b0809-ee7c0c78-bebc318a&_nocache=1414256319206821928 HTTP/1.1" 200 38578
+127.0.0.1 - - [25/Oct/2014:22:28:39 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:31:04 +0530] "GET /phpmyadmin/tbl_sql.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df-0bd70bad-8437221c-ed0b0809-ee7c0c78-bebc318a&_nocache=1414256464637399501 HTTP/1.1" 200 9005
+127.0.0.1 - - [25/Oct/2014:22:31:05 +0530] "GET /phpmyadmin/js/get_scripts.js.php?scripts[]=makegrid.js&scripts[]=sql.js&token=a7a27271a8f287c52b1e5271ac626e90&call_done=1 HTTP/1.1" 200 100312
+127.0.0.1 - - [25/Oct/2014:22:31:05 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:31:09 +0530] "POST /phpmyadmin/import.php HTTP/1.1" 200 1946
+127.0.0.1 - - [25/Oct/2014:22:31:13 +0530] "GET /phpmyadmin/sql.php?server=1&db=ticketdiary&table=stations&pos=0&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df-0bd70bad-8437221c-ed0b0809-ee7c0c78-bebc318a-7d976863&_nocache=1414256473317602175 HTTP/1.1" 200 16533
+127.0.0.1 - - [25/Oct/2014:22:31:13 +0530] "GET /phpmyadmin/themes/pmahomme/img/s_fulltext.png HTTP/1.1" 200 193
+127.0.0.1 - - [25/Oct/2014:22:31:13 +0530] "GET /phpmyadmin/themes/pmahomme/img/col_pointer.png HTTP/1.1" 200 113
+127.0.0.1 - - [25/Oct/2014:22:31:13 +0530] "GET /phpmyadmin/themes/pmahomme/img/col_drop.png HTTP/1.1" 200 132
+127.0.0.1 - - [25/Oct/2014:22:31:13 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:31:23 +0530] "POST /phpmyadmin/tbl_row_action.php HTTP/1.1" 200 15228
+127.0.0.1 - - [25/Oct/2014:22:31:23 +0530] "GET /phpmyadmin/js/messages.php?lang=en&db=ticketdiary&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 17755
+127.0.0.1 - - [25/Oct/2014:22:31:24 +0530] "GET /phpmyadmin/navigation.php?ajax_request=1&token=a7a27271a8f287c52b1e5271ac626e90&aPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&vPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&pos=0&pos2_name=&pos2_value=&searchClause=&searchClause2=&_nocache=1414256484034913207 HTTP/1.1" 200 1424
+127.0.0.1 - - [25/Oct/2014:22:31:24 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:31:25 +0530] "POST /phpmyadmin/tbl_row_action.php HTTP/1.1" 200 9465
+127.0.0.1 - - [25/Oct/2014:22:31:26 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:33:53 +0530] "GET /phpmyadmin/tbl_import.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=ee7c0c78&_nocache=1414256633945309148 HTTP/1.1" 200 17955
+127.0.0.1 - - [25/Oct/2014:22:33:55 +0530] "GET /phpmyadmin/js/get_scripts.js.php?scripts[]=import.js&token=a7a27271a8f287c52b1e5271ac626e90&call_done=1 HTTP/1.1" 200 3920
+127.0.0.1 - - [25/Oct/2014:22:33:55 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:34:13 +0530] "POST /phpmyadmin/import.php HTTP/1.1" 200 442948
+127.0.0.1 - - [25/Oct/2014:22:40:14 +0530] "GET /phpmyadmin/navigation.php?ajax_request=1&token=a7a27271a8f287c52b1e5271ac626e90&aPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&vPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&pos=0&pos2_name=&pos2_value=&searchClause=&searchClause2=&_nocache=1414257014679126365 HTTP/1.1" 200 1424
+127.0.0.1 - - [25/Oct/2014:22:40:14 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:49:34 +0530] "GET /phpmyadmin/sql.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&pos=0&ajax_request=true&ajax_page_request=true&_nocache=1414257573984172 HTTP/1.1" 200 9527
+127.0.0.1 - - [25/Oct/2014:22:49:34 +0530] "GET /phpmyadmin/js/get_scripts.js.php?scripts[]=tbl_change.js&scripts[]=gis_data_editor.js&token=a7a27271a8f287c52b1e5271ac626e90&call_done=1 HTTP/1.1" 200 35334
+127.0.0.1 - - [25/Oct/2014:22:49:34 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:49:38 +0530] "GET /phpmyadmin/tbl_sql.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=ee7c0c78&_nocache=1414257578001638008 HTTP/1.1" 200 9005
+127.0.0.1 - - [25/Oct/2014:22:49:38 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:49:39 +0530] "GET /phpmyadmin/tbl_change.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=ee7c0c78-7d976863&_nocache=1414257579722612764 HTTP/1.1" 200 53121
+127.0.0.1 - - [25/Oct/2014:22:49:40 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:49:41 +0530] "GET /phpmyadmin/tbl_select.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=17827321-ee7c0c78-7d976863&_nocache=1414257581690662815 HTTP/1.1" 200 17395
+127.0.0.1 - - [25/Oct/2014:22:49:42 +0530] "GET /phpmyadmin/js/get_scripts.js.php?scripts[]=tbl_select.js&token=a7a27271a8f287c52b1e5271ac626e90&call_done=1 HTTP/1.1" 200 7921
+127.0.0.1 - - [25/Oct/2014:22:49:42 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:49:43 +0530] "GET /phpmyadmin/tbl_structure.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=17827321-ee7c0c78-7d976863-730b0806&_nocache=1414257583773161557 HTTP/1.1" 200 42034
+127.0.0.1 - - [25/Oct/2014:22:49:44 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:49:46 +0530] "GET /phpmyadmin/tbl_change.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=17827321-ee7c0c78-7d976863-730b0806-bebc318a&_nocache=1414257586957947643 HTTP/1.1" 200 49665
+127.0.0.1 - - [25/Oct/2014:22:49:47 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:50:34 +0530] "GET /phpmyadmin/tbl_import.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=17827321-ee7c0c78-7d976863-730b0806-bebc318a&_nocache=1414257634573173307 HTTP/1.1" 200 17955
+127.0.0.1 - - [25/Oct/2014:22:50:34 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:50:39 +0530] "GET /phpmyadmin/tbl_sql.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=17827321-ee7c0c78-7d976863-730b0806-bebc318a-0a326cd6&_nocache=14142576396343993 HTTP/1.1" 200 5549
+127.0.0.1 - - [25/Oct/2014:22:50:39 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:54:34 +0530] "GET /phpmyadmin HTTP/1.1" 301 327
+127.0.0.1 - - [25/Oct/2014:22:55:25 +0530] "GET / HTTP/1.1" 200 4858
+127.0.0.1 - - [25/Oct/2014:22:55:25 +0530] "GET /index.php?img=gifLogo HTTP/1.1" 200 4549
+127.0.0.1 - - [25/Oct/2014:22:55:25 +0530] "GET /index.php?img=pngPlugin HTTP/1.1" 200 548
+127.0.0.1 - - [25/Oct/2014:22:55:26 +0530] "GET /index.php?img=pngFolder HTTP/1.1" 200 850
+127.0.0.1 - - [25/Oct/2014:22:55:26 +0530] "GET /index.php?img=pngWrench HTTP/1.1" 200 741
+127.0.0.1 - - [25/Oct/2014:22:55:26 +0530] "GET /index.php?img=pngFolderGo HTTP/1.1" 200 694
+127.0.0.1 - - [25/Oct/2014:22:51:03 +0530] "POST /phpmyadmin/import.php HTTP/1.1" 200 2706
+127.0.0.1 - - [25/Oct/2014:22:54:34 +0530] "GET /phpmyadmin/ HTTP/1.1" 200 46109
+127.0.0.1 - - [25/Oct/2014:22:55:28 +0530] "GET /phpmyadmin/ HTTP/1.1" 200 46109
+127.0.0.1 - - [25/Oct/2014:22:57:06 +0530] "GET /phpmyadmin/version_check.php?&_nocache=1414258026273262298 HTTP/1.1" 200 42
+127.0.0.1 - - [25/Oct/2014:22:57:36 +0530] "GET /phpmyadmin/tbl_sql.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=17827321-ee7c0c78-7d976863-730b0806-bebc318a-0a326cd6&_nocache=1414258056484281330 HTTP/1.1" 200 5549
+127.0.0.1 - - [25/Oct/2014:22:57:37 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:57:47 +0530] "POST /phpmyadmin/import.php HTTP/1.1" 200 1946
+127.0.0.1 - - [25/Oct/2014:22:57:50 +0530] "GET /phpmyadmin/sql.php?server=1&db=ticketdiary&table=stations&pos=0&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=17827321-ee7c0c78-7d976863-730b0806-bebc318a-0a326cd6&_nocache=1414258070789761126 HTTP/1.1" 200 16533
+127.0.0.1 - - [25/Oct/2014:22:57:51 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:57:53 +0530] "GET /phpmyadmin/tbl_sql.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=17827321-ee7c0c78-7d976863-730b0806-bebc318a-0a326cd6&_nocache=1414258073936833818 HTTP/1.1" 200 5549
+127.0.0.1 - - [25/Oct/2014:22:57:54 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:58:01 +0530] "POST /phpmyadmin/import.php HTTP/1.1" 200 1956
+127.0.0.1 - - [25/Oct/2014:22:58:04 +0530] "GET /phpmyadmin/tbl_export.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&single_table=true&ajax_request=true&ajax_page_request=true&menuHashes=17827321-ee7c0c78-7d976863-730b0806-bebc318a-0a326cd6&_nocache=1414258084387857955 HTTP/1.1" 200 36773
+127.0.0.1 - - [25/Oct/2014:22:58:08 +0530] "GET /phpmyadmin/js/get_scripts.js.php?scripts[]=export.js&token=a7a27271a8f287c52b1e5271ac626e90&call_done=1 HTTP/1.1" 200 10538
+127.0.0.1 - - [25/Oct/2014:22:58:08 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:22:59:19 +0530] "POST /phpmyadmin/export.php HTTP/1.1" 200 1390
+127.0.0.1 - - [25/Oct/2014:23:02:07 +0530] "GET /phpmyadmin/sql.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&pos=0&ajax_request=true&ajax_page_request=true&menuHashes=17827321-ee7c0c78-7d976863-730b0806-bebc318a-0a326cd6-9066ba9e&_nocache=1414258327316596488 HTTP/1.1" 200 21506
+127.0.0.1 - - [25/Oct/2014:23:02:07 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:23:02:11 +0530] "POST /phpmyadmin/tbl_row_action.php HTTP/1.1" 200 15568
+127.0.0.1 - - [25/Oct/2014:23:02:12 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:23:02:12 +0530] "GET /phpmyadmin/navigation.php?ajax_request=1&token=a7a27271a8f287c52b1e5271ac626e90&aPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&vPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&pos=0&pos2_name=&pos2_value=&searchClause=&searchClause2=&_nocache=1414258332352803638 HTTP/1.1" 200 1424
+127.0.0.1 - - [25/Oct/2014:23:02:13 +0530] "POST /phpmyadmin/tbl_row_action.php HTTP/1.1" 200 9465
+127.0.0.1 - - [25/Oct/2014:23:02:14 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:23:02:15 +0530] "GET /phpmyadmin/tbl_import.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=ee7c0c78&_nocache=1414258335975514333 HTTP/1.1" 200 17955
+127.0.0.1 - - [25/Oct/2014:23:02:16 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:23:02:33 +0530] "POST /phpmyadmin/import.php HTTP/1.1" 200 15321
+127.0.0.1 - - [25/Oct/2014:23:02:35 +0530] "GET /phpmyadmin/navigation.php?ajax_request=1&token=a7a27271a8f287c52b1e5271ac626e90&aPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&vPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&pos=0&pos2_name=&pos2_value=&searchClause=&searchClause2=&_nocache=1414258355492782510 HTTP/1.1" 200 1424
+127.0.0.1 - - [25/Oct/2014:23:02:35 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:23:03:10 +0530] "GET /phpmyadmin/tbl_import.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&no_history=true&ajax_request=true&ajax_page_request=true&_nocache=1414258390855123920 HTTP/1.1" 200 17955
+127.0.0.1 - - [25/Oct/2014:23:03:11 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:23:03:15 +0530] "POST /phpmyadmin/import.php HTTP/1.1" 200 15322
+127.0.0.1 - - [25/Oct/2014:23:03:19 +0530] "GET /phpmyadmin/navigation.php?ajax_request=1&token=a7a27271a8f287c52b1e5271ac626e90&aPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&vPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&pos=0&pos2_name=&pos2_value=&searchClause=&searchClause2=&_nocache=1414258399981582477 HTTP/1.1" 200 1424
+127.0.0.1 - - [25/Oct/2014:23:03:19 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:23:03:54 +0530] "GET /phpmyadmin/tbl_import.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&no_history=true&ajax_request=true&ajax_page_request=true&_nocache=1414258434363909455 HTTP/1.1" 200 17955
+127.0.0.1 - - [25/Oct/2014:23:03:54 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:23:03:59 +0530] "POST /phpmyadmin/import.php HTTP/1.1" 200 13860
+127.0.0.1 - - [25/Oct/2014:23:04:01 +0530] "GET /phpmyadmin/navigation.php?ajax_request=1&token=a7a27271a8f287c52b1e5271ac626e90&aPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&vPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&pos=0&pos2_name=&pos2_value=&searchClause=&searchClause2=&_nocache=1414258441089667755 HTTP/1.1" 200 1424
+127.0.0.1 - - [25/Oct/2014:23:04:01 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:23:04:05 +0530] "GET /phpmyadmin/sql.php?server=1&db=ticketdiary&table=stations&pos=0&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&_nocache=1414258445016215505 HTTP/1.1" 200 112637
+127.0.0.1 - - [25/Oct/2014:23:04:05 +0530] "GET /phpmyadmin/js/get_scripts.js.php?scripts[]=tbl_change.js&scripts[]=gis_data_editor.js&scripts[]=makegrid.js&scripts[]=sql.js&token=a7a27271a8f287c52b1e5271ac626e90&call_done=1 HTTP/1.1" 200 135620
+127.0.0.1 - - [25/Oct/2014:23:04:05 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:23:04:09 +0530] "GET /phpmyadmin/themes/pmahomme/jquery/images/ui-icons_222222_256x240.png HTTP/1.1" 200 4369
+127.0.0.1 - - [25/Oct/2014:23:04:09 +0530] "GET /phpmyadmin/themes/pmahomme/jquery/images/ui-bg_flat_75_ffffff_40x100.png HTTP/1.1" 200 178
+127.0.0.1 - - [25/Oct/2014:23:04:09 +0530] "GET /phpmyadmin/themes/pmahomme/jquery/images/ui-bg_highlight-soft_75_cccccc_1x100.png HTTP/1.1" 200 101
+127.0.0.1 - - [25/Oct/2014:23:04:09 +0530] "GET /phpmyadmin/themes/pmahomme/jquery/images/ui-bg_glass_75_e6e6e6_1x400.png HTTP/1.1" 200 110
+127.0.0.1 - - [25/Oct/2014:23:04:09 +0530] "GET /phpmyadmin/themes/pmahomme/jquery/images/ui-bg_flat_0_aaaaaa_40x100.png HTTP/1.1" 200 180
+127.0.0.1 - - [25/Oct/2014:23:04:09 +0530] "GET /phpmyadmin/themes/pmahomme/jquery/images/ui-bg_glass_75_dadada_1x400.png HTTP/1.1" 200 159
+127.0.0.1 - - [25/Oct/2014:23:04:11 +0530] "GET /phpmyadmin/themes/pmahomme/jquery/images/ui-bg_glass_65_ffffff_1x400.png HTTP/1.1" 200 105
+127.0.0.1 - - [25/Oct/2014:23:04:11 +0530] "GET /phpmyadmin/sql.php?db=ticketdiary&table=stations&sql_query=DELETE+FROM+%60ticketdiary%60.%60stations%60+WHERE+%60stations%60.%60code%60+%3D+%27%27&message_to_show=The+row+has+been+deleted&goto=sql.php%3Fdb%3Dticketdiary%26table%3Dstations%26sql_query%3DSELECT%2B%252A%2BFROM%2B%2560stations%2560%26message_to_show%3DThe%2Brow%2Bhas%2Bbeen%2Bdeleted%26goto%3Dtbl_sql.php%26token%3Da7a27271a8f287c52b1e5271ac626e90&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&is_js_confirmed=true&_nocache=1414258451756887919 HTTP/1.1" 200 1657
+127.0.0.1 - - [25/Oct/2014:23:04:17 +0530] "GET /phpmyadmin/tbl_export.php?db=ticketdiary&table=stations&token=a7a27271a8f287c52b1e5271ac626e90&single_table=true&ajax_request=true&ajax_page_request=true&menuHashes=ee7c0c78&_nocache=1414258457972785482 HTTP/1.1" 200 36776
+127.0.0.1 - - [25/Oct/2014:23:04:18 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:23:04:37 +0530] "POST /phpmyadmin/export.php HTTP/1.1" 200 207964
+127.0.0.1 - - [25/Oct/2014:23:07:08 +0530] "GET /phpmyadmin/server_privileges.php?db=&token=a7a27271a8f287c52b1e5271ac626e90&viewing_mode=server&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df&_nocache=1414258628663120443 HTTP/1.1" 200 13201
+127.0.0.1 - - [25/Oct/2014:23:07:09 +0530] "GET /phpmyadmin/js/get_scripts.js.php?scripts[]=server_privileges.js&token=a7a27271a8f287c52b1e5271ac626e90&call_done=1 HTTP/1.1" 200 26581
+127.0.0.1 - - [25/Oct/2014:23:07:12 +0530] "GET /phpmyadmin/server_privileges.php?adduser=1&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&_nocache=1414258632116829813 HTTP/1.1" 200 16049
+127.0.0.1 - - [25/Oct/2014:23:07:17 +0530] "GET /phpmyadmin/server_privileges.php?ajax_request=true&token=a7a27271a8f287c52b1e5271ac626e90&validate_username=true&username=ticketdiary&_nocache=141425863699832323 HTTP/1.1" 200 205
+127.0.0.1 - - [25/Oct/2014:23:07:25 +0530] "GET /phpmyadmin/server_privileges.php?ajax_request=true&token=a7a27271a8f287c52b1e5271ac626e90&validate_username=true&username=ticketdiary&_nocache=1414258645869780301 HTTP/1.1" 200 205
+127.0.0.1 - - [25/Oct/2014:23:07:56 +0530] "POST /phpmyadmin/server_privileges.php HTTP/1.1" 200 4110
+127.0.0.1 - - [25/Oct/2014:23:07:56 +0530] "POST /phpmyadmin/navigation.php?ajax_request=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 4045
+127.0.0.1 - - [25/Oct/2014:23:08:04 +0530] "GET /phpmyadmin/db_structure.php?server=1&db=ticketdiary&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df-6a34c367&_nocache=1414258684319762271 HTTP/1.1" 200 12615
+127.0.0.1 - - [25/Oct/2014:23:08:04 +0530] "GET /phpmyadmin/navigation.php?ajax_request=1&token=a7a27271a8f287c52b1e5271ac626e90&aPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&vPath=cm9vdA%3D%3D.dGlja2V0ZGlhcnk%3D&pos=0&pos2_name=&pos2_value=&searchClause=&searchClause2=&_nocache=1414258684781137580 HTTP/1.1" 200 1424
+127.0.0.1 - - [25/Oct/2014:23:08:09 +0530] "GET /phpmyadmin/server_privileges.php?db=ticketdiary&token=a7a27271a8f287c52b1e5271ac626e90&checkprivsdb=ticketdiary&viewing_mode=db&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df-6a34c367-8437221c&_nocache=141425868978488401 HTTP/1.1" 200 8624
+127.0.0.1 - - [25/Oct/2014:23:08:16 +0530] "GET /phpmyadmin/server_privileges.php?username=ticketdiary&hostname=%25&dbname=ticketdiary&tablename=&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&edit_user_dialog=true&_nocache=1414258695999264947 HTTP/1.1" 200 9361
+127.0.0.1 - - [25/Oct/2014:23:08:22 +0530] "POST /phpmyadmin/server_privileges.php HTTP/1.1" 200 1948
+127.0.0.1 - - [25/Oct/2014:23:09:38 +0530] "GET /phpmyadmin/export.php?ajax_request=true&token=a7a27271a8f287c52b1e5271ac626e90&check_time_out=true&_nocache=1414258778276305760 HTTP/1.1" 200 36
+127.0.0.1 - - [25/Oct/2014:23:10:57 +0530] "GET /slim/services/stationcode/ACND HTTP/1.1" 500 1746
+127.0.0.1 - - [25/Oct/2014:23:11:19 +0530] "GET /phpmyadmin/server_privileges.php?username=ticketdiary&hostname=%25&dbname=&tablename=&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&edit_user_dialog=true&_nocache=1414258879980968429 HTTP/1.1" 200 21788
+127.0.0.1 - - [25/Oct/2014:23:11:33 +0530] "POST /phpmyadmin/server_privileges.php HTTP/1.1" 200 3861
+127.0.0.1 - - [25/Oct/2014:23:11:34 +0530] "GET /phpmyadmin/error_report.php?ajax_request=true&token=a7a27271a8f287c52b1e5271ac626e90&get_settings=true&_nocache=1414258894040139743 HTTP/1.1" 200 52
+127.0.0.1 - - [25/Oct/2014:23:11:42 +0530] "GET /phpmyadmin/index.php?token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df-6a34c367-8437221c-e5b8d547&_nocache=1414258902524519389 HTTP/1.1" 200 35828
+127.0.0.1 - - [25/Oct/2014:23:11:44 +0530] "GET /phpmyadmin/server_privileges.php?db=&token=a7a27271a8f287c52b1e5271ac626e90&viewing_mode=server&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df-6a34c367-8437221c-e5b8d547&_nocache=1414258904356769059 HTTP/1.1" 200 12588
+127.0.0.1 - - [25/Oct/2014:23:11:42 +0530] "GET /phpmyadmin/version_check.php?&_nocache=1414258902700645252 HTTP/1.1" 200 42
+127.0.0.1 - - [25/Oct/2014:23:12:00 +0530] "GET /phpmyadmin/server_privileges.php?username=ticketdiary&hostname=%25&dbname=&tablename=&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&edit_user_dialog=true&token=a7a27271a8f287c52b1e5271ac626e90&_nocache=1414258920399180898 HTTP/1.1" 200 21788
+127.0.0.1 - - [25/Oct/2014:23:12:12 +0530] "POST /phpmyadmin/server_privileges.php HTTP/1.1" 200 3031
+127.0.0.1 - - [25/Oct/2014:23:12:21 +0530] "GET /phpmyadmin/server_privileges.php?username=ticketdiary&hostname=localhost&dbname=&tablename=&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&edit_user_dialog=true&token=a7a27271a8f287c52b1e5271ac626e90&_nocache=1414258941001954066 HTTP/1.1" 200 21288
+127.0.0.1 - - [25/Oct/2014:23:12:32 +0530] "POST /phpmyadmin/server_privileges.php HTTP/1.1" 200 3103
+127.0.0.1 - - [25/Oct/2014:23:12:35 +0530] "GET /phpmyadmin/server_privileges.php?db=&token=a7a27271a8f287c52b1e5271ac626e90&viewing_mode=server&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df-6a34c367-8437221c-e5b8d547&_nocache=1414258955645558565 HTTP/1.1" 200 10412
+127.0.0.1 - - [25/Oct/2014:23:12:44 +0530] "GET /phpmyadmin/server_privileges.php?adduser=1&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&_nocache=1414258964608806771 HTTP/1.1" 200 16049
+127.0.0.1 - - [25/Oct/2014:23:12:52 +0530] "GET /phpmyadmin/server_privileges.php?ajax_request=true&token=a7a27271a8f287c52b1e5271ac626e90&validate_username=true&username=ticketdiary&_nocache=1414258972837130468 HTTP/1.1" 200 205
+127.0.0.1 - - [25/Oct/2014:23:13:13 +0530] "POST /phpmyadmin/server_privileges.php HTTP/1.1" 200 3531
+127.0.0.1 - - [25/Oct/2014:23:13:21 +0530] "GET /phpmyadmin/sql.php?server=1&db=ticketdiary&table=stations&pos=0&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df-6a34c367-8437221c-e5b8d547&_nocache=141425900177858782 HTTP/1.1" 200 112784
+127.0.0.1 - - [25/Oct/2014:23:13:22 +0530] "GET /phpmyadmin/js/get_scripts.js.php?scripts[]=gis_data_editor.js&scripts[]=makegrid.js&scripts[]=sql.js&token=a7a27271a8f287c52b1e5271ac626e90&call_done=1 HTTP/1.1" 200 114506
+127.0.0.1 - - [25/Oct/2014:23:13:22 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=a7a27271a8f287c52b1e5271ac626e90 HTTP/1.1" 200 222
+127.0.0.1 - - [25/Oct/2014:23:13:22 +0530] "GET /phpmyadmin/db_structure.php?server=1&db=ticketdiary&token=a7a27271a8f287c52b1e5271ac626e90&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df-6a34c367-8437221c-e5b8d547-ee7c0c78&_nocache=1414259002769154493 HTTP/1.1" 200 9471
+127.0.0.1 - - [25/Oct/2014:23:13:24 +0530] "GET /phpmyadmin/server_privileges.php?db=ticketdiary&token=a7a27271a8f287c52b1e5271ac626e90&checkprivsdb=ticketdiary&viewing_mode=db&ajax_request=true&ajax_page_request=true&menuHashes=3fef48df-6a34c367-8437221c-e5b8d547-ee7c0c78&_nocache=1414259004443834042 HTTP/1.1" 200 4939
+127.0.0.1 - - [25/Oct/2014:23:13:30 +0530] "GET /slim/services/stationcode/ACND HTTP/1.1" 200 141
+127.0.0.1 - - [26/Oct/2014:00:37:26 +0530] "GET /slim/services/stationcode/ACND HTTP/1.1" 200 4858
+127.0.0.1 - - [26/Oct/2014:00:37:30 +0530] "GET /slim/services/stationcode/index.php?img=gifLogo HTTP/1.1" 200 4549
+127.0.0.1 - - [26/Oct/2014:00:37:30 +0530] "GET /slim/services/stationcode/index.php?img=pngWrench HTTP/1.1" 200 741
+127.0.0.1 - - [26/Oct/2014:00:37:30 +0530] "GET /slim/services/stationcode/index.php?img=pngPlugin HTTP/1.1" 200 548
+127.0.0.1 - - [26/Oct/2014:00:37:30 +0530] "GET /slim/services/stationcode/index.php?img=pngFolderGo HTTP/1.1" 200 694
+127.0.0.1 - - [26/Oct/2014:00:37:30 +0530] "GET /slim/services/stationcode/index.php?img=pngFolder HTTP/1.1" 200 850
+127.0.0.1 - - [26/Oct/2014:00:37:31 +0530] "GET /slim/services/stationcode/index.php?img=favicon HTTP/1.1" 200 1429
+127.0.0.1 - - [26/Oct/2014:00:37:51 +0530] "GET /slim/services/stationcode/ACND HTTP/1.1" 200 3616
+127.0.0.1 - - [26/Oct/2014:00:38:34 +0530] "GET /slim/services/stationcode/ACND HTTP/1.1" 200 3933
+127.0.0.1 - - [26/Oct/2014:00:39:01 +0530] "GET /slim/services/stationcode/ACND HTTP/1.1" 500 1575
+127.0.0.1 - - [26/Oct/2014:00:39:24 +0530] "GET /slim/services/stationcode/ACND HTTP/1.1" 404 95
+127.0.0.1 - - [26/Oct/2014:00:39:38 +0530] "GET /slim/services/stationcode/ACND HTTP/1.1" 500 1472
+127.0.0.1 - - [26/Oct/2014:00:41:38 +0530] "GET /slim/services/stationcode/ACND HTTP/1.1" 200 996
+127.0.0.1 - - [26/Oct/2014:00:41:55 +0530] "GET /slim/services/stationcode/ACND HTTP/1.1" 404 105
+127.0.0.1 - - [26/Oct/2014:00:42:21 +0530] "GET /slim/services/stationcode/ACND HTTP/1.1" 404 136
+127.0.0.1 - - [26/Oct/2014:00:43:28 +0530] "GET /slim/services/stationcode/ACND HTTP/1.1" 500 1685
+127.0.0.1 - - [26/Oct/2014:00:47:49 +0530] "GET /slim/services/stationcode/ACND HTTP/1.1" 200 141
+127.0.0.1 - - [26/Oct/2014:00:59:50 +0530] "GET /services/ticketdiary/stationcode/ACND HTTP/1.1" 200 141
+127.0.0.1 - - [26/Oct/2014:00:59:57 +0530] "GET /services/ticketdiary/stationcode/ACNalka HTTP/1.1" 404 95
+127.0.0.1 - - [26/Oct/2014:19:08:33 +0530] "GET /services/test/alka.xml HTTP/1.1" 200 73
+127.0.0.1 - - [26/Oct/2014:19:13:17 +0530] "GET /services/test/alka HTTP/1.1" 200 69
+127.0.0.1 - - [26/Oct/2014:19:13:28 +0530] "GET /services/test/alka.rani HTTP/1.1" 200 74
+127.0.0.1 - - [26/Oct/2014:19:13:58 +0530] "GET /services/test/alka.rani HTTP/1.1" 200 54
+127.0.0.1 - - [26/Oct/2014:19:14:04 +0530] "GET /services/test/alka.xml HTTP/1.1" 200 73
+127.0.0.1 - - [26/Oct/2014:19:14:19 +0530] "GET /services/test/alka.xml?muthu=alks HTTP/1.1" 200 73
+127.0.0.1 - - [26/Oct/2014:19:14:24 +0530] "GET /services/test/alka?muthu=alks HTTP/1.1" 200 49
+127.0.0.1 - - [26/Oct/2014:19:14:28 +0530] "GET /services/test/alka?muthu=xml HTTP/1.1" 200 49
+127.0.0.1 - - [26/Oct/2014:19:18:44 +0530] "GET /services/test/alka.xml HTTP/1.1" 200 53
+127.0.0.1 - - [26/Oct/2014:19:18:50 +0530] "GET /services/test/alka.xml?format=xml HTTP/1.1" 200 73
+127.0.0.1 - - [26/Oct/2014:19:19:48 +0530] "GET /services/test/alka.xml?format=xml HTTP/1.1" 200 73
+127.0.0.1 - - [26/Oct/2014:19:19:52 +0530] "GET /services/test/alka HTTP/1.1" 200 69
+127.0.0.1 - - [26/Oct/2014:19:45:15 +0530] "GET /services/test/requesturi/alka HTTP/1.1" 200 413
+127.0.0.1 - - [26/Oct/2014:19:45:30 +0530] "GET /services/test/requesturi/alka HTTP/1.1" 200 28
+127.0.0.1 - - [26/Oct/2014:19:46:01 +0530] "GET /services/python/hello.py HTTP/1.1" 200 217
+127.0.0.1 - - [26/Oct/2014:19:46:37 +0530] "GET /services/python/hello.py HTTP/1.1" 304 -
+127.0.0.1 - - [26/Oct/2014:19:53:49 +0530] "GET /services/python/hello.py HTTP/1.1" 304 -
+127.0.0.1 - - [26/Oct/2014:19:54:21 +0530] "GET /services/execpython/hello.py HTTP/1.1" 200 3672
+127.0.0.1 - - [26/Oct/2014:19:54:49 +0530] "GET /services/execpython/hello.py HTTP/1.1" 200 3672
+127.0.0.1 - - [26/Oct/2014:19:55:16 +0530] "GET /services/execpython/hello.py HTTP/1.1" 500 1538
+127.0.0.1 - - [26/Oct/2014:19:55:36 +0530] "GET /services/execpython/hello.py HTTP/1.1" 500 1668
+127.0.0.1 - - [26/Oct/2014:19:55:51 +0530] "GET /services/execpython/hello.py HTTP/1.1" 200 148
+127.0.0.1 - - [26/Oct/2014:20:28:32 +0530] "GET /services/execpython/hello.py HTTP/1.1" 500 1804
+127.0.0.1 - - [26/Oct/2014:20:29:02 +0530] "GET /services/execpython/hello.py HTTP/1.1" 500 1875
+127.0.0.1 - - [26/Oct/2014:20:31:56 +0530] "GET /services/execpython/hello.py HTTP/1.1" 200 387
+127.0.0.1 - - [26/Oct/2014:20:32:04 +0530] "GET /services/execpython/hello.py HTTP/1.1" 200 328
+127.0.0.1 - - [26/Oct/2014:20:50:47 +0530] "GET /services/execpython/hello.py HTTP/1.1" 200 183
+127.0.0.1 - - [26/Oct/2014:20:51:26 +0530] "GET /services/execpython/hello.py HTTP/1.1" 500 1804
+127.0.0.1 - - [26/Oct/2014:20:53:16 +0530] "GET /services/execpython/hello.py HTTP/1.1" 200 1005
+127.0.0.1 - - [26/Oct/2014:20:55:25 +0530] "GET /services/execpython/hello.py HTTP/1.1" 200 1119
+127.0.0.1 - - [26/Oct/2014:20:56:44 +0530] "GET /services/execpython/hello.py HTTP/1.1" 500 1639
+127.0.0.1 - - [26/Oct/2014:20:57:24 +0530] "GET /services/execpython/hello.py HTTP/1.1" 500 1639
+127.0.0.1 - - [26/Oct/2014:20:57:43 +0530] "GET /services/execpython/hello.py?a=xx HTTP/1.1" 500 1639
+127.0.0.1 - - [26/Oct/2014:20:58:03 +0530] "GET /services/execpython/hello.py?a=xx HTTP/1.1" 200 172
+127.0.0.1 - - [26/Oct/2014:20:58:54 +0530] "GET /services/execpython/hello.py?a=xx HTTP/1.1" 200 53
+127.0.0.1 - - [26/Oct/2014:20:59:19 +0530] "GET /services/execpython/hello.py?a=xx HTTP/1.1" 200 168
+127.0.0.1 - - [26/Oct/2014:20:59:41 +0530] "GET /services/execpython/hello.py?a=xx HTTP/1.1" 200 172
+127.0.0.1 - - [26/Oct/2014:21:00:22 +0530] "GET /services/execpython/hello.py?a=xx HTTP/1.1" 200 176
+127.0.0.1 - - [26/Oct/2014:21:00:43 +0530] "GET /services/execpython/hello.py?a=xx HTTP/1.1" 200 172
+127.0.0.1 - - [26/Oct/2014:21:01:11 +0530] "GET /services/execpython/hello.py?a=xx HTTP/1.1" 200 185
+127.0.0.1 - - [26/Oct/2014:21:01:44 +0530] "GET /services/execpython/alka.rani HTTP/1.1" 200 176
+127.0.0.1 - - [26/Oct/2014:22:01:42 +0530] "GET /services/irctcservices/pnrstatus/32736273627 HTTP/1.1" 200 1006
+127.0.0.1 - - [26/Oct/2014:22:02:19 +0530] "GET /services/irctcservices/pnrstatus/32736273627 HTTP/1.1" 200 1006
+127.0.0.1 - - [26/Oct/2014:22:02:36 +0530] "GET /services/irctcservices/pnrstatus/32736273627?s=930943 HTTP/1.1" 200 1006
+127.0.0.1 - - [26/Oct/2014:22:03:11 +0530] "GET /services/irctcservices/pnrstatus/32736273627?s=930943 HTTP/1.1" 200 1006
+127.0.0.1 - - [26/Oct/2014:22:03:21 +0530] "GET /services/irctcservices/pnrstatus/32736273627?s=930943 HTTP/1.1" 200 1006
+127.0.0.1 - - [26/Oct/2014:22:03:32 +0530] "GET /services/irctcservices/pnrstatus/32736273627?s=930943 HTTP/1.1" 200 1003
+127.0.0.1 - - [26/Oct/2014:22:03:54 +0530] "GET /services/irctcservices/pnrstatus/32736273627?s=930943 HTTP/1.1" 200 1003
+127.0.0.1 - - [26/Oct/2014:22:04:51 +0530] "GET /services/irctcservices/pnrstatus/32736273627?s=930943 HTTP/1.1" 500 1626
+127.0.0.1 - - [26/Oct/2014:22:06:04 +0530] "GET /services/irctcservices/pnrstatus/32736273627?s=930943 HTTP/1.1" 500 1756
+127.0.0.1 - - [26/Oct/2014:22:06:22 +0530] "GET /services/irctcservices/pnrstatus/32736273627?s=930943 HTTP/1.1" 500 1756
+127.0.0.1 - - [26/Oct/2014:22:07:00 +0530] "GET /services/irctcservices/pnrstatus/32736273627?s=930943 HTTP/1.1" 500 1756
+127.0.0.1 - - [26/Oct/2014:22:07:12 +0530] "GET /services/irctcservices/pnrstatus/32736273627?s=930943 HTTP/1.1" 500 1756
+127.0.0.1 - - [01/Dec/2014:11:51:53 +0530] "GET / HTTP/1.1" 200 4905
+127.0.0.1 - - [01/Dec/2014:11:51:57 +0530] "GET /index.php?img=gifLogo HTTP/1.1" 200 4549
+127.0.0.1 - - [01/Dec/2014:11:51:57 +0530] "GET /index.php?img=pngPlugin HTTP/1.1" 200 548
+127.0.0.1 - - [01/Dec/2014:11:51:57 +0530] "GET /index.php?img=pngWrench HTTP/1.1" 200 741
+127.0.0.1 - - [01/Dec/2014:11:51:57 +0530] "GET /index.php?img=pngFolder HTTP/1.1" 200 850
+127.0.0.1 - - [01/Dec/2014:11:51:57 +0530] "GET /index.php?img=pngFolderGo HTTP/1.1" 200 694
+127.0.0.1 - - [01/Dec/2014:11:51:58 +0530] "GET /index.php?img=favicon HTTP/1.1" 200 1429
+127.0.0.1 - - [01/Dec/2014:11:52:04 +0530] "GET /phpmyadmin/ HTTP/1.1" 200 48262
+127.0.0.1 - - [01/Dec/2014:11:52:17 +0530] "GET /phpmyadmin/themes/pmahomme/img/logo_left.png HTTP/1.1" 200 2327
+127.0.0.1 - - [01/Dec/2014:11:52:17 +0530] "GET /phpmyadmin/themes/pmahomme/jquery/jquery-ui-1.9.2.custom.css HTTP/1.1" 200 32278
+127.0.0.1 - - [01/Dec/2014:11:52:17 +0530] "GET /phpmyadmin/themes/dot.gif HTTP/1.1" 200 43
+127.0.0.1 - - [01/Dec/2014:11:52:18 +0530] "GET /phpmyadmin/themes/pmahomme/img/ajax_clock_small.gif HTTP/1.1" 200 1810
+127.0.0.1 - - [01/Dec/2014:11:52:17 +0530] "GET /phpmyadmin/phpmyadmin.css.php?server=1&lang=en&collation_connection=utf8mb4_general_ci&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&nocache=5628951535ltr HTTP/1.1" 200 93053
+127.0.0.1 - - [01/Dec/2014:11:52:17 +0530] "GET /phpmyadmin/js/get_image.js.php?theme=pmahomme HTTP/1.1" 200 6388
+127.0.0.1 - - [01/Dec/2014:11:52:17 +0530] "GET /phpmyadmin/js/messages.php?lang=en&db=&collation_connection=utf8mb4_general_ci&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 17755
+127.0.0.1 - - [01/Dec/2014:11:52:17 +0530] "GET /phpmyadmin/js/get_scripts.js.php?lang=en&collation_connection=utf8mb4_general_ci&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&scripts[]=jquery/jquery-1.8.3.min.js&scripts[]=ajax.js&scripts[]=keyhandler.js&scripts[]=jquery/jquery-ui-1.9.2.custom.min.js&scripts[]=jquery/jquery.sprintf.js&scripts[]=jquery/jquery.cookie.js&scripts[]=jquery/jquery.mousewheel.js&scripts[]=jquery/jquery.event.drag-2.2.js&scripts[]=jquery/jquery-ui-timepicker-addon.js&scripts[]=jquery/jquery.ba-hashchange-1.3.js&scripts[]=jquery/jquery.debounce-1.0.5.js&scripts[]=jquery/jquery.menuResizer-1.0.js&scripts[]=cross_framing_protection.js&scripts[]=rte.js&scripts[]=tracekit/tracekit.js&scripts[]=error_report.js&scripts[]=doclinks.js&scripts[]=functions.js&scripts[]=navigation.js&scripts[]=indexes.js&scripts[]=common.js&scripts[]=codemirror/lib/codemirror.js&scripts[]=codemirror/mode/sql/sql.js&scripts[]=codemirror/addon/runmode/runmode.js HTTP/1.1" 200 1039434
+127.0.0.1 - - [01/Dec/2014:11:52:24 +0530] "GET /phpmyadmin/themes/pmahomme/img/left_nav_bg.png HTTP/1.1" 200 297
+127.0.0.1 - - [01/Dec/2014:11:52:24 +0530] "GET /phpmyadmin/themes/pmahomme/img/sprites.png HTTP/1.1" 200 41626
+127.0.0.1 - - [01/Dec/2014:11:52:30 +0530] "GET /phpmyadmin/favicon.ico HTTP/1.1" 200 18902
+127.0.0.1 - - [01/Dec/2014:11:52:29 +0530] "GET /phpmyadmin/version_check.php?&_nocache=1417414949628905963 HTTP/1.1" 200 40
+127.0.0.1 - - [01/Dec/2014:11:52:50 +0530] "GET /phpmyadmin/server_databases.php?server=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=133dabf1&_nocache=1417414970190696832 HTTP/1.1" 200 37254
+127.0.0.1 - - [01/Dec/2014:11:52:57 +0530] "GET /phpmyadmin/themes/pmahomme/img/arrow_ltr.png HTTP/1.1" 200 139
+127.0.0.1 - - [01/Dec/2014:11:52:57 +0530] "GET /phpmyadmin/js/get_scripts.js.php?scripts[]=server_databases.js&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&call_done=1 HTTP/1.1" 200 4719
+127.0.0.1 - - [01/Dec/2014:11:53:32 +0530] "POST /phpmyadmin/db_create.php HTTP/1.1" 200 1998
+127.0.0.1 - - [01/Dec/2014:11:53:33 +0530] "POST /phpmyadmin/navigation.php?ajax_request=1&lang=en&collation_connection=utf8mb4_general_ci&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 4728
+127.0.0.1 - - [01/Dec/2014:11:53:40 +0530] "GET /phpmyadmin/db_structure.php?server=1&db=cdadb&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=133dabf1-4444ddf4&_nocache=141741501996470534 HTTP/1.1" 200 5594
+127.0.0.1 - - [01/Dec/2014:11:53:41 +0530] "GET /phpmyadmin/js/get_scripts.js.php?scripts[]=db_structure.js&scripts[]=tbl_change.js&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&call_done=1 HTTP/1.1" 200 36139
+127.0.0.1 - - [01/Dec/2014:11:53:41 +0530] "GET /phpmyadmin/navigation.php?ajax_request=1&lang=en&collation_connection=utf8mb4_general_ci&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&aPath=cm9vdA%3D%3D.Y2RhZGI%3D&vPath=cm9vdA%3D%3D.Y2RhZGI%3D&pos=0&pos2_name=&pos2_value=&searchClause=&searchClause2=&_nocache=1417415021375979578 HTTP/1.1" 200 97
+127.0.0.1 - - [01/Dec/2014:11:53:47 +0530] "GET /phpmyadmin/db_import.php?db=cdadb&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=133dabf1-4444ddf4-179f5cc9&_nocache=1417415027739674528 HTTP/1.1" 200 15322
+127.0.0.1 - - [01/Dec/2014:11:53:50 +0530] "GET /phpmyadmin/js/get_scripts.js.php?scripts[]=import.js&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&call_done=1 HTTP/1.1" 200 3920
+127.0.0.1 - - [01/Dec/2014:11:54:49 +0530] "POST /phpmyadmin/import.php HTTP/1.1" 200 13836
+127.0.0.1 - - [01/Dec/2014:11:55:13 +0530] "GET /phpmyadmin/phpmyadmin.css.php?server=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&nocache=5628951575ltr HTTP/1.1" 200 93053
+127.0.0.1 - - [01/Dec/2014:11:55:14 +0530] "GET /phpmyadmin/js/messages.php?lang=en&db=cdadb&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 17755
+127.0.0.1 - - [01/Dec/2014:11:55:14 +0530] "GET /phpmyadmin/js/get_scripts.js.php?token=cb4bfb3aa57eaec946e0bb565c7d5e3a&scripts[]=jquery/jquery-1.8.3.min.js&scripts[]=ajax.js&scripts[]=keyhandler.js&scripts[]=jquery/jquery-ui-1.9.2.custom.min.js&scripts[]=jquery/jquery.sprintf.js&scripts[]=jquery/jquery.cookie.js&scripts[]=jquery/jquery.mousewheel.js&scripts[]=jquery/jquery.event.drag-2.2.js&scripts[]=jquery/jquery-ui-timepicker-addon.js&scripts[]=jquery/jquery.ba-hashchange-1.3.js&scripts[]=jquery/jquery.debounce-1.0.5.js&scripts[]=jquery/jquery.menuResizer-1.0.js&scripts[]=cross_framing_protection.js&scripts[]=rte.js&scripts[]=tracekit/tracekit.js&scripts[]=error_report.js&scripts[]=doclinks.js&scripts[]=functions.js&scripts[]=navigation.js&scripts[]=indexes.js&scripts[]=common.js&scripts[]=codemirror/lib/codemirror.js&scripts[]=codemirror/mode/sql/sql.js&scripts[]=codemirror/addon/runmode/runmode.js HTTP/1.1" 200 1039434
+127.0.0.1 - - [01/Dec/2014:11:55:16 +0530] "GET /phpmyadmin/navigation.php?ajax_request=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&aPath=cm9vdA%3D%3D.Y2RhZGI%3D&vPath=cm9vdA%3D%3D.Y2RhZGI%3D&pos=0&pos2_name=&pos2_value=&searchClause=&searchClause2=&_nocache=1417415116634653367 HTTP/1.1" 200 9977
+127.0.0.1 - - [01/Dec/2014:11:56:19 +0530] "GET /phpmyadmin/sql.php?server=1&db=cdadb&table=center_details&pos=0&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&_nocache=1417415179850970168 HTTP/1.1" 200 45318
+127.0.0.1 - - [01/Dec/2014:11:56:22 +0530] "GET /phpmyadmin/themes/pmahomme/img/s_fulltext.png HTTP/1.1" 200 193
+127.0.0.1 - - [01/Dec/2014:11:56:22 +0530] "GET /phpmyadmin/js/get_scripts.js.php?scripts[]=tbl_change.js&scripts[]=gis_data_editor.js&scripts[]=makegrid.js&scripts[]=sql.js&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&call_done=1 HTTP/1.1" 200 135620
+127.0.0.1 - - [01/Dec/2014:11:56:23 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 222
+127.0.0.1 - - [01/Dec/2014:11:56:23 +0530] "GET /phpmyadmin/themes/pmahomme/img/col_pointer.png HTTP/1.1" 200 113
+127.0.0.1 - - [01/Dec/2014:11:56:23 +0530] "GET /phpmyadmin/themes/pmahomme/img/col_drop.png HTTP/1.1" 200 132
+127.0.0.1 - - [01/Dec/2014:11:56:28 +0530] "GET /phpmyadmin/sql.php?server=1&db=cdadb&table=email_details&pos=0&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=18371619&_nocache=141741518813178082 HTTP/1.1" 200 17178
+127.0.0.1 - - [01/Dec/2014:11:56:28 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 352
+127.0.0.1 - - [01/Dec/2014:11:56:32 +0530] "GET /phpmyadmin/sql.php?server=1&db=cdadb&table=email_list&pos=0&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=18371619-80359a3e&_nocache=141741519239043389 HTTP/1.1" 200 37805
+127.0.0.1 - - [01/Dec/2014:11:56:32 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 476
+127.0.0.1 - - [01/Dec/2014:11:56:38 +0530] "GET /phpmyadmin/sql.php?server=1&db=cdadb&table=sand_box&pos=0&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=18371619-80359a3e-15ae94bf&_nocache=1417415198099918416 HTTP/1.1" 200 9355
+127.0.0.1 - - [01/Dec/2014:11:56:42 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 596
+127.0.0.1 - - [01/Dec/2014:11:56:43 +0530] "GET /phpmyadmin/sql.php?server=1&db=cdadb&table=task_details&pos=0&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=18371619-80359a3e-15ae94bf-ef88fe14&_nocache=1417415203124376269 HTTP/1.1" 200 70981
+[19-Oct-2014 08:25:14 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[19-Oct-2014 08:25:22 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[19-Oct-2014 08:25:38 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[19-Oct-2014 08:25:38 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[19-Oct-2014 08:25:44 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[19-Oct-2014 08:25:44 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[19-Oct-2014 08:25:44 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[19-Oct-2014 08:25:44 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[25-Oct-2014 12:17:34 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[25-Oct-2014 12:17:34 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[25-Oct-2014 12:17:36 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[25-Oct-2014 12:17:36 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[25-Oct-2014 12:21:57 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[25-Oct-2014 12:21:57 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[25-Oct-2014 12:21:58 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[25-Oct-2014 12:21:58 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[25-Oct-2014 16:53:39 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[25-Oct-2014 16:53:39 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[25-Oct-2014 16:53:40 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[25-Oct-2014 16:53:40 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[25-Oct-2014 19:10:13 Europe/Paris] PHP Fatal error:  Maximum execution time of 360 seconds exceeded in C:\muthu\wamp\apps\phpmyadmin4.1.14\libraries\StringMB.class.php on line 47
+
+[25-Oct-2014 19:10:14 Europe/Paris] PHP Stack trace:
+
+[25-Oct-2014 19:10:14 Europe/Paris] PHP   1. {main}() C:\muthu\wamp\apps\phpmyadmin4.1.14\import.php:0
+
+[25-Oct-2014 19:10:14 Europe/Paris] PHP   2. include_once() C:\muthu\wamp\apps\phpmyadmin4.1.14\import.php:614
+
+[25-Oct-2014 19:10:14 Europe/Paris] PHP   3. PMA_SQP_parse() C:\muthu\wamp\apps\phpmyadmin4.1.14\libraries\parse_analyze.inc.php:16
+
+[25-Oct-2014 19:10:14 Europe/Paris] PHP   4. PMA_String->substr() C:\muthu\wamp\apps\phpmyadmin4.1.14\libraries\sqlparser.lib.php:559
+
+[25-Oct-2014 19:10:14 Europe/Paris] PHP   5. PMA_StringMB->substr() C:\muthu\wamp\apps\phpmyadmin4.1.14\libraries\String.class.php:122
+
+[25-Oct-2014 19:27:03 Europe/Paris] PHP Fatal error:  Maximum execution time of 360 seconds exceeded in C:\muthu\wamp\apps\phpmyadmin4.1.14\libraries\StringMB.class.php on line 61
+
+[25-Oct-2014 19:27:03 Europe/Paris] PHP Stack trace:
+
+[25-Oct-2014 19:27:03 Europe/Paris] PHP   1. {main}() C:\muthu\wamp\apps\phpmyadmin4.1.14\import.php:0
+
+[25-Oct-2014 19:27:03 Europe/Paris] PHP   2. include_once() C:\muthu\wamp\apps\phpmyadmin4.1.14\import.php:614
+
+[25-Oct-2014 19:27:03 Europe/Paris] PHP   3. PMA_SQP_parse() C:\muthu\wamp\apps\phpmyadmin4.1.14\libraries\parse_analyze.inc.php:16
+
+[25-Oct-2014 19:27:03 Europe/Paris] PHP   4. PMA_String->strpos() C:\muthu\wamp\apps\phpmyadmin4.1.14\libraries\sqlparser.lib.php:364
+
+[25-Oct-2014 19:27:03 Europe/Paris] PHP   5. PMA_StringMB->strpos() C:\muthu\wamp\apps\phpmyadmin4.1.14\libraries\String.class.php:136
+
+[25-Oct-2014 21:07:52 Europe/Paris] PHP Fatal error:  Class 'DbHandler' not found in C:\muthu\wamp\www\slim\index.php on line 129
+
+[25-Oct-2014 21:07:52 Europe/Paris] PHP Stack trace:
+
+[25-Oct-2014 21:07:52 Europe/Paris] PHP   1. {main}() C:\muthu\wamp\www\slim\index.php:0
+
+[25-Oct-2014 21:07:52 Europe/Paris] PHP   2. Slim\Slim->run() C:\muthu\wamp\www\slim\index.php:322
+
+[25-Oct-2014 21:07:52 Europe/Paris] PHP   3. Slim\Middleware\PrettyExceptions->call() C:\muthu\wamp\www\slim\Slim\Slim.php:1271
+
+[25-Oct-2014 21:07:52 Europe/Paris] PHP   4. Slim\Middleware\MethodOverride->call() C:\muthu\wamp\www\slim\Slim\Middleware\PrettyExceptions.php:67
+
+[25-Oct-2014 21:07:52 Europe/Paris] PHP   5. Slim\Middleware\Flash->call() C:\muthu\wamp\www\slim\Slim\Middleware\MethodOverride.php:92
+
+[25-Oct-2014 21:07:52 Europe/Paris] PHP   6. Slim\Slim->call() C:\muthu\wamp\www\slim\Slim\Middleware\Flash.php:85
+
+[25-Oct-2014 21:07:52 Europe/Paris] PHP   7. Slim\Route->dispatch() C:\muthu\wamp\www\slim\Slim\Slim.php:1326
+
+[25-Oct-2014 21:07:52 Europe/Paris] PHP   8. call_user_func_array:{C:\muthu\wamp\www\slim\Slim\Route.php:462}() C:\muthu\wamp\www\slim\Slim\Route.php:462
+
+[25-Oct-2014 21:07:52 Europe/Paris] PHP   9. {closure:C:\muthu\wamp\www\slim\index.php:126-148}() C:\muthu\wamp\www\slim\Slim\Route.php:462
+
+[25-Oct-2014 21:08:36 Europe/Paris] PHP Fatal error:  Call to undefined method db::connect() in C:\muthu\wamp\www\slim\include\PdoHandler.php on line 17
+
+[25-Oct-2014 21:08:36 Europe/Paris] PHP Stack trace:
+
+[25-Oct-2014 21:08:36 Europe/Paris] PHP   1. {main}() C:\muthu\wamp\www\slim\index.php:0
+
+[25-Oct-2014 21:08:36 Europe/Paris] PHP   2. Slim\Slim->run() C:\muthu\wamp\www\slim\index.php:322
+
+[25-Oct-2014 21:08:36 Europe/Paris] PHP   3. Slim\Middleware\PrettyExceptions->call() C:\muthu\wamp\www\slim\Slim\Slim.php:1271
+
+[25-Oct-2014 21:08:36 Europe/Paris] PHP   4. Slim\Middleware\MethodOverride->call() C:\muthu\wamp\www\slim\Slim\Middleware\PrettyExceptions.php:67
+
+[25-Oct-2014 21:08:36 Europe/Paris] PHP   5. Slim\Middleware\Flash->call() C:\muthu\wamp\www\slim\Slim\Middleware\MethodOverride.php:92
+
+[25-Oct-2014 21:08:36 Europe/Paris] PHP   6. Slim\Slim->call() C:\muthu\wamp\www\slim\Slim\Middleware\Flash.php:85
+
+[25-Oct-2014 21:08:36 Europe/Paris] PHP   7. Slim\Route->dispatch() C:\muthu\wamp\www\slim\Slim\Slim.php:1326
+
+[25-Oct-2014 21:08:36 Europe/Paris] PHP   8. call_user_func_array:{C:\muthu\wamp\www\slim\Slim\Route.php:462}() C:\muthu\wamp\www\slim\Slim\Route.php:462
+
+[25-Oct-2014 21:08:36 Europe/Paris] PHP   9. {closure:C:\muthu\wamp\www\slim\index.php:126-148}() C:\muthu\wamp\www\slim\Slim\Route.php:462
+
+[25-Oct-2014 21:08:36 Europe/Paris] PHP  10. PdoHandler->__construct() C:\muthu\wamp\www\slim\index.php:129
+
+[25-Oct-2014 21:11:39 Europe/Paris] PHP Parse error:  syntax error, unexpected 'return' (T_RETURN) in C:\muthu\wamp\www\slim\include\PdoHandler.php on line 38
+
+[25-Oct-2014 21:11:39 Europe/Paris] PHP Stack trace:
+
+[25-Oct-2014 21:11:39 Europe/Paris] PHP   1. {main}() C:\muthu\wamp\www\slim\index.php:0
+
+[26-Oct-2014 13:36:24 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[26-Oct-2014 13:36:24 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[26-Oct-2014 13:36:26 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[26-Oct-2014 13:36:26 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[26-Oct-2014 15:15:16 Europe/Paris] PHP Parse error:  syntax error, unexpected 'echoRestResponse' (T_STRING) in C:\muthu\wamp\www\services\index.php on line 199
+
+[26-Oct-2014 15:24:21 Europe/Paris] PHP Fatal error:  Class 'PythonHandler' not found in C:\muthu\wamp\www\services\index.php on line 188
+
+[26-Oct-2014 15:24:21 Europe/Paris] PHP Stack trace:
+
+[26-Oct-2014 15:24:21 Europe/Paris] PHP   1. {main}() C:\muthu\wamp\www\services\index.php:0
+
+[26-Oct-2014 15:24:21 Europe/Paris] PHP   2. Slim\Slim->run() C:\muthu\wamp\www\services\index.php:401
+
+[26-Oct-2014 15:24:21 Europe/Paris] PHP   3. Slim\Middleware\PrettyExceptions->call() C:\muthu\wamp\www\services\Slim\Slim.php:1271
+
+[26-Oct-2014 15:24:21 Europe/Paris] PHP   4. Slim\Middleware\MethodOverride->call() C:\muthu\wamp\www\services\Slim\Middleware\PrettyExceptions.php:67
+
+[26-Oct-2014 15:24:21 Europe/Paris] PHP   5. Slim\Middleware\Flash->call() C:\muthu\wamp\www\services\Slim\Middleware\MethodOverride.php:92
+
+[26-Oct-2014 15:24:21 Europe/Paris] PHP   6. Slim\Slim->call() C:\muthu\wamp\www\services\Slim\Middleware\Flash.php:85
+
+[26-Oct-2014 15:24:21 Europe/Paris] PHP   7. Slim\Route->dispatch() C:\muthu\wamp\www\services\Slim\Slim.php:1326
+
+[26-Oct-2014 15:24:21 Europe/Paris] PHP   8. call_user_func_array:{C:\muthu\wamp\www\services\Slim\Route.php:462}() C:\muthu\wamp\www\services\Slim\Route.php:462
+
+[26-Oct-2014 15:24:21 Europe/Paris] PHP   9. {closure:C:\muthu\wamp\www\services\index.php:183-202}() C:\muthu\wamp\www\services\Slim\Route.php:462
+
+[26-Oct-2014 15:24:49 Europe/Paris] PHP Fatal error:  Class 'PythonHandler' not found in C:\muthu\wamp\www\services\index.php on line 188
+
+[26-Oct-2014 15:24:49 Europe/Paris] PHP Stack trace:
+
+[26-Oct-2014 15:24:49 Europe/Paris] PHP   1. {main}() C:\muthu\wamp\www\services\index.php:0
+
+[26-Oct-2014 15:24:49 Europe/Paris] PHP   2. Slim\Slim->run() C:\muthu\wamp\www\services\index.php:401
+
+[26-Oct-2014 15:24:49 Europe/Paris] PHP   3. Slim\Middleware\PrettyExceptions->call() C:\muthu\wamp\www\services\Slim\Slim.php:1271
+
+[26-Oct-2014 15:24:49 Europe/Paris] PHP   4. Slim\Middleware\MethodOverride->call() C:\muthu\wamp\www\services\Slim\Middleware\PrettyExceptions.php:67
+
+[26-Oct-2014 15:24:49 Europe/Paris] PHP   5. Slim\Middleware\Flash->call() C:\muthu\wamp\www\services\Slim\Middleware\MethodOverride.php:92
+
+[26-Oct-2014 15:24:49 Europe/Paris] PHP   6. Slim\Slim->call() C:\muthu\wamp\www\services\Slim\Middleware\Flash.php:85
+
+[26-Oct-2014 15:24:49 Europe/Paris] PHP   7. Slim\Route->dispatch() C:\muthu\wamp\www\services\Slim\Slim.php:1326
+
+[26-Oct-2014 15:24:49 Europe/Paris] PHP   8. call_user_func_array:{C:\muthu\wamp\www\services\Slim\Route.php:462}() C:\muthu\wamp\www\services\Slim\Route.php:462
+
+[26-Oct-2014 15:24:49 Europe/Paris] PHP   9. {closure:C:\muthu\wamp\www\services\index.php:183-202}() C:\muthu\wamp\www\services\Slim\Route.php:462
+
+[26-Oct-2014 16:01:56 Europe/Paris] PHP Parse error:  syntax error, unexpected '}' in C:\muthu\wamp\www\services\index.php on line 203
+
+[26-Oct-2014 16:23:16 Europe/Paris] PHP Parse error:  syntax error, unexpected '<<' (T_SL) in C:\muthu\wamp\www\services\include\PythonHandler.php on line 40
+
+[26-Oct-2014 16:23:16 Europe/Paris] PHP Stack trace:
+
+[26-Oct-2014 16:23:16 Europe/Paris] PHP   1. {main}() C:\muthu\wamp\www\services\index.php:0
+
+[26-Oct-2014 16:25:25 Europe/Paris] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) or heredoc end (T_END_HEREDOC) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) or {$ (T_CURLY_OPEN) in C:\muthu\wamp\www\services\include\PythonHandler.php on line 65
+
+[26-Oct-2014 16:25:25 Europe/Paris] PHP Stack trace:
+
+[26-Oct-2014 16:25:25 Europe/Paris] PHP   1. {main}() C:\muthu\wamp\www\services\index.php:0
+
+[26-Oct-2014 17:31:43 Europe/Paris] PHP Parse error:  syntax error, unexpected '$curl' (T_VARIABLE) in C:\muthu\wamp\www\services\include\CurlHandler.php on line 36
+
+[26-Oct-2014 17:31:43 Europe/Paris] PHP Stack trace:
+
+[26-Oct-2014 17:31:43 Europe/Paris] PHP   1. {main}() C:\muthu\wamp\www\services\index.php:0
+
+[26-Oct-2014 17:32:19 Europe/Paris] PHP Parse error:  syntax error, unexpected '$curl' (T_VARIABLE) in C:\muthu\wamp\www\services\include\CurlHandler.php on line 36
+
+[26-Oct-2014 17:32:19 Europe/Paris] PHP Stack trace:
+
+[26-Oct-2014 17:32:19 Europe/Paris] PHP   1. {main}() C:\muthu\wamp\www\services\index.php:0
+
+[26-Oct-2014 17:32:36 Europe/Paris] PHP Parse error:  syntax error, unexpected '$curl' (T_VARIABLE) in C:\muthu\wamp\www\services\include\CurlHandler.php on line 36
+
+[26-Oct-2014 17:32:36 Europe/Paris] PHP Stack trace:
+
+[26-Oct-2014 17:32:36 Europe/Paris] PHP   1. {main}() C:\muthu\wamp\www\services\index.php:0
+
+[26-Oct-2014 17:33:11 Europe/Paris] PHP Parse error:  syntax error, unexpected '$curl' (T_VARIABLE) in C:\muthu\wamp\www\services\include\CurlHandler.php on line 36
+
+[26-Oct-2014 17:33:11 Europe/Paris] PHP Stack trace:
+
+[26-Oct-2014 17:33:11 Europe/Paris] PHP   1. {main}() C:\muthu\wamp\www\services\index.php:0
+
+[26-Oct-2014 17:33:21 Europe/Paris] PHP Parse error:  syntax error, unexpected '$curl' (T_VARIABLE) in C:\muthu\wamp\www\services\include\CurlHandler.php on line 38
+
+[26-Oct-2014 17:33:21 Europe/Paris] PHP Stack trace:
+
+[26-Oct-2014 17:33:21 Europe/Paris] PHP   1. {main}() C:\muthu\wamp\www\services\index.php:0
+
+[26-Oct-2014 17:33:32 Europe/Paris] PHP Parse error:  syntax error, unexpected 'rand' (T_STRING) in C:\muthu\wamp\www\services\include\CurlHandler.php on line 46
+
+[26-Oct-2014 17:33:32 Europe/Paris] PHP Stack trace:
+
+[26-Oct-2014 17:33:32 Europe/Paris] PHP   1. {main}() C:\muthu\wamp\www\services\index.php:0
+
+[26-Oct-2014 17:33:54 Europe/Paris] PHP Parse error:  syntax error, unexpected 'rand' (T_STRING) in C:\muthu\wamp\www\services\include\CurlHandler.php on line 46
+
+[26-Oct-2014 17:33:54 Europe/Paris] PHP Stack trace:
+
+[26-Oct-2014 17:33:54 Europe/Paris] PHP   1. {main}() C:\muthu\wamp\www\services\index.php:0
+
+[30-Nov-2014 16:19:39 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[30-Nov-2014 16:19:39 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[30-Nov-2014 16:19:41 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[30-Nov-2014 16:19:41 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[30-Nov-2014 16:22:19 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[30-Nov-2014 16:22:20 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[30-Nov-2014 16:22:20 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[30-Nov-2014 16:22:20 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[30-Nov-2014 16:23:20 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[30-Nov-2014 16:23:20 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[30-Nov-2014 16:23:21 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[30-Nov-2014 16:23:21 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[01-Dec-2014 06:20:44 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[01-Dec-2014 06:20:44 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[01-Dec-2014 06:20:47 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_intl.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+[01-Dec-2014 06:20:47 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'c:/muthu/wamp/bin/php/php5.5.12/ext/php_ldap.dll' - The specified module could not be found.
+
+ in Unknown on line 0
+
+
+ 
+127.0.0.1 - - [01/Dec/2014:11:56:46 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 724
+127.0.0.1 - - [01/Dec/2014:11:56:46 +0530] "GET /phpmyadmin/sql.php?server=1&db=cdadb&table=center_details&pos=0&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=18371619-80359a3e-15ae94bf-ef88fe14-9a0619a8&_nocache=141741520640671164 HTTP/1.1" 200 41868
+127.0.0.1 - - [01/Dec/2014:11:56:46 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 724
+127.0.0.1 - - [01/Dec/2014:11:57:07 +0530] "GET /phpmyadmin/tbl_change.php?db=cdadb&table=center_details&where_clause=%60center_details%60.%60center_id%60+%3D+3&clause_is_unique=1&sql_query=SELECT+%2A+FROM+%60center_details%60&goto=sql.php&default_action=update&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=18371619-80359a3e-15ae94bf-ef88fe14-9a0619a8&_nocache=1417415227227199790 HTTP/1.1" 200 85423
+127.0.0.1 - - [01/Dec/2014:11:57:08 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 724
+127.0.0.1 - - [01/Dec/2014:11:57:08 +0530] "GET /phpmyadmin/themes/pmahomme/jquery/images/ui-bg_flat_75_ffffff_40x100.png HTTP/1.1" 200 178
+127.0.0.1 - - [01/Dec/2014:11:57:08 +0530] "GET /phpmyadmin/themes/pmahomme/img/b_calendar.png HTTP/1.1" 200 638
+127.0.0.1 - - [01/Dec/2014:11:57:44 +0530] "POST /phpmyadmin/tbl_replace.php HTTP/1.1" 200 45201
+127.0.0.1 - - [01/Dec/2014:11:57:45 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 724
+127.0.0.1 - - [01/Dec/2014:11:57:51 +0530] "GET /phpmyadmin/tbl_change.php?db=cdadb&table=center_details&where_clause=%60center_details%60.%60center_id%60+%3D+4&clause_is_unique=1&sql_query=SELECT+%2A+FROM+%60center_details%60&goto=sql.php&default_action=update&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=18371619-80359a3e-15ae94bf-ef88fe14-9a0619a8-318782e0&_nocache=1417415271160902688 HTTP/1.1" 200 81829
+127.0.0.1 - - [01/Dec/2014:11:57:51 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 724
+127.0.0.1 - - [01/Dec/2014:11:58:00 +0530] "POST /phpmyadmin/tbl_replace.php HTTP/1.1" 200 45195
+127.0.0.1 - - [01/Dec/2014:11:58:00 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 724
+127.0.0.1 - - [01/Dec/2014:11:58:03 +0530] "GET /phpmyadmin/sql.php?server=1&db=cdadb&table=email_details&pos=0&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=18371619-80359a3e-15ae94bf-ef88fe14-9a0619a8-318782e0&_nocache=141741528366069948 HTTP/1.1" 200 13741
+127.0.0.1 - - [01/Dec/2014:11:58:03 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 724
+127.0.0.1 - - [01/Dec/2014:11:58:24 +0530] "GET /phpmyadmin/sql.php?server=1&db=cdadb&table=email_details&pos=0&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=18371619-80359a3e-15ae94bf-ef88fe14-9a0619a8-318782e0&_nocache=1417415304793418290 HTTP/1.1" 200 13741
+127.0.0.1 - - [01/Dec/2014:11:58:25 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 724
+127.0.0.1 - - [01/Dec/2014:11:58:43 +0530] "GET /phpmyadmin/sql.php?server=1&db=cdadb&table=status_log&pos=0&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=18371619-80359a3e-15ae94bf-ef88fe14-9a0619a8-318782e0&_nocache=1417415322954358128 HTTP/1.1" 200 9443
+127.0.0.1 - - [01/Dec/2014:11:58:43 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 848
+127.0.0.1 - - [01/Dec/2014:11:58:45 +0530] "GET /phpmyadmin/sql.php?server=1&db=cdadb&table=task_details&pos=0&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=18371619-80359a3e-15ae94bf-ef88fe14-9a0619a8-318782e0-104a4328&_nocache=1417415325353101317 HTTP/1.1" 200 67557
+127.0.0.1 - - [01/Dec/2014:11:58:45 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 848
+127.0.0.1 - - [01/Dec/2014:11:58:52 +0530] "GET /phpmyadmin/sql.php?server=1&db=cdadb&table=email_details&pos=0&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=18371619-80359a3e-15ae94bf-ef88fe14-9a0619a8-318782e0-104a4328&_nocache=1417415332222324287 HTTP/1.1" 200 13741
+127.0.0.1 - - [01/Dec/2014:11:58:52 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 848
+127.0.0.1 - - [01/Dec/2014:11:59:17 +0530] "GET /phpmyadmin/querywindow.php?token=cb4bfb3aa57eaec946e0bb565c7d5e3a&server=1&db=cdadb&table=email_details&sql_query=SELECT%20*%20FROM%20%60email_details%60&init=1 HTTP/1.1" 200 8616
+127.0.0.1 - - [01/Dec/2014:11:59:18 +0530] "GET /phpmyadmin/js/get_scripts.js.php?token=cb4bfb3aa57eaec946e0bb565c7d5e3a&scripts[]=jquery/jquery-1.8.3.min.js&scripts[]=ajax.js&scripts[]=keyhandler.js&scripts[]=jquery/jquery-ui-1.9.2.custom.min.js&scripts[]=jquery/jquery.sprintf.js&scripts[]=jquery/jquery.cookie.js&scripts[]=jquery/jquery.mousewheel.js&scripts[]=jquery/jquery.event.drag-2.2.js&scripts[]=jquery/jquery-ui-timepicker-addon.js&scripts[]=jquery/jquery.ba-hashchange-1.3.js&scripts[]=jquery/jquery.debounce-1.0.5.js&scripts[]=jquery/jquery.menuResizer-1.0.js&scripts[]=cross_framing_protection.js&scripts[]=rte.js&scripts[]=tracekit/tracekit.js&scripts[]=error_report.js&scripts[]=doclinks.js&scripts[]=functions.js&scripts[]=navigation.js&scripts[]=indexes.js&scripts[]=common.js&scripts[]=querywindow.js&scripts[]=codemirror/lib/codemirror.js&scripts[]=codemirror/mode/sql/sql.js&scripts[]=codemirror/addon/runmode/runmode.js HTTP/1.1" 200 1040046
+127.0.0.1 - - [01/Dec/2014:11:59:28 +0530] "GET /phpmyadmin/sql.php?server=1&db=cdadb&table=task_details&pos=0&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=18371619-80359a3e-15ae94bf-ef88fe14-9a0619a8-318782e0-104a4328&_nocache=1417415368465917353 HTTP/1.1" 200 67557
+127.0.0.1 - - [01/Dec/2014:11:59:28 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 848
+127.0.0.1 - - [01/Dec/2014:11:59:41 +0530] "GET /phpmyadmin/sql.php?server=1&db=cdadb&table=email_details&pos=0&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=18371619-80359a3e-15ae94bf-ef88fe14-9a0619a8-318782e0-104a4328&_nocache=141741538126258177 HTTP/1.1" 200 13741
+127.0.0.1 - - [01/Dec/2014:11:59:41 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 848
+127.0.0.1 - - [01/Dec/2014:12:00:23 +0530] "GET /phpmyadmin/sql.php?server=1&db=cdadb&table=status_log&pos=0&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=18371619-80359a3e-15ae94bf-ef88fe14-9a0619a8-318782e0-104a4328&_nocache=1417415423023571152 HTTP/1.1" 200 6045
+127.0.0.1 - - [01/Dec/2014:12:00:23 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 848
+127.0.0.1 - - [01/Dec/2014:12:00:24 +0530] "GET /phpmyadmin/sql.php?server=1&db=cdadb&table=task_details&pos=0&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=18371619-80359a3e-15ae94bf-ef88fe14-9a0619a8-318782e0-104a4328&_nocache=1417415424091124279 HTTP/1.1" 200 67557
+127.0.0.1 - - [01/Dec/2014:12:00:24 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 848
+127.0.0.1 - - [01/Dec/2014:12:00:31 +0530] "GET /phpmyadmin/sql.php?server=1&db=cdadb&table=user_login&pos=0&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=18371619-80359a3e-15ae94bf-ef88fe14-9a0619a8-318782e0-104a4328&_nocache=1417415431193509668 HTTP/1.1" 200 61926
+127.0.0.1 - - [01/Dec/2014:12:00:31 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 972
+127.0.0.1 - - [01/Dec/2014:12:00:35 +0530] "GET /phpmyadmin/sql.php?server=1&db=cdadb&table=user_details&pos=0&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=80359a3e-15ae94bf-ef88fe14-9a0619a8-318782e0-104a4328-071f03f3&_nocache=141741543517828690 HTTP/1.1" 200 70366
+127.0.0.1 - - [01/Dec/2014:12:00:35 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 1100
+127.0.0.1 - - [01/Dec/2014:12:00:49 +0530] "GET /phpmyadmin/tbl_change.php?db=cdadb&table=user_details&where_clause=%60user_details%60.%60user_id%60+%3D+1&clause_is_unique=1&sql_query=SELECT+%2A+FROM+%60user_details%60&goto=sql.php&default_action=update&token=cb4bfb3aa57eaec946e0bb565c7d5e3a&ajax_request=true&ajax_page_request=true&menuHashes=15ae94bf-ef88fe14-9a0619a8-318782e0-104a4328-071f03f3-e1c027fd&_nocache=1417415448951166453 HTTP/1.1" 200 74942
+127.0.0.1 - - [01/Dec/2014:12:00:49 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 1100
+127.0.0.1 - - [01/Dec/2014:12:01:09 +0530] "POST /phpmyadmin/tbl_replace.php HTTP/1.1" 200 71738
+127.0.0.1 - - [01/Dec/2014:12:01:10 +0530] "GET /phpmyadmin/index.php?ajax_request=1&recent_table=1&token=cb4bfb3aa57eaec946e0bb565c7d5e3a HTTP/1.1" 200 1100
+

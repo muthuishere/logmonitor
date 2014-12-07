@@ -103,11 +103,7 @@ strong{
 	border-top: 10px solid #4d9543;
 	padding-top: 40px;
 }
-header{
-	width: 960px;
-	margin: 0 auto;
-	padding: 0;
-}
+
 header h2 a{
 	display: block;
 	text-indent: -999999px;
@@ -133,26 +129,6 @@ header h2 a{
 }
 
 
-nav{
-	clear: both;
-	width: 960px;
-	height: 50px;
-	-moz-border-radius: 30px;
-	-webkit-border-radius: 30px;
-	background-color: #3b7c33; /* Fallback */
-	border-radius: 30px;
-	/* Safari 4+, Chrome 1-9 */
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#5fae53), to(#3b7c33));
-	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
-	background-image: -webkit-linear-gradient(top, #5fae53, #3b7c33); 
-	/* Firefox 3.6+ */
-	background-image: -moz-linear-gradient(top, #5fae53, #3b7c33);
-	/* IE 10+ */
-	background-image: -ms-linear-gradient(top, #5fae53, #3b7c33);
-	/* Opera 11.10+ */
-	background-image: -o-linear-gradient(top, #5fae53, #3b7c33);
-	border: 1px solid #336c2b;
-}
 
 nav ul li{
 	float: left;
@@ -231,10 +207,7 @@ nav ul li div input[type=submit]{
 
 /* END HEADER */
 
-#container{
-	width: 960px;
-	margin: 0 auto;
-}
+
 
 /* SLIDES */
 #slides{
@@ -351,6 +324,7 @@ div.main_content{
 	height: 53px;
 	padding-top: 30px;
 	background: url(../images/service-bg-footer.jpg) no-repeat;
+	background-size: 100%;
 }
 #web{
 	float: left;
@@ -451,10 +425,7 @@ float: right;
 	padding: 50px 0;
 	background: #333333 url(../images/widget-bg.jpg);
 }
-#widget{
-	width: 960px;
-	margin: 0 auto;
-}
+
 h4.footer-header{
 	background: transparent url(../images/footer-header.png) no-repeat;
 	line-height: 58px;
@@ -531,10 +502,7 @@ h4.footer-header{
 	border-bottom: 1px solid #c8c8c8;
 }	
 
-#client{
-	width: 960px;
-	margin: 0 auto;
-}
+
 
 #client ul li{
 	width: 20%;
@@ -544,12 +512,6 @@ h4.footer-header{
 /* END CLIENT */
 
 /* FOOTER */
-footer{
-	width: 960px;
-	margin: 0 auto;
-	padding: 30px 0 60px 0;
-	position: relative;
-}
 
 #footer-left{
 	float: left;
@@ -596,9 +558,57 @@ footer{
 }
 /* END FOOTER */
 
-/* VIEWPORT < 960px */
 
-@media only screen and (max-width: 960px){
+footer{
+	width: 1200px;
+	margin: 0 auto;
+	padding: 30px 0 60px 0;
+	position: relative;
+}
+#container{
+	width: 1200px;
+	margin: 0 auto;
+}
+header{
+	width: 1200px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+nav{
+	clear: both;
+	width: 1200px;
+	height: 50px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	background-color: #3b7c33; /* Fallback */
+	border-radius: 30px;
+	/* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#5fae53), to(#3b7c33));
+	/* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -webkit-linear-gradient(top, #5fae53, #3b7c33); 
+	/* Firefox 3.6+ */
+	background-image: -moz-linear-gradient(top, #5fae53, #3b7c33);
+	/* IE 10+ */
+	background-image: -ms-linear-gradient(top, #5fae53, #3b7c33);
+	/* Opera 11.10+ */
+	background-image: -o-linear-gradient(top, #5fae53, #3b7c33);
+	border: 1px solid #336c2b;
+}
+#widget{
+	width: 1200px;
+	margin: 0 auto;
+}
+#client{
+	width: 1200px;
+	margin: 0 auto;
+}
+
+
+
+/* VIEWPORT < 1200px */
+
+@media only screen and (max-width: 1200px){
 	header, nav, #slides, #service, #widget, #media, #client, footer, #container{ width: 768px; }
 	.slide-right{
 		left: 0;

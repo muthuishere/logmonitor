@@ -3,53 +3,47 @@
 
 		<div id="tabs" style="background: none">
 			<ul>
-				<li><a href="#tabs-1">File Details</a></li>
-				<li><a href="#tabs-2">Proxy Details</a></li>
+				<li><a href="#tabs-1">File Details</a></li>				
 
 
 			</ul>
 			<input type="hidden" id="operation" name="operation" value="" />
+			<input type="hidden" id="id" name="id" value="" />
+			<input type="hidden" id="logfilehosts" name="logfilehosts" value="" />
+			
 			<div id="tabs-1" style="background-color: #F7F7F7">
-				<h2>File</h2>
+				<h2>Data</h2>
 
 				<table border="0"
 					style="width: 100%; padding: 10px; border-collapse: separate; border-spacing: 10px;">
 
 					<tr>
-						<td>
+						<td colspan="2">
 
-							<div title="host">Host</div> <input type="text" name="host"
-							id="host" value="10.21.15.74"
+							<div title="host">Name</div> <input type="text" style="width:80%;" name="name"
+							id="name" value="RS Remote Log"
 							class="text ui-widget-content ui-corner-all">
 						</td>
 						<td>
-							<div title="port">Port</div> <input type="text" name="port"
-							id="port" value="24" class="text ui-widget-content ui-corner-all">
-
+							
 						</td>
 					</tr>
 
 					<tr>
-						<td>
+						<td colspan="2">
 
-							<div title="user">User</div> <input type="text" name="user"
-							id="user" value="resolve"
+							<div title="filename">File Fullpath</div> <input type="text"   style="width:80%;" name="filename"
+							id="filename" value="/opt/resolve/rsremote/rscontrol.log"
 							class="text ui-widget-content ui-corner-all">
 						</td>
-
-						<td>
-							<div title="password">Password</div> <input type="password"
-							name="password" id="password" value=""
-							class="text ui-widget-content ui-corner-all">
-
-						</td>
+						
 
 					</tr>
 					<tr>
 						<td>
 
-							<div title="Group">Environment</div> <select name="filegroup"
-							id="filegroup" style="width: 200px">
+							<div title="lsthosts">Hosts</div> <select name="lsthosts"
+							id="lsthosts" style="width: 200px"  multiple="multiple">
 
 								<option value="AR">AR</option>
 						</select>
@@ -75,49 +69,7 @@
 
 
 			</div>
-			<div id="tabs-2" style="background-color: #F7F7F7">
-				<h2>Proxy</h2>
-
-
-
-				<table border="0"
-					style="width: 100%; padding: 10px; border-collapse: separate; border-spacing: 10px;">
-
-					<tr>
-						<td>
-							<div title="host">Host</div> <input type="text" name="proxyhost"
-							id="proxyhost" value="10.21.15.74"
-							class="text ui-widget-content ui-corner-all">
-						</td>
-
-						<td>
-							<div title="port">Port</div> <input type="text" name="proxyport"
-							id="proxyport" value="8080"
-							class="text ui-widget-content ui-corner-all">
-						</td>
-					<tr>
-						<td>
-
-							<div title="user">User</div> <input type="text" name="proxyuser"
-							id="proxyuser" value="resolve"
-							class="text ui-widget-content ui-corner-all">
-						</td>
-
-						<td>
-
-							<div title="password">Password</div> <input type="password"
-							name="proxypwd" id="proxypwd" value="xxxxxxx"
-							class="text ui-widget-content ui-corner-all">
-
-						</td>
-					</tr>
-
-
-				</table>
-
-
-			</div>
-
+		
 		</div>
 	</form>
 
@@ -151,14 +103,11 @@
 		 
 	  generateCsvMenu("team",$("#teams").val())
 	 	 
-	 	 generateCsvMenu("filegroup",$("#environments").val())
+	 	 generateCsvMenu("lsthosts",$("#hosts").val())
 	 	 
-	 	 	   
-	 	       $( "#filegroup" ).selectmenu({
-	 //  change: function( event, data ) {
-//	  	 // if(data.item.value == "custom"){
-//	  		 }
-	 		});
+	 	 	   $("select#lsthosts").multipleSelect();
+	  
+	 
 
 
 	     $( "#team" ).selectmenu({
@@ -173,7 +122,7 @@
 	 function setmanagefiledata(curdata,dataoperation){
 		 
 
-		  $("form#frmaddfile input").val("")
+		  //$("form#frmaddfile input").val("")
 		  
 		  
 		  $xml = $(curdata)
@@ -181,43 +130,36 @@
 				 $xml.each(function(index){
 					 //Parse here
 					 
-					var host =  $(this).find('host').text();
-	 				var port =  $(this).find('port').text();
-	 				var user =  $(this).find('user').text();
-	 				var password =  $(this).find('password').text();
-	 				var proxyhost =  $(this).find('proxyhost').text();
-	 				var proxyport =  $(this).find('proxyport').text();
-	 				var proxyuser =  $(this).find('proxyuser').text();
-	 				var proxypwd =  $(this).find('proxypwd').text();
-	 				
-	 				var group = $(this).find('group').text();
-	 				
-	 				var team = $(this).find('team').text();
-	 				
-	 				//console.log($(this))
-	 				$("#user").val(user)
-	 				$("#password").val(password)
-	 				$("#host").val(host)
-	 				$("#port").val(port)
-	 				$("#proxyuser").val(proxyuser)
-	 				$("#proxypwd").val(proxypwd)
-	 				$("#proxyhost").val(proxyhost)
-	 				$("#proxyport").val(proxyport)
-	 				
-	 				//$("#proxyport").val()
-	 				//$("#filegroup").selectmenu("value", group);
-	 				//$("#team").selectmenu("value", team);
-	 				
-	 				
-	 			//	$("#filegroup").val(group).trigger("change");
-	 				
-	 				$( "#filegroup" )
-	 				 	.val(group)
-	 				 	.selectmenu("refresh")
-	 				 	.trigger("change")
-	 				 	
-	 				 	
-	 				//$("#team").val(team).trigger("change");
+					 
+					 	
+				var name =  $(this).find('name').text();
+ 				var filename =  $(this).find('filename').text();
+ 				var hosts =  $(this).find('hosts').text();
+ 				var team =  $(this).find('team').text();
+ 				var id =  $(this).find('id').text();
+ 			
+ 				
+ 				
+ 				$("#name").val(name)
+ 				
+ 				//$("#hosts").val(hosts)
+ 				
+ 				
+ 				$( "#filename" ).val(filename)
+ 				
+ 				$("#operation").val(dataoperation)
+ 		  		
+				if(dataoperation == "UPDATE"){
+ 					$("#id").val(id)
+ 				
+ 				}
+ 				
+ 			
+ 					 	
+ 				var selectedhosts = hosts.split(",")
+ 				if(selectedhosts.length > 0)
+	 			 	$("#lsthosts").multipleSelect("setSelects", selectedhosts);
+ 				
 	 				
 	 				 $( "#team" )
 	 				 	.val(team)
@@ -227,9 +169,7 @@
 	 				
 				 })
 				 
-				$("#operation").val(dataoperation)
-	  		
-				
+			
 		 
 	 }    
 	 
@@ -248,7 +188,7 @@
  	//	$('#frmfile')[0].reset();
  $("form#frmaddfile input").attr("disabled",true)
   		
-  	$.post( "/services/updatefile", formdata)
+  	$.post( "/services/updatelogfile", formdata)
  	 	  .done(function( data ) {
  	 	    
  	 		
@@ -324,28 +264,29 @@
 	  
 	 
 		var valid=true;
-	  valid = valid && checkMinLength( $("#user"), "user", 3 );
-  valid = valid && checkMinLength( $("#password"), "password", 3 );
-  valid = valid && checkMinLength( $("#host"), "host", 7 );
-  		valid = valid && checkRegexp( $("#port"), /^([0-9])+$/i, "Port should contain only numeric values." );
+	  valid = valid && checkMinLength( $("#name"), "Name", 5 );
+  valid = valid && checkMinLength( $("#filename"), "Filename", 10 );
   
+  		
+  	  if($("select#lsthosts").multipleSelect('getSelects').length >0){
+			
+			$("#logfilehosts").val($("select#lsthosts").multipleSelect('getSelects').join(","))
+			
+			console.log("logfilehosts" + $("#logfilehosts").val())
+		}else{
+			
+			
+		        updateTips( "Host should be selected" );
+		        valid = valid && false;
+		
+		}
+  	  
+  	  
   		if(!valid){
   			
   			$( "#tabs" ).tabs( "option", "active", 0 );
   		}
-  		if($("#proxyhost").val().length >1){
-  			
-  			
-  		  valid = valid && checkMinLength( $("#proxyuser"), "proxyuser", 3 );
-  		  valid = valid && checkMinLength( $("#proxypwd"), "proxy Password", 3 );
-  		  valid = valid && checkMinLength( $("#proxyhost"), "proxy host", 7 );
-  		  		valid = valid && checkRegexp( $("#proxyport"), /^([0-9])+$/i, "Port should contain only numeric values." );
   		
-  		  	if(!valid){
-  	  			
-  		  	$( "#tabs" ).tabs( "option", "active", 1 );	
-  	  		}
-  		}
   
       return valid;
       

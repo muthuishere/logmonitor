@@ -5,137 +5,93 @@ import java.util.ArrayList;
 import java.util.concurrent.LinkedBlockingQueue
 
 
-import com.log.exceptions.ServiceException
 
+
+
+
+import com.log.beans.CommandInfo;
+import com.log.beans.LogSession
+import com.log.beans.RemoteFile
+import com.log.beans.Server;
+import com.log.exceptions.ServiceException
 import com.log.helpers.LogMessage
+import com.log.model.DataStore
+import com.log.ssh.ExecuteSSHController
+import com.log.ssh.SshMessageListener
+
+
+
+
 
 
 import java.util.concurrent.TimeUnit
 
-class LogPoller {
+class LogPoller implements SshMessageListener {
 
 
+	DataStore dataStore=null;
 	
-	public LogPoller(){
+	public LogPoller(DataStore dataStore){
+		
+	
+		dataStore=this.dataStore;
+		
 		
 		(1..Configurator.globalconfig.worker_thread_count).each
 		{
-			Thread.start { worker_thread( Configurator ) }
+			Thread.start { worker_thread( Configurator, dataStore) }
 		}
 		
 	}
-	def parseCallback(def dbreport_response){
-		
-		boolean flgSuccess=false
-		try{
-		if( null == dbreport_response ||  null == dbreport_response?.timeEntries ||  dbreport_response?.timeEntries?.size() ==0){
-			
-			LogMessage.error("Error getting response for " +dbreport_response?.userInfo?.user)
-			
-			if(dbreport_response?.error.contains("INVALID CREDENTIALS")){
-				
-				LogMessage.error("Error Invalid credentials disabling " +dbreport_response?.userInfo?.user)
-				
-				datamanager.disableUser(dbreport_response?.userInfo?.user)
-				
-			}
-		
-			
-		}else{
-		
-		if(  dbreport_response?.timeEntries?.size() > 0){
-			
-			println("Adding entries for" +dbreport_response?.userInfo?.user)
-			
-			datamanager.addTimeEntries(dbreport_response.timeEntries);
-			
-			if( null != dbreport_response?.error  || dbreport_response?.error !="" ){
-				flgSuccess=false
-				
-			}else
-				flgSuccess=true
-			
-		}
-		
-		
-		}
-		}catch(Exception e){
-		
-			e.printStackTrace();
-			
-		}
-		
-		return flgSuccess
-	}
+
 	
+	def start(LogSession logSession){
+		
 	
-	def start(String lstusers,Date from ,Date to){
+		//Add session object to global configuration
+
+		//Loop through remote files
 		
-		Configurator.isUpdating=true
-		Configurator.resetupdatestatus()
-		println("Starting DB Updation")
+		//for each file connect to server and execute command , pass parameter sessionid
 		
-		def callbackQueue = new LinkedBlockingQueue()
-		def statusmsg="Fail"
-		def description=""
+		//Update the response in global configurator with sessionid	
+		
+		//Global config looks up those objects and update corresponding buffers
+		
+		
+
+				
 		try{
 			
-			def k=null
+		
+			//Iterate all remote files
 			
-			datamanager.init();
-			
-			
-			
-			def users=datamanager.getValidUserEntries()
-			def usercount=0
-			for (def userInfo:users){
-				if(null==lstusers || lstusers.trim() =="" || lstusers.contains(userInfo.user)){
-					Configurator.worker_lbq.put([ "callbackQueue": callbackQueue, "userInfo": userInfo,"from":from,"to":to])
+			//start in a Thread of sshcontroller
+			logSession.remotefiles.each {remoteFile ->
 				
-				usercount++
-				}
+				
+				Thread.start {
+					
+										new ExecuteSSHController().start( Configurator.worker_lbq,remoteFile,logSession.sessionid)
+					
+					
+									}
 			}
-			def successCount=0
-			(1..usercount).each()
-			{
-				
-				def dbreport_response = callbackQueue.poll(Configurator.globalconfig.fetch_req_timeout, TimeUnit.MILLISECONDS)
-			
-					if(parseCallback(dbreport_response))
-							successCount++
-				
-				
-				}
-				
-			if(successCount == usercount){
-				
-				statusmsg="Success"
-				
-			}else if(successCount < usercount){
-				
-				statusmsg="Partial Success"
-				
-			}
-			
-			description="Updated timesheets for $successCount  of $usercount users"
 			
 		}catch(Exception e){
 			e.printStackTrace();
-			description="Fail while parsing ${e.toString()}"
+			
 		}
 		
-		SimpleDateFormat formatter = new SimpleDateFormat("EEE, MMM dd yyyy hh:mm:ss a");
 		
-		  
-		   
-		Configurator.setupdatestatus( statusmsg, description,formatter.format(new Date()))
-		Configurator.isUpdating=false
-		println("Completed DB Updation")
+		
 	}
 	
 	
 
+
 	
+
 	
 	//JsonSlurper reportapp =  new JsonSlurper()
 	
@@ -145,81 +101,64 @@ class LogPoller {
 	// downstream systems and then post the HTTP reply to the temporary
 	// LinkedBlockingQueue of the requester given in the request message.
 	
-	def worker_thread(curConfigurator)
+	def worker_thread(def globalconfig,DataStore dataStore)
 	{
-	  curConfigurator.log("Worker: Initialising")
-	
-	 
+	  globalconfig.log("Worker: Initialising")
 	
 	  while(true)
 	  {
-		def req_msg = curConfigurator.worker_lbq.take()
+		def req_msg = globalconfig.worker_lbq.take()
 		def reply_msg = req_msg
 		def start_ms = System.currentTimeMillis()
-			def timeEntries=new ArrayList<>()
+			
 		try
 		{
 		 
+			def action=req_msg.action
+			def res=req_msg.response
+			RemoteFile remoteFile=req_msg.remoteFile
+			def sessionid=req_msg.sessionid
 			
 			
+			StringBuilder formattedResponse = new StringBuilder();
 			
+			if (null != res) {
+				
 			
+	
 			
-			Date origstart=req_msg.from
-			Date origend=req_msg.to
-			Date curstart=req_msg.from
-			Date curend=req_msg.to
-			def duration =0
-			def durationdiff =0
-			
-			
-			
-			while(1 == 1){
-			
-				use(groovy.time.TimeCategory) {
-					duration = curend-curstart  
-				  
-			   }
-				println("=====================================duration.days " +duration.days )
-				if(duration.days > 30){
-				use(groovy.time.TimeCategory) {
-					curend=curstart + 30.days
-					}
+	
+				res.split("\\r?\\n").each{curLine ->
 					
-				}	
-				
-				
-				def fetchUserReport;
-				fetchUserReport.init(Configurator.globalconfig?.proxy )
-				def res=fetchUserReport.startFetch(req_msg.userInfo, curstart, curend)
-				if(null != res)
-					timeEntries.addAll(res)
-				
-				use(groovy.time.TimeCategory) {
-					durationdiff = origend - curend
-					
-				  
+					 formattedResponse.append("[").append(remoteFile.server.host).append("]");
+					 formattedResponse.append(curLine);
+					 
 				}
-				println("============================durationdiff.days " +durationdiff.days )
-				if(durationdiff.days <=0 ){
-					break;
-				}else{
-				curstart=curend
-				curend=origend
-				}
-				
+			
 			}
 			
 			
+			globalconfig.updatebuffer(sessionid,formattedResponse.toString())
 			
-		reply_msg.timeEntries=timeEntries
+			if(action =="CLOSE")
+				globalconfig.closeremote(sessionid,remoteFile)			
+			else if(action =="LOCK_CREDENTIAL"){
+				globalconfig.closeremote(sessionid,remoteFile)
+				remoteFile.server.locked=true;
+				
+				dataStore.updateServerLock(remoteFile.server);
+				
+			}
+			
+				
+			
+			// get object
+			//parse object
+			
+			//update message in globalconfig
+			
 		
-		
-		  def took = System.currentTimeMillis() - start_ms
-	
-	
-	
-		  curConfigurator.log("Worker: Took: ${took} ms")
+		//  globalconfig.log("Worker: Took: ${took} ms")
 		}
 		catch(Exception e)
 		{
@@ -234,23 +173,23 @@ class LogPoller {
 		
 		}
 	
-		try
-		{
-			
-			//Send back the item
-		  req_msg.callbackQueue.put(reply_msg)
-		}
-		catch(Exception e)
-		{
-		   curConfigurator.log("Error sending response ${e.getMessage()}")
-		}
+	
 	  }
 	}
-	//set 
-// get list of users
-	
-//for each user , call fetchuserreport in a thread , poll for  completion
 
-	
-	//		on complete , Configurator.isUpdating=false 
+
+	@Override
+	public void onReceiveExecuteMessage(CommandInfo commandInfo,
+			boolean flgComplete) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void onReceiveConnectionMessage(Server connectionInfo, String msg) {
+		// TODO Auto-generated method stub
+		
+	}
+ 
 }

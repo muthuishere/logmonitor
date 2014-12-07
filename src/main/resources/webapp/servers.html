@@ -44,6 +44,7 @@
   <input type="hidden" name="user" id="user"  />
   <input type="hidden" name="servergroup" id="servergroup"  />
   <input type="hidden" name="team" id="team"  />
+  <input type="hidden" name="id" id="id"  />
   </form>
   
  <script>
@@ -67,6 +68,7 @@
  				var proxyport =  $(this).find('proxyport').text();
  				var proxyuser =  $(this).find('proxyuser').text();
  				var proxypwd =  $(this).find('proxypwd').text();
+ 				var serverid =  $(this).find('id').text();
  				
  				var group = $(this).find('group').text();
  				
@@ -80,6 +82,8 @@
  				
  				$( "#servergroup" ).val(group)
  				 $( "#team" ).val(team)
+ 				 $( "#id" ).val(serverid)
+ 				
 
  				
  				
@@ -135,7 +139,7 @@ function showmanageserverpage(curdata,operation){
 	 showmanageservercontainer(true);
 		 
 		 $("#manageservercontainer").html("<img src='images/loadingajax.gif'/>")
-		  $( "#manageservercontainer" ).load( "manageservers.html", function() {
+		  $( "#manageservercontainer" ).load( "manageserver.html", function() {
 			  
 			  initmanageservers()
 			  //console.log(curdata)
@@ -269,6 +273,8 @@ function showmanageserverpage(curdata,operation){
  				var group = $(this).find('group').text();
  				
  				var team = $(this).find('team').text();
+ 				var serverid = $(this).find('id').text();
+ 				
  				
  	      
  				
@@ -398,9 +404,9 @@ function showmanageserverpage(curdata,operation){
  					  
  					$.extend( $.fn.dataTable.defaults, {
  					    "searching": false,
- 					    "ordering": false,
+ 					    "ordering": true,
  						"paging":   false,  				        
- 				        "info":     false
+ 				        "info":     true
  					} );
  					
  					

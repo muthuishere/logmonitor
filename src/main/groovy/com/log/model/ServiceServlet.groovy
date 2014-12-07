@@ -44,8 +44,6 @@ class ServiceServlet extends HttpServlet {
 
 		def result = ""
 
-
-		println("Action : $actionname")
 		switch ( actionname ) {
 
 
@@ -66,20 +64,30 @@ class ServiceServlet extends HttpServlet {
 				result = responder.getappConfig(request)
 
 				break;
+				
+			case "gethosts":
+			result = responder.gethosts(request)
 
+			break;
+				
+				
 			case "deleteserver":
 				result = responder.deleteserver(request)
 
 				break;
 			
-			case "getfiles":
+			case "getlogfiles":
 				result = responder.getlogfiles(request)
 
 				break;
+				
+			case "getlogfilesbyserver":
+				result = responder.getlogfilesbyserver(request)
+				break;
+			
 
 
-
-			case "updatefile":
+			case "updatelogfile":
 				result = responder.updatelogfile(request)
 
 				break;
@@ -89,32 +97,12 @@ class ServiceServlet extends HttpServlet {
 
 				break;
 
-			//
-			//
-			//		case "logpoll":
-			//		result = responder.logpoll(request)
-			//
-			//		break;
-			//
-			//
-			//
-			//		case "getsysteminfo":
-			//		result = responder.getsysteminfo(request)
-			//
-			//		break;
-			//
-			//
-			//
-			//		case "addsysteminfo":
-			//		result = responder.addsysteminfo(request)
-			//
-			//		break;
-			//
-			//		case "startmonitor":
-			//		result = responder.startmonitor(request)
-			//
-			//		break;
 
+			case "startsession":
+			result = responder.startsession(request)
+
+			break;
+				
 			case "downloadexcel":
 				response.setHeader("Content-Disposition",
 				"attachment; filename="+request.getParameter("repname")+".csv");

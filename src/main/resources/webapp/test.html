@@ -12,6 +12,7 @@
       <link href="css/jquery.dataTables.css" rel="stylesheet"/>
     <link href="css/icons.css" rel="stylesheet"/>
     <link href="css/multiple-select.css" rel="stylesheet"/>
+      <link href="css/tagmanager.css" rel="stylesheet"/>
     
 <style>
   .ui-tabs-vertical { width: 95%; }
@@ -53,35 +54,12 @@
 	
 <div id="container">
 	
+		Values
+	
+		<input type="text" name="tags" placeholder="Tags" class="tm-input"/>
 		
 	
-		
-		
-		<div id="site_content">
-
-		
-		My content here
-			&nbsp;
-		
-		</div>
-		
-			<div id="servicefooter">
-		
-		</div><!-- end service-->
-		
-		
-	</div> <!--! end container -->
-	
-
-	<div id="client-wrap" class="group">
-		<div id="client">
-			&nbsp;
-				<p><strong>Designed & Developed by <a href="#" class="green">Kaliappan</a> <span class="green">(Resolve)</span></strong></p>
-		</div><!-- end client -->
-	</div><!-- end client-wrap -->
-	
-	
-	
+	</div>
 
   <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/utils.js"></script>
@@ -89,81 +67,18 @@
 
       <script type="text/javascript" src="js/jquery.multiple.select.js"></script>
       <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+<script src="js/tagmanager.js"></script>
 
-
-     <script>
-
-function updateappconfig(callback){
-	
-
-	 $.get( "/services/getappConfig/rand?inte="+Math.random(), function( data ) {
-		  
-		  $xml = $( data )
-		  $status = $xml.find( "status" )		  
-		  
-		  $("#teams").val($status.attr("teams"))
-		   $("#environments").val($status.attr("environments"))
-		   callback()
-		    
-		   
-		   
-		});
-	
-	
-}
-function updateapphosts(){
-	
-
-	 $.get( "/services/gethosts/rand?inte="+Math.random(), function( data ) {
-		  
-		  $xml = $( data )
-		  $status = $xml.find( "status" )		  
-		  
-		  if( $status.attr("error") =="true"){
-	 			
-			  $("#hosts").val("")
-	 			  
-	 		  } else{
-	 			 
-	 			 $("#hosts").val($status.attr("hosts"))
-	 			
-	 		  }
-		  
-		 
-		   
-		    
-		   
-		   
-		});
-	
-	
-}
-
-
+<script>
   $(function() {
   
 	
-	updateappconfig(function(){
-		showpage('monitor');
-	
-	});
-	
-	updateapphosts();
-	
-	 
+	  $(".tm-input").tagsManager();
   });	
   
   
   
 </script>
 
-<input type="hidden" name="environments" id="environments"/>
-<input type="hidden" name="teams" id="teams"/>
-<input type="hidden" name="hosts" id="hosts"/>
-<form id="frmcsv" name="frmcsv" action="/services/downloadexcel" method="POST" target="_blank">
-
-<input type="hidden" name="repname" id="repname"/>
-<input type="hidden" name="csv" id="csv"/>
-</form>	
 </body>
 </html>

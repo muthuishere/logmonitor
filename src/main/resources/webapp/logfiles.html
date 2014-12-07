@@ -9,7 +9,7 @@
 	  					        <th class='lalign'> 
 	  					       
 	  					        
-	  					        <button id="btnadd">Add New File</button>
+	  					        <button id="btnadd">Add New LogFile</button>
 	  					        
 	  					        </td>
 	  					
@@ -32,7 +32,8 @@
 	  </div>
 	  
 	  
-	
+
+					
 
 	  <div id ="managefilecontainer" class="main_content"  style="">
 	  
@@ -40,10 +41,11 @@
 	  </div>
 	  
 	<form name="deletefile" id="deletefile">
-  <input type="hidden" name="host" id="host"  />
-  <input type="hidden" name="user" id="user"  />
-  <input type="hidden" name="filegroup" id="filegroup"  />
+  <input type="hidden" name="name" id="name"  />
+  <input type="hidden" name="filename" id="filename"  />
+  <input type="hidden" name="logfilehosts" id="logfilehosts"  />
   <input type="hidden" name="team" id="team"  />
+  <input type="hidden" name="id" id="id"  />
   </form>
   
  <script>
@@ -59,27 +61,24 @@
 			 $xml.each(function(index){
 				 //Parse here
 				 
-				var host =  $(this).find('host').text();
- 				var port =  $(this).find('port').text();
- 				var user =  $(this).find('user').text();
- 				var password =  $(this).find('password').text();
- 				var proxyhost =  $(this).find('proxyhost').text();
- 				var proxyport =  $(this).find('proxyport').text();
- 				var proxyuser =  $(this).find('proxyuser').text();
- 				var proxypwd =  $(this).find('proxypwd').text();
- 				
- 				var group = $(this).find('group').text();
- 				
- 				var team = $(this).find('team').text();
+				 	
+					
+				var name =  $(this).find('name').text();
+ 				var filename =  $(this).find('filename').text();
+ 				var hosts =  $(this).find('hosts').text();
+ 				var team =  $(this).find('team').text();
+ 				var id =  $(this).find('id').text();
+ 			
  				
  				//console.log($(this))
- 				$("#user").val(user)
+ 				$("#name").val(name)
  				
- 				$("#host").val(host)
+ 				$("#logfilehosts").val(hosts)
  				
  				
- 				$( "#filegroup" ).val(group)
+ 				$( "#filename" ).val(filename)
  				 $( "#team" ).val(team)
+ 				  $( "#id" ).val(id)
 
  				
  				
@@ -135,7 +134,7 @@ function showmanagefilepage(curdata,operation){
 	 showmanagefilecontainer(true);
 		 
 		 $("#managefilecontainer").html("<img src='images/loadingajax.gif'/>")
-		  $( "#managefilecontainer" ).load( "managefiles.html", function() {
+		  $( "#managefilecontainer" ).load( "managelogfile.html", function() {
 			  
 			  initmanagefiles()
 			  //console.log(curdata)
@@ -192,7 +191,7 @@ function showmanagefilepage(curdata,operation){
  	 
  		
  	     filexml=""
- 	$.post( "/services/getfiles", formdata)
+ 	$.post( "/services/getlogfiles", formdata)
  	  .done(function( data ) {
  	    
  		 filexml=""
@@ -216,14 +215,9 @@ function showmanagefilepage(curdata,operation){
  					var csvtblname="tblfiles"
  					
  					
-// 	  					 tbl=tbl + ' <div style="float:left">  <table  border="0" cellspacing="0" style="width:600px">'
-// 	  					 tbl=tbl + "      <tr>" 
-// 	  					 tbl=tbl + "        <th class='calign'> <a href='#' onclick=\"addfile();return false;\" ><img border='0' src='images/add.png' title='Add'></a></td>"
-	  					 
-// 	 					 tbl=tbl + "        <th align='right'><span><a href='#' onclick=\"downloadcsv('" +csvtblname  +"');return false;\" ><img border='0' src='images/excel.png' title='Download as excel'></a></span></th>" 
-// 	 					 tbl=tbl + "      </tr>" 
-// 	  					 tbl=tbl + " </table>"
- 					
+
+ 						
+ 	 				  
 
  				 tbl=tbl + '<table id="tblfiles" style="width:100%" class="display" cellspacing="0" >' 
  				 tbl=tbl + "    <thead>" 
@@ -235,7 +229,7 @@ function showmanagefilepage(curdata,operation){
  				tbl=tbl + "        <th><span>Servers</span></th>"
  				tbl=tbl + "        <th><span>Team</span></th>" 
  				
- 				 tbl=tbl + "        <th><span>Status</span></th>"
+ 				
  				tbl=tbl + "        <th><span>Edit</span></th>"
  				tbl=tbl + "        <th><span>Duplicate</span></th>"
  				 tbl=tbl + "        <th><span>Remove</span></th>" 
@@ -248,35 +242,35 @@ function showmanagefilepage(curdata,operation){
 				
  				
  				 
- 			 $xml.find('file').each(function(index){
+ 			 $xml.find('logfile').each(function(index){
  				dataCount++
  				
  				 var curdata=encodeURI($(this)[0].outerHTML);
  				console.log(curdata)
  				
- 	            var name = $(this).find('name').text();
- 				
- 				var host =  $(this).find('path').text();
- 				var servers =  $(this).find('servers').text();	
- 				var team = $(this).find('team').text();
- 				
+ 				var name =  $(this).find('name').text();
+ 	 				var filename =  $(this).find('filename').text();
+ 	 				var hosts =  $(this).find('hosts').text();
+ 	 				var team =  $(this).find('team').text();
+ 	 				var id =  $(this).find('id').text();
+ 	 			
+ 	 			
+ 	 				  
  				    
  				    
  	     	 tbl=tbl + "      <tr>" 
  				 tbl=tbl + "        <td class='calign'>"+dataCount+"</td>" 
  				 
  				tbl=tbl + "        <td class='lalign'>"+ name+"</td>"
- 				tbl=tbl + "        <td class='lalign'>"+path+"</td>"
- 				tbl=tbl + "        <td class='lalign'>"+servers+"</td>"
+ 				tbl=tbl + "        <td class='lalign'>"+filename+"</td>"
+ 				tbl=tbl + "        <td class='lalign'>"+hosts+"</td>"
  				tbl=tbl + "        <td class='lalign'>"+team+"</td>"
  				
  				 tbl=tbl + "        <td class='calign'> <button type='button' class='btnedit' data-file='"+curdata +"' >&nbsp;</button></td>"
  				tbl=tbl + "        <td class='calign'> <button type='button' class='btnduplicate' data-file='"+curdata +"' >&nbsp;</button></td>"
  				tbl=tbl + "        <td class='calign'> <button type='button' class='btndelete' data-file='"+curdata +"' >&nbsp;</button></td>"
  				
- 				    
- 				// tbl=tbl + "        <td class='calign'> <a href='#' onclick=\"duplicatefile('" +curdata  +"');return false;\" ><img border='0' src='images/duplicate.png' title='Duplicate'></a></td>"
- 				 //tbl=tbl + "        <td class='calign'> <a href='#' onclick=\"deletefile('" +curdata  +"');return false;\" ><img border='0' src='images/delete.png' title='Delete'></a></td>"
+ 			
  				
  				 tbl=tbl + "      </tr>" 
  				 
@@ -353,7 +347,7 @@ function showmanagefilepage(curdata,operation){
  					  
  					$.extend( $.fn.dataTable.defaults, {
  					    "searching": false,
- 					    "ordering": false,
+ 					    "ordering": true,
  						"paging":   false,  				        
  				        "info":     false
  					} );
@@ -362,11 +356,7 @@ function showmanagefilepage(curdata,operation){
  					$('#tblfiles').dataTable();
  				  }	
  				 }
- 				// else
- 					// showerror("resultdetailcontainer","No Users Available to show")
- 				
- 					
- 					// $('#example').dataTable();
+ 		
  			  
  		  }
  	  });

@@ -1,239 +1,209 @@
- <div class="top_slogan">
-	Start Monitoring Active logs here
-  </div>	
+<div class="main_content" style="">
+	<table border="0"
+		style="width: 100%; padding: 10px; border-collapse: separate; border-spacing: 10px;">
+		<tr>
+			<td>
+				<div title="team">Team</div> <select name="team" id="team"
+				style="width: 200px">
+					<option value="RESOLVE">RESOLVE</option>
+					<option value="Provisioning">Provisioning</option>
+					<option value="Service Checker">Service Checker</option>
+			</select>
+			</td>
+			<td>
+				<div title="logfiles">Log Files</div> <span id="logfilescontainer">
+					<select name="logfiles" id="logfiles" style="width: 200px"
+					multiple="multiple">
+
+
+						<option value="AR">AR</option>
+				</select>
+			</span>
+			</td>
+
+			<td>
+			<td>
+				<div title="Merge">Merge</div> 
+				
+				<div id="merge">
+    <input type="radio" id="mergeon" name="merge" value="on" ><label for="mergeon">On</label>
+    <input type="radio" id="mergeoff" name="merge" value="off" checked="checked"><label for="mergeoff">Off</label>
+    
+  </div>
+  
+				
+			</td>
+
+			<td>
+			<td class="ralign">
+			<div title="submitbtn">&nbsp;</div> 
+				<button type="button" class="btnstartmonitor">Start</button>
+			</td>
+		</tr>
+	</table>
+
+	<div>
+
+		
+
+		<div id="tabs" class="monitortab">
+			<ul>
+<!-- 				<li><a href="#tabs-1">Tab name</a> <span -->
+<!-- 					class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li> -->
+			</ul>
+			<!-- <div id="tabs-1">
+				<p>tab contents</p>
+			</div> -->
+		</div>
+
+
+
+		<script>
+
+function updatelogfilesmenu(){
+	
+	//A method get last parameters 
+	
+	$("#logfilescontainer").html("");
+	
+	//get selected team
+	if($("#team").val() != ""){
+		var formdata="team=" + $("#team").val()
+			
+			
+			$.post( "/services/getlogfilesbyserver", formdata)
+		 	  .done(function( data ) {
+		 	    
+		 		 serverxml=""
+		 		
+		 		//parse xml
+		 		  $xml = $( data )
+		 		  $status = $xml.find( "status" )
+		 		  
+		 		  
+		 		  
+		 		  if( $status.attr("error") =="true"){
+		 			  
+		 			//  showerror("resultdetailcontainer",$status.attr("description"))
+		 			  
+		 		  } else{
+		 			  
+		 			 $xml.find('user').each(function(index){
+		  					dataCount++
+		  		            var username = $(this).find('name').text();
+		  					
+		  					
+		  					var name =  $(this).find('name').text();
+		  	 				var filename =  $(this).find('filename').text();
+		  	 				var $hosts =  $(this).find('hosts');
+		  	 				var team =  $(this).find('team').text();
+		  	 				var id =  $(this).find('id').text();
+		  	 				
+		  	 			 $hosts.find('host').each(function(index){
+		  	 			 
+		  	 				var hostname =  $(this).text();
+		  	 				console.log(hostname)
+		  	 			 });
+		  	 			 
+		  					
+		 			 });
+		 			 
+		 		  }
+		 		 
+		 	  });
+	 	}
+	}
+	
+
  
-   
-
-   
-          
-   
-      <div class="main_content"  style="">
-	   
-	   <form id="frmreports">
-	   <table border="0" style="width:800px;padding:10px;border-collapse: separate; border-spacing: 10px;">
-	   
-	      <tr>
-	   <td>Server </td>
-	   <td >
-	   
-	  
-	   <div id="servercontainerlst" />
-	   
-	
-	   </td>
-	   </tr>	   
-	  
-	   <tr>		   
-	   <td>Log File </td>
-	   <td >
-	   <select style="width:230px" id="logfilesmenu">
-	   	<option value="curweek">3DS Adapter</option>
-	   	<option value="curmonth">HSS/HLR Adapter</option>
-	   	<option value="custom">Custom</option>
-	   </select>
-	    </td>
-	   </tr>
-	   <tr id="dtcustomrow">		   
-	   <td>Custom File </td>
-	   <td ><input name="customlogfile" id="customlogfile" > 
-	   
-	   <input name="activelogfile" id="activelogfile" type="hidden" > </td>
-	  
-	   </tr>
-	   <tr>
-	   <td>&nbsp;</td>
-	  <td  ><input type="button" id="start" value="Start Monitoring" > </td>
-	   </tr>
-	   </table>
-	   </form>
-	  </div>
-	   <div  >
-	  
-			<span id="resultcontainer"/>
-	  
-	  </div>
-	  
- <script>
-
-
-function setcustom(flgshow){
-	 
-	 if(flgshow == true){
-		 $('#dtcustomrow').show();
-		 
-	 }else{
-		 
-		 $('#dtcustomrow').hide();
-	 }
-}
-
-function showsummarypage(){
-	
-	$("#resultdetailcontainer").hide()
-	$("#resultcontainer").show()
-}
-
-		  
-function onC(){
-	
-	
-}		  
   $(function() {
 	  
 	 
-	  setcustom(false)
 	  
 	  
-	    
-	   generateServerMenu("servercontainerlst","server","All")
-	    
 	 
-	    $( "#logfilesmenu" ).selectmenu({
-	      change: function( event, data ) {
-	    	  
-	    	  if(data.item.value == "custom"){
-	    		  $( "#activelogfile" ).val("")
-	    		
-	    		  setcustom(true)
-	    	  }else{
-	    		  
-	    		  $( "#activelogfile" ).val( data.item.value)
-	    		 setcustom(false)
-	    	  }
-	        
-	      }
-	     });
-	    
-
-  
-
-
-
 	  
-	$( "input#start" )
-      .button()
-      .click(function( event ) {
-    	  showsummarypage()
-    	  var formdata=$("form#frmreports").serializeArray()
-  		
-  		//$('#frmreports')[0].reset();
-    	  $("#resultcontainer").html("<img src='images/loadingajax.gif'/>")
-  		$.post( "/services/fetchreportsummary", formdata)
-  		  .done(function( data ) {
-  		    
-  			
-  			//parse xml
-  			  $xml = $( data )
-  			  $status = $xml.find( "status" )
-  			  
-  			  
-  			  
-  			  if( $status.attr("error") =="true"){
-  				  
-  				  showerror("resultcontainer",$status.attr("description"))
-  				  
-  			  } else{
-  				  
-  				  var tbl=""
-  					  
-  					
-  						var csvtblname="tblreports"
-  		  					 tbl=tbl + ' <table  border="0" cellspacing="0" width="100%">'
-  		  					 tbl=tbl + "      <tr>" 
-  		 					 tbl=tbl + "        <th align='right'><span><a href='#' onclick=\"downloadcsv('" +csvtblname  +"');return false;\" ><img border='0' src='images/excel.png' title='Download as excel'></a></span></th>" 
-  		 					 tbl=tbl + "      </tr>" 
-  		  					 tbl=tbl + " </table>"
- 					
-  		  					
-  					 tbl=tbl + ' <table id="tblreports" class="display" cellspacing="0" width="100%">' 
-  					 tbl=tbl + "    <thead>" 
-  					 tbl=tbl + "      <tr>"
-  					tbl=tbl + "        <th><span>Filled All</span></th>" 
-  					 tbl=tbl + "        <th><span>User</span></th>" 
-  					 tbl=tbl + "        <th><span>WorkDays</span></th>" 
-  					 tbl=tbl + "        <th><span>Leaves</span></th>" 
-  					 tbl=tbl + "        <th ><span>Last updated</span></th>" 
-  					 tbl=tbl + "        <th><span>Credential Status</span></th>" 
-  					 tbl=tbl + "      </tr>" 
-  					 tbl=tbl + "    </thead>" 
-  					 tbl=tbl + "    <tbody>" 
-  				
-  					var dataCount=0
-  					 
-  				 $xml.find('user').each(function(index){
-  					dataCount++
-  		            var username = $(this).find('name').text();
-  		          var workdays = $(this).find('workdays').text();
-  		        var leavedays = $(this).find('leavedays').text();
-  		      var lastupdated = $(this).find('lastupdated').text();
-  		    var userlocked = $(this).find('userlocked').text();
-  		    var defaulter=$(this).find('defaulter').text();
-  		           
-  		    var privacyImg="<img src='images/valid.png' alt='valid'>"
-  		            if(undefined == userlocked ||  userlocked == "true")
-  		            	privacyImg="<img src='images/invalid.png' alt='invalid' >"    	
-  		       
-	  		
-  		            		var defaulterImg="<img src='images/nodefaulter.png' alt='Filled All'>"
-  		    		            if(undefined == defaulter ||  defaulter == "true")
-  		    		            	defaulterImg="<img src='images/defaulter.png' alt='Defaulter' >"    	
-  		    		    
-  		    		            	
-  		            		
-  		     	 tbl=tbl + "      <tr>" 
-  		     	tbl=tbl + "        <td class='calign'>"+defaulterImg+"</td>"
-					 tbl=tbl + "        <td class='lalign'><a href='#' onclick='showdetailreport(\"" +username  +"\")';return false;' >"+username+"</a></td>" 
-					 tbl=tbl + "        <td class='calign'>"+workdays+"</td>" 
-					 tbl=tbl + "        <td class='calign'>"+leavedays+"</td>" 
-					 tbl=tbl + "        <td class='calign'>"+lastupdated+"</td>"
-					 
-					 tbl=tbl + "        <td class='calign'>"+privacyImg+"</td>" 
-					 tbl=tbl + "      </tr>" 
-					 
-  		        });
-  				
-  					 tbl=tbl + "	      </tbody>" 
-  					 tbl=tbl + "  </table>"
-  					 
-  					 if( dataCount >0){
-  					 	$("#resultcontainer").html(tbl)
-  					 	preparecsv("tblreports")
-  					  if( dataCount >10){
-  						  
-  						  
-  						$.extend( $.fn.dataTable.defaults, {
-  						    "searching": true,
-  						    "ordering": true,
-  						  "paging":   true,  				        
-	  				        "info":     true
-  						} );
-  						$('#tblreports').dataTable();
-  					  }
-  	  					  
-  					  else{
-  						  
-  						$.extend( $.fn.dataTable.defaults, {
-  						    "searching": false,
-  						    "ordering": false,
-	  						"paging":   false,  				        
-	  				        "info":     false
-  						} );
-  						
-  						
-  						$('#tblreports').dataTable();
-  					  }	
-  					 }
-  					 else
-  						 showerror("resultcontainer","No Data Available to show")
-  					
-  						 
-  						// $('#example').dataTable();
-  				  
-  			  }
-  		  });
-    	  
-        event.preventDefault();
-      });
+	  generateCsvMenu("team",$("#teams").val())
+	  
+	     $( "#team" ).selectmenu({
+	 // change: function( event, data ) {
+
+	  });
+	  
+	  
+	  //set radio button
+	  
+	  $( "#merge" ).buttonset();
+	  
+	  updatelogfilesmenu();
+	  
+
+	  //Set Button for monitor
+	  
+	  //set vertical tabs
+	  
+	    
+	    
+	    $( ".btnstartmonitor" ).button( {
+	        icons: {
+	          primary: "ui-icon-transferthick-e-w"
+	        }
+	      });
+	    
+	    
+	    var tabs =$( "#tabs" ).tabs()
+   	 
+		   var   tabTemplate = "<li><span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span> <a href='#{href}'>#{label}</a> </li>",
+	      	 tabCounter = 0;
+		   tabs.addClass( "ui-tabs-vertical ui-helper-clearfix" );
+		    $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+		    
+		   
+  
+	    $( ".btnstartmonitor" ).click(function( event ) {
+	    	 
+	    	
+	    	
+	    	// Get sessionid
+	    	//create hidden field with sessionid
+	    	//create html with div & sessionid
+	    	
+	    	 var label = "Tab " + tabCounter,
+	         id = "tabs-" + tabCounter,
+	         li = $( tabTemplate.replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, label ) ),
+	         
+	         tabContentHtml = "<div id='' >log here</div>";
+	  
+	       tabs.find( ".ui-tabs-nav" ).append( li );
+	       tabs.append( "<div id='" + id + "'><p>" + tabContentHtml + "</p></div>" );
+	       tabs.tabs( "refresh" );
+	       //tabs.tabs({ selected: tabCounter });
+	      // tabs.tabs("option", "selected", tabCounter );
+	       tabs.tabs( "option", "active", tabCounter );
+	       tabs.tabs( "refresh" );
+	       tabCounter++;
+	      
+	    	
+	    })
+
+
+	     
+	    
+	    
+	    tabs.delegate( "span.ui-icon-close", "click", function() {
+	        var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
+	        $( "#" + panelId ).remove();
+	        tabs.tabs( "refresh" );
+	      });
+	   
+	      tabs.bind( "keyup", function( event ) {
+	        if ( event.altKey && event.keyCode === $.ui.keyCode.BACKSPACE ) {
+	          var panelId = tabs.find( ".ui-tabs-active" ).remove().attr( "aria-controls" );
+	          $( "#" + panelId ).remove();
+	          tabs.tabs( "refresh" );
+	        }
+	      });
+	      
 	  
 
   });

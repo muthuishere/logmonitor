@@ -5,6 +5,7 @@ import groovy.transform.ToString
 @ToString
 class Server {
 
+	def id
 	def host
 	def port
 	def user
@@ -30,5 +31,10 @@ class Server {
 		
 
 		return true;
+	}
+	
+	public String getOnlyProfileName(){
+		
+		return user + "@" +host;
 	}
 }
