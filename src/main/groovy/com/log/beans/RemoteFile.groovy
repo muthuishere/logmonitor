@@ -8,7 +8,7 @@ import groovy.transform.ToString
 class RemoteFile {
 
 	
-	
+	def name
 	def filename
 	
 	Server server	
