@@ -30,6 +30,7 @@ public class ExecuteSSHController {
     Session session = null;
     SecureChannel secureChannel = null;
 
+	
     ByteArrayOutputStream baos = null;
     Server serverInfo = null;
 	RemoteFile remoteFile=null;
@@ -68,7 +69,8 @@ public class ExecuteSSHController {
 
 	public def start(LinkedBlockingQueue processor_lbq ,RemoteFile remoteFile,String sessionid){
 		
-		
+		println(" Starting Execute controller");
+		secureChannel=new SecureChannel()
 		this.processor_lbq=processor_lbq
 		this.remoteFile=remoteFile
 		
@@ -77,16 +79,22 @@ public class ExecuteSSHController {
 		
 		try{
 		//Connect now get message and send it
-		this.connect()
+			
+			println(" Attempting to connect");
+		connect()
 		
 		//execute tail command and send it to global
 		
 		CommandInfo commandInfo = new CommandInfo();
-		commandInfo.cmd="tail -100f " +remoteFile.filename
+		
+		commandInfo.cmd="tail -f " +remoteFile.filename
+		
+		println("Attepting to execute ${commandInfo.cmd}")
+		
 		execute(commandInfo);
 		} catch (Exception ex) {
 	
-		
+		ex.printStackTrace();
 		def msg=ex.toString();
 		
 		
@@ -122,6 +130,7 @@ public class ExecuteSSHController {
 
         } catch (JSchException ex) {
 
+			ex.printStackTrace();		
             if (ex.toString().contains("Auth fail")) {
                 throw new ServiceException("Invalid Credentials while connecting to gateway ", ex);
             } else {
@@ -155,6 +164,8 @@ public class ExecuteSSHController {
             connected = true;
         } catch (JSchException ex) {
 
+		ex.printStackTrace();
+		
             if (ex.toString().contains("Auth fail")) {
                // sendConnectionMessage("Invalid Credentials while connecting to Server for " + connectionInfo.getOnlyProfileName());
 
@@ -172,6 +183,8 @@ public class ExecuteSSHController {
     public void sendConnectionMessage(String msg) {
 
       //  sshMessageListener.onReceiveConnectionMessage(serverInfo, msg);
+		
+		
 		processor_lbq.put([  "response": msg,"action": "UPDATE","remoteFile":remoteFile,"sessionid":sessionid])
 		
     }
@@ -233,6 +246,7 @@ public class ExecuteSSHController {
             channel.connect(3 * 1000);
 
         } catch (JSchException ex) {
+		ex.printStackTrace();
             throw new ServiceException("Exception While connecting to Server " + ex.toString(), ex);
         }
 
@@ -400,11 +414,13 @@ public class ExecuteSSHController {
             return;
 
         } catch (JSchException ex) {
+		ex.printStackTrace();
             //sendExecuteMsg( commandInfo, "Exception While Executing Command in Server " + ex.toString(),true);
             throw new ServiceException("Exception While Executing Command in Server " + ex.toString(), ex);
-        } catch (IOException ex) {
+        } catch (IOException ioex) {
+		ioex.printStackTrace();
             //sendExecuteMsg( commandInfo, "Exception While Executing Command in Server " + ex.toString(),true);
-            throw new ServiceException("IOException ", ex);
+            throw new ServiceException("IOException ", ioex);
 
         }
     }

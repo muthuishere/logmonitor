@@ -413,7 +413,7 @@ float: right;
 /* END MEDIA*/
 
 /* CLEAR FIX */
-.group:after {
+.classgroup:after {
   content: "";
   display: table;
   clear: both;

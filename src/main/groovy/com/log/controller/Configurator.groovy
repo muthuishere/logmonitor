@@ -20,15 +20,23 @@ public class Configurator {
 	
 	public static def worker_lbq = new LinkedBlockingQueue()
 	
-	public static def updatebuffer(String sessionid,String msg){
+	public static def updatebuffer(String sessionid,StringBuffer msg){
 		
+		println("================== Updating for ${sessionid} for ${msg} ========================")
 		LogSession cursession=getLogSession(sessionid)
+		
 		cursession.buffer.append(msg)
 		
 	}
 	public static def resetbuffer(String sessionid){
 		
+		println("================== Reset buffer for sessionid ${sessionid} ====================")
 		LogSession cursession=getLogSession(sessionid)
+		
+		
+		if(null == cursession?.buffer)
+			return "";
+			
 		String res=cursession.buffer.toString();		
 		cursession.buffer.delete(0,  res.length());
 		
@@ -36,7 +44,12 @@ public class Configurator {
 		
 		
 	}
+
 	
+	public static def addSession(LogSession cursession){
+		logSessions.add(cursession)
+		
+	}
 	public static def closeremote(String sessionid,RemoteFile  remoteFile){
 		
 		LogSession cursession=getLogSession(sessionid)
@@ -70,8 +83,10 @@ public class Configurator {
 	
 	public static LogSession getLogSession(sessionid){
 		LogSession cursession=null;
-		
+		println " Searching for ${sessionid}"
 		logSessions.each{logSession ->
+		
+			println " comparing ${logSession.sessionid } for  ${sessionid}"
 			
 			if(logSession.sessionid == sessionid){
 			cursession=logSession;
@@ -80,6 +95,7 @@ public class Configurator {
 			
 			
 		}
+		println " returning ${cursession} for  ${sessionid}"
 		return cursession;
 	}
 	

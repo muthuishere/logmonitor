@@ -26,15 +26,17 @@ import com.log.ssh.SshMessageListener
 
 import java.util.concurrent.TimeUnit
 
-class LogPoller implements SshMessageListener {
+class LogPoller  {
 
 
 	DataStore dataStore=null;
 	
-	public LogPoller(DataStore dataStore){
+	public LogPoller(){
 		
 	
-		dataStore=this.dataStore;
+		dataStore=new DataStore();
+		dataStore.init(Configurator.globalconfig.dbfile)
+		
 		
 		
 		(1..Configurator.globalconfig.worker_thread_count).each
@@ -69,6 +71,7 @@ class LogPoller implements SshMessageListener {
 			//start in a Thread of sshcontroller
 			logSession.remotefiles.each {remoteFile ->
 				
+				println("Starting thread for ${remoteFile}")
 				
 				Thread.start {
 					
@@ -114,13 +117,14 @@ class LogPoller implements SshMessageListener {
 		try
 		{
 		 
+			println ("Mesage received ${req_msg} ")
 			def action=req_msg.action
 			def res=req_msg.response
 			RemoteFile remoteFile=req_msg.remoteFile
 			def sessionid=req_msg.sessionid
 			
 			
-			StringBuilder formattedResponse = new StringBuilder();
+			StringBuffer formattedResponse = new StringBuffer();
 			
 			if (null != res) {
 				
@@ -132,13 +136,14 @@ class LogPoller implements SshMessageListener {
 					
 					 formattedResponse.append("[").append(remoteFile.server.host).append("]");
 					 formattedResponse.append(curLine);
+					 formattedResponse.append("<br/>");
 					 
 				}
 			
 			}
 			
 			
-			globalconfig.updatebuffer(sessionid,formattedResponse.toString())
+			globalconfig.updatebuffer(sessionid,formattedResponse)
 			
 			if(action =="CLOSE")
 				globalconfig.closeremote(sessionid,remoteFile)			
@@ -165,11 +170,7 @@ class LogPoller implements SshMessageListener {
 		  e.printStackTrace()
 	
 		  reply_msg.error = "${e.getCause().toString()} (${e.getMessage()})"
-		  if(timeEntries.size() > 0){
-			  
-			  reply_msg.timeEntries=timeEntries
-		  }
-	
+		
 		
 		}
 	
@@ -178,18 +179,6 @@ class LogPoller implements SshMessageListener {
 	}
 
 
-	@Override
-	public void onReceiveExecuteMessage(CommandInfo commandInfo,
-			boolean flgComplete) {
-		// TODO Auto-generated method stub
-		
-	}
 
-
-	@Override
-	public void onReceiveConnectionMessage(Server connectionInfo, String msg) {
-		// TODO Auto-generated method stub
-		
-	}
  
 }

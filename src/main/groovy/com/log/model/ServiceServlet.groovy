@@ -103,6 +103,11 @@ class ServiceServlet extends HttpServlet {
 
 			break;
 				
+			case "logpoll":
+			result = responder.logpoll(request)
+
+			break;
+			
 			case "downloadexcel":
 				response.setHeader("Content-Disposition",
 				"attachment; filename="+request.getParameter("repname")+".csv");

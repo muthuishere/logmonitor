@@ -235,7 +235,7 @@ public String getAllusers(){
 					def host=hostfileid.split(";")[0]
 					def fileid=hostfileid.split(";")[1]
 					
-					def remotefile=datastore.getRemoteFileForLog(host,fileid,team)
+					def remotefile=dataStore.getRemoteFileForLog(host,fileid,team)
 					if(null == remotefile){
 						msg += "Invalid Data $host,$fileid,$team \t "
 						
@@ -254,15 +254,18 @@ public String getAllusers(){
 				
 					msg += " Published for Log Monitoring"
 					 uuid = UUID.randomUUID().toString();
-					LogSession session=new LogSession(
+					 uuid=uuid.replaceAll("-","");
+					final LogSession session=new LogSession(
 						sessionid:uuid,
 						remotefiles: remotefiles, 
 						);
 				
 				
+					Configurator.addSession(session)
+					
 				Thread.start {
 
-					new LogPoller(dataStore).start(LogSession)
+					new LogPoller().start(session)
 
 
 				}
@@ -312,9 +315,9 @@ public String getAllusers(){
 									    <![CDATA[ ${res} ]]>
 									</data>
 								""");
-						if(Configurator.isSessionValid()){
+						if(Configurator.isSessionValid( params.sessionid)){
 							
-							response.append("<status code='0' error='false' sessionid='$params.sessionid' description='$msg'/>")
+							response.append("<status code='0' error='false' sessionid='${params.sessionid}' description='$msg'/>")
 						}else{
 								throw new Exception("No Valid Sessions identified");
 						

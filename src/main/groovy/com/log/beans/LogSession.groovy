@@ -8,7 +8,7 @@ import groovy.transform.ToString
 class LogSession {
 
 	def sessionid
-	StringBuffer buffer=new 	StringBuffer();
+	public StringBuffer buffer=new StringBuffer();
 	def startTime
 	def lastfetchedTime
 	
