@@ -133,6 +133,19 @@ function downloadcsv(tblid){
 	 $( "#frmcsv" ).submit();
 	
 }
+
+function downloadfile(repname,content,filetype){
+	
+	$('#repname').val("server_details")
+$('#content').val(content)
+$('#filetype').val(filetype)
+
+
+
+ $( "#frmdownload" ).submit();
+
+}
+
 function showinfo(divid,content){
 	
 	$( "#"+divid ).html('<div class="alert-box notice"><span>notice: </span>' + content +'</div>')

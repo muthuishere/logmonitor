@@ -21,6 +21,7 @@
 			</td>
 
 			<td>
+			<!-- 
 			<td>
 				<div title="Merge">Merge</div> 
 				
@@ -32,7 +33,7 @@
   
 				
 			</td>
-
+ -->
 			<td>
 			<td class="ralign">
 			<div title="submitbtn">&nbsp;</div> 
@@ -140,7 +141,7 @@ function pollog(cursessionid){
 			$.post( "/services/logpoll", formdata)
 		 	  .done(function( data ) {
 		 	    
-		 		console.log(data)
+		 	//	console.log(data)
 		 		
 		 		//parse xml
 		 		  $xml = $( data )
@@ -155,8 +156,18 @@ function pollog(cursessionid){
 		 		  } else{
 		 			  var localsessionid=$status.attr("sessionid")
 		 			  
-		 			$("#div"+localsessionid).append($xml.find( "data" ).text());
-		 			 setTimeout(function(){ pollog(localsessionid); }, 5000);
+		 			  if($("#div"+localsessionid).size() > 0)
+		 				{
+		 				  
+		 				  $("#div"+localsessionid).append($xml.find( "data" ).text());
+		 				  
+		 				 modiyhighlight(localsessionid)
+		 			 	setTimeout(function(){ pollog(localsessionid); }, 3000);
+		 			 
+		 				}else{
+		 					
+		 					//console.log("No container for " + localsessionid)
+		 				}
 		 			
 		 			 
 		 		  }
@@ -173,16 +184,52 @@ function pollog(cursessionid){
 		
 }
 
-function highlight(sessid,text){
+function addhighlight(sessid){
 	
-	var lines='#localsessionid' +sessid +" span"
+	var lines='#div' +sessid +" span"
 	
-	$.each(lines,function( index, cont ) {
-		  console.log($(cont).html())
+	$( lines ).each(function( index ) {
+		
+		var elems= "#tagelem" + sessid + " li.tagItem"
+		var curtext=$( this ).text()
+		
+		var curelem= this ;
+		$( elems ).each(function( index ) {
+			
+			if(curtext.indexOf($( this ).text()) >= 0){
+				
+				$( curelem ).css("background-color","#0066bd")
+				$( curelem ).css("color","#ffffff")
+			}
+			
 		});
-}
-function removehighlight(sessid,text){
+		
+		
+		});
 	
+
+}
+function removeallhighlight(sessid){
+	
+	
+var lines='#div' +sessid +" span"
+	
+$( lines ).each(function( index ) {
+	
+		
+		$( this ).css("background-color","")
+		$( this ).css("color","")
+	
+	  
+	});
+
+
+		
+}
+
+function modiyhighlight(sessid){
+	removeallhighlight(sessid)
+	addhighlight(sessid)
 	
 }
 
@@ -197,9 +244,9 @@ function createtab(localsessionid,tablabel){
 	 var label = tablabel
 
 
-     if(label.length > 5){
+     if(label.length > 10){
     	 
-    	 label=label.substr(1,6) +"..";
+    	 label=label.substr(1,10) +"..";
     	 
      }
 		
@@ -223,8 +270,14 @@ function createtab(localsessionid,tablabel){
 	   tbl = tbl + "<tr><td colspan='2'>&nbsp;</td></tr>"
 	   tbl = tbl + "<tr><td width='70%'><span style='font-weight:bold;color:white'>Servers :" + tablabel +"</td>"
    
-   tbl = tbl + "<td width='30%' style='text-align:right'><div class='fullscreen' style='background-color:white;width:24px;height:24px;float:right;' id='screendecider' data-session='"+ localsessionid +"' >&nbsp;</div></td>"
-   tbl = tbl + "</tr>"
+   tbl = tbl + "<td width='30%' style='text-align:right'>"
+   
+   tbl = tbl + "<table width='100%' cellpadding='0' cellspacing='0' ><tr>"
+   tbl = tbl + "<td><div class='downloadtxt' style='width:24px;height:24px;float:right;padding-right:20px' data-label='"+ tablabel +"'  data-session='"+ localsessionid +"' >&nbsp;</div></td>"
+   tbl = tbl + "<td><div class='downloadhtml' style='width:24px;height:24px;float:right;padding-right:20px' data-label='"+ tablabel +"' data-session='"+ localsessionid +"' >&nbsp;</div></td>"
+   tbl = tbl + "<td><div class='fullscreen' style='width:24px;height:24px;float:right;padding-right:20px' id='screendecider' data-session='"+ localsessionid +"' >&nbsp;</div></td>"
+   tbl = tbl + "</tr></table>"
+   tbl = tbl + "</td></tr>"
    
    tbl = tbl + "<tr><td colspan='2'>&nbsp;</td></tr>"
    
@@ -232,7 +285,7 @@ function createtab(localsessionid,tablabel){
    tbl = tbl + "<tr><td colspan='2'>&nbsp;</td></tr>"
    
    tbl = tbl + "<tr>"
-   tbl = tbl + "<td colspan='2'><span style='font-weight:bold;color:white'>Highlight : </span>    <ul  id='tagelem"+localsessionid+"'></ul></td>"
+   tbl = tbl + "<td colspan='2'><span style='font-weight:bold;color:white'>Highlight : </span>    <ul data-session='"+ localsessionid +"'  id='tagelem"+localsessionid+"'></ul></td>"
    tbl = tbl + "</tr>"
    tbl = tbl + "<tr><td colspan='2'>&nbsp;</td></tr>"
    tbl = tbl + "<tr>"
@@ -243,7 +296,7 @@ function createtab(localsessionid,tablabel){
    
    
    
-   tabContentHtml ="<div id='container"+ localsessionid +"'  style='background-color:black'> "+ tbl  +"</div>" ;
+   tabContentHtml ="<div id='container"+ localsessionid +"'  style='background-color:black;border-radius:5px;padding:5px 5px 5px'> "+ tbl  +"</div>" ;
    
    tabs.append( "<div id='" + id + "'><p>" + tabContentHtml + "</p></div>" );
    
@@ -251,20 +304,50 @@ function createtab(localsessionid,tablabel){
    //tabs.tabs({ selected: tabCounter });
   // tabs.tabs("option", "selected", tabCounter );
   
-   tabs.tabs( "option", "active", tabCounter );
+  // tabs.tabs( "option", "active", tabCounter );
   
    tabCounter++;
    
 
+   checktabs();
 
+   
+   tabs.tabs( "option", "active", $('#tabs >ul >li').size() - 1  );
+   
    $("#tagelem"+localsessionid).tagHandler({   
 	    onAdd: function(tag) { 
-	    	console.log($(this))
-	    	console.log($(this) + 'Added tag: ' + tag); 
+	    	var sessid=$(this).parent().parent().attr("data-session")
+	    	
+	    	modiyhighlight(sessid)
+	    	
 	    	},
-	    onDelete: function(tag) { console.log('Deleted tag: ' + tag); }
+	    onDelete: function(tag) { 
+	    	
+			var sessid=$(this).parent().parent().attr("data-session")
+	    	modiyhighlight(sessid)
+	    	
+	    }
 	});
    
+  
+     $(".downloadtxt").click(function( event ) {
+    	 
+    	 var sessid=$(this).attr("data-session")
+    	 var repname=$(this).attr("data-label")
+    	 
+    	
+    	 downloadfile(repname,$("#div" +sessid).text(),"log")
+     });
+   
+   $(".downloadhtml").click(function( event ) {
+	   var sessid=$(this).attr("data-session")
+  	 var repname=$(this).attr("data-label")
+  	 
+  	
+  	 downloadfile(repname+"_formattedlog",$("#div" +sessid).html(),"html")
+  	 
+  	 
+   });
    
    $("#screendecider").click(function( event ) {
 	   
@@ -298,6 +381,16 @@ function createtab(localsessionid,tablabel){
  
 
 
+function checktabs(){
+	if($('#tabs >ul >li').size() <=0){
+		
+		$('#tabs').css('visibility','hidden')
+	}else{
+		
+		$('#tabs').css('visibility','visible')
+	}
+	
+}
 function init(){
 
 	 
@@ -315,7 +408,7 @@ function init(){
 	  
 	  //set radio button
 	  
-	  $( "#merge" ).buttonset();
+	//  $( "#merge" ).buttonset();
 	  
 	  
 	  
@@ -339,7 +432,7 @@ function init(){
 		   tabs.addClass( "ui-tabs-vertical ui-helper-clearfix" );
 		    $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
 		    
-		   
+		    checktabs();
 
 	    $( ".btnstartmonitor" ).click(function( event ) {
 	    	 
@@ -427,13 +520,16 @@ function init(){
 	        var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
 	        $( "#" + panelId ).remove();
 	        tabs.tabs( "refresh" );
+	        checktabs()
 	      });
 	   
 	      tabs.bind( "keyup", function( event ) {
 	        if ( event.altKey && event.keyCode === $.ui.keyCode.BACKSPACE ) {
 	          var panelId = tabs.find( ".ui-tabs-active" ).remove().attr( "aria-controls" );
 	          $( "#" + panelId ).remove();
+	          
 	          tabs.tabs( "refresh" );
+	          checktabs()
 	        }
 	      });
 	

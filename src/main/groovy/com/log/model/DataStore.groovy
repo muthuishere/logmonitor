@@ -278,7 +278,7 @@ class DataStore {
 		
 					Log.error("Updating lock status for ${serverInfo.user} @ ${serverInfo.host} overWriting ");
 					query="update userInfo set locked='${serverInfo.locked}' where user='${serverInfo.user}' and  host='${serverInfo.host}'"
-					println(query)
+				//	println(query)
 					
 					userDB.executeUpdate(query, []);
 					

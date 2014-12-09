@@ -872,17 +872,28 @@ nav{
 		   height:100%;
 		   }
 		   .fullscreen{
-			   
+			   cursor:pointer;
 			   background: url(../images/fullscreen.png) no-repeat;
 		   }
 		   
 		   .normalscreen{
-			   
+			   cursor:pointer;
 			   background: url(../images/normalscreen.png) no-repeat;
-			   width:24px;
-			   height:24px
+			
 		   }
-		   #screendecider{
-		   		cursor:pointer;
+		  
+		   
+		   .downloadhtml{
+			     cursor:pointer;
+			   background: url(../images/download-color.png) no-repeat;
+			
 		   }
+		   .downloadtxt{
+			     cursor:pointer;
+			   background: url(../images/download-text.png) no-repeat;
+			
+		   }
+		   
+		   
+		   
 		   

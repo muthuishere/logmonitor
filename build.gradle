@@ -61,6 +61,6 @@ task uberjar(type: Jar) {
     }
 
     manifest {
-       attributes 'Main-Class': 'com.otl.reports.application.OTLReportApplication'
+       attributes 'Main-Class': 'com.log.application.LogMain'
     }
 }

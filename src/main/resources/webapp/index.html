@@ -61,7 +61,7 @@
 		<div id="site_content">
 
 		
-		My content here
+	
 			&nbsp;
 		
 		</div>
@@ -161,10 +161,11 @@ function updateapphosts(){
 <input type="hidden" name="environments" id="environments"/>
 <input type="hidden" name="teams" id="teams"/>
 <input type="hidden" name="hosts" id="hosts"/>
-<form id="frmcsv" name="frmcsv" action="/services/downloadexcel" method="POST" target="_blank">
+<form id="frmdownload" name="frmdownload" action="/services/download" method="POST" target="_blank">
 
 <input type="hidden" name="repname" id="repname"/>
-<input type="hidden" name="csv" id="csv"/>
+<input type="hidden" name="content" id="content"/>
+<input type="hidden" name="filetype" id="filetype"/>
 </form>	
 </body>
 </html>

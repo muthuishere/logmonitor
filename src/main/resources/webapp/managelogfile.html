@@ -100,7 +100,9 @@
   
   
   function initmanagefiles(){
-		 console.log("initmanagefiles")
+		 
+		 $("form#frmaddfile input").val("")
+		 
 	  generateCsvMenu("team",$("#teams").val())
 	 	 
 	 	 generateCsvMenu("lsthosts",$("#hosts").val())
@@ -113,7 +115,7 @@
 
 	  });
 		 
-		 $("form#frmaddfile input").val("")
+	
 	     
 	 	 
 	  }

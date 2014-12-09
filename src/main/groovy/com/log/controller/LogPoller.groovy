@@ -71,7 +71,7 @@ class LogPoller  {
 			//start in a Thread of sshcontroller
 			logSession.remotefiles.each {remoteFile ->
 				
-				println("Starting thread for ${remoteFile}")
+				//println("Starting thread for ${remoteFile.}")
 				
 				Thread.start {
 					
@@ -106,7 +106,7 @@ class LogPoller  {
 	
 	def worker_thread(def globalconfig,DataStore dataStore)
 	{
-	  globalconfig.log("Worker: Initialising")
+	  globalconfig.log("Worker: Initialising for receiving messages")
 	
 	  while(true)
 	  {
@@ -117,12 +117,12 @@ class LogPoller  {
 		try
 		{
 		 
-			println ("Mesage received ${req_msg} ")
+			
 			def action=req_msg.action
 			def res=req_msg.response
 			RemoteFile remoteFile=req_msg.remoteFile
 			def sessionid=req_msg.sessionid
-			
+			CommandInfo commandInfo=req_msg.commandInfo
 			
 			StringBuffer formattedResponse = new StringBuffer();
 			
@@ -134,9 +134,9 @@ class LogPoller  {
 	
 				res.split("\\r?\\n").each{curLine ->
 					
-					 formattedResponse.append("[").append(remoteFile.server.host).append("]");
+					 formattedResponse.append("<span>[").append(remoteFile.server.host).append("]");
 					 formattedResponse.append(curLine);
-					 formattedResponse.append("<br/>");
+					 formattedResponse.append("</span><br/>");
 					 
 				}
 			
@@ -145,7 +145,17 @@ class LogPoller  {
 			
 			globalconfig.updatebuffer(sessionid,formattedResponse)
 			
-			if(action =="CLOSE")
+			
+			
+			if(action =="UPDATE" && null != commandInfo){				
+			
+			commandInfo.terminate=globalconfig.canterminate(sessionid,remoteFile)
+				
+				if(commandInfo.terminate)
+					println ("****************************************  The Session is supposed to terminate ****************************************************************")
+			
+			}
+			else if(action =="CLOSE")
 				globalconfig.closeremote(sessionid,remoteFile)			
 			else if(action =="LOCK_CREDENTIAL"){
 				globalconfig.closeremote(sessionid,remoteFile)

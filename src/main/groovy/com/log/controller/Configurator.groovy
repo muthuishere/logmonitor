@@ -39,6 +39,7 @@ public class Configurator {
 			
 		String res=cursession.buffer.toString();		
 		cursession.buffer.delete(0,  res.length());
+		cursession.lastfetchedTime=(new Date()).getTime();
 		
 		return res;
 		
@@ -50,6 +51,21 @@ public class Configurator {
 		logSessions.add(cursession)
 		
 	}
+	
+	
+	
+	public static boolean canterminate(String sessionid,RemoteFile  remoteFile){
+		
+		LogSession cursession=getLogSession(sessionid)
+		
+		
+		def timediff=(new Date()).getTime() - cursession.lastfetchedTime
+		
+		return (timediff > (globalconfig.poll_fetch_timeout * 1000))
+		
+		
+	}
+	
 	public static def closeremote(String sessionid,RemoteFile  remoteFile){
 		
 		LogSession cursession=getLogSession(sessionid)

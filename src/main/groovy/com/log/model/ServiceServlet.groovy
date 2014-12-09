@@ -108,11 +108,12 @@ class ServiceServlet extends HttpServlet {
 
 			break;
 			
-			case "downloadexcel":
+			case "download":
 				response.setHeader("Content-Disposition",
-				"attachment; filename="+request.getParameter("repname")+".csv");
+				"attachment; filename="+request.getParameter("repname")+"." + request.getParameter("filetype"));
 
-				result = request.getParameter("csv")
+				println(request.getParameter("repname")+"." + request.getParameter("filetype"))
+				result = request.getParameter("content")
 
 				break;
 

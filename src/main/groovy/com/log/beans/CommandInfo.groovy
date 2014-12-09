@@ -11,6 +11,8 @@ public class CommandInfo {
      String response;
      String errMsg;
      boolean bufferedOutput;
+	 
+	 boolean terminate=false;
 
     private boolean error;
 

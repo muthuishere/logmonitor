@@ -19,7 +19,7 @@ class ResolveLogServer {
 		
 		 server = new Server(Configurator.globalconfig.server_port)
 		
-		// String webDir = this.class.getClassLoader().getResource("com/otl/reports/webapps").toExternalForm();
+
 		 
 		 
 		 

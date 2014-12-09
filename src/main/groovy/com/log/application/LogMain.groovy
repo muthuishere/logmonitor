@@ -76,7 +76,7 @@ class LogMain {
 		
 		if(args.size() != 1)
 		{
-			println "Usage: OTLReportApplication.groovy <configuration file>"
+			println "Usage: LogMain.groovy <configuration file>"
 			System.exit(1)
 		}
 		

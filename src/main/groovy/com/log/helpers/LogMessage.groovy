@@ -5,14 +5,14 @@ public  class LogMessage {
 	static def info(def obj){
 		
 		//Thread.start {
-			printmsg("OTLREPORTFETCHER INFO : ${new Date()}" + obj?.toString())
+			printmsg("Logmessage INFO : ${new Date()}" + obj?.toString())
 		//}
 	}
 	
 	static def error(def obj){
 		
 		//Thread.start {
-			printmsg("OTLREPORTFETCHER Error : ${new Date()}" + obj?.toString())
+			printmsg("Logmessage Error : ${new Date()}" + obj?.toString())
 		//}
 	}
 	

@@ -146,7 +146,7 @@ public class ExecuteSSHController {
 
            
 
-            sendConnectionMessage("Attempting to connect  " );
+            sendConnectionMessage("Attempting to connect as "+ serverInfo.user + " for "  + serverInfo.host );
 			
             session = secureChannel.getSession(serverInfo.user,serverInfo.password,serverInfo.host,serverInfo.port);
 
@@ -159,7 +159,7 @@ public class ExecuteSSHController {
             }
 
             session.connect();
-            sendConnectionMessage("Successfully connected  to " + serverInfo.toString());
+            sendConnectionMessage("Successfully connected  to " + serverInfo.host);
 
             connected = true;
         } catch (JSchException ex) {
@@ -331,7 +331,7 @@ public class ExecuteSSHController {
                     if (!StringHelper.isEmpty(res)) {
                         commandInfo.setBufferedOutput(true);
                       //  println("Sending via b Output" + res);
-						processor_lbq.put([  "response": res,"action": "UPDATE","remoteFile":remoteFile,"sessionid":sessionid])
+						processor_lbq.put([  "response": res,"action": "UPDATE","remoteFile":remoteFile,"sessionid":sessionid,"commandInfo": commandInfo])
                         res = "";
                     }
 
@@ -359,8 +359,8 @@ public class ExecuteSSHController {
 
                 count++;
 
-                if (terminateCmd) {
-                    println("Sending terminate signal");
+                if (commandInfo.terminate) {
+                    println("********************************************  Sending terminate signal ******************************************");
                     res = res + StringHelper.NEW_LINE + new String("Terminate signal received for " + commandInfo.getCmd());
                     completeres = completeres + res;
                     out.write(3);//Send terminate command signal
@@ -405,7 +405,7 @@ public class ExecuteSSHController {
 				
                 res = "";
             }
-            println("completeres " + completeres);
+          //  println("completeres " + completeres);
 
             terminateCmd = false;
             executing = false;

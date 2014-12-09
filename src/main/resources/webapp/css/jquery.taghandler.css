@@ -3,6 +3,7 @@
     margin-left:5%;
     position: relative;
     background-color:#ffffff;
+    border-radius:10px;
 }
 .tagHandler ul.tagHandlerContainer {
     -webkit-border-radius: 7px;
