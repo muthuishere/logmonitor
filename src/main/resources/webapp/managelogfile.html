@@ -100,20 +100,20 @@
   
   
   function initmanagefiles(){
-		 
+		 console.log("initmanagefiles")
 	  generateCsvMenu("team",$("#teams").val())
 	 	 
 	 	 generateCsvMenu("lsthosts",$("#hosts").val())
 	 	 
-	 	 	   $("select#lsthosts").multipleSelect();
-	  
-	 
+	  $("select#lsthosts").multipleSelect()
 
 
 	     $( "#team" ).selectmenu({
 	 // change: function( event, data ) {
 
 	  });
+		 
+		 $("form#frmaddfile input").val("")
 	     
 	 	 
 	  }
@@ -122,7 +122,7 @@
 	 function setmanagefiledata(curdata,dataoperation){
 		 
 
-		  //$("form#frmaddfile input").val("")
+		 
 		  
 		  
 		  $xml = $(curdata)
@@ -155,7 +155,7 @@
  				}
  				
  			
- 					 	
+ 			//Error fix		 	
  				var selectedhosts = hosts.split(",")
  				if(selectedhosts.length > 0)
 	 			 	$("#lsthosts").multipleSelect("setSelects", selectedhosts);

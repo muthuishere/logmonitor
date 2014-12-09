@@ -862,3 +862,27 @@ nav{
 .top_slogan{ text-align:left;font-family: Helvetica, Arial, Sans-serif; color:#CCCCCC; font-size:30px; padding:10px 10px; font-style:italic; line-height:40px;}
 
 
+
+  .contfullscreen{
+			   
+			   position:fixed;
+		   		top:0px;
+		   left:0px;
+		   width:100%;
+		   height:100%;
+		   }
+		   .fullscreen{
+			   
+			   background: url(../images/fullscreen.png) no-repeat;
+		   }
+		   
+		   .normalscreen{
+			   
+			   background: url(../images/normalscreen.png) no-repeat;
+			   width:24px;
+			   height:24px
+		   }
+		   #screendecider{
+		   		cursor:pointer;
+		   }
+		   

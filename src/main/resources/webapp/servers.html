@@ -139,7 +139,7 @@ function showmanageserverpage(curdata,operation){
 	 showmanageservercontainer(true);
 		 
 		 $("#manageservercontainer").html("<img src='images/loadingajax.gif'/>")
-		  $( "#manageservercontainer" ).load( "manageserver.html", function() {
+		  $( "#manageservercontainer" ).load( "manageserver.html?inte="+Math.random(), function() {
 			  
 			  initmanageservers()
 			  //console.log(curdata)
@@ -257,7 +257,7 @@ function showmanageserverpage(curdata,operation){
  				dataCount++
  				
  				 var curdata=encodeURI($(this)[0].outerHTML);
- 				console.log(curdata)
+ 				//console.log(curdata)
  				
  	            var name = $(this).find('name').text();
  				

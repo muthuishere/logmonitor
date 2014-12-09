@@ -134,11 +134,13 @@ function showmanagefilepage(curdata,operation){
 	 showmanagefilecontainer(true);
 		 
 		 $("#managefilecontainer").html("<img src='images/loadingajax.gif'/>")
-		  $( "#managefilecontainer" ).load( "managelogfile.html", function() {
+		  $( "#managefilecontainer" ).load( "managelogfile.html?inte="+Math.random(), function() {
 			  
 			  initmanagefiles()
 			  //console.log(curdata)
-			 setmanagefiledata(curdata,operation)
+			  
+			  if(operation != "ADD")
+			 	setmanagefiledata(curdata,operation)
 		  		
 		});
 		 
@@ -246,7 +248,7 @@ function showmanagefilepage(curdata,operation){
  				dataCount++
  				
  				 var curdata=encodeURI($(this)[0].outerHTML);
- 				console.log(curdata)
+ 				//console.log(curdata)
  				
  				var name =  $(this).find('name').text();
  	 				var filename =  $(this).find('filename').text();
