@@ -48,6 +48,7 @@ public class Configurator {
 
 	
 	public static def addSession(LogSession cursession){
+		cursession.lastfetchedTime=(new Date()).getTime();
 		logSessions.add(cursession)
 		
 	}
@@ -58,8 +59,12 @@ public class Configurator {
 		
 		LogSession cursession=getLogSession(sessionid)
 		
-		
-		def timediff=(new Date()).getTime() - cursession.lastfetchedTime
+		if(cursession == null){
+			
+			println("No session for $sessionid")
+			return true;
+		}
+		long timediff=((new Date()).getTime()) - cursession.lastfetchedTime
 		
 		return (timediff > (globalconfig.poll_fetch_timeout * 1000))
 		

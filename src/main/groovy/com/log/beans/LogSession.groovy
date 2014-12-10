@@ -10,7 +10,7 @@ class LogSession {
 	def sessionid
 	public StringBuffer buffer=new StringBuffer();
 	def startTime
-	def lastfetchedTime
+	Long lastfetchedTime=0l;
 	
 	ArrayList<RemoteFile> remotefiles=new ArrayList<RemoteFile>();
 	
