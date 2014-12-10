@@ -73,7 +73,7 @@ function generateServerMenu(divID,name,defaulttxt){
 		   
 		   resp = resp + '</select>'
 		   
-		   console.log(divID)
+		 //  console.log(divID)
 		   	$("#"+divID).html(resp);
 		   	$( "#"+name ).selectmenu()
 		  }

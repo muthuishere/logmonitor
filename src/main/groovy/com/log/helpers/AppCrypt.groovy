@@ -1,84 +1,93 @@
 package com.log.helpers
 
-import java.security.SecureRandom;
-
-import javax.crypto.Cipher;
+import java.security.MessageDigest;
+import java.util.Arrays;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
-
-
+import javax.crypto.spec.IvParameterSpec;
+ 
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+ 
 public class AppCrypt {
-
-	static final String seed="VELAYILLAPATTATHAARI21111981"
-	public static String encrypt( String cleartext) throws Exception {
-		byte[] rawKey = getRawKey(seed.getBytes());
-		byte[] result = encrypt(rawKey, cleartext.getBytes());
-		return toHex(result);
-}
-
-public static String decrypt( String encrypted) throws Exception {
-		byte[] rawKey = getRawKey(seed.getBytes());
-		byte[] enc = toByte(encrypted);
-		byte[] result = decrypt(rawKey, enc);
-		return new String(result);
-}
-
- static byte[] getRawKey(byte[] seed) throws Exception {
-		KeyGenerator kgen = KeyGenerator.getInstance("AES");
-		SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
-		sr.setSeed(seed);
-	kgen.init(128, sr); // 192 and 256 bits may not be available
-	SecretKey skey = kgen.generateKey();
-	byte[] raw = skey.getEncoded();
-	return raw;
-}
-
-
- static byte[] encrypt(byte[] raw, byte[] clear) throws Exception {
-	SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
-		Cipher cipher = Cipher.getInstance("AES");
-	cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
-	byte[] encrypted = cipher.doFinal(clear);
-		return encrypted;
-}
-
- static byte[] decrypt(byte[] raw, byte[] encrypted) throws Exception {
-	SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
-		Cipher cipher = Cipher.getInstance("AES");
-	cipher.init(Cipher.DECRYPT_MODE, skeySpec);
-	byte[] decrypted = cipher.doFinal(encrypted);
-		return decrypted;
-}
-
-public static String toHex(String txt) {
-		return toHex(txt.getBytes());
-}
-public static String fromHex(String hex) {
-		return new String(toByte(hex));
-}
-
-public static byte[] toByte(String hexString) {
-		int len = hexString.length()/2;
-		byte[] result = new byte[len];
-		for (int i = 0; i < len; i++)
-				result[i] = Integer.valueOf(hexString.substring(2*i, 2*i+2), 16).byteValue();
-		return result;
-}
-
-public static String toHex(byte[] buf) {
-		if (buf == null)
-				return "";
-		StringBuffer result = new StringBuffer(2*buf.length);
-		for (int i = 0; i < buf.length; i++) {
-				appendHex(result, buf[i]);
-		}
-		return result.toString();
-}
- final static String HEX = "0123456789ABCDEF";
-//final static String HEX = "VELAYILLAPATTATHAARI21111981";
-private static void appendHex(StringBuffer sb, byte b) {
-		sb.append(HEX.charAt((b>>4)&0x0f)).append(HEX.charAt(b&0x0f));
-}
-
+  static String IV = "AAAAAAAAAAAAAAAA";
+  static String plaintext = "test text 123\0\0\0"; /*Note null padding*/
+  static String encryptionKey = "0123456789abcdef";
+  
+  static{
+	  
+	  
+  }
+  
+  //TODO Implement
+  public static encrypt(String str){
+	  
+	  return str;
+  
+  }
+  //TODO Implement
+  public static decrypt(String str){
+	  
+	  return str;
+  }
+  
+  public static String encrypttext(String txt){
+	  
+	  
+	  byte[] cipher = encrypt(txt, encryptionKey);
+	  
+	  
+		  String str = new String(cipher);
+		  
+		  return str
+  }
+  
+  public static String decrypttext(String txt){
+	  
+	  
+	  byte[] cipher=txt.getBytes();
+	  String str = decrypt(cipher, encryptionKey);
+	  
+	  
+		 
+		  
+		  return str
+  }
+  
+  
+static main(args) {
+	try {
+	  
+	  System.out.println("==Java==");
+	  System.out.println("plain:   " + plaintext);
+ 
+ String entext=encrypttext(plaintext)
+	  System.out.print("cipher:  " +entext);
+	  
+	  
+	  System.out.println("");
+ 
+ 
+	  System.out.println("decrypt: " + decrypttext(entext));
+ 
+	} catch (Exception e) {
+	  e.printStackTrace();
+	}
+  }
+ 
+  public static byte[] encrypt(String plainText, String encryptionKey) throws Exception {
+	Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding", "SunJCE");
+	SecretKeySpec key = new SecretKeySpec(encryptionKey.getBytes("UTF-8"), "AES");
+	cipher.init(Cipher.ENCRYPT_MODE, key,new IvParameterSpec(IV.getBytes("UTF-8")));
+	return cipher.doFinal(plainText.getBytes("UTF-8"));
+  }
+ 
+  public static String decrypt(byte[] cipherText, String encryptionKey) throws Exception{
+	Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding", "SunJCE");
+	SecretKeySpec key = new SecretKeySpec(encryptionKey.getBytes("UTF-8"), "AES");
+	cipher.init(Cipher.DECRYPT_MODE, key,new IvParameterSpec(IV.getBytes("UTF-8")));
+	return new String(cipher.doFinal(cipherText),"UTF-8");
+  }
 }

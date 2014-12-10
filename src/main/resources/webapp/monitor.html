@@ -188,6 +188,7 @@ function addhighlight(sessid){
 	
 	var lines='#div' +sessid +" span"
 	
+	
 	$( lines ).each(function( index ) {
 		
 		var elems= "#tagelem" + sessid + " li.tagItem"
@@ -195,7 +196,7 @@ function addhighlight(sessid){
 		
 		var curelem= this ;
 		$( elems ).each(function( index ) {
-			
+	
 			if(curtext.indexOf($( this ).text()) >= 0){
 				
 				$( curelem ).css("background-color","#0066bd")
@@ -214,6 +215,7 @@ function removeallhighlight(sessid){
 	
 var lines='#div' +sessid +" span"
 	
+	
 $( lines ).each(function( index ) {
 	
 		
@@ -228,8 +230,10 @@ $( lines ).each(function( index ) {
 }
 
 function modiyhighlight(sessid){
-	removeallhighlight(sessid)
-	addhighlight(sessid)
+	
+	setTimeout(function(){ removeallhighlight(sessid);addhighlight(sessid) }, 3000);
+	
+	
 	
 }
 
@@ -324,6 +328,8 @@ function createtab(localsessionid,tablabel){
 	    onDelete: function(tag) { 
 	    	
 			var sessid=$(this).parent().parent().attr("data-session")
+			
+			
 	    	modiyhighlight(sessid)
 	    	
 	    }
