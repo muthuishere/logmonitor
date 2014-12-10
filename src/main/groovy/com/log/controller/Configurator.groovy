@@ -102,7 +102,7 @@ public class Configurator {
 		println " Searching for ${sessionid}"
 		logSessions.each{logSession ->
 		
-			println " comparing ${logSession.sessionid } for  ${sessionid}"
+		//	println " comparing ${logSession.sessionid } for  ${sessionid}"
 			
 			if(logSession.sessionid == sessionid){
 			cursession=logSession;
@@ -111,7 +111,7 @@ public class Configurator {
 			
 			
 		}
-		println " returning ${cursession} for  ${sessionid}"
+	//	println " returning ${cursession} for  ${sessionid}"
 		return cursession;
 	}
 	

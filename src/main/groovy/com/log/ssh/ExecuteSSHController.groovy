@@ -326,17 +326,7 @@ public class ExecuteSSHController {
 
             while (true) {
 
-                if (count > 5) {
-
-                    if (!StringHelper.isEmpty(res)) {
-                        commandInfo.setBufferedOutput(true);
-                      //  println("Sending via b Output" + res);
-						processor_lbq.put([  "response": res,"action": "UPDATE","remoteFile":remoteFile,"sessionid":sessionid,"commandInfo": commandInfo])
-                        res = "";
-                    }
-
-                }
-
+				res = "";
                 while (inp.available() > 0) {
                     int i = inp.read(tmp, 0, 1024);
                     if (i < 0) {
@@ -344,19 +334,22 @@ public class ExecuteSSHController {
                     }
 
                     res = res + new String(tmp, 0, i);
-                  //  println("Output" + res);
-                    completeres = completeres + res;
+                   println("receiving Output available" + res);
+				   
+				   if (res.length() > 50) {
+					   commandInfo.setBufferedOutput(true);
+					   println("Sending via  Output" + res);
+					   processor_lbq.put([  "response": res,"action": "UPDATE","remoteFile":remoteFile,"sessionid":sessionid,"commandInfo": commandInfo])
+					   res = "";
+				   }
+				   
+                    
                 }
 
-                if (isDirectoryCommand(commandInfo.getCmd())) {
-                    println("changed folder[" + res.trim() + "]");
-
-                    if (!StringHelper.isEmpty(res.trim())) {
-                        currentFolder = res.trim();
-                    }
-                    //setCurrentFolder(res);
-                }
-
+				if (res.length() > 50) {
+				processor_lbq.put([  "response": res,"action": "UPDATE","remoteFile":remoteFile,"sessionid":sessionid,"commandInfo": commandInfo])
+				}
+				res = "";
                 count++;
 
                 if (commandInfo.terminate) {
@@ -389,7 +382,7 @@ public class ExecuteSSHController {
                     break;
                 }
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(10);
                 } catch (Exception ee) {
                 }
 

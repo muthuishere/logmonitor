@@ -279,7 +279,7 @@ function createtab(localsessionid,tablabel){
    tbl = tbl + "<table width='100%' cellpadding='0' cellspacing='0' ><tr>"
    tbl = tbl + "<td><div class='downloadtxt' style='width:24px;height:24px;float:right;padding-right:20px' data-label='"+ tablabel +"'  data-session='"+ localsessionid +"' >&nbsp;</div></td>"
    tbl = tbl + "<td><div class='downloadhtml' style='width:24px;height:24px;float:right;padding-right:20px' data-label='"+ tablabel +"' data-session='"+ localsessionid +"' >&nbsp;</div></td>"
-   tbl = tbl + "<td><div class='fullscreen' style='width:24px;height:24px;float:right;padding-right:20px' id='screendecider' data-session='"+ localsessionid +"' >&nbsp;</div></td>"
+   tbl = tbl + "<td><div class='fullscreen screendecider' style='width:24px;height:24px;float:right;padding-right:20px'  data-session='"+ localsessionid +"' >&nbsp;</div></td>"
    tbl = tbl + "</tr></table>"
    tbl = tbl + "</td></tr>"
    
@@ -318,75 +318,82 @@ function createtab(localsessionid,tablabel){
    
    tabs.tabs( "option", "active", $('#tabs >ul >li').size() - 1  );
    
-   $("#tagelem"+localsessionid).tagHandler({   
-	    onAdd: function(tag) { 
-	    	var sessid=$(this).parent().parent().attr("data-session")
-	    	
-	    	modiyhighlight(sessid)
-	    	
-	    	},
-	    onDelete: function(tag) { 
-	    	
-			var sessid=$(this).parent().parent().attr("data-session")
-			
-			
-	    	modiyhighlight(sessid)
-	    	
-	    }
-	});
+  
    
   
-     $(".downloadtxt").click(function( event ) {
-    	 
-    	 var sessid=$(this).attr("data-session")
-    	 var repname=$(this).attr("data-label")
-    	 
-    	
-    	 downloadfile(repname,$("#div" +sessid).text(),"log")
-     });
    
-   $(".downloadhtml").click(function( event ) {
-	   var sessid=$(this).attr("data-session")
-  	 var repname=$(this).attr("data-label")
-  	 
-  	
-  	 downloadfile(repname+"_formattedlog",$("#div" +sessid).html(),"html")
-  	 
-  	 
-   });
-   
-   $("#screendecider").click(function( event ) {
-	   
-	   var sessid=$(this).attr("data-session")
-	   
-	  
-	   
-	   var contid='#container' +sessid
-	   
-	   
-	   if($(this).hasClass('fullscreen')){
-		   $(this).removeClass('fullscreen')
-		   $(this).addClass('normalscreen')
-		    $(contid).addClass('contfullscreen')
-		 
-		   // Set div container + sessid to position:fixed;top:0px;left:0px;width:100%;height:100%;
-		 
-		 
-		   
-	   }else{
-		   $(this).removeClass('normalscreen')
-		   $(this).addClass('fullscreen')
-		  
-		   
-		     $(contid).removeClass('contfullscreen')
-	   }
-   
-   })
    
 }
  
 
-
+function attachtabhandlers(localsessionid){
+	
+	
+	  $("#tagelem"+localsessionid).tagHandler({   
+		    onAdd: function(tag) { 
+		    	var sessid=$(this).parent().parent().attr("data-session")
+		    	
+		    	modiyhighlight(sessid)
+		    	
+		    	},
+		    onDelete: function(tag) { 
+		    	
+				var sessid=$(this).parent().parent().attr("data-session")
+				
+				
+		    	modiyhighlight(sessid)
+		    	
+		    }
+		});
+	  
+	  $(".downloadtxt").click(function( event ) {
+	    	 
+	    	 var sessid=$(this).attr("data-session")
+	    	 var repname=$(this).attr("data-label")
+	    	 
+	    	
+	    	 downloadfile(repname,$("#div" +sessid).text(),"log")
+	     });
+	   
+	   $(".downloadhtml").click(function( event ) {
+		   var sessid=$(this).attr("data-session")
+	  	 var repname=$(this).attr("data-label")
+	  	 
+	  	
+	  	 downloadfile(repname+"_formattedlog",$("#div" +sessid).html(),"html")
+	  	 
+	  	 
+	   });
+	   
+	   $(".screendecider").click(function( event ) {
+		   
+		   var sessid=$(this).attr("data-session")
+		   
+		  
+		   
+		   var contid='#container' +sessid
+		   
+		   
+		   if($(this).hasClass('fullscreen')){
+			   $(this).removeClass('fullscreen')
+			   $(this).addClass('normalscreen')
+			    $(contid).addClass('contfullscreen')
+			 
+			   // Set div container + sessid to position:fixed;top:0px;left:0px;width:100%;height:100%;
+			 
+			 
+			   
+		   }else{
+			   $(this).removeClass('normalscreen')
+			   $(this).addClass('fullscreen')
+			  
+			   
+			     $(contid).removeClass('contfullscreen')
+		   }
+	   
+	   })
+	   
+}
 function checktabs(){
 	if($('#tabs >ul >li').size() <=0){
 		
@@ -433,7 +440,14 @@ function init(){
 	      });
 	    
 	    
-	     tabs =$( "#tabs" ).tabs()
+	     tabs = $( "#tabs" ).tabs({
+	    		 activate: function( event, ui ) {
+	    			 
+	    			 var elem=ui.newPanel.find("div")[0]
+	    			 var sessid=($(elem).attr("id")).replace("container","")
+	    			  attachtabhandlers(sessid)
+	    		 }		 
+	     });
  	 
 		   tabs.addClass( "ui-tabs-vertical ui-helper-clearfix" );
 		    $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );

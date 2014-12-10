@@ -134,9 +134,11 @@ class LogPoller  {
 	
 				res.split("\\r?\\n").each{curLine ->
 					
+					if(curLine.trim().length() > 0){
 					 formattedResponse.append("<span>[").append(remoteFile.server.host).append("]");
 					 formattedResponse.append(curLine);
 					 formattedResponse.append("</span><br/>");
+					}
 					 
 				}
 			
