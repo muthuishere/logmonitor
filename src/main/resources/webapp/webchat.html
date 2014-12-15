@@ -10,7 +10,7 @@
 
 	$(document).ready(
 			function() {
-				ws = new WebSocket("ws://172.27.204.253:2015/WebSocketChat/start");
+				ws = new WebSocket("ws://localhost:2015/LogPollerSocket/start");
 				ws.onopen = function(event) {
 					console.log(event)
 					console.log("connected")

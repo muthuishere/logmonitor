@@ -134,11 +134,11 @@ function updatelogfilesmenu(){
 function pollog(cursessionid){
 	
 	//make ajax call
-	
+	console.log("pollin for" +cursessionid )
 		var formdata="sessionid=" +cursessionid
 			
 			
-			$.post( "/services/logpoll", formdata)
+			$.post( "/services/logpoll?inte="+Math.random(), formdata)
 		 	  .done(function( data ) {
 		 	    
 		 	//	console.log(data)
@@ -162,11 +162,13 @@ function pollog(cursessionid){
 		 				  $("#div"+localsessionid).append($xml.find( "data" ).text());
 		 				  
 		 				 modiyhighlight(localsessionid)
-		 			 	setTimeout(function(){ pollog(localsessionid); }, 3000);
+		 			 	setTimeout(function(){
+		 			 		pollog(localsessionid); 
+		 			 		},3000);
 		 			 
 		 				}else{
 		 					
-		 					//console.log("No container for " + localsessionid)
+		 					console.log("No container for " + localsessionid)
 		 				}
 		 			
 		 			 
@@ -481,8 +483,10 @@ function init(){
 	  			//TODO  $("input#mergeon").attr("Selected")
 	  			
 	  			 $(hostlist).each(function(index){
-	  				 
-	  				var formdata="team=" + $("#team").val() +"&hostfileids=" + encodeURI(hostlist[index]);
+	  				
+	  				
+	  				var formdata="usesocket=" + hasSocket() + "&team=" + $("#team").val() +"&hostfileids=" + encodeURI(hostlist[index]);
+	  				
 	  				$.post( "/services/startsession", formdata)
 				 	  .done(function( data ) {
 				 	    
@@ -501,7 +505,7 @@ function init(){
 				 			  
 				 				createtab(localsessionid,mergedlabels)
 				 				
-				 				 setTimeout(function(){ pollog(localsessionid); }, 5000);
+				 				 setTimeout(function(){ initLogPoll(localsessionid); }, 2000);
 				 			 
 				 		  }
 				 		 

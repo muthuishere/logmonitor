@@ -44,10 +44,16 @@ class LogPoller  {
 			Thread.start { worker_thread( Configurator, dataStore) }
 		}
 		
+		(1..Configurator.globalconfig.worker_thread_count).each
+		{
+			Thread.start { worker_thread_socket( Configurator, dataStore) }
+		}
+		
+		
 	}
 
 	
-	def start(LogSession logSession){
+	def start(LogSession logSession,boolean useSocket){
 		
 	
 		//Add session object to global configuration
@@ -64,7 +70,9 @@ class LogPoller  {
 
 				
 		try{
-			
+			def logpoller_lbq=Configurator.worker_lbq
+			if(useSocket)
+				logpoller_lbq=Configurator.worker_socket_lbq
 		
 			//Iterate all remote files
 			
@@ -75,7 +83,7 @@ class LogPoller  {
 				
 				Thread.start {
 					
-										new ExecuteSSHController().start( Configurator.worker_lbq,remoteFile,logSession.sessionid)
+										new ExecuteSSHController().start( logpoller_lbq,remoteFile,logSession.sessionid)
 					
 					
 									}
@@ -92,7 +100,107 @@ class LogPoller  {
 	
 	
 
+	
+	//JsonSlurper reportapp =  new JsonSlurper()
+	
+	
+	// The worker thread.  These threads listen for incoming requests
+	// in the worker LinkedBlockingQueue, issue HTTP requests to the given
+	// downstream systems and then post the HTTP reply to the temporary
+	// LinkedBlockingQueue of the requester given in the request message.
+	
+	def worker_thread_socket(def globalconfig,DataStore dataStore)
+	{
+	  globalconfig.log("Worker Socket: Initialising for receiving messages")
+	
+	  while(true)
+	  {
+		def req_msg = globalconfig.worker_socket_lbq.take()
+		def reply_msg = req_msg
+		
+			
+		try
+		{
+		 
+			
+			def action=req_msg.action
+			def res=req_msg.response
+			RemoteFile remoteFile=req_msg.remoteFile
+			def sessionid=req_msg.sessionid
+			CommandInfo commandInfo=req_msg.commandInfo
+			
+			StringBuffer formattedResponse = new StringBuffer();
+			
+			if (null != res) {
+				
+			
+	
+			
+	
+				res.split("\\r?\\n").each{curLine ->
+					
+					if(curLine.trim().length() > 0){
+					 formattedResponse.append("<span>[").append(remoteFile.server.host).append("]");
+					 formattedResponse.append(curLine);
+					 formattedResponse.append("</span><br/>");
+					}
+					 
+				}
+			
+			}
+			
+			
+			globalconfig.log("received message: sending to socket ${sessionid}")
+			globalconfig.sendmsgtosocket(sessionid,formattedResponse.toString())
+			
+			
+			
+			if(action =="UPDATE" && null != commandInfo){
+			
+			commandInfo.terminate=globalconfig.canterminate(sessionid,remoteFile)
+				
+				if(commandInfo.terminate){
+					println ("*************  The Session is supposed to terminate ***************************")
+					globalconfig.killsocket(sessionid)
+					
+					}
+					
+			
+			}
+			else if(action =="CLOSE")
+				globalconfig.closeremote(sessionid,remoteFile)
+			else if(action =="LOCK_CREDENTIAL"){
+				globalconfig.closeremote(sessionid,remoteFile)
+				remoteFile.server.locked=true;
+				
+				dataStore.updateServerLock(remoteFile.server);
+				
+			}
+			
+				
+			
+			// get object
+			//parse object
+			
+			//update message in globalconfig
+			
+		
+		//  globalconfig.log("Worker: Took: ${took} ms")
+		}
+		catch(Exception e)
+		{
+		  e.printStackTrace()
+	
+		  reply_msg.error = "${e.getCause().toString()} (${e.getMessage()})"
+		
+		
+		}
+	
+	
+	  }
+	}
 
+	
 	
 
 	
@@ -112,7 +220,7 @@ class LogPoller  {
 	  {
 		def req_msg = globalconfig.worker_lbq.take()
 		def reply_msg = req_msg
-		def start_ms = System.currentTimeMillis()
+		
 			
 		try
 		{
@@ -154,7 +262,7 @@ class LogPoller  {
 			commandInfo.terminate=globalconfig.canterminate(sessionid,remoteFile)
 				
 				if(commandInfo.terminate)
-					println ("****************************************  The Session is supposed to terminate ****************************************************************")
+					println ("*************  The Session is supposed to terminate ***************************")
 			
 			}
 			else if(action =="CLOSE")

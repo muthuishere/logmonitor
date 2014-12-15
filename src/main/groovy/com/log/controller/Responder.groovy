@@ -210,9 +210,11 @@ public String getAllusers(){
 		def params=[
 			"hostfileids":request.getParameter("hostfileids"),
 			"team":request.getParameter("team"),
+			"usesocket":request.getParameter("usesocket"),
 		]
 		StringBuffer response= new StringBuffer()
 		String msg=""
+		boolean useSocket=false
 		response.append("<reply>")
 
 		if(null == params.hostfileids || null == params.team ){
@@ -223,6 +225,8 @@ public String getAllusers(){
 
 			try{
 
+				println "Start Session " + params.dump()
+				
 				def team=params.team;
 					
 				def remotefiles=[];
@@ -265,14 +269,19 @@ public String getAllusers(){
 				
 					Configurator.addSession(session)
 					
+					
+					if(null != params.usesocket && params.usesocket.toLowerCase().equals("true") )
+						useSocket=true
+						
+						
 				Thread.start {
 
-					new LogPoller().start(session)
+					new LogPoller().start(session,useSocket)
 
 
 				}
 
-				response.append("<status code='0' error='false' sessionid='$uuid' description='$msg'/>")
+				response.append("<status code='0' error='false' usesocket='${useSocket}' sessionid='$uuid' description='$msg'/>")
 
 			}catch(Exception e){
 				response= new StringBuffer()

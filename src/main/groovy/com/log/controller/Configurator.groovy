@@ -2,6 +2,7 @@ package com.log.controller
 
 import com.log.beans.LogSession
 import com.log.beans.RemoteFile
+import com.log.model.PollerSocket
 import java.util.concurrent.LinkedBlockingQueue
 
 public class Configurator {
@@ -10,7 +11,8 @@ public class Configurator {
 	public static def globalconfig=null
 	public static boolean isUpdating=false
 	
-	public static logSessions=[];
+	public static def logSessions=[:];
+	public static def logMsgSockets=[:];
 	
 	public static void log(def msg){
 		
@@ -18,12 +20,49 @@ public class Configurator {
 	}
 	
 	
+	public static def addSocket(PollerSocket logMsgSocket){
+		
+		logMsgSockets.put(logMsgSocket.sessionid, logMsgSocket)
+		
+	}
+	
+	public static def sendmsgtosocket(String sessionid,String data){
+		
+		if(null != logMsgSockets.getAt(sessionid) ){
+			
+			logMsgSockets.getAt(sessionid).sendMessagetoClient(data)
+			logMsgSockets.getAt(sessionid).lastfetchedTime=(new Date()).getTime();
+		}
+		else
+			println "Session closed "	
+		
+	}
+	
+	public static def killsocket(String sessionid){
+		
+		if(null != logMsgSockets.getAt(sessionid))
+			logMsgSockets.getAt(sessionid).remove()
+		else
+			println "Session killed ${sessionid} "
+		
+	}
+	
+	public static def killsocket(PollerSocket pollerSocket){
+		
+		if(null != logMsgSockets.getAt(pollerSocket.sessionid))
+			logMsgSockets.getAt(pollerSocket.sessionid).remove()
+		else
+			println "Session killed ${pollerSocket.sessionid} "
+		
+	}
+	
 	public static def worker_lbq = new LinkedBlockingQueue()
+	public static def worker_socket_lbq = new LinkedBlockingQueue()
 	
 	public static def updatebuffer(String sessionid,StringBuffer msg){
 		
 		println("================== Updating for ${sessionid} for ${msg} ========================")
-		LogSession cursession=getLogSession(sessionid)
+		LogSession cursession=logSessions.getAt(sessionid)
 		
 		cursession.buffer.append(msg)
 		
@@ -31,7 +70,7 @@ public class Configurator {
 	public static def resetbuffer(String sessionid){
 		
 		println("================== Reset buffer for sessionid ${sessionid} ====================")
-		LogSession cursession=getLogSession(sessionid)
+		LogSession cursession=logSessions.getAt(sessionid)
 		
 		
 		if(null == cursession?.buffer)
@@ -49,7 +88,9 @@ public class Configurator {
 	
 	public static def addSession(LogSession cursession){
 		cursession.lastfetchedTime=(new Date()).getTime();
-		logSessions.add(cursession)
+		
+		
+		logSessions.put(cursession.sessionid, cursession)
 		
 	}
 	
@@ -57,7 +98,7 @@ public class Configurator {
 	
 	public static boolean canterminate(String sessionid,RemoteFile  remoteFile){
 		
-		LogSession cursession=getLogSession(sessionid)
+		LogSession cursession=logSessions.getAt(sessionid)
 		
 		if(cursession == null){
 			
@@ -73,12 +114,15 @@ public class Configurator {
 	
 	public static def closeremote(String sessionid,RemoteFile  remoteFile){
 		
-		LogSession cursession=getLogSession(sessionid)
+		LogSession cursession=logSessions.getAt(sessionid)
 		
 		cursession.remotefiles.each {curremoteFile->
 			
-			if(curremoteFile.equals(remoteFile))
+			if(curremoteFile.equals(remoteFile)){
+				println ("***Invalidating remote file ${remoteFile}*****")
 				curremoteFile.valid=false;
+				}
+				
 				
 		}
 		
@@ -88,7 +132,7 @@ public class Configurator {
 
 	public static def isSessionValid(String sessionid){
 		
-		LogSession cursession=getLogSession(sessionid)
+		LogSession cursession=logSessions.getAt(sessionid)
 		
 		int invalidRemotes=0
 		cursession.remotefiles.each {curremoteFile->
@@ -102,23 +146,7 @@ public class Configurator {
 		
 	}
 	
-	public static LogSession getLogSession(sessionid){
-		LogSession cursession=null;
-		println " Searching for ${sessionid}"
-		logSessions.each{logSession ->
-		
-		//	println " comparing ${logSession.sessionid } for  ${sessionid}"
-			
-			if(logSession.sessionid == sessionid){
-			cursession=logSession;
-			return;
-			}
-			
-			
-		}
-	//	println " returning ${cursession} for  ${sessionid}"
-		return cursession;
-	}
+
 	
 	
 	

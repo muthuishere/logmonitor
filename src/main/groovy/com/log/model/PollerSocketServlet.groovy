@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse
 import org.eclipse.jetty.websocket.WebSocket;
 import org.eclipse.jetty.websocket.WebSocketServlet;
 
-class WebSocketChatServlet extends WebSocketServlet {
+class PollerSocketServlet extends WebSocketServlet {
 
-	public WebSocketChatServlet(){
+	public PollerSocketServlet(){
 		println "WebSocketChatServlet Initiated"
 	}
 	
@@ -24,15 +24,20 @@ class WebSocketChatServlet extends WebSocketServlet {
 	}
 	
 			**/
-	public final Set users = new CopyOnWriteArraySet();
+	public final Set logsessions = new CopyOnWriteArraySet();
 	
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 	}
 	
 	@Override
-	public WebSocket doWebSocketConnect(HttpServletRequest arg0, String arg1) {
-		return new ChatWebSocket(users);
+	public WebSocket doWebSocketConnect(HttpServletRequest request, String arg1) {
+		
+		
+		def sessionid=request.getParameter("sessionid")
+		println "=================== Socket connected for $sessionid ======================="
+		
+		return new PollerSocket(sessionid);
 	}
 
 }

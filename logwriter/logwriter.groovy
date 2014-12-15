@@ -23,7 +23,7 @@ def f1= new File(file)
 f1 << "${new Date()}  ${curtxt}"
 
 
-Thread.sleep(5000)
+Thread.sleep(1000)
 
 }
 

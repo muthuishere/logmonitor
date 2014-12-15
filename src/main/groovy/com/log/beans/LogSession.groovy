@@ -33,7 +33,7 @@ class LogSession {
 		
 		remotefiles.each{remotefile ->
 			
-			if(remotefile.valid)
+			if(!remotefile.valid)
 				inValidremotefiles.add(remotefile)
 		}
 		
@@ -45,11 +45,12 @@ class LogSession {
 
 		LogSession logObject = (LogSession) o;
 
-		if (sessionid != null ? !sessionid.equals(logObject.sessionid) : logObject.sessionid != null) return false;
+		if (sessionid.equals(logObject.sessionid))
+			 return true;
 		
 		
 		
-		return true;
+		return false;
 	}
 	
 }

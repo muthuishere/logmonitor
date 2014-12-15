@@ -7,6 +7,54 @@ function updateConfig(callback){
 	
 }
 
+function hasSocket(){
+	
+	return (undefined != WebSocket)
+	
+}
+
+function initLogPoll(localsessionid){
+	
+	if(hasSocket()){
+		
+		initsocket(localsessionid)
+		
+	}else{
+		
+		pollog(localsessionid)
+	}
+} 
+function initsocket(sessionid){
+	
+	
+	var ws = new WebSocket("ws://"+document.location.host+"/LogPollerSocket/start?sessionid="+sessionid);
+	ws.onopen = function(event) {
+		//console.log(event)
+		console.log("connected")
+	}
+	ws.onmessage = function(event) {
+		
+		console.log("Message received sessionid["+ sessionid +"] data ["+ event.data +"]")
+		 		
+				if($("#div"+sessionid).size() > 0)
+		 				{
+			 				$("#div"+sessionid).append(event.data);
+			 				 modiyhighlight(sessionid)
+			 				 
+		 				}
+	}
+	ws.onclose = function(event) {
+		//console.log("Socket closed for sessionid["+ sessionid +"] data ["+ event.data +"]")
+	}
+	
+	return ws;
+}
+
+function sendmessage(ws){
+	
+	ws.send(message);
+}
+
 function generateCsvMenu(lstboxID,csvval){
 	
 	
