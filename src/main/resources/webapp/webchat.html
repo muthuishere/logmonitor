@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Jetty WebSocket: Chat</title>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+<script type="text/javascript">
+	var ws;
+
+	$(document).ready(
+			function() {
+				ws = new WebSocket("ws://172.27.204.253:2015/WebSocketChat/start");
+				ws.onopen = function(event) {
+					console.log(event)
+					console.log("connected")
+				}
+				ws.onmessage = function(event) {
+					var $textarea = $('#messages');
+					$textarea.val($textarea.val() + event.data + "\n");
+					$textarea.animate({
+						scrollTop : $textarea.height()
+					}, 1000);
+				}
+				ws.onclose = function(event) {
+					
+				}
+
+			});
+
+	function sendMessage() {
+		//ws = new WebSocket("ws://172.27.204.219:2015/WebSocketChat/");
+		var message = $('#username').val() + ":" + $('#message').val();
+		ws.send(message);
+		$('#message').val('');
+	}
+</script>
+</head>
+<body>
+<div id="body">
+		<div id="menu">
+			<p class="welcome">
+				Welcome,<input id="username" value="anonymous" />			
+			</p>
+			<div style="clear: both"></div>
+		</div>
+
+		<div id="chatbox">
+			<textarea id="messages" rows="16" cols="48" readonly="readonly"></textarea>
+		</div>
+
+		<form name="message" action="">
+			<input name="usermsg" type="text" id="message" size="63" /> <input
+				type="button" name="submitmsg" value="Send..."
+				onclick="sendMessage();" />
+		</form>
+	</div>
+</body>
+</html>
