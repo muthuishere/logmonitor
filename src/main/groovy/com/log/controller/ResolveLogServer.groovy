@@ -4,6 +4,7 @@ import org.eclipse.jetty.server.handler.ContextHandler
 import org.eclipse.jetty.servlet.*
 
 import com.log.model.ServiceServlet
+import com.log.model.WebSocketChatServlet
 import groovy.servlet.*
 
 class ResolveLogServer {
@@ -42,9 +43,12 @@ class ResolveLogServer {
 	 
 		 ServiceServlet dataServlet = new ServiceServlet();
 		 DefaultServlet staticServlet = new DefaultServlet();
+		 WebSocketChatServlet webSockServlet = new WebSocketChatServlet();
 	 
 		 context.addServlet(new ServletHolder(dataServlet), "/services/*");
+		 context.addServlet(new ServletHolder(webSockServlet), "/WebSocketChat/*");
 		 context.addServlet(new ServletHolder(staticServlet), "/*");
+		 
 		
 		   
 		   

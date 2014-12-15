@@ -36,9 +36,10 @@ class Responder {
 
 
 
-
-
-
+	public def webSocketChat(HttpServletRequest  request){
+		
+		
+	}
 
 	public String getvalidusers(){
 
@@ -206,7 +207,7 @@ public String getAllusers(){
 	public String startsession(HttpServletRequest request){
 
 
-		def params=[			
+		def params=[
 			"hostfileids":request.getParameter("hostfileids"),
 			"team":request.getParameter("team"),
 		]
@@ -251,14 +252,14 @@ public String getAllusers(){
 				if(remotefiles.size() == 0)
 					throw new Exception("Error $msg")
 					
-				// Create LogSession Object 
+				// Create LogSession Object
 				
 					msg += " Published for Log Monitoring"
 					 uuid = UUID.randomUUID().toString();
 					 uuid=uuid.replaceAll("-","");
 					final LogSession session=new LogSession(
 						sessionid:uuid,
-						remotefiles: remotefiles, 
+						remotefiles: remotefiles,
 						);
 				
 				
@@ -750,7 +751,7 @@ public String getAllusers(){
 		
 						response.append("<logfile>")
 						response.append("\n<name>${val.name}</name>")
-						response.append("\n<filename>${val.filename}</filename>")						
+						response.append("\n<filename>${val.filename}</filename>")
 						response.append("\n<team>${val.team}</team>")
 						response.append("\n<id>${val.id}</id>")
 						response.append("\n<hosts>")

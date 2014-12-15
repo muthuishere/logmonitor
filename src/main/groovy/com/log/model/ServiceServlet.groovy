@@ -115,7 +115,15 @@ class ServiceServlet extends HttpServlet {
 				println(request.getParameter("repname")+"." + request.getParameter("filetype"))
 				result = request.getParameter("content")
 
-				break;
+			break;
+			
+			
+			//Added to test the Websocket Chat implemenation
+			case "WebSocketChat":
+			
+				result = responder.webSocketChat(request);
+			
+			break;
 
 
 
