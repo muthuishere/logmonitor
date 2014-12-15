@@ -22,6 +22,17 @@ public PollerSocket(def sessionid ) {
 	this.sessionid=sessionid
 }
 
+def close(){
+	
+	try{
+		println("Closing connection")
+		
+		this.connection.close();
+		
+	}catch(Throwable t){
+		t.printStackTrace();
+	}
+}
 
 def sendMessagetoClient(String data){
 	

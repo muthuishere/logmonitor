@@ -14,6 +14,7 @@ public class Configurator {
 	public static def logSessions=[:];
 	public static def logMsgSockets=[:];
 	
+	
 	public static void log(def msg){
 		
 		println "${new Date()} [${Thread.currentThread().getName()}]: ${msg}"
@@ -31,28 +32,34 @@ public class Configurator {
 		if(null != logMsgSockets.getAt(sessionid) ){
 			
 			logMsgSockets.getAt(sessionid).sendMessagetoClient(data)
-			logMsgSockets.getAt(sessionid).lastfetchedTime=(new Date()).getTime();
+			LogSession cursession=logSessions.getAt(sessionid)
+			cursession.lastfetchedTime=(new Date()).getTime();
 		}
 		else
-			println "Session closed "	
+			println "Session closed not found session $sessionid"	
 		
 	}
 	
 	public static def killsocket(String sessionid){
 		
-		if(null != logMsgSockets.getAt(sessionid))
-			logMsgSockets.getAt(sessionid).remove()
-		else
-			println "Session killed ${sessionid} "
+		if(null != logMsgSockets.getAt(sessionid)){			
+			logMsgSockets.getAt(sessionid).close()
+			logMsgSockets.remove(sessionid)
+			
+			println "Session  killed ${sessionid} "
+		}else
+			println "no session to killed ${sessionid} "
 		
 	}
 	
 	public static def killsocket(PollerSocket pollerSocket){
 		
-		if(null != logMsgSockets.getAt(pollerSocket.sessionid))
-			logMsgSockets.getAt(pollerSocket.sessionid).remove()
-		else
+		if(null != logMsgSockets.getAt(pollerSocket.sessionid)){
+			logMsgSockets.getAt(pollerSocket.sessionid).close()
+			logMsgSockets.remove(pollerSocket.sessionid)
 			println "Session killed ${pollerSocket.sessionid} "
+		}else
+			println "No Session to kill ${pollerSocket.sessionid} "
 		
 	}
 	

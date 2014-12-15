@@ -24,17 +24,26 @@ function initLogPoll(localsessionid){
 		pollog(localsessionid)
 	}
 } 
+
+function logm(msg){
+	
+	try{
+		logm(msg)
+	}catch(Exception){
+		
+	}
+}
 function initsocket(sessionid){
 	
 	
 	var ws = new WebSocket("ws://"+document.location.host+"/LogPollerSocket/start?sessionid="+sessionid);
 	ws.onopen = function(event) {
-		//console.log(event)
-		console.log("connected")
+		//logm(event)
+		//logm("connected")
 	}
 	ws.onmessage = function(event) {
 		
-		console.log("Message received sessionid["+ sessionid +"] data ["+ event.data +"]")
+		logm("Message received sessionid["+ sessionid +"] data ["+ event.data +"]")
 		 		
 				if($("#div"+sessionid).size() > 0)
 		 				{
@@ -44,7 +53,7 @@ function initsocket(sessionid){
 		 				}
 	}
 	ws.onclose = function(event) {
-		//console.log("Socket closed for sessionid["+ sessionid +"] data ["+ event.data +"]")
+		//logm("Socket closed for sessionid["+ sessionid +"] data ["+ event.data +"]")
 	}
 	
 	return ws;
@@ -121,7 +130,7 @@ function generateServerMenu(divID,name,defaulttxt){
 		   
 		   resp = resp + '</select>'
 		   
-		 //  console.log(divID)
+		 //  logm(divID)
 		   	$("#"+divID).html(resp);
 		   	$( "#"+name ).selectmenu()
 		  }
@@ -159,7 +168,7 @@ for(var i=0;i<$rows.length;i++){
                     }
                     var txt = ($($cells[y]).text()).toString().trim();
 					if(txt =="")
-					//	console.log($($cells[y]).html())
+					//	logm($($cells[y]).html())
                    // if(txt.indexOf(',')>=0 || txt.indexOf('\"')>=0 || txt.indexOf('\n')>=0){
                         txt = "\"" + txt.replace(/\"/g, "\"\"") + "\"";
                    // }

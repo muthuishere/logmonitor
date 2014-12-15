@@ -167,10 +167,18 @@ class LogPoller  {
 					
 			
 			}
-			else if(action =="CLOSE")
+			else if(action =="CLOSE"){
 				globalconfig.closeremote(sessionid,remoteFile)
+				globalconfig.killsocket(sessionid)
+				
+				}
+				
 			else if(action =="LOCK_CREDENTIAL"){
+				
+				
+				
 				globalconfig.closeremote(sessionid,remoteFile)
+				globalconfig.killsocket(sessionid)
 				remoteFile.server.locked=true;
 				
 				dataStore.updateServerLock(remoteFile.server);
