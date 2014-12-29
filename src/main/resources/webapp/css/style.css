@@ -893,7 +893,21 @@ nav{
 			   background: url(../images/download-text.png) no-repeat;
 			
 		   }
-		   
-		   
-		   
-		   
+
+.cmdinput {
+	background: none repeat scroll 0 0 black;
+	border: medium none;
+	color: #ffffff;
+	width: 100%
+}
+
+.console {
+    background: none repeat scroll 0 0 black;
+    color: #ffffff;
+    border-radius:5px;
+    font-family: monospace;
+}
+.contnormalscreen{
+	height:500px;
+    padding:5px;
+}

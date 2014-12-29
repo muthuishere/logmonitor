@@ -1,0 +1,407 @@
+<div class="main_content" style="">
+	<form name="frmmonitor" id="frmmonitor" action="#">
+
+		<table border="0"
+			style="width: 100%; padding: 10px; border-collapse: separate; border-spacing: 10px;">
+			<tr>
+				<td>
+					<div title="team">Team</div> <select name="team" id="team"
+					style="width: 200px">
+						<option value="RESOLVE">RESOLVE</option>
+						<option value="Provisioning">Provisioning</option>
+						<option value="Service Checker">Service Checker</option>
+				</select>
+				</td>
+				<td>
+					<div title="Servers">Servers</div> <span id="serversscontainer">
+						<select name="servers" id="servers" style="width: 200px"
+						multiple="multiple">
+					</select>
+				</span>
+				</td>
+
+				<td>
+				<td>
+				<td class="ralign">
+					<div title="execbtn">&nbsp;</div>
+					<button type="button" class="btnconnect">Connect</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<div>
+		<div id="tabs" class="monitortab">
+			<ul>
+			</ul>
+		</div>
+
+		<script type="text/javascript">
+			var tabs;
+		   	var tabTemplate = "<li><span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span> <a href='#{href}' style='overflow:hidden;text-overflow:ellipsis;width:70%'>#{label}</a> </li>";
+	      	var tabCounter = 1;
+	      	var openedSockets = {};
+	      	var prevcmds = [];
+	      	var nextcmds = [];
+		
+		
+			function createTab(sessionId, serverNames) {
+				var label = serverNames
+				var id = "tabs-" + tabCounter,
+				li = $( tabTemplate.replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, label ) ),
+				tabContentHtml = "<div id='' >log here</div>";
+				tabs.find( ".ui-tabs-nav" ).append( li );
+				
+				var tbl ="<table width='100%' cellpadding='0' cellspacing='0' >"
+				tbl = tbl + "<tr><td colspan='2'>&nbsp;</td></tr>"
+				tbl = tbl + "<tr><td width='70%'><span style='font-weight:bold;color:white'>Servers :" + serverNames +"</td>"
+				tbl = tbl + "<td width='30%' style='text-align:right'>"
+				tbl = tbl + "<table width='100%' cellpadding='0' cellspacing='0' ><tr>"
+				tbl = tbl + "<td><div class='fullscreen consolescreendecider' style='width:24px;height:24px;float:right;padding-right:20px'  data-session='"+ sessionId +"' >&nbsp;</div></td>"
+				tbl = tbl + "</tr></table>"
+				tbl = tbl + "</td></tr>"
+				tbl = tbl + "<tr><td colspan='2'>&nbsp;</td></tr>"
+				tbl = tbl + "<tr>"
+				tbl = tbl + "<td colspan='2'><div id='" + sessionId + "_container' style='overflow:auto; width:100%'>"
+				tbl = tbl + "<span id='" + sessionId + "_res' ></span>"
+				tbl = tbl + "<input type='text' id='" + sessionId + "_cmd' class='cmdinput' data-session='"+ sessionId +"'></div>"
+				
+				tabContentHtml ="<div id='container"+ sessionId +"'  class='contnormalscreen console'> "+ tbl  +"</div>" ;
+				
+				tabs.append( "<div id='" + id + "'><p>" + tabContentHtml + "</p></div>" );
+				
+				tabs.tabs( "refresh" );
+				
+				tabCounter++;
+				checktabs();
+				tabs.tabs( "option", "active", $('#tabs >ul >li').size() - 1  );
+				
+				attachShellTabHandlers(sessionId);
+				var contid='#container' +sessionId
+				var logContainer='#' + sessionId + "_container"
+				$("#" + sessionId + "_cmd").focus();
+				$(logContainer).height($(contid).height() - $(logContainer).position().top)
+				$("#" + sessionId + "_cmd").width($(logContainer).width() - $("#" + sessionId + "_cmd").position().left)
+			}
+			
+			function checktabs(){
+				if($('#tabs >ul >li').size() <=0){
+					$('#tabs').css('visibility','hidden')
+				}else{
+					$('#tabs').css('visibility','visible')
+				}
+			}
+			
+			function attachShellTabHandlers(sessionId) {
+				attachCmdInputListner(sessionId);
+				//fullscreenListner(sessionId);
+			}
+			
+			function fullscreenListner(sessionId) {
+				$(".consolescreendecider").click(function( event ) {
+					var sessid=$(this).attr("data-session")
+					var contid='#container' +sessid
+					var logContainer='#' +sessid + "_container"
+					console.log("called for Sessionid" + sessid)
+					if($(this).hasClass('fullscreen')){
+						$(this).removeClass('fullscreen')
+						$(this).addClass('normalscreen')
+						$(contid).addClass('contfullscreen')
+						$(contid).removeClass('contnormalscreen')
+						$(logContainer).height($(contid).height() - $(logContainer).position().top)
+						$("#" + sessid + "_cmd").width($(logContainer).width() - $("#" + sessid + "_cmd").position().left - 20)
+					}else{
+						$(this).removeClass('normalscreen')
+						$(this).addClass('fullscreen')
+						$(contid).removeClass('contfullscreen')
+						$(contid).addClass('contnormalscreen')
+						$(logContainer).height($(contid).height() - $(logContainer).position().top)
+						$("#" + sessid + "_cmd").width(900 - $("#" + sessid + "_cmd").position().left)
+					}
+				})
+			}
+			
+			function attachCmdInputListner(sessionId) {
+				$("#" + sessionId + "_cmd").bind("enterKey",function(e){
+					var cmdId = "#" + this.id;
+					var cmd = $(cmdId).val(); 
+					var sessionId = $(this).attr("data-session")
+					
+					if(cmd == undefined || cmd.trim().length == 0) {
+						alert( "Command should be enterted for " + sessionId);
+						return;
+					}
+					
+					sendCmdtoShell(sessionId, cmd);
+					prevcmds.push(cmd); 
+					$(cmdId).val("")
+				});
+				
+				$("#" + sessionId + "_cmd").bind("terminatecmd",function(e){
+					var sessionId = $(this).attr("data-session")
+					sendCmdtoShell(sessionId, "terminate");
+				});
+				
+				$("#" + sessionId + "_cmd").bind("prevcmd",function(e){
+					var cmd = prevcmds.pop()
+					nextcmds.push(cmd)
+					$(this).val(cmd)
+				});
+				
+				$("#" + sessionId + "_cmd").bind("nextcmd",function(e){
+					var cmd = nextcmds.shift()
+					prevcmds.push(cmd)
+					$(this).val(cmd)
+				});
+				
+				$("#" + sessionId + "_cmd").keyup(function(e){
+					if(e.keyCode == 13) {
+						$(this).trigger("enterKey");
+				    }
+				    if(e.keyCode == 67 && e.ctrlKey) {
+				    	$(this).trigger("terminatecmd");
+				    }
+				    if(e.keyCode == 38) {
+				    	$(this).trigger("prevcmd");
+				    }
+				    if(e.keyCode == 40) {
+				    	$(this).trigger("nextcmd");
+				    }
+				});
+			}
+			
+			function attachCloseabistner() {
+				$('.ui-icon-close').click(function( event ) {
+					//
+				});
+			}
+		
+		
+			function updateserversmenu() {
+				$("#serversscontainer").html("");
+				if($("#team").val() != ""){
+					var formdata="team=" + $("#team").val();
+						
+						$.post( "/services/getservers", formdata)
+					 	  .done(function( data ) {
+					 	    
+					 		 serverxml=""
+					 		
+					 		//parse xml
+					 		  $xml = $( data )
+					 		  $status = $xml.find( "status" )
+					 		  if( $status.attr("error") =="true"){
+					 			  
+					 			//  showerror("resultdetailcontainer",$status.attr("description"))
+					 			  
+					 		  } else{
+					 			  
+					 			 var tbl=""
+										tbl=tbl + ' <select style="width: 380px"  multiple="multiple" id="servers">'
+										
+										var dataCount=0
+					 			 $xml.find('server').each(function(index){
+					  					dataCount++
+					  		            var name = $(this).find('name').text();
+					  					var host =  $(this).find('host').text();
+					  	 				var port =  $(this).find('port').text();
+					  	 				var user =  $(this).find('user').text();
+					  	 				var password =  $(this).find('password').text();
+					  	 				var proxyhost =  $(this).find('proxyhost').text();
+					  	 				var proxyport =  $(this).find('proxyport').text();
+					  	 				var proxyuser =  $(this).find('proxyuser').text();
+					  	 				var proxypwd =  $(this).find('proxypwd').text();
+					  	 				var serverid =  $(this).find('id').text();
+					  	 				
+					  	 				var group = $(this).find('group').text();
+					  	 				
+					  	 				var team = $(this).find('team').text();
+					  	 				
+					  	 				tbl=tbl + "        <option value='"+user+"-"+host+"-"+group+"-"+team+"'>&nbsp;&nbsp;"+name+"</option>" 
+					  					
+					 			 });
+										tbl=tbl + '</select> '
+										
+										$("#serversscontainer").html(tbl)
+										$("select#servers").multipleSelect();
+											
+					 		  }
+					 		 
+					 	  });
+				 	}
+			}
+			
+			
+			function init() {
+				generateCsvMenu("team", $("#teams").val());
+
+				$("#team").selectmenu({
+					change : function(event, data) {
+						updateserversmenu();
+					}
+				});
+				updateserversmenu();
+				
+				$( ".btnconnect" ).button( {
+			        icons: {
+			          primary: "ui-icon-transferthick-e-w"
+			        }
+			      });
+				
+				$( ".btnconnect" ).click(function( event ) {
+			    	 
+					if(!($("select#servers").multipleSelect('getSelects').length >0)) {
+						alert( "Host should be selected");
+						return;
+					}
+			    	
+					if($("select#servers").multipleSelect('getSelects').length >0){
+						var hostlist=new Array();
+						var mergedhosts= $("select#servers").multipleSelect('getSelects').join(",")
+						hostlist.push(mergedhosts)
+						var curlabels = $("select#servers :selected").map(function() {
+	    			    	return $(this).text();
+	    		 		}).get();
+						var mergedlabels=curlabels.join(",")
+						var formdata="team=" + $("#team").val() +"&hostids=" + encodeURI(hostlist) +"&usesocket=" + hasSocket();
+			  			$.post( "/services/startshell", formdata).done(function( data ) {
+							$xml = $( data )
+							$status = $xml.find( "status" )
+							if( $status.attr("error") =="true"){
+								alert($status.attr("description"))
+							} else{
+								var localsessionid=$status.attr("sessionid")
+								createTab(localsessionid, mergedlabels);
+				  				initShellSession(localsessionid);
+							}
+						});
+					}
+			    })
+			    
+				tabs = $( "#tabs" ).tabs({
+						 activate: function( event, ui ) {
+							 
+							 var elem=ui.newPanel.find("div")[0]
+							 var sessid=($(elem).attr("id")).replace("container","")
+							 //attachShellTabHandlers(sessid)
+							 fullscreenListner(sessid)
+						 }		 
+				 });
+				
+				tabs.addClass( "ui-tabs-vertical ui-helper-clearfix" );
+				 $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+				 
+				checktabs();
+			    
+				tabs.delegate( "span.ui-icon-close", "click", function() {
+				    var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
+				    $( "#" + panelId ).remove();
+				    tabs.tabs( "refresh" );
+				    checktabs()
+				});
+				
+				tabs.bind( "keyup", function( event ) {
+				  if ( event.altKey && event.keyCode === $.ui.keyCode.BACKSPACE ) {
+				    var panelId = tabs.find( ".ui-tabs-active" ).remove().attr( "aria-controls" );
+				    $( "#" + panelId ).remove();
+				    
+				    tabs.tabs( "refresh" );
+				    checktabs()
+				  }
+				});
+			    
+			}
+			
+			function initShellSession(sessionId){
+				if(hasSocket()){
+					openedSockets[sessionId] = initShellSessionSocket(sessionId, true)
+				}else{
+					console.log("Polling has to be done");
+				}
+			}
+			
+			function sendCmdtoShell(sessionId, cmd) {
+				if(hasSocket()){
+					openedSockets[sessionId].send(cmd)
+				}else{
+					var formdata="sessionId=" + sessionId +"&command=" + $(cmdId).val();
+					$.post( "/services/executecommand", formdata).done(function(data){
+						$xml = $( data )
+						$status = $xml.find( "status" )
+						if( $status.attr("error") =="true"){
+							alert($status.attr("description"))
+						}
+					});
+				}
+			}
+			
+			function initShellSessionSocket(sessionid, reConnect){
+				var ws = new WebSocket("ws://"+document.location.host+"/LogPollerSocket/start?sessionid="+sessionid);
+				ws.onopen = function(event) {
+				}
+				ws.onmessage = function(event) {
+					logm("Message received sessionid["+ sessionid +"] data ["+ event.data +"]")
+					
+					var resId = "#" + sessionid + "_res"
+					$xml = $( event.data )
+					var $server = $xml.find( "server" )
+					var html = formatData("[" + $server.attr('name') + "] ", $server.find("data").text())
+					
+					$(resId).append(html);
+					$("#" + sessionid + "_cmd").focus();
+					$("#" + sessionid + "_cmd").width($("#"+sessionid+"_container").width() - $("#" + sessionid + "_cmd").position().left - 20)
+					$("#"+sessionid+"_container").scrollTop($("#"+sessionid+"_container")[0].scrollHeight);
+					
+					
+				}
+				ws.onclose = function(event) {
+					if(reConnect) {
+						initShellSessionSocket(sessionid, reConnect)
+					}
+				}
+				return ws;
+			}
+			
+			function formatData(serverName, rawdata) {
+				var formattedData = "<br /><span class='server'>" + serverName + "</span>"
+				$.each(rawdata.replace("\"", "&quot;").replace("&", "&amp;")
+					.replace("<", "&lt;").replace(">", "&gt;")
+					.replace(/\032/g,"&nbsp;")
+					.replace(/\x01/g,"")
+					.replace(/\x07/g,"")
+					.replace(/\x16/g, "")
+					.replace(/\r\n/g, "</span><br /><span class='server'>" + serverName + "</span><span>")
+					.replace(/\n/g, "</span><br /><span class='server'>" + serverName + "</span><span>")
+					//.replace(/[\r\n]/g, "</span><br /><span class='server'>" + serverName + "</span><span>")
+					.split(/\033/), function( index, value ) {
+						if(value.trim().length == 0) {
+							return
+						}
+						var dataIndex = 0;
+						if(value[0] == '[') {
+							dataIndex = value.indexOf("m") + 1
+						} else {
+							dataIndex = value.indexOf(";") + 1
+						}
+						var ansiClass = value.substr(0, dataIndex)
+						var data = value.substr(dataIndex, value.length)
+						if(data.trim().length > 0) {
+							formattedData += "<span>" + data + "</span>";
+						}
+					})
+				var serverSpan = "<span class='server'>" + serverName + "</span>"
+				formattedData = formattedData.replace(/\<span\>\<\/span\>/gi,"")
+					.replace(serverSpan + "<br />","")
+				if(endsWith(formattedData, serverSpan)) {
+					formattedData = formattedData.replace("<br />" + serverSpan,"")
+				}
+				return formattedData
+			}
+			
+			function endsWith(str, suffix) {
+			    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+			}
+
+			$(function() {
+				init();
+			});
+		</script>

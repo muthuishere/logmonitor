@@ -49,6 +49,11 @@ class LogPoller  {
 			Thread.start { worker_thread_socket( Configurator, dataStore) }
 		}
 		
+		(1..Configurator.globalconfig.worker_thread_count).each
+		{
+			Thread.start { worker_thread_shell( Configurator, dataStore) }
+		}
+		
 		
 	}
 
@@ -98,7 +103,45 @@ class LogPoller  {
 		
 	}
 	
-	
+	def worker_thread_shell(def globalconfig,DataStore dataStore) {
+		while(true) {
+			def req = globalconfig.worker_shell_lbq.take()
+			
+			try {
+				switch(req.action) {
+					case "UPDATE":
+						while(1) {
+							if(globalconfig.logMsgSockets.getAt(req.sessionId) != null) {
+								break;
+							}
+							try {Thread.sleep(1000)} catch (Exception e) {}
+						}
+						StringBuffer response= new StringBuffer()
+						response.append("<reply>")
+						response.append("<server name='$req.server.host'>")
+						response.append("<data>$req.response</data>")
+						response.append("</server>")
+						response.append("</reply>")
+						if(globalconfig.shellServers.getAt(req.sessionId).socketSession) {
+							globalconfig.sendmsgtosocket(req.sessionId, response.toString())
+						} else {
+							globalconfig.updatebuffer(sessionid,formattedResponse)
+						}
+					break
+					case "CLOSE":
+						globalconfig.closeSession(req.sessionId)
+						globalconfig.killsocket(req.sessionId)
+					break
+					default:
+						println "Wrong action $req"
+					break
+				}
+			} catch (Exception exception) {
+				exception.printStackTrace()
+				req.error = "${exception.getCause().toString()} (${exception.getMessage()})"
+			}
+		}
+	}
 
 	
 	//JsonSlurper reportapp =  new JsonSlurper()

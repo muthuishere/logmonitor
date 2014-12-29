@@ -1,8 +1,11 @@
 package com.log.model
 
-import com.log.beans.LogSession
+import java.nio.ByteBuffer
+
 import org.eclipse.jetty.websocket.WebSocket.Connection
 import org.eclipse.jetty.websocket.WebSocket.OnTextMessage
+
+import com.log.beans.ShellServer
 import com.log.controller.Configurator
 
 /*
@@ -51,7 +54,25 @@ def sendMessagetoClient(String data){
 public void onMessage( String data) {
 	
 	println "Value of data in onMessage function is : " + data
-	
+	try {
+		ShellServer shellServer = Configurator.shellServers.getAt(sessionid)
+		if(shellServer != null) {
+			shellServer.shellSessions.each { shellSession->
+				if(data == "terminate") {
+					println "Writing terminate signal to outstream"
+					byte[] bytes = ByteBuffer.allocate(4).putInt(3).array();
+					shellSession.inStream.addBuffer(bytes)
+				} else {
+					shellSession.inStream.addBuffer(data + "\r\n")
+				}
+			}
+		} else {
+			//add error to queue
+		}
+	} catch (Exception e) {
+		e.printStackTrace()
+		//add error to queue
+	}
 
 
 

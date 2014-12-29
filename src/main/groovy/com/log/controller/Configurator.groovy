@@ -1,8 +1,12 @@
 package com.log.controller
 
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.Session;
 import com.log.beans.LogSession
 import com.log.beans.RemoteFile
+import com.log.beans.ShellServer;
 import com.log.model.PollerSocket
+
 import java.util.concurrent.LinkedBlockingQueue
 
 public class Configurator {
@@ -13,6 +17,7 @@ public class Configurator {
 	
 	public static def logSessions=[:];
 	public static def logMsgSockets=[:];
+	public static def shellServers=[:];
 	
 	
 	public static void log(def msg){
@@ -20,6 +25,13 @@ public class Configurator {
 		println "${new Date()} [${Thread.currentThread().getName()}]: ${msg}"
 	}
 	
+	public static def addShellServer(String sessionId, ShellServer shellServer){
+		shellServers.put(sessionId, shellServer)	
+	}
+	
+	public static closeSession(String sessionId) {
+		
+	}
 	
 	public static def addSocket(PollerSocket logMsgSocket){
 		
@@ -30,10 +42,11 @@ public class Configurator {
 	public static def sendmsgtosocket(String sessionid,String data){
 		
 		if(null != logMsgSockets.getAt(sessionid) ){
-			
 			logMsgSockets.getAt(sessionid).sendMessagetoClient(data)
 			LogSession cursession=logSessions.getAt(sessionid)
-			cursession.lastfetchedTime=(new Date()).getTime();
+			if(cursession != null) {
+				cursession.lastfetchedTime=(new Date()).getTime();
+			}
 		}
 		else
 			println "Session closed not found session $sessionid"	
@@ -65,6 +78,7 @@ public class Configurator {
 	
 	public static def worker_lbq = new LinkedBlockingQueue()
 	public static def worker_socket_lbq = new LinkedBlockingQueue()
+	public static def worker_shell_lbq = new LinkedBlockingQueue()
 	
 	public static def updatebuffer(String sessionid,StringBuffer msg){
 		

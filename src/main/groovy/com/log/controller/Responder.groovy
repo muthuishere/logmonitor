@@ -1,27 +1,33 @@
 package com.log.controller
 
 
+import java.text.SimpleDateFormat
+
+import javax.servlet.http.HttpServletRequest
+
+import com.jcraft.jsch.Channel;
 import com.log.beans.Log
 import com.log.beans.LogSession
 import com.log.beans.Server
+import com.log.beans.ShellInputStream
+import com.log.beans.ShellOutputStream
+import com.log.beans.ShellServer;
+import com.log.beans.ShellSession;
 import com.log.model.DataStore
-
-import java.text.SimpleDateFormat
-import java.util.ArrayList;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest
-import java.util.UUID;
+import com.log.model.PollerSocket
+import com.log.ssh.ExecuteSSHController
 
 class Responder {
 
 	def dataStore=null
+	LogPoller logPoller
 
 	public Responder(){
 
 
 		dataStore=new DataStore();
 		dataStore.init(Configurator.globalconfig.dbfile)
+		logPoller = new LogPoller();
 	}
 	/**
 	 * Create private constructor
@@ -276,7 +282,7 @@ public String getAllusers(){
 						
 				Thread.start {
 
-					new LogPoller().start(session,useSocket)
+					logPoller.start(session,useSocket)
 
 
 				}
@@ -439,10 +445,21 @@ public String getAllusers(){
 
 	}
 
-
+	private def getServerEntries(String team) {
+		def servers=[:]
+		dataStore.getServerEntries(null, team).each { server->
+			def curkey="${server.user}-${server.host}-${server.servergroup}-${server.team}"
+			servers.put(curkey, server);
+		}
+		return servers
+	}
 
 
 	public String getservers(HttpServletRequest request){
+		
+		def params=[
+			"team":request.getParameter("team")
+		]
 
 		StringBuffer response= new StringBuffer()
 
@@ -453,7 +470,7 @@ public String getAllusers(){
 
 		int count=0;
 		try{
-			def servers=dataStore.servers
+			def servers= params.team!=null ?  getServerEntries(params.team) : dataStore.servers
 			// Add information as xml
 
 			//	ArrayList
@@ -506,8 +523,78 @@ public String getAllusers(){
 
 
 	}
+	
+	String startShellSession(HttpServletRequest request) {
+		def params=[
+			"hostids":request.getParameter("hostids"),
+			"team":request.getParameter("team"),
+			"usesocket":request.getParameter("usesocket"),
+		]
+		
+		StringBuffer response= new StringBuffer()
+		String msg=""
+		response.append("<reply>")
 
+		if(null == params.hostids || null == params.team) {
+			response.append("<status code='1' error='true' description='Invalid user inputs'/>")
+		}else{
+			String uuid = UUID.randomUUID().toString()
+			uuid=uuid.replaceAll("-","")
+			ShellServer shellServer = new ShellServer(uuid)
+			if(null != params.usesocket && params.usesocket.toLowerCase().equals("false") )
+				shellServer.socketSession = false
+			try{
+				params.hostids.split (",").each { host->
+					Server server = null;
+					dataStore.servers.each{key,val->
+						if(key == host) {
+							server = val;
+							return
+						}
+					}
+					ShellSession shellSession = new ShellSession(server: server, inStream: new ShellInputStream(), outStream: new ShellOutputStream(uuid,server))
+					Thread.start {new ExecuteSSHController().startShell(uuid, shellSession)}
+					shellServer.shellSessions.add(shellSession)
+				}
+				response.append("<status code='0' error='false' sessionid='$uuid' description='$msg'/>")
+			}catch(Exception e){
+				response.append("<status code='1' error='true' description='${xml_string(e.getMessage())}'/>")
+			}
+		}
+		response.append("</reply>")
+		return response;
+	}
 
+	String executeCommand(HttpServletRequest request) {
+		def params=[
+			"sessionId":request.getParameter("sessionId"),
+			"command":request.getParameter("command"),
+		]
+		
+		StringBuffer response= new StringBuffer()
+		response.append("<reply>")
+		
+		if(null == params.sessionId || null == params.command){
+			response.append("<status code='1' error='true' description='Invalid user inputs'/>")	
+		} else {
+			try {
+				ShellServer shellServer = Configurator.shellServers.getAt(params.sessionId)
+				if(shellServer != null) {
+					shellServer.shellSessions.each { shellSession->
+						shellSession.inStream.addBuffer(params.command + "\r\n")
+					}
+					response.append("<status code='1' error='false' description=''/>")
+				} else {
+					response.append("<status code='1' error='true' description='Session not closed'/>")
+				}
+			} catch (Exception e) {
+				e.printStackTrace()
+				response.append("<status code='1' error='true' description='${xml_string(e.getMessage())}'/>")
+			}
+		}
+		response.append("</reply>")
+		return response;
+	}
 
 	public String gethosts(HttpServletRequest request){
 

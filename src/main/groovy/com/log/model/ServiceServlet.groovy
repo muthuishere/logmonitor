@@ -99,12 +99,20 @@ class ServiceServlet extends HttpServlet {
 
 
 			case "startsession":
-			result = responder.startsession(request)
+				result = responder.startsession(request)
 
+			break;
+			
+			case "startshell":
+				result = responder.startShellSession(request)
+			break;
+			
+			case "executecommand":
+				result = responder.executeCommand(request)
 			break;
 				
 			case "logpoll":
-			result = responder.logpoll(request)
+				result = responder.logpoll(request)
 
 			break;
 			

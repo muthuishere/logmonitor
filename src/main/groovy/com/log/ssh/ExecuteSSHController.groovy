@@ -9,6 +9,7 @@ import com.jcraft.jsch.Session;
 import com.log.beans.CommandInfo
 import com.log.beans.RemoteFile
 import com.log.beans.Server
+import com.log.beans.ShellSession;
 import com.log.helpers.StringHelper
 import com.log.exceptions.ServiceException
 
@@ -112,7 +113,73 @@ public class ExecuteSSHController {
 			}
 		
 	}
+	
+	public void startShell(String sessionId, ShellSession shellSession) {
+		try {
+			shellSession.setSession(startShell(shellSession.server, shellSession.inStream, shellSession.outStream))
+		} catch (Exception e) {
+			Configurator.worker_shell_lbq.put([  "response": e.getMessage(),"action": "ERROR","sessionId":sessionId, "server":shellSession.server])
+		}
+	}
+	
+	public Session startShell(Server server, InputStream inStream, OutputStream outStream) throws Exception {
+		Session session = new SecureChannel().getSession(server.user,server.password,server.host,(int)server.port);
+
+		if (null != server.proxyhost && "" != server.proxyhost) {
+			Session gateway = connectToGateway(server);
+			session.setProxy(new SecureProxy(gateway));
+		}
+	
+		session.connect();
+		
+		if (null == session) {
+			throw new ServiceException("Connection not established");
+		}
+		println "Inside startShell for session :: $outStream.sessionId"
+		channel = session.openChannel("shell")
+		channel.setInputStream(inStream)
+		channel.setOutputStream(outStream)
+		channel.connect();
+		return session
+	}
  
+	public void shell(final ByteArrayOutputStream out) throws ServiceException {
+		
+				try {
+					channel = session.openChannel("shell");
+		
+					// Enable agent-forwarding.
+					//((ChannelShell)channel).setAgentForwarding(true);
+					channel.setInputStream(System.in);
+					/*
+					 // a hack for MS-DOS prompt on Windows.
+					 channel.setInputStream(new FilterInputStream(System.in){
+					 public int read(byte[] b, int off, int len)throws IOException{
+					 return inp.read(b, off, (len>1024?1024:len));
+					 }
+					 });
+					 */
+		
+					channel.setOutputStream(out);
+		
+					/*
+					 // Choose the pty-type "vt102".
+					 ((ChannelShell)channel).setPtyType("vt102");
+					 */
+		
+					/*
+					 // Set environment variable "LANG" as "ja_JP.eucJP".
+					 ((ChannelShell)channel).setEnv("LANG", "ja_JP.eucJP");
+					 */
+					//channel.connect();
+					channel.connect(3 * 1000);
+		
+				} catch (JSchException ex) {
+				ex.printStackTrace();
+					throw new ServiceException("Exception While connecting to Server " + ex.toString(), ex);
+				}
+		
+			}
 
     public boolean isConnected() {
         return connected;
@@ -210,44 +277,6 @@ public class ExecuteSSHController {
         if (null != channel) {
             sendConnectionMessage("Closing channel" + serverInfo.getOnlyProfileName());
             channel.disconnect();
-        }
-
-    }
-
-    public void shell(final ByteArrayOutputStream out) throws ServiceException {
-
-        try {
-            channel = session.openChannel("shell");
-
-            // Enable agent-forwarding.
-            //((ChannelShell)channel).setAgentForwarding(true);
-            channel.setInputStream(System.in);
-            /*
-             // a hack for MS-DOS prompt on Windows.
-             channel.setInputStream(new FilterInputStream(System.in){
-             public int read(byte[] b, int off, int len)throws IOException{
-             return inp.read(b, off, (len>1024?1024:len));
-             }
-             });
-             */
-
-            channel.setOutputStream(out);
-
-            /*
-             // Choose the pty-type "vt102".
-             ((ChannelShell)channel).setPtyType("vt102");
-             */
-
-            /*
-             // Set environment variable "LANG" as "ja_JP.eucJP".
-             ((ChannelShell)channel).setEnv("LANG", "ja_JP.eucJP");
-             */
-            //channel.connect();
-            channel.connect(3 * 1000);
-
-        } catch (JSchException ex) {
-		ex.printStackTrace();
-            throw new ServiceException("Exception While connecting to Server " + ex.toString(), ex);
         }
 
     }
